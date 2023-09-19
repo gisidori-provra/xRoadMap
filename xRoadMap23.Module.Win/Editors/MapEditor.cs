@@ -40,8 +40,43 @@ namespace xRoadMap.Module.Win.Editors
         {
             mapControl = new MapUserControl();
             mapControl.AddLayers(this.ObjectTypeInfo,this.Model);
+            SubscribeMapEvents();
             return mapControl;
         }
+
+        private void SubscribeMapEvents()
+        {
+            mapControl.Map.MapItemClick += Map_MapItemClick;
+            mapControl.Map.MapItemDoubleClick += Map_MapItemDoubleClick;
+            mapControl.Map.ObjectSelected += Map_ObjectSelected;
+        }
+
+        private void Map_ObjectSelected(object sender, ObjectSelectedEventArgs e)
+        {
+        }
+
+        private void Map_MapItemClick(object sender, MapItemClickEventArgs e)
+        {
+        }
+
+        private void Map_MapItemDoubleClick(object sender, MapItemClickEventArgs e)
+        {
+            var row = mapControl.GetRow(e.Item);
+            if (row != null)
+            {
+                OnProcessSelectedItem();                
+                e.Handled = true;
+            }
+        }
+        protected virtual void OnProcessSelectedItem()
+        {
+            if (this.ProcessSelectedItem != null)
+            {
+                this.ProcessSelectedItem(this, EventArgs.Empty);
+            }
+        }
+
+        public event EventHandler ProcessSelectedItem;
 
         public IList GetSelectedItems()
         {
@@ -87,6 +122,5 @@ namespace xRoadMap.Module.Win.Editors
         {
             return this.PropertyValue;
         }
-
     }
 }

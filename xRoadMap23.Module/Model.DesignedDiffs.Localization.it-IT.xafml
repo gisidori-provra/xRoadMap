@@ -38,7 +38,6 @@
                   <TabbedGroup Id="Item5">
                     <LayoutGroup Id="Item9" Caption="Materiale" />
                     <LayoutGroup Id="Item10" Caption="Dimensioni" />
-                    <LayoutGroup Id="Item12" Caption="Limiti" />
                   </TabbedGroup>
                 </LayoutGroup>
               </LayoutGroup>

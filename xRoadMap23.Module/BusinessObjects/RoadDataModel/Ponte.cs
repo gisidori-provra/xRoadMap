@@ -125,25 +125,10 @@ namespace xRoadMap.Module.BusinessObjects
             get { return fCodiceARS; }
             set { SetPropertyValue<string>(nameof(CodiceARS), ref fCodiceARS, value); }
         }
-        double fPortata;
-        public double Portata
-        {
-            get { return fPortata; }
-            set { SetPropertyValue<double>(nameof(Portata), ref fPortata, value); }
-        }
-        Atto fOrdinanzaLimitePeso;
-        [Aggregated, NoForeignKey]
-        public Atto OrdinanzaLimitePeso
-        {
-            get { return fOrdinanzaLimitePeso; }
-            set { SetPropertyValue<Atto>(nameof(OrdinanzaLimitePeso), ref fOrdinanzaLimitePeso, value); }
-        }
-        double fLimitePeso;
-        public double LimitePeso
-        {
-            get { return fLimitePeso; }
-            set { SetPropertyValue<double>(nameof(LimitePeso), ref fLimitePeso, value); }
-        }
+
+
+        [Association, NoForeignKey]
+        public XPCollection<LimiteTransito> LimitiTransito => GetCollection<LimiteTransito>();
 
         [Association(@"IspezioneReferencesPonte"), Aggregated]
         public XPCollection<Ispezione> Ispezioni { get { return GetCollection<Ispezione>(nameof(Ispezioni)); } }

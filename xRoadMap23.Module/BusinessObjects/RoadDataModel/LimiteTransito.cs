@@ -14,6 +14,7 @@ namespace xRoadMap.Module.BusinessObjects
 
 
     [MapInheritance(MapInheritanceType.OwnTable)]
+    [DefaultProperty(nameof(Descrizione))]
     public partial class LimiteTransito: EventoLineare,IEventoLineareOnRoad
     {
         public LimiteTransito(Session session) : base(session) { }
@@ -31,18 +32,21 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
-        string fNome;
-        public string Nome
-        {
-            get { return fNome; }
-            set { SetPropertyValue<string>(nameof(Nome), ref fNome, value); }
-        }
         string fDescrizione;
         [Size(SizeAttribute.Unlimited)]
         public string Descrizione
         {
             get { return fDescrizione; }
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
+        }
+
+        private Ponte ponte;
+        [Association]
+        [VisibleInListView(false)]
+        public Ponte Ponte
+        {
+            get => ponte;
+            set => SetPropertyValue(nameof(Ponte), ref ponte, value);
         }
 
         [NonPersistent]

@@ -152,7 +152,7 @@ namespace xRoadMap.Module.BusinessObjects
         [Association(), Aggregated]
         public XPCollection<Ponte> Ponti { get { return GetCollection<Ponte>(nameof(Ponti)); } }
         [Association(), Aggregated]
-        public XPCollection<LimiteTransito> Lavori { get { return GetCollection<LimiteTransito>(nameof(Lavori)); } }
+        public XPCollection<LimiteTransito> LimitiTransito { get { return GetCollection<LimiteTransito>(nameof(LimitiTransito)); } }
         [Association,Aggregated]
         public XPCollection<Accesso> Accessi => GetCollection<Accesso>(nameof(Accessi));
         [Association, Aggregated]

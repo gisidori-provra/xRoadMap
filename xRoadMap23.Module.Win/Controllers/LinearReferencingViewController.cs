@@ -49,7 +49,20 @@ namespace xRoadMap.Module.Win.Controllers
         private void CustomizeViewItemControl(Editors.MapEditor viewItem)
         {
             mapUserControl = viewItem.MapControl;
+            viewItem.ProcessSelectedItem += viewItem_ProcessSelectedItem;
             //mapUserControl.Map.MouseClick += MapControl_MouseClick;
+        }
+
+        private void viewItem_ProcessSelectedItem(object sender, EventArgs e)
+        {
+            var selectedItems = mapUserControl.GetSelectedItems();
+            if (selectedItems.Count == 1)
+            {
+                var os = Application.CreateObjectSpace();
+                var item = selectedItems[0];
+                var view = Application.CreateDetailView(os, item, true);
+                Frame.SetView(view);
+            }
         }
 
         protected override void OnViewControlsCreated()
