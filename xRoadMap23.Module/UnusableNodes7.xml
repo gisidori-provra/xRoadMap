@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="Strada_Lavori_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="TipoPercorrenza" Index="8" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

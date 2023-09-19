@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views>
+    <DetailView Id="Accesso_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Accesso" Caption="Destinazione">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Gruppo" Caption="Accesso">
+                  <LayoutGroup Id="Auto2d06a79a-96bc-41e7-8aa5-d4946c9f2da8" Caption="" />
+                </LayoutGroup>
+                <LayoutGroup Id="Item2" Caption="Localizzazione">
+                  <TabbedGroup Id="Item4">
+                    <LayoutGroup Id="EventoLineare" Caption="Inizio" />
+                    <LayoutGroup Id="Item5" Caption="Fine">
+                      <LayoutGroup Id="Auto954ecd59-d74a-4ada-84a5-8b8e45462787" Caption="" />
+                      <LayoutGroup Id="Autocb12ef0e-987a-469b-a52a-205dd66ce322" Caption="" />
+                    </LayoutGroup>
+                  </TabbedGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item3" Caption="Atto">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d" Caption="" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Ponte_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Ponte">
+                <LayoutGroup Id="Ponte_col1">
+                  <TabbedGroup Id="Item5">
+                    <LayoutGroup Id="Item9" Caption="Materiale" />
+                    <LayoutGroup Id="Item10" Caption="Dimensioni" />
+                    <LayoutGroup Id="Item12" Caption="Limiti" />
+                  </TabbedGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Localizzazione">
+                <LayoutGroup Id="Autob781990b-f7d7-4501-b435-9374c92712da">
+                  <TabbedGroup Id="Item4">
+                    <LayoutGroup Id="Item2" Caption="Inizio" />
+                    <LayoutGroup Id="Item3" Caption="Fine" />
+                  </TabbedGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Tombino_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Localizzazione">
+                <LayoutGroup Id="Autob781990b-f7d7-4501-b435-9374c92712da">
+                  <LayoutGroup Id="Item2" Caption="Coordinate" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
