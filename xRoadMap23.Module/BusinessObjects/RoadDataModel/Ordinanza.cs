@@ -8,6 +8,7 @@ using System.Reflection;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.Persistent.Base;
+using DevExpress.Utils.Filtering.Internal;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -15,9 +16,9 @@ namespace xRoadMap.Module.BusinessObjects
 
     [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
-    public partial class LimiteTransito: EventoLineare,IEventoLineareOnRoad
+    public partial class Ordinanza: EventoLineare,IEventoLineareOnRoad
     {
-        public LimiteTransito(Session session) : base(session) { }
+        public Ordinanza(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
         [Association]
@@ -85,6 +86,10 @@ namespace xRoadMap.Module.BusinessObjects
             }
         }
 
+        [VisibleInDetailView(false)]
+        [VisibleInListView(false)]
+        public bool Vigente => (!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
+
         bool fLimiteMassa;
         [ImmediatePostData]
         public bool LimiteMassa
@@ -151,7 +156,15 @@ namespace xRoadMap.Module.BusinessObjects
             get => fPercorribilità;
             set => SetPropertyValue(nameof(Percorribilità),ref fPercorribilità,value);    
         }
-        
+
+        private bool centroAbitato;
+        [DevExpress.Xpo.DisplayName(@"Centro abitato")]
+        [VisibleInListView(false)]
+        public bool CentroAbitato
+        { 
+            get => centroAbitato;
+            set => SetPropertyValue(nameof(CentroAbitato),ref centroAbitato,value);
+        }
 
     }
 

@@ -3,6 +3,8 @@ using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Net.Http.Headers;
+using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Helpers;
 using DevExpress.Xpo.Metadata;
@@ -39,7 +41,10 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         private int oid;
-        [Key(AutoGenerate = true), Browsable(false), DbType("int"),Persistent("OBJECTID")]
+        [Key(AutoGenerate = true), DbType("int"),Persistent("OBJECTID")]
+        [ModelDefault("AllowEdit","False")]
+        [VisibleInListView(true)]
+        [DevExpress.Xpo.DisplayName("Numero")]
         public int Oid
         {
             get => oid;

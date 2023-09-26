@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Reflection;
 namespace xRoadMap.Module.BusinessObjects
 {
-
     public partial class Percorso: XPSTGeometry
     {
         public Percorso() : base() { }

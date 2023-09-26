@@ -27,10 +27,16 @@ namespace xRoadMap.Module.Win.Editors
 
         public override void Dispose()
         {
+            UnsubscribeMapEvents();
             mapControl = null;
             base.Dispose();
         }
 
+        public override void BreakLinksToControls()
+        {
+            base.BreakLinksToControls();
+            UnsubscribeMapEvents();
+        }
         public override SelectionType SelectionType => SelectionType.Full;
 
 
@@ -100,6 +106,13 @@ namespace xRoadMap.Module.Win.Editors
             return mapControl;
         }
 
+        private void UnsubscribeMapEvents()
+        {
+            mapControl.Map.MapItemClick -= Map_MapItemClick;
+            mapControl.Map.MapItemDoubleClick -= Map_MapItemDoubleClick;
+            mapControl.Map.ObjectSelected -= Map_ObjectSelected;
+        }
+
         private void SubscribeMapEvents()
         {
             mapControl.Map.MapItemClick += Map_MapItemClick;
@@ -120,10 +133,9 @@ namespace xRoadMap.Module.Win.Editors
 
         private void Map_MapItemDoubleClick(object sender, MapItemClickEventArgs e)
         {
-            
-            OnSelectionChanged();
-            this.OnProcessSelectedItem();
-            e.Handled= true;
+            //OnSelectionChanged();
+            //this.OnProcessSelectedItem();
+            //e.Handled = true;
         }
 
         protected override void OnSelectionChanged()

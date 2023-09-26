@@ -32,6 +32,8 @@ namespace xRoadMap.Module.Win.Editors
 
         protected override void Dispose(bool disposing)
         {
+
+            UnsubscribeMapEvents();
             if (mapControl != null)
                 mapControl = null;
             base.Dispose(disposing);
@@ -44,11 +46,25 @@ namespace xRoadMap.Module.Win.Editors
             return mapControl;
         }
 
+        private void UnsubscribeMapEvents()
+        {
+            if (mapControl != null)
+            {
+                mapControl.Map.MapItemClick -= Map_MapItemClick;
+                mapControl.Map.MapItemDoubleClick -= Map_MapItemDoubleClick;
+                mapControl.Map.ObjectSelected -= Map_ObjectSelected;
+            }
+        }
+
+
         private void SubscribeMapEvents()
         {
-            mapControl.Map.MapItemClick += Map_MapItemClick;
-            mapControl.Map.MapItemDoubleClick += Map_MapItemDoubleClick;
-            mapControl.Map.ObjectSelected += Map_ObjectSelected;
+            if (mapControl != null)
+            {
+                mapControl.Map.MapItemClick += Map_MapItemClick;
+                mapControl.Map.MapItemDoubleClick += Map_MapItemDoubleClick;
+                mapControl.Map.ObjectSelected += Map_ObjectSelected;
+            }
         }
 
         private void Map_ObjectSelected(object sender, ObjectSelectedEventArgs e)

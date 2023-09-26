@@ -14,7 +14,6 @@ namespace xRoadMap.Module.BusinessObjects
 
     [OptimisticLocking(false)]
     [DeferredDeletion(false)]
-    [Persistent(@"STRADA")]
     [DefaultProperty(nameof(Sigla))]
     public partial class Strada : XPCustomObject, IXPGeometry,IConStrada
     {
@@ -148,11 +147,9 @@ namespace xRoadMap.Module.BusinessObjects
         [Association(), Aggregated]
         public XPCollection<Tombino> Tombini { get { return GetCollection<Tombino>(nameof(Tombini)); } }
         [Association(), Aggregated]
-        public XPCollection<LimiteCentroAbitato> LimitiCentroAbitato { get { return GetCollection<LimiteCentroAbitato>(nameof(LimitiCentroAbitato)); } }
-        [Association(), Aggregated]
         public XPCollection<Ponte> Ponti { get { return GetCollection<Ponte>(nameof(Ponti)); } }
         [Association(), Aggregated]
-        public XPCollection<LimiteTransito> LimitiTransito { get { return GetCollection<LimiteTransito>(nameof(LimitiTransito)); } }
+        public XPCollection<Ordinanza> Ordinanze { get { return GetCollection<Ordinanza>(nameof(Ordinanze)); } }
         [Association,Aggregated]
         public XPCollection<Accesso> Accessi => GetCollection<Accesso>(nameof(Accessi));
         [Association, Aggregated]

@@ -169,8 +169,7 @@
     <Compile Include="BusinessObjects\RoadDataModel\EventTable.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\IEvento.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ispezione.cs" />
-    <Compile Include="BusinessObjects\RoadDataModel\LimiteTransito.cs" />
-    <Compile Include="BusinessObjects\RoadDataModel\LimiteCentroAbitato.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Ordinanza.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\OffsetCippo.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Percorso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ponte.cs" />
@@ -196,6 +195,10 @@
     <Compile Include="BusinessObjects\TipoStatoArco.cs" />
     <Compile Include="BusinessObjects\TipoStatoConservazione.cs" />
     <Compile Include="BusinessObjects\TipoTombino.cs" />
+    <Compile Include="Controllers\OrdinanzaViewController.cs" />
+    <Compile Include="Controllers\OrdinanzaViewController.Designer.cs">
+      <DependentUpon>OrdinanzaViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="IModelMapPropertyEditor.cs" />
     <Compile Include="Module.cs">
@@ -214,6 +217,9 @@
     <Compile Include="XPSTGeometry.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controllers\OrdinanzaViewController.resx">
+      <DependentUpon>OrdinanzaViewController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
@@ -244,14 +250,6 @@
     <None Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UnusableNodes6.xml">
-      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="UnusableNodes2.xml">
-      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
     <EmbeddedResource Include="Images\directons.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

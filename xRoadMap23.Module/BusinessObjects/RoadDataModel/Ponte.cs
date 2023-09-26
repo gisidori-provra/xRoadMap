@@ -128,10 +128,12 @@ namespace xRoadMap.Module.BusinessObjects
 
 
         [Association, NoForeignKey]
-        public XPCollection<LimiteTransito> LimitiTransito => GetCollection<LimiteTransito>();
+        public XPCollection<Ordinanza> Ordinanze => GetCollection<Ordinanza>();
 
         [Association(@"IspezioneReferencesPonte"), Aggregated]
         public XPCollection<Ispezione> Ispezioni { get { return GetCollection<Ispezione>(nameof(Ispezioni)); } }
+
+
 
     }
 
