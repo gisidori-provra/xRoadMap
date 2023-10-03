@@ -746,7 +746,7 @@
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" Titolo="Immagini Bing" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
+            <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Cippi" Index="3" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
             <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="4" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Limiti Transito" ColorizerType="KeyColor" AttributeName="Limite" TextColor="Maroon" TextGlowColor="255, 192, 192" IsNewNode="True" />
             <MapLayer Id="LimitiCentriAbitati" LayerName="Limiti Centri Abitati" DataSourceProperty="LimitiCentroAbitato" Index="5" FillColor="0, 192, 0" StrokeWidth="4" Pattern="{Nome}" StrokeColor="0, 192, 0" Titolo="Limiti Centri Abitati" TextColor="Green" TextGlowColor="192, 255, 192" IsNewNode="True" />

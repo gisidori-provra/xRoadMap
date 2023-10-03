@@ -114,7 +114,7 @@ namespace xRoadMap.Module.Win.Editors
                 {
                     if (item.Shape != null)
                     {
-                        AddItem(item, storage, layer.Name); // storage.Items.Add(new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID));
+                        var p = AddItem(item, storage, layer.Name); // storage.Items.Add(new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID));
                     }
                     foreach (var pair in dataSourceProperties)
                     {
@@ -332,9 +332,10 @@ namespace xRoadMap.Module.Win.Editors
 
         //private Dictionary<string,List<string>> wmsLayers= new Dictionary<string,List<string>>();
 
-        private LayerBase AddWMSLayer(string uri,string activeLayerName)
+        private LayerBase AddWMSLayer(string uri,string activeLayerName,bool recurse = true)
         {
             ImageLayer imageLayer = new ImageLayer();
+            imageLayer.Name = (recurse ? string.Empty : uri+"//") + activeLayerName;
             WmsDataProvider dataProvider = new WmsDataProvider();
             dataProvider.ServerUri = uri;
             dataProvider.ActiveLayerName = activeLayerName;
@@ -349,11 +350,13 @@ namespace xRoadMap.Module.Win.Editors
 
             void DataProvider_ResponseCapabilities(object sender, CapabilitiesRespondedEventArgs e)
             {
-                foreach (var layer in e.Layers)
+                if (recurse)
                 {
-                    //AddWMSLayer(uri, layer.Name,false);
-                    //this.checkedListBoxControl1.Items.Add(uri + "\\"+ layer.Name, layer.Title, CheckState.Checked, true);
-
+                    foreach (var layer in e.Layers)
+                    {
+                        AddWMSLayer(uri, layer.Name, false);
+                        //var ndx = this.checkedListBoxControl1.Items.Add(layer.Name, layer.Title, CheckState.Checked, true);
+                    }
                 }
             }
 
@@ -560,18 +563,20 @@ namespace xRoadMap.Module.Win.Editors
             var layer = map.Layers[layerName];
             if (layer is ImageLayer img)
             {
-                //if (img.DataProvider is WmsDataProvider wms)
-                //{
-                //    int i = layerName.LastIndexOf('\\');
-                //    string uri = layerName.Substring(0,i);
-                //    foreach (var item in wmsLayers[uri])
-                //    {
-                //        map.Layers[item].Visible = (e.State == CheckState.Checked);
-                //    }
-                //    return;
-                //}
+                if (img.DataProvider is WmsDataProvider wms)
+                {
+                    foreach (var item in map.Layers)
+                    {
+                        if (item is ImageLayer iml2)
+                            if (iml2.DataProvider is WmsDataProvider wms2)
+                                if (wms2.ServerUri == wms.ServerUri)
+                                    item.Visible = (e.State == CheckState.Checked); 
+                    }
+                    return;
+                }
             }
-            map.Layers[layerName].Visible = (e.State == CheckState.Checked);
+            if (layer != null)
+                layer.Visible = (e.State == CheckState.Checked);
         }
 
         private void map_Click(object sender, EventArgs e)
