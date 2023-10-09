@@ -1,6 +1,6 @@
 ﻿namespace xRoadMap.Module.Win.Controllers
 {
-    partial class LinearReferencingViewController
+    partial class EventoOnRoadDetailViewController
     {
         /// <summary>
         /// Required designer variable.

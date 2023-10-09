@@ -115,9 +115,9 @@
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
         <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
@@ -204,9 +204,9 @@
       <Items>
         <PropertyEditor Id="Shape">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
       </Items>
@@ -245,9 +245,9 @@
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
         <PropertyEditor Id="Shape" LayerName="Evento" Pattern="{Descrizione}" TextColor="192, 64, 0" TOCVisibility="Auto" StrokeColor="192, 64, 0" StrokeWidth="6">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Cippi chilometrici" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/CippiChilometrici/MapServer/WMSServer" LayerName="Cippi chilometrici" Index="2" Titolo="Cippi chilometrici" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="Cippi chilometrici" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/CippiChilometrici/MapServer/WMSServer" LayerName="Cippi chilometrici" Index="2" Titolo="Cippi chilometrici" IsNewNode="True" />
             <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
@@ -336,9 +336,9 @@
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
         <PropertyEditor Id="Shape" StrokeColor="Red" StrokeWidth="6" LayerName="Limitazione transito" TOCVisibility="Auto">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="2" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="2" IsNewNode="True" />
             <MapLayer Id="Ponti" DataSourceProperty="Strada.Ponti" StrokeColor="Purple" StrokeWidth="2" LayerName="Ponti" Index="3" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="4" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
           </MapLayers>
@@ -527,9 +527,9 @@
         <Filter Id="Velocità" Criteria="[LimiteVelocità] = True" Caption="Limitazioni di velocità" IsNewNode="True" />
       </Filters>
       <MapLayers IsNewNode="True">
-        <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="3" LayerName="BingMap" IsNewNode="True" />
-        <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="3" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-      </MapLayers>
+		  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+		  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+	  </MapLayers>
     </ListView>
     <ListView Id="Ordinanza_LookupListView">
       <Columns>
@@ -553,9 +553,9 @@
         <PropertyEditor Id="Offset" Removed="True" />
         <PropertyEditor Id="Shape" PropertyName="Shape" StrokeColor="192, 0, 192" StrokeWidth="6" LayerName="Ponti" IsNewNode="True" Removed="True">
           <MapLayers IsNewNode="True">
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
             <MapLayer Id="Ordinanze" DataSourceProperty="Ordinanze" StrokeColor="Teal" StrokeWidth="4" Pattern="" LayerName="Ordinanze" IsNewNode="True" />
           </MapLayers>
@@ -711,9 +711,9 @@
         <ColumnInfo Id="Strada" PropertyName="Strada" Width="70" Index="17" IsNewNode="True" />
       </Columns>
       <MapLayers IsNewNode="True">
-        <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-        <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-        <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+		  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+		  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+		  <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
       </MapLayers>
     </ListView>
     <ListView Id="Ponte_Ordinanze_ListView">
@@ -744,12 +744,11 @@
       <Items>
         <PropertyEditor Id="Percorso" StrokeWidth="2" StrokeColor="Green" TitleVisible="Visible" LayerName="Strade" Caption="Strade provinciali" TOCVisibility="Visible">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" Titolo="Immagini Bing" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Cippi" Index="3" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
-            <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="4" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Limiti Transito" ColorizerType="KeyColor" AttributeName="Limite" TextColor="Maroon" TextGlowColor="255, 192, 192" IsNewNode="True" />
-            <MapLayer Id="LimitiCentriAbitati" LayerName="Limiti Centri Abitati" DataSourceProperty="LimitiCentroAbitato" Index="5" FillColor="0, 192, 0" StrokeWidth="4" Pattern="{Nome}" StrokeColor="0, 192, 0" Titolo="Limiti Centri Abitati" TextColor="Green" TextGlowColor="192, 255, 192" IsNewNode="True" />
+            <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="4" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="KeyColor" AttributeName="Limite" TextColor="Maroon" TextGlowColor="255, 192, 192" IsNewNode="True" />
             <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="6" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" IsNewNode="True" />
             <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" IsNewNode="True" />
             <MapLayer Id="Segnalazioni" Titolo="Segnalazioni" DataSourceProperty="Segnalazioni" LayerName="Segnalazioni" Pattern="" StrokeColor="Yellow" StrokeWidth="8" FillColor="Yellow" IsNewNode="True" />
@@ -836,12 +835,10 @@
         <ColumnInfo Id="Tronco" PropertyName="Tronco" Width="70" Index="6" IsNewNode="True" />
       </Columns>
       <MapLayers IsNewNode="True">
-        <MapLayer Id="CTR:50k" LayerType="WMSLayer" Uri="http://srvsitarcgis.ravenna.provincia.ra.it:6080/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="2" Index="0" Visible="False" Titolo="CTR 1:50.000" IsNewNode="True" />
-        <MapLayer Id="CTR:25k" LayerType="WMSLayer" Uri="http://srvsitarcgis.ravenna.provincia.ra.it:6080/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="1" Index="1" Visible="False" Titolo="CTR 1:25.000" IsNewNode="True" />
-        <MapLayer Id="CTR:5k" LayerType="WMSLayer" Uri="http://srvsitarcgis.ravenna.provincia.ra.it:6080/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="0" Index="2" Visible="False" Titolo="CTR 1:5.000" IsNewNode="True" />
-        <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="3" LayerName="BingMap" IsNewNode="True" />
-        <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="3" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-        <MapLayer Id="Cippi" DataSourceProperty="Cippi" Index="5" LayerName="0" StrokeColor="192, 0, 192" StrokeWidth="4" TextColor="192, 0, 192" TitleVisible="Visible" Pattern="{Kilometro}" Titolo="Cippi" Visible="False" IsNewNode="True" />
+        <MapLayer Id="Cippi" DataSourceProperty="Cippi" Index="0" LayerName="0" StrokeColor="192, 0, 192" StrokeWidth="4" TextColor="192, 0, 192" TitleVisible="Visible" Pattern="{Kilometro}" Titolo="Cippi" Visible="False" IsNewNode="True" />
+        <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+        <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+        <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="3" Visible="False" Titolo="CTR" IsNewNode="True" />
       </MapLayers>
     </ListView>
     <ListView Id="Strada_Ordinanze_ListView">
@@ -879,9 +876,9 @@
         <ColumnInfo Id="CodiceARS" Index="7" />
       </Columns>
       <MapLayers>
-        <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-        <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="3" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-      </MapLayers>
+		  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+		  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+	  </MapLayers>
     </ListView>
     <ListView Id="Strada_Tombini_ListView" AllowEdit="True">
       <Columns>
@@ -906,9 +903,9 @@
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
         <PropertyEditor Id="Shape" LayerName="Tombini" StrokeColor="192, 64, 0" StrokeWidth="6" TOCVisibility="Auto">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="BingMap" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="BingMapHybrid" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+			  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+			  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+			  <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
@@ -1006,8 +1003,9 @@
         <ColumnInfo Id="Strada" PropertyName="Strada" Width="70" Index="2" IsNewNode="True" />
       </Columns>
       <MapLayers IsNewNode="True">
-        <MapLayer Id="BingMap" LayerType="BingMapLayer" LayerName="Mappa Bing" Titolo="Mappa Bing" IsNewNode="True" />
-      </MapLayers>
+		  <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+		  <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+	  </MapLayers>
     </ListView>
   </Views>
 </Application>

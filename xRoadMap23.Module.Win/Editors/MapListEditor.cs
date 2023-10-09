@@ -44,7 +44,15 @@ namespace xRoadMap.Module.Win.Editors
         {
             if (mapControl == null)
                 return new List<object>();
-            return mapControl.GetSelectedItems();
+            var list =  mapControl.GetSelectedItems();
+            var items = new List<object>();
+            foreach ( var item in list )
+            {
+                if (item != null)
+                    if (item.GetType().IsAssignableFrom(this.Model.ModelClass.TypeInfo.Type))
+                        items.Add(item);
+            }
+            return items;
         }
 
         public override void SaveModel()
@@ -61,7 +69,11 @@ namespace xRoadMap.Module.Win.Editors
         {
             get
             {
-                return mapControl?.FocusedObject;
+                var obj = mapControl?.FocusedObject;
+                if (obj != null)
+                    if (obj.GetType().IsAssignableFrom(Model.ModelClass.TypeInfo.Type))
+                        return obj;
+                return null;
             }
         }
 

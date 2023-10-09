@@ -7,7 +7,17 @@ using System.ComponentModel;
 using System.Reflection;
 namespace xRoadMap.Module.BusinessObjects
 {
-    public partial class RilievoPuntuale: XPSTGeometry
+
+    [MapInheritance(MapInheritanceType.OwnTable)]
+    public class RilievoPuntualeSuStrada:RilievoPuntuale
+    {
+        public RilievoPuntualeSuStrada(Session session):base(session)
+        {
+
+        }
+    }
+
+    public abstract partial class RilievoPuntuale: XPSTGeometry
     {
         public RilievoPuntuale(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }

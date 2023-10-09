@@ -28,10 +28,10 @@ using xRoadMap.Module.Win.Editors;
 namespace xRoadMap.Module.Win.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class LinearReferencingViewController : ObjectViewController<DetailView,IEventoOnRoad>
+    public partial class EventoOnRoadDetailViewController : ObjectViewController<DetailView,IEventoOnRoad>
     {
         MapUserControl mapUserControl;
-        public LinearReferencingViewController()
+        public EventoOnRoadDetailViewController()
         {
             InitializeComponent();
             // Target required Views (via the TargetXXX properties) and create their Actions.
