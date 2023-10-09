@@ -1,6 +1,8 @@
-﻿using DevExpress.ExpressApp.Model;
+﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Xpo;
+using DevExpress.XtraMap;
 using DevExpress.XtraPrinting.Shape;
 using GeoAPI.CoordinateSystems;
 using GeoAPI.CoordinateSystems.Transformations;
@@ -28,6 +30,31 @@ namespace xRoadMap.Module
 {
     public static class RoutingHelper
     {
+
+        public static Strada FindNearest(GeoPoint point,IObjectSpace os)
+        {
+            Strada st = null;
+            double min = double.PositiveInfinity;
+            var strade = os.GetObjects<Strada>();
+            var c = ToETRS89(new NetTopologySuite.Geometries.Coordinate(point.Longitude, point.Latitude));
+            var p = new NetTopologySuite.Geometries.Point(c);
+            foreach (var item in strade)
+            {
+                if (item.Shape == null)
+                    continue;
+
+                var distOp = new NetTopologySuite.Operation.Distance.DistanceOp(item.Shape,p);
+                var dist = distOp.Distance();
+                if (dist<min)
+                {
+                    min = dist;
+                    st = item;
+                }
+            }
+            
+            return st;
+        }
+
 
         public static string ToSessagesimale(double decimalDegrees)
         {

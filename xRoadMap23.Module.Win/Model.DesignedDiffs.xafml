@@ -5,6 +5,7 @@
       <Action Id="AggiornaGeometria" ImageName="SparklineLine" />
       <Action Id="GetIFrame" ImageName="Image_StretchMode" />
       <Action Id="LineLocateAlongRoute" ImageName="RightAngleConnector" />
+      <Action Id="SearchMap" ImageName="EnableSearch" PaintStyle="Image" />
     </Actions>
   </ActionDesign>
   <SchemaModules>

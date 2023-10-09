@@ -33,13 +33,27 @@ namespace xRoadMap.Module.Win.Controllers
     {
 
         MapUserControl mapUserControl;
+        ParametrizedAction searchAction;
         // Use CodeRush to create Controllers and Actions with a few keystrokes.
         // https://docs.devexpress.com/CodeRushForRoslyn/403133/
         public ConStradaMapViewController()
         {
             InitializeComponent();
             // Target required Views (via the TargetXXX properties) and create their Actions.
-           
+            searchAction = new ParametrizedAction(this, "SearchMap", PredefinedCategory.FullTextSearch,typeof(string));
+            searchAction.Caption = "Cerca";
+            searchAction.NullValuePrompt = "Inserisci un elemnento da cercare....";
+            searchAction.Execute += searchAction_Execute;
+        }
+
+        private void searchAction_Execute(object sender, ParametrizedActionExecuteEventArgs e)
+        {
+            mapUserControl.InformationLayer.ClearResults();
+            if (e.ParameterCurrentValue != null)
+            {
+                var bbox = new SearchBoundingBox(topLeft.GetX(), topLeft.GetY(), bottomRight.GetX(), bottomRight.GetY());
+                mapUserControl.SearchProvider.Search(e.ParameterCurrentValue as string,"it-it",new GeoPoint(mapUserControl.Map.CenterPoint.GetY(),mapUserControl.Map.CenterPoint.GetX()),bbox);
+            }
         }
 
         protected override void OnActivated()
@@ -48,10 +62,14 @@ namespace xRoadMap.Module.Win.Controllers
             // Perform various tasks depending on the target View.
             //this.Active["MapEditor"] = this.View.GetItems<Editors.MapEditor>().Count>0;
             if (View is DetailView dv)
+            {
                 dv.CustomizeViewItemControl<Editors.MapEditor>(this, CustomizeViewItemControl);
+                searchAction.Active["MapEditor"] = dv.GetItems<Editors.MapEditor>().Count> 0;
+            }
             if (View is DevExpress.ExpressApp.ListView lv)
             {
                 lv.ControlsCreated += lv_ControlsCreated;
+                searchAction.Active["MapEditor"] = lv.Editor.GetType() == typeof(MapListEditor);
             }
 
             this.View.CurrentObjectChanged += view_CurrentObjectChanged;
@@ -75,7 +93,7 @@ namespace xRoadMap.Module.Win.Controllers
                 //var location = mapUserControl.Map.CoordPointToScreenPoint(point);
                 Coordinate etrs89 = new Coordinate(point.X,point.Y);
                 if (mapUserControl != null)
-                    MapUpdateETRS89(etrs89);
+                    MapUpdateETRS89(ViewCurrentObject.Strada, etrs89);
             }
         }
 
@@ -96,6 +114,30 @@ namespace xRoadMap.Module.Win.Controllers
             mapUserControl.ZoomOutButton.Click += zoomOutButton_Click;
             mapUserControl.Map.KeyDown += mapUserControl_KeyDown;
             mapUserControl.Map.KeyUp += mapUserControl_KeyUp;
+            mapUserControl.SearchProvider.SearchCompleted += searchProvider_SearchCompleted;
+            mapUserControl.InformationLayer.ViewportChanged += viewportChanged;
+        }
+
+        GeoPoint topLeft;
+        GeoPoint bottomRight;
+        private void viewportChanged(object sender, ViewportChangedEventArgs e)
+        {
+            topLeft = e.TopLeft as GeoPoint;
+            bottomRight = e.BottomRight as GeoPoint;    
+        }
+
+        private void searchProvider_SearchCompleted(object sender, BingSearchCompletedEventArgs e)
+        {
+            var results = e.RequestResult.SearchResults.Cast<BingLocationInformation>().OrderByDescending(r=>r.Confidence);
+            if (results != null && results.Count() > 0)
+            {
+                var res = results.ElementAt(0);
+                mapUserControl.Map.SetCenterPoint(res.Location, true);
+                Strada st = RoutingHelper.FindNearest(res.Location,this.ObjectSpace);
+                MapUpdate(st,res.Location,res.Address.FormattedAddress);
+                //mapUserControl.Map.Zoom(17);
+            }
+
         }
 
         private void mapUserControl_KeyUp(object sender, KeyEventArgs e)
@@ -125,6 +167,8 @@ namespace xRoadMap.Module.Win.Controllers
             mapUserControl.ZoomOutButton.Click -= zoomOutButton_Click;
             mapUserControl.Map.KeyDown -= mapUserControl_KeyDown;
             mapUserControl.Map.KeyUp -= mapUserControl_KeyUp;
+            mapUserControl.SearchProvider.SearchCompleted -= searchProvider_SearchCompleted;
+            mapUserControl.InformationLayer.ViewportChanged += viewportChanged;
         }
 
         private void map_MouseDown(object sender, MouseEventArgs e)
@@ -191,44 +235,54 @@ namespace xRoadMap.Module.Win.Controllers
                 return;
 
             currentLocation = location;
-            var map = mapUserControl.Map;
+
             var st = ViewCurrentObject.Strada;
+            MapUpdate(st, location);
+        }
+
+        private void MapUpdate(Strada st, System.Drawing.Point location)
+        {
             
             if (st?.Shape != null)
             {
+                var map = mapUserControl.Map;
                 //var os = Application.CreateObjectSpace(typeof(EventoPuntuale));
                 var point = map.ScreenPointToCoordPoint(location);
-                MapUpdate(point);
+                MapUpdate(st, point);
             }
         }
 
-        private void MapUpdate(DevExpress.Map.CoordPoint point)
+        private void MapUpdate(Strada st, DevExpress.Map.CoordPoint point,string address = null)
         {
             var coord = new Coordinate(point.GetX(), point.GetY());
-            MapUpdateWGS84(coord);
+            MapUpdateWGS84(st,coord,address);
         }
 
         int fov = 90;
 
-        private void MapUpdateWGS84(Coordinate coord)
+        private void MapUpdateWGS84(Strada st, Coordinate coord,string address = null)
         {
             var etrs89 = RoutingHelper.ToETRS89(coord);
-            MapUpdate(coord,etrs89);
+            MapUpdate(st,coord,etrs89,address);
         }
 
-        private void MapUpdateETRS89(Coordinate etrs89)
+        private void MapUpdateETRS89(Strada st,Coordinate etrs89)
         {
             var coord = RoutingHelper.ToWGS84(etrs89);
-            MapUpdate(coord, etrs89);
+            MapUpdate(st, coord, etrs89);
         }
 
-        private void MapUpdate(Coordinate coord,Coordinate etrs89)
+        private void MapUpdate(Coordinate coord, Coordinate etrs89)
+        {
+            MapUpdate(ViewCurrentObject.Strada,coord, etrs89);
+        }
+
+        private void MapUpdate(Strada st, Coordinate coord,Coordinate etrs89,string location = null)
         {
             if (mapUserControl == null)
                 return;
-
             string apikey = "AIzaSyDTqlEhGm0HdYtQm7fdsqH8kXvLu_yG4C4";
-            var km = RoutingHelper.LocalizzaPuntualeSuXY(ViewCurrentObject.Strada, etrs89, out double m);
+            var km = RoutingHelper.LocalizzaPuntualeSuXY(st, etrs89, out double m);
             double bearing = 0;
             double? heading = null;
             var lng = RoutingHelper.ToSessagesimale(coord.X);
@@ -238,15 +292,17 @@ namespace xRoadMap.Module.Win.Controllers
             mapUserControl.ClearPushpin();
             if (km != null)
             {
-                var angle = ((RoutingHelper.GetBearing(ViewCurrentObject.Strada, etrs89) / Math.PI * 180) + 360) % 360;
+                var angle = ((RoutingHelper.GetBearing(st, etrs89) / Math.PI * 180) + 360) % 360;
                 bearing = (90 - angle + 360) % 360;
                 heading = (bearing + mapUserControl.HeadingTrackBarControl.Value) % 360;
-                message = $"{ViewCurrentObject.Strada.Sigla} {ViewCurrentObject.Strada.Denominazione} - PK: {km} - {latlong}";
+                message = $"{st.Sigla} {st.Denominazione} - PK: {km} - {latlong}";
             }
             else
             {
                 message = latlong;
             }
+            if (location != null)
+                message = $"{location} {message}";
 
             mapUserControl.ShowPushpin(message, coord,controlPressed ? heading : null);
 

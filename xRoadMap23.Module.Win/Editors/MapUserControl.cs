@@ -48,6 +48,8 @@ namespace xRoadMap.Module.Win.Editors
             dockManager.ForceInitialize();
         }
 
+
+
         private void map_MapItemClick(object sender, MapItemClickEventArgs e)
         {
             focusedObject = GetRow(e.Item);
@@ -57,7 +59,10 @@ namespace xRoadMap.Module.Win.Editors
         {
             
         }
+        public BingSearchDataProvider SearchProvider => this.bingSearchDataProvider;
 
+        public InformationLayer InformationLayer => this.informationLayer;
+        
         public DevExpress.XtraMap.MapControl Map => map;
 
         public MapItemsLayerBase Layer => layer;
@@ -164,6 +169,8 @@ namespace xRoadMap.Module.Win.Editors
                 if (layerBase is MapItemsLayerBase layer)
                     foreach (MapItem item in layer.SelectedItems)
                     {
+                        if (item.Layer == null)
+                            continue;
                         selectedObjects.Add(this.GetRow(item));
                     }
             }

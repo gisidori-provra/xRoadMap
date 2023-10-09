@@ -48,7 +48,7 @@
             this.vectorItemsLayer1 = new DevExpress.XtraMap.VectorItemsLayer();
             this.pushPinItemStorage = new DevExpress.XtraMap.MapItemStorage();
             this.bingSearchDataProvider = new DevExpress.XtraMap.BingSearchDataProvider();
-            this.informationLayer1 = new DevExpress.XtraMap.InformationLayer();
+            this.informationLayer = new DevExpress.XtraMap.InformationLayer();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.dockPanelStreetView.SuspendLayout();
             this.controlContainer2.SuspendLayout();
@@ -251,7 +251,7 @@
             // 
             this.map.Dock = System.Windows.Forms.DockStyle.Fill;
             this.map.Layers.Add(this.vectorItemsLayer1);
-            this.map.Layers.Add(this.informationLayer1);
+            this.map.Layers.Add(this.informationLayer);
             this.map.Location = new System.Drawing.Point(0, 0);
             this.map.Name = "map";
             this.map.NavigationPanelOptions.Visible = false;
@@ -261,7 +261,7 @@
             this.map.MouseClick += new System.Windows.Forms.MouseEventHandler(this.map_MouseClick);
             this.vectorItemsLayer1.Data = this.pushPinItemStorage;
             this.bingSearchDataProvider.SearchOptions.ResultsCount = 1;
-            this.informationLayer1.DataProvider = this.bingSearchDataProvider;
+            this.informationLayer.DataProvider = this.bingSearchDataProvider;
             // 
             // MapUserControl
             // 
@@ -309,7 +309,7 @@
         private DevExpress.XtraMap.MapItemStorage pushPinItemStorage;
         private DevExpress.XtraEditors.SimpleButton btnZoomIn;
         private DevExpress.XtraEditors.SimpleButton btnZoomOut;
-        private DevExpress.XtraMap.InformationLayer informationLayer1;
+        private DevExpress.XtraMap.InformationLayer informationLayer;
         private DevExpress.XtraMap.BingSearchDataProvider bingSearchDataProvider;
     }
 }
