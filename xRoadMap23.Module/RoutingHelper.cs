@@ -53,19 +53,47 @@ namespace xRoadMap.Module
             if (m == double.NaN)
                 return null;
 
-            int km = (int)Math.Truncate(m / 1000) * 1000;
+            int km = (int)Math.Truncate(m/1000)*1000;
             int offset = (int)Math.Round(m - km,MidpointRounding.AwayFromZero);
+            if (offset>500)
+            {
+                offset -= 1000;
+                km += 1000;
+            }
             if (st != null)
             {
-                var cp = st.Cippi.FirstOrDefault(c => c.Misura == km);
+                var cp = st.Cippi.OrderBy(c => c.Misura).FirstOrDefault();      //Cippo iniziale
                 if (cp != null)
                 {
+                    offset += (int)cp.Misura;
                     if (cp.Offset != null)
-                        offset += (int)Math.Round(km - cp.Offset.Measure, MidpointRounding.AwayFromZero);
-                    if (offset>=1000)
+                        offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
+                    while (offset >= 1000)
                     {
                         offset -= 1000;
                         km += 1000;
+                    }
+                    while (offset < 0)
+                    {
+                        offset += 1000;
+                        km -= 1000;
+                    }
+                }
+
+                cp = st.Cippi.OrderByDescending(c=>c.Misura).FirstOrDefault(c => c.Misura <= km);
+                if (cp != null)
+                {
+                    if (cp.Offset != null)
+                        offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
+                    while (offset>=1000)
+                    {
+                        offset -= 1000;
+                        km += 1000;
+                    }
+                    while (offset<0)
+                    {
+                        offset += 1000;
+                        km-=1000;
                     }
                 }
             }

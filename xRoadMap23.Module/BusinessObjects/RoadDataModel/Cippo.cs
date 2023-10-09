@@ -36,7 +36,17 @@ namespace xRoadMap.Module.BusinessObjects
         [NonPersistent]
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
-        public string Kilometro => $"Km {(Misura / 1000):N0}";
+        public string Kilometro
+        {
+            get
+            {
+                var km = (int) (Misura / 1000);
+                if (Misura %  1000 == 0)
+                    return $"Km {km:N0}";
+                var offset = (Misura - km * 1000);
+                return $"Km {km:N0}+{offset:N0}";
+            }
+        }
 
         TipoCippo fTipoCippo;
         [NoForeignKey]
