@@ -38,7 +38,7 @@ namespace xRoadMap.Module.Win.Editors
         public MapUserControl()
         {
             InitializeComponent();
-            map.SearchPanelOptions.Visible = false;
+            //map.SearchPanelOptions.Visible = false;
             map.MapItemClick += map_MapItemClick;
             cartesianSourceCoordinateSystem1 = new CartesianSourceCoordinateSystem();
             utmCartesianToGeoConverter1 = new UTMCartesianToGeoConverter();

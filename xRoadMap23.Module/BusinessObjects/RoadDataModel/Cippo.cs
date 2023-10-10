@@ -17,8 +17,17 @@ namespace xRoadMap.Module.BusinessObjects
         public Cippo(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
+        private OffsetCippo offsetCippo;
         [Browsable(false)]
-        public OffsetCippo Offset => Session.GetObjectByKey<OffsetCippo>(this.Oid);
+        public OffsetCippo Offset
+        {
+            get
+            {
+                if (offsetCippo == null)
+                    offsetCippo = Session.GetObjectByKey<OffsetCippo>(this.Oid);
+                return offsetCippo;
+            }
+        }
         Strada fStrada;
         [Association(), NoForeignKey]
         public Strada Strada

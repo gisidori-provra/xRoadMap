@@ -33,28 +33,14 @@ namespace xRoadMap.Module.Win.Controllers
     {
 
         MapUserControl mapUserControl;
-        ParametrizedAction searchAction;
         // Use CodeRush to create Controllers and Actions with a few keystrokes.
         // https://docs.devexpress.com/CodeRushForRoslyn/403133/
         public ConStradaMapViewController()
         {
             InitializeComponent();
             // Target required Views (via the TargetXXX properties) and create their Actions.
-            searchAction = new ParametrizedAction(this, "SearchMap", PredefinedCategory.FullTextSearch,typeof(string));
-            searchAction.Caption = "Cerca";
-            searchAction.NullValuePrompt = "Inserisci un elemnento da cercare....";
-            searchAction.Execute += searchAction_Execute;
         }
 
-        private void searchAction_Execute(object sender, ParametrizedActionExecuteEventArgs e)
-        {
-            mapUserControl.InformationLayer.ClearResults();
-            if (e.ParameterCurrentValue != null)
-            {
-                var bbox = new SearchBoundingBox(topLeft.GetX(), topLeft.GetY(), bottomRight.GetX(), bottomRight.GetY());
-                mapUserControl.SearchProvider.Search(e.ParameterCurrentValue as string,"it-it",new GeoPoint(mapUserControl.Map.CenterPoint.GetY(),mapUserControl.Map.CenterPoint.GetX()),bbox);
-            }
-        }
 
         protected override void OnActivated()
         {
@@ -64,12 +50,10 @@ namespace xRoadMap.Module.Win.Controllers
             if (View is DetailView dv)
             {
                 dv.CustomizeViewItemControl<Editors.MapEditor>(this, CustomizeViewItemControl);
-                searchAction.Active["MapEditor"] = dv.GetItems<Editors.MapEditor>().Count> 0;
             }
             if (View is DevExpress.ExpressApp.ListView lv)
             {
                 lv.ControlsCreated += lv_ControlsCreated;
-                searchAction.Active["MapEditor"] = lv.Editor.GetType() == typeof(MapListEditor);
             }
 
             this.View.CurrentObjectChanged += view_CurrentObjectChanged;
@@ -90,7 +74,6 @@ namespace xRoadMap.Module.Win.Controllers
             if (line != null)
             {
                 var point = new DevExpress.XtraMap.CartesianPoint(line.StartPoint.X, line.StartPoint.Y);
-                //var location = mapUserControl.Map.CoordPointToScreenPoint(point);
                 Coordinate etrs89 = new Coordinate(point.X,point.Y);
                 if (mapUserControl != null)
                     MapUpdateETRS89(ViewCurrentObject.Strada, etrs89);
