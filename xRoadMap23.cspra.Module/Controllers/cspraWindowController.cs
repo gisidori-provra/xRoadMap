@@ -16,7 +16,8 @@ using DevExpress.Persistent.Validation;
 using xRoadMap.Module.BusinessObjects.cspra;
 using xRoadMap.Module.BusinessObjects;
 using System.Runtime.InteropServices;
-
+using xRoadMap.cspra.Module.Module.BusinessObjects.cspraDataModel;
+using xRoadMap.cspra.Module.Module.BusinessObjects.cspra;
 
 namespace xRoadMap.Module.Controllers
 {
@@ -47,6 +48,12 @@ namespace xRoadMap.Module.Controllers
                 //case "Strade":
                 //    AggiornaStrade(os);
                 //    break;
+                case "Banchine":
+                    ImportaBanchine(os);
+                    break;
+                case "AreeTraffico":
+                    ImportaAreeTraffico(os);
+                    break;
                 case "Accessi":
                     ImportaAccessi(os);
                     break;
@@ -103,8 +110,8 @@ namespace xRoadMap.Module.Controllers
                 try
                 {
                     var acc = Import<Accesso>(os, item.EVE_ID, TipoPosizione.Coordinate);
-                    var cAccesso = os.GetObjectByKey<cspraAccessi>(item.EVE_ID);
-                    acc.Destinazione = GetOrCreateDomain<TipoDestinazioneAccesso>(os, cAccesso.Destinazione);
+                    //var cAccesso = os.GetObjectByKey<cspraAccessi>(item.EVE_ID);
+                    acc.Destinazione = GetOrCreateDomain<TipoDestinazioneAccesso>(os, item.Destinazione);
                     os.CommitChanges();
                 }
                 catch
@@ -113,6 +120,48 @@ namespace xRoadMap.Module.Controllers
                 }
             }
         }
+
+        private static void ImportaAreeTraffico(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraAreaTraffico>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<AreaTraffico>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoAreaTraffico = GetOrCreateDomain<TipoAreaTraffico>(os, item.TipoServizio);
+                    acc.Denominazione = item.Denominazione;
+                    acc.CorsieAccDec = (item.Corsie.ENUM_VAL.Trim() == "1");
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaBanchine(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraBanchina>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Banchina>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoPavimentazione = GetOrCreateDomain<TipoPavimentazione>(os, item.TipoPav);
+                    acc.TipoSuperficie = GetOrCreateDomain<TipoSuperficie>(os, item.TipoSuperficie);
+                    acc.Larghezza = item.Larghezza;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+
 
         private static void ImportaPonti(IObjectSpace os)
         {

@@ -161,7 +161,9 @@
     <Compile Include="BusinessObjects\CodedDomain.cs" />
     <Compile Include="BusinessObjects\IFrameContent.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Accesso.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\AreaTraffico.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Atto.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Banchina.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Cippo.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Enums.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\EventoLineareSuStrada.cs" />
@@ -254,6 +256,14 @@
     <None Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="UnusableNodes6.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="Images\directons.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">

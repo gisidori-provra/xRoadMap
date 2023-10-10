@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <NavigationItems Id="NavigationItems">
+    <Items Id="Items">
+      <Item Id="Catasto strade">
+        <Items Id="Items">
+          <Item Id="Impostazioni Catasto Strade">
+            <Items Id="Items">
+              <Item Id="TipoPavimantazione_ListView" ViewId="TipoPavimantazione_ListView" />
+            </Items>
+          </Item>
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+</Application>

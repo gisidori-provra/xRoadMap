@@ -33,6 +33,8 @@
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem2 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem3 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem4 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem5 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem6 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             this.actionImport = new DevExpress.ExpressApp.Actions.SingleChoiceAction(this.components);
             // 
             // actionImport
@@ -61,10 +63,16 @@
             choiceActionItem4.ImageName = null;
             choiceActionItem4.Shortcut = null;
             choiceActionItem4.ToolTip = null;
+            choiceActionItem5.Caption = "Aree Traffico";
+            choiceActionItem5.Id = "AreeTraffico";
+            choiceActionItem6.Caption = "Banchine";
+            choiceActionItem6.Id = "Banchine";
             this.actionImport.Items.Add(choiceActionItem1);
             this.actionImport.Items.Add(choiceActionItem2);
             this.actionImport.Items.Add(choiceActionItem3);
             this.actionImport.Items.Add(choiceActionItem4);
+            this.actionImport.Items.Add(choiceActionItem5);
+            this.actionImport.Items.Add(choiceActionItem6);
             this.actionImport.ItemType = DevExpress.ExpressApp.Actions.SingleChoiceActionItemType.ItemIsOperation;
             this.actionImport.ShowItemsOnClick = true;
             this.actionImport.ToolTip = null;

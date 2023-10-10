@@ -153,6 +153,10 @@ namespace xRoadMap.Module.BusinessObjects
         [Association,Aggregated]
         public XPCollection<Accesso> Accessi => GetCollection<Accesso>(nameof(Accessi));
         [Association, Aggregated]
+        public XPCollection<AreaTraffico> AreeTraffico => GetCollection<AreaTraffico>(nameof(AreeTraffico));
+        [Association, Aggregated]
+        public XPCollection<Banchina> Banchine => GetCollection<Banchina>();
+        [Association, Aggregated]
         public XPCollection<EventoLineareSuStrada> EventiLineari => GetCollection<EventoLineareSuStrada>(nameof(EventiLineari));
 
         Strada IConStrada.Strada { get => this;}
