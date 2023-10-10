@@ -452,7 +452,7 @@ namespace xRoadMap.Module.Win.Editors
         {
             MapPushpin mapPushpin = new MapPushpin();
             mapPushpin.Location = new DevExpress.XtraMap.CartesianPoint(location.X,location.Y);
-            //mapPushpin.Text = message;
+            mapPushpin.ToolTipPattern = message;
             if (angle.HasValue)
             {
                 mapPushpin.Angle = (Math.PI * (angle.Value) / 180);
