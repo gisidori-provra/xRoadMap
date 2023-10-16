@@ -902,6 +902,14 @@
         <ColumnInfo Id="TipoSuperficie" Index="3" />
       </Columns>
     </ListView>
+    <ListView Id="Strada_Carreggiate_ListView">
+      <Columns>
+        <ColumnInfo Id="Km" Index="1" />
+        <ColumnInfo Id="KmFine" Index="2" />
+        <ColumnInfo Id="TipoCarreggiata" Index="3" />
+        <ColumnInfo Id="Oid" Index="4" />
+      </Columns>
+    </ListView>
     <ListView Id="Strada_Cippi_ListView">
       <Columns>
         <ColumnInfo Id="Misura" SortIndex="0" SortOrder="Ascending" />
@@ -911,16 +919,18 @@
       <Items>
         <PropertyEditor Id="Percorso" StrokeWidth="2" StrokeColor="Green" TitleVisible="Visible" LayerName="Strade" Caption="Strade provinciali" TOCVisibility="Visible">
           <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="Mappa stradale" IsNewNode="True" />
+            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
             <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
+            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="2" Visible="False" Titolo="Catasto" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Cippi" Index="3" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
-            <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="4" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="KeyColor" AttributeName="Limite" TextColor="Maroon" TextGlowColor="255, 192, 192" IsNewNode="True" />
-            <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="6" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" IsNewNode="True" />
-            <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="6" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" IsNewNode="True" />
-            <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" IsNewNode="True" />
-            <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeColor="192, 64, 0" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" IsNewNode="True" />
+            <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="4" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeColor="192, 64, 0" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="5" IsNewNode="True" />
+            <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="6" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="6" IsNewNode="True" />
+            <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="6" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="7" IsNewNode="True" />
+            <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" Index="8" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="6" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="9" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
+            <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="10" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
       </Items>
@@ -930,20 +940,20 @@
             <LayoutGroup Id="SimpleEditors" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
               <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="Strada" ShowCaption="True" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
-                  <LayoutGroup Id="Autobb6aa70f-547d-4fec-addd-89e2cccd3315" ShowCaption="False" Caption="Autobb6aa70f-547d-4fec-addd-89e2cccd3315(6)" Direction="Horizontal" Index="0" RelativeSize="22.267206477732792" IsNewNode="True">
-                    <LayoutGroup Id="Strada_col1" ShowCaption="False" Index="0" RelativeSize="50.170261066969353" IsNewNode="True">
+                  <LayoutGroup Id="Autobb6aa70f-547d-4fec-addd-89e2cccd3315" ShowCaption="False" Caption="Autobb6aa70f-547d-4fec-addd-89e2cccd3315(6)" Direction="Horizontal" Index="0" RelativeSize="18.151815181518153" IsNewNode="True">
+                    <LayoutGroup Id="Strada_col1" ShowCaption="False" Index="0" RelativeSize="50.18181818181818" IsNewNode="True">
                       <LayoutItem Id="Sigla" ViewItem="Sigla" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
                       <LayoutItem Id="Denominazione" ViewItem="Denominazione" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
                       <LayoutItem Id="ClassificaFunzionale" ViewItem="ClassificaFunzionale" Index="2" RelativeSize="49.090909090909093" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Strada_col2" ShowCaption="False" Index="1" RelativeSize="49.829738933030647" IsNewNode="True">
+                    <LayoutGroup Id="Strada_col2" ShowCaption="False" Index="1" RelativeSize="49.81818181818182" IsNewNode="True">
                       <LayoutItem Id="Numero" ViewItem="Numero" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
                       <LayoutItem Id="Asse" ViewItem="Asse" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
                       <LayoutItem Id="TipoAmministrazione" ViewItem="TipoAmministrazione" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
                       <LayoutItem Id="Tronco" ViewItem="Tronco" Index="3" RelativeSize="27.272727272727273" IsNewNode="True" />
                     </LayoutGroup>
                   </LayoutGroup>
-                  <TabbedGroup Id="Tabs" Index="1" RelativeSize="77.7327935222672" IsNewNode="True">
+                  <TabbedGroup Id="Tabs" Index="1" RelativeSize="81.848184818481855" IsNewNode="True">
                     <LayoutGroup Id="Item1" ShowCaption="True" Caption="Ordinanze" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                       <LayoutItem Id="Ordinanze" ViewItem="Ordinanze" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
@@ -961,6 +971,9 @@
                     </LayoutGroup>
                     <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="5" Caption="Banchine" RelativeSize="100" IsNewNode="True">
                       <LayoutItem Id="Banchine" ViewItem="Banchine" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="6" Caption="Carreggiate" RelativeSize="100" IsNewNode="True">
+                      <LayoutItem Id="Carreggiate" ViewItem="Carreggiate" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
                   </TabbedGroup>
                 </LayoutGroup>

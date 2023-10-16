@@ -159,11 +159,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\CodedDomain.cs" />
+    <Compile Include="BusinessObjects\FoglioCatastale.cs" />
     <Compile Include="BusinessObjects\IFrameContent.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Accesso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\AreaTraffico.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Atto.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Banchina.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Carreggiata.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Cippo.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Enums.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\EventoLineareSuStrada.cs" />

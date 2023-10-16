@@ -21,6 +21,8 @@ using xRoadMap.Module.Xpo;
 using DevExpress.Map;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Utils;
+using DevExpress.CodeParser.VB;
+using NetTopologySuite.Operation;
 
 namespace xRoadMap.Module.Win.Editors
 {
@@ -121,33 +123,51 @@ namespace xRoadMap.Module.Win.Editors
                     if (item.Shape != null)
                     {
                         var p = AddItem(item, storage, layer.Name); // storage.Items.Add(new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID));
+                        RefreshColorizer(layer.Colorizer,bindingList);
                     }
                     foreach (var pair in dataSourceProperties)
                     {
-                        IBindingList list;
+                        IBindingList list = null;
                         var vl = map.Layers[pair.Key] as VectorItemsLayer;
                         var stor = vl.Data as SqlGeometryItemStorage;
                         //stor.Items.Clear();
                         var xpo = item as DevExpress.Xpo.XPBaseObject;
                         //var mInfo = xpo.ClassInfo.GetMember(pair.Value);
-                        var mInfo = xpo.GetNestedMemberInfo(pair.Value);
-                        if (mInfo == null)
-                            continue;
-                        if (typeof(IXPGeometry).IsAssignableFrom(mInfo.MemberType))
+                        var dataMember = pair.Value;
+                        if (dataMember.StartsWith("<"))
                         {
-                            list = new BindingList<IXPGeometry>();
-                            var i = xpo.GetNestedMemberValue(pair.Value);   // mInfo.GetValue(xpo);
-                            if (i != null)  
-                                list.Add(i);
+                            foreach (DevExpress.Xpo.Metadata.XPClassInfo ci in xpo.Session.Dictionary.Classes)
+                            {
+                                if ("<"+ci.FullName+">" == dataMember)
+                                {
+                                    list = new XPCollection(xpo.Session, ci);
+                                    break;
+                                }
+                            }
+                            
                         }
                         else
-                            list = xpo.GetNestedMemberValue(pair.Value) as IBindingList;
-
+                        {
+                            var mInfo = xpo.GetNestedMemberInfo(dataMember);
+                            if (typeof(IXPGeometry).IsAssignableFrom(mInfo.MemberType))
+                            {
+                                list = new BindingList<IXPGeometry>();
+                                var i = xpo.GetNestedMemberValue(pair.Value);   // mInfo.GetValue(xpo);
+                                if (i != null)
+                                    list.Add(i);
+                            }
+                            else
+                                list = xpo.GetNestedMemberValue(pair.Value) as IBindingList;
+                        }
                         try
                         {
-                            foreach (IXPGeometry innerItem in list)
+                            if (list != null)
                             {
-                                AddItem(innerItem, stor, pair.Key);
+                                RefreshColorizer(vl.Colorizer, list);
+                                foreach (IXPGeometry innerItem in list)
+                                {
+                                    AddItem(innerItem, stor, pair.Key);
+                                }
                             }
                         }
                         catch (InvalidCastException ice)
@@ -192,7 +212,7 @@ namespace xRoadMap.Module.Win.Editors
             var modelRoot = info as IModelMapLayer;
             layer = AddVectorLayer(modelRoot);
             layer.Name = modelRoot.LayerName;
-
+            layer.ViewportChanged += layer_ViewportChanged;
             this.checkedListBoxControl1.Items.Add(modelRoot.LayerName, modelRoot.Titolo, CheckState.Checked, true);
             layer.DataLoaded += this.Layer_DataLoaded;
             layer.Error += Layer_Error;
@@ -242,6 +262,29 @@ namespace xRoadMap.Module.Win.Editors
             map.MapEditor.MapItemEdited += this.MapEditor_MapItemEdited;
         }
 
+        Polygon viewport;
+        private void layer_ViewportChanged(object sender, ViewportChangedEventArgs e)
+        {
+            
+            var coordinates = new Coordinate[5];
+            var topLeft =  e.TopLeft as GeoPoint;
+            var bottomRight = e.BottomRight as GeoPoint;
+            //var x = RoutingHelper.ToETRS89(new Coordinate(topLeft.Longitude,topLeft.Latitude));
+            coordinates[0] = RoutingHelper.ToETRS89(new Coordinate(topLeft.Longitude, topLeft.Latitude));
+            coordinates[1] = RoutingHelper.ToETRS89(new Coordinate(bottomRight.Longitude, topLeft.Latitude));
+            coordinates[2] = RoutingHelper.ToETRS89(new Coordinate(bottomRight.Longitude, bottomRight.Latitude));
+            coordinates[3] = RoutingHelper.ToETRS89(new Coordinate(topLeft.Longitude, bottomRight.Latitude));
+            coordinates[4] = coordinates[0];
+            try
+            {
+                var ring = new LinearRing(coordinates);
+                if (ring.IsClosed)
+                    viewport = new Polygon(new LinearRing(coordinates));
+                //RefreshDataSource(this.DataSource);
+            }
+            catch { }
+        }
+
         private void Layer_Error(object sender, MapErrorEventArgs e)
         {
             //this.barDockControlBottom.Text = e.Exception.Message;
@@ -263,9 +306,12 @@ namespace xRoadMap.Module.Win.Editors
             }
             else
             {
-                var mInfo = objectTypeInfo.FindMember(dataSourceProperty);
-                if (mInfo == null)
-                    return null;
+                //var mInfo = objectTypeInfo.FindMember(dataSourceProperty);
+                //if (mInfo == null)
+                //{
+                    
+                //    return null;
+                //}
                 //if (mInfo.IsList)
                 //    pattern = mInfo.ListElementTypeInfo.DefaultMember?.Name;
                 //if (mInfo.IsAssociation)
@@ -313,6 +359,47 @@ namespace xRoadMap.Module.Win.Editors
             return layer;
 
         }
+        private void RefreshColorizer(MapColorizer colorizer,IBindingList list)
+        {
+            if (colorizer is KeyColorColorizer kc)
+                RefreshKeyColorColorizer(kc,list);
+        }
+
+        private void RefreshKeyColorColorizer(KeyColorColorizer colorizer,IBindingList list)
+        {
+            if (colorizer.Colors.Count > 0) return;
+
+            colorizer.Colors.Clear();
+
+            if (DataSource is IBindingList bindingList)
+            {
+                foreach (IXPGeometry item in list)
+                {
+                    var attribute = colorizer.ItemKeyProvider as AttributeItemKeyProvider;
+                    var member = item.ClassInfo.GetPersistentMember(attribute.AttributeName);
+                    object key = member.GetValue(item);
+                    if (key != null)
+                    {
+                        ColorizerKeyItem keyItem = null;
+                        foreach (var k in colorizer.Keys)
+                        {
+                            if (k.Key == key)
+                            {
+                                keyItem = k;
+                                break;
+                            }
+                               
+                        }
+                        if (keyItem == null)
+                        {
+                            keyItem = new ColorizerKeyItem() { Key = key, Name = key.ToString() };
+                            if (colorizer.Keys.Contains(keyItem) == false)
+                                colorizer.Keys.Add(keyItem);
+                        }
+                    }
+                }
+            }
+        }
 
         private KeyColorColorizer CreateKeyColorColorizer(IModelMapLayer model)
         {
@@ -322,19 +409,6 @@ namespace xRoadMap.Module.Win.Editors
                 ItemKeyProvider = new AttributeItemKeyProvider() { AttributeName = model.AttributeName },
                 PredefinedColorSchema = PredefinedColorSchema.Palette
             };
-
-            if (DataSource is IBindingList bindingList)
-            {
-                foreach (IXPGeometry item in bindingList)
-                {
-                    var member = item.ClassInfo.GetPersistentMember(model.AttributeName);
-                    object key = member.GetValue(item);
-                    string name = DevExpress.Persistent.Base.ObjectFormatter.Format(model.Pattern, item);
-                    ColorizerKeyItem keyItem = new ColorizerKeyItem() { Key = key, Name = name };
-                    if (colorizer.Keys.Contains(keyItem) == false)
-                        colorizer.Keys.Add(keyItem);
-                }
-            }
             return colorizer;
         }
 
@@ -505,17 +579,18 @@ namespace xRoadMap.Module.Win.Editors
             SqlGeometryItem sqlStorageItem = null;
             if (item.Shape != null)
             {
-                sqlStorageItem = new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID);
-                foreach (DevExpress.Xpo.Metadata.XPMemberInfo info in item.ClassInfo.Members)
+                if (viewport != null && item.Shape.Intersects(viewport))
                 {
-                    if (info.IsPublic)
-                        sqlStorageItem.Attributes.Add(new MapItemAttribute() { Name = info.Name, Value = info.GetValue(item) });
+                    sqlStorageItem = new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID);
+                    foreach (DevExpress.Xpo.Metadata.XPMemberInfo info in item.ClassInfo.Members)
+                    {
+                        if (info.IsPublic)
+                            sqlStorageItem.Attributes.Add(new MapItemAttribute() { Name = info.Name, Value = info.GetValue(item) });
+                    }
+                    storage.Items.Add(sqlStorageItem);
                 }
-                storage.Items.Add(sqlStorageItem);
             }
-
             objectRecords[GetObjectHandle(item.Oid, layerName)] = item;
-
             return sqlStorageItem;
 
         }

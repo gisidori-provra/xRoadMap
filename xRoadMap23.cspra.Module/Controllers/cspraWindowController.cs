@@ -48,6 +48,9 @@ namespace xRoadMap.Module.Controllers
                 //case "Strade":
                 //    AggiornaStrade(os);
                 //    break;
+                case "Carreggiate":
+                    ImportaCarreggiate(os);
+                    break;
                 case "Banchine":
                     ImportaBanchine(os);
                     break;
@@ -151,6 +154,26 @@ namespace xRoadMap.Module.Controllers
                     var acc = Import<Banchina>(os, item.EVE_ID, TipoPosizione.Coordinate);
                     acc.TipoPavimentazione = GetOrCreateDomain<TipoPavimentazione>(os, item.TipoPav);
                     acc.TipoSuperficie = GetOrCreateDomain<TipoSuperficie>(os, item.TipoSuperficie);
+                    acc.Larghezza = item.Larghezza;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaCarreggiate(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraCarreggiata>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Carreggiata>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    //var cAccesso = os.GetObjectByKey<cspraAccessi>(item.EVE_ID);
+                    acc.TipoCarreggiata = GetOrCreateDomain<TipoCarreggiata>(os, item.Tipo);
                     acc.Larghezza = item.Larghezza;
                     os.CommitChanges();
                 }

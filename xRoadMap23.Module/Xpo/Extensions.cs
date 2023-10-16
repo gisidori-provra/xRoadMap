@@ -21,8 +21,10 @@ namespace xRoadMap.Module.Xpo
                 string subProp = PropertyName.Substring(i + 1, PropertyName.Length - i - 1);
                 return (o.GetMemberValue(baseProp) as XPBaseObject).GetNestedMemberInfo(subProp);
             }
-            else 
-                return o.ClassInfo.GetMember(PropertyName);
+            else
+            {
+                return o.ClassInfo.FindMember(PropertyName);
+            }
         }
 
         public static object GetNestedMemberValue(this XPBaseObject o, string PropertyName)

@@ -96,6 +96,7 @@
     <Compile Include="BusinessObjects\cspraDataModel\cspraAccesso.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraAreaTraffico.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraBanchina.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCarreggiata.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEnum.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEvento.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEventoOnRoad.cs" />

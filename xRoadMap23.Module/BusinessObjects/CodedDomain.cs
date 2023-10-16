@@ -1,4 +1,5 @@
 ﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using DevExpress.Xpo.DB.Helpers;
@@ -20,7 +21,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     [DeferredDeletion(false)]
     [OptimisticLocking(false)]
-    [DefaultProperty(nameof(Descrizione))]
+    [XafDefaultProperty(nameof(Descrizione))]
     public abstract class CodedValues<T> : XPCustomObject
     {
         public CodedValues(Session session) : base(session)
@@ -47,7 +48,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     
     [NonPersistent]
-    [DefaultProperty(nameof(Descrizione))]
+    [XafDefaultProperty(nameof(Descrizione))]
     [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     public abstract class CodedDomain<T> : XPCustomObject,ICodedDomain

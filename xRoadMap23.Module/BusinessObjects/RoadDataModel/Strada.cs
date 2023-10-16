@@ -157,6 +157,8 @@ namespace xRoadMap.Module.BusinessObjects
         [Association, Aggregated]
         public XPCollection<Banchina> Banchine => GetCollection<Banchina>();
         [Association, Aggregated]
+        public XPCollection<Carreggiata> Carreggiate => GetCollection<Carreggiata>();
+        [Association, Aggregated]
         public XPCollection<EventoLineareSuStrada> EventiLineari => GetCollection<EventoLineareSuStrada>(nameof(EventiLineari));
 
         Strada IConStrada.Strada { get => this;}
