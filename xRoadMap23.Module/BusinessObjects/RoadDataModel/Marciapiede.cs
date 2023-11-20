@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using xRoadMap.Module.BusinessObjects;
+using DevExpress.XtraExport.Xls;
 using DevExpress.Persistent.Base;
 
 namespace xRoadMap.Module.BusinessObjects
@@ -13,9 +14,9 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class Carreggiata : EventoLineare, IEventoOnRoad
+    public class Marciapiede:EventoLineare,IEventoOnRoad
     {
-        public Carreggiata(Session session) : base(session)
+        public Marciapiede(Session session):base(session)
         {
 
         }
@@ -24,7 +25,7 @@ namespace xRoadMap.Module.BusinessObjects
         public Strada Strada
         {
             get => strada;
-            set => SetPropertyValue(nameof(Strada), ref strada, value);
+            set => SetPropertyValue(nameof(Strada),ref strada,value);
         }
 
         public override void SetStrada(Strada value)
@@ -32,21 +33,12 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
-        private double larghezza;
-
+        double larghezza;
         public double Larghezza
         {
             get => larghezza;
-            set => SetPropertyValue(nameof(Larghezza), ref larghezza, value);
+            set => SetPropertyValue(nameof(Larghezza),ref larghezza,value);
         }
 
-
-
-        private TipoCarreggiata tipoCarreggiata;
-        public TipoCarreggiata TipoCarreggiata
-        {
-            get => tipoCarreggiata;
-            set => SetPropertyValue(nameof(TipoCarreggiata), ref tipoCarreggiata, value);
-        }
     }
 }

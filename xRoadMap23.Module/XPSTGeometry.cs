@@ -43,8 +43,8 @@ namespace xRoadMap.Module.BusinessObjects
         private int oid;
         [Key(AutoGenerate = true), DbType("int"),Persistent("OBJECTID")]
         [ModelDefault("AllowEdit","False")]
-        [VisibleInListView(true)]
-        [DevExpress.Xpo.DisplayName("Numero")]
+        [VisibleInListView(false)]
+        [DevExpress.Xpo.DisplayName("Oid")]
         public int Oid
         {
             get => oid;

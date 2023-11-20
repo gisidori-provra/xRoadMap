@@ -90,6 +90,7 @@
     <Compile Include="Controllers\ConStradaMapViewController.Designer.cs">
       <DependentUpon>ConStradaMapViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editors\LegendItem.cs" />
     <Compile Include="Editors\MapEditor.cs" />
     <Compile Include="Editors\MapListEditor.cs" />
     <Compile Include="Editors\MapUserControl.cs">

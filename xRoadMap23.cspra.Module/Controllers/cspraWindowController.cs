@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DevExpress.Data.Filtering;
+﻿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
-using DevExpress.ExpressApp.Editors;
-using DevExpress.ExpressApp.Layout;
-using DevExpress.ExpressApp.Model.NodeGenerators;
-using DevExpress.ExpressApp.SystemModule;
-using DevExpress.ExpressApp.Templates;
-using DevExpress.ExpressApp.Utils;
-using DevExpress.Persistent.Base;
-using DevExpress.Persistent.Validation;
-using xRoadMap.Module.BusinessObjects.cspra;
-using xRoadMap.Module.BusinessObjects;
-using System.Runtime.InteropServices;
-using xRoadMap.cspra.Module.Module.BusinessObjects.cspraDataModel;
 using xRoadMap.cspra.Module.Module.BusinessObjects.cspra;
+using xRoadMap.cspra.Module.Module.BusinessObjects.cspraDataModel;
+using xRoadMap.Module.BusinessObjects;
+using xRoadMap.Module.BusinessObjects.cspra;
 
 namespace xRoadMap.Module.Controllers
 {
@@ -48,6 +35,42 @@ namespace xRoadMap.Module.Controllers
                 //case "Strade":
                 //    AggiornaStrade(os);
                 //    break;
+                case "DispositiviRitenuta":
+                    ImportaDispositiviRitenuta(os);
+                    break;
+                case "Cunette":
+                    ImportaCunette(os);
+                    break;
+                case "Ciclabili":
+                    ImportaCiclabili(os);
+                    break;
+                case "Arginelli":
+                    ImportaArginelli(os);
+                    break;
+                case "Vegetazione":
+                    ImportaVegetazione(os);
+                    break;
+                case "SottoPassaggi":
+                    ImportaSottoPassaggi(os);
+                    break;
+                case "PassaggiLivello":
+                    ImportaPassaggiLivello(os);
+                    break;
+                case "OpereSostegno":
+                    ImportaOpereSostegno(os);
+                    break;
+                case "Marciapiedi":
+                    ImportaMarciapiedi(os);
+                    break;
+                case "Gallerie":
+                    ImportaGallerie(os);
+                    break;
+                case "CorpiStradali":
+                    ImportaCorpiStradali(os);
+                    break;
+                case "CentriAbitati":
+                    ImportaCentriAbitati(os);
+                    break;
                 case "Carreggiate":
                     ImportaCarreggiate(os);
                     break;
@@ -184,7 +207,240 @@ namespace xRoadMap.Module.Controllers
             }
         }
 
+        private static void ImportaCentriAbitati(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraCentroAbitato>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<CentroAbitato>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    //var cAccesso = os.GetObjectByKey<cspraAccessi>(item.EVE_ID);
+                    acc.Nome = item.Nome; 
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
 
+        private static void ImportaCorpiStradali(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraCorpoStradale>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<CorpoStradale>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoCorpoStradale = GetOrCreateDomain<TipologiaCorpoStradale>(os, item.TipoCorpoStradale);
+                    acc.Delimitazione = GetOrCreateDomain<TipoDelimitazione>(os, item.Delimitazione);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaGallerie(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraGallerie>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Galleria>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoOpera = GetOrCreateDomain<TipoOperaGalleria>(os, item.Tipo);
+                    acc.Illuminazione= GetOrCreateDomain<TipoIlluminazione>(os, item.Illuminazione);
+                    acc.IlluminazioneImbocco = GetOrCreateDomain<TipoIlluminazione>(os, item.IlluminazioneImbocco);
+                    acc.Ventilazione = GetOrCreateDomain<TipoImpiantoVentilazione>(os, item.Ventilazione);
+                    acc.Piazzole = item.Piazzole.ENUM_VAL == "1";
+                    acc.Stato = GetOrCreateDomain<TipoStatoConservazione>(os, item.Stato);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaMarciapiedi(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraMarciapiede>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Marciapiede>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.Larghezza = item.Larghezza;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaOpereSostegno(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraOperaSostegno>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<OperaSostegno>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoOpera = GetOrCreateDomain<TipoOperaSostegno>(os,item.Tipo);
+                    acc.TipoCostruzione = GetOrCreate<TipologiaCostruttivaOperaSostegno>(os, item.TipoCostr);
+                    acc.Stato = GetOrCreateDomain<TipoStatoConservazione>(os, item.Stato);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+        private static void ImportaPassaggiLivello(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraPassaggioLivello>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<PassaggioLivello>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoPassaggioLivello = GetOrCreateDomain<TipoPassaggioLivello>(os, item.Tipo);
+                    acc.NumeroBinari = item.NumeroBinari;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaSottoPassaggi(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraSovrappassi>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Sottopasso>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoSottopasso = GetOrCreateDomain<TipoSottopasso>(os, item.Tipo);
+                    acc.Stato = GetOrCreateDomain<TipoStatoConservazione>(os, item.StatoConservazione);
+                    acc.Illuminazione = GetOrCreateDomain<TipoIlluminazione>(os, item.Illuminazione);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+
+        private static void ImportaVegetazione(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraVegetazione>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Vegetazione>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoVegetazione = GetOrCreateDomain<TipoVegetazione>(os, item.TipoVegetazione);
+                    acc.Funzione = GetOrCreateDomain<FunzioneVegetazione>(os, item.Funzione);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaArginelli(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraArginelli>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Arginello>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.LarghezzaDX = item.LarghezzaDX;
+                    acc.LarghezzaSX = item.LarghezzaSX;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaCiclabili(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraCiclabile>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Ciclabile>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.TipoCiclabile = GetOrCreateDomain<TipoCiclabile>(os, item.Tipologia);
+                    acc.Senso = GetOrCreateDomain<SensoCiclabile> (os, item.Senso);
+                    acc.Larghezza = item.Larghezza;
+                    acc.Lunghezza = item.Lunghezza;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaCunette(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraCunetta>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Cunetta>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaDispositiviRitenuta(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraDispRitenuta>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<DispositivoRitenuta>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    acc.Tipologia = GetOrCreateDomain<TipoDispositivoRitenuta>(os, item.Tipologia);
+                    acc.Materiale = GetOrCreateDomain<TipoMaterialeDispositivoRitenuta>(os, item.Materiale);
+                    acc.Classificazione = GetOrCreateDomain<ClassificazioneDispositivoRitenuta> (os, item.Classificazione);
+                    acc.Distanza = item.Distanza;
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
 
         private static void ImportaPonti(IObjectSpace os)
         {
@@ -248,14 +504,15 @@ namespace xRoadMap.Module.Controllers
                     //https://forums.oracle.com/ords/apexds/post/error-code-ora-01461-while-inserting-geometry-column-4251
 
 
-                    if (line.Shape.ToBinary().Length < 4096)
-                    {
-                        t.Shape = line.Shape;
-                    }
-                    else
-                    {
-                        throw new UserFriendlyException($"Shape Lenght {line.Shape.ToBinary().Length} exceed maximum lenght. Event_id = {eve_id}.");
-                    }
+                    t.Shape = line.Shape;
+                    //if (line.Shape.ToBinary().Length < 4096)
+                    //{
+                    //    t.Shape = line.Shape;
+                    //}
+                    //else
+                    //{
+                    //    throw new UserFriendlyException($"Shape Lenght {line.Shape.ToBinary().Length} exceed maximum lenght. Event_id = {eve_id}.");
+                    //}
                 }
                 var tLin = t as EventoLineare;
                 tLin.MFine = eor.T_MEVENTS;

@@ -13,9 +13,9 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
 
     [NavigationItem("Catasto Strade")]
-    public class Accesso:EventoLineare,IEventoOnRoad
+    public class Cunetta:EventoLineare,IEventoOnRoad
     {
-        public Accesso(Session session):base(session)
+        public Cunetta(Session session):base(session)
         {
 
         }
@@ -32,12 +32,5 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
-
-        private TipoDestinazioneAccesso destinazione;
-        public TipoDestinazioneAccesso Destinazione
-        {
-            get => destinazione;
-            set => SetPropertyValue(nameof(Destinazione), ref destinazione, value);
-        }
     }
 }

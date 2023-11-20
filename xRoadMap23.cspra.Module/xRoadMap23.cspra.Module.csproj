@@ -93,13 +93,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\cspraDataModel\cspraDispRitenuta.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCunetta.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCiclabile.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraArginello.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraVegetazione.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraSovrappasso.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraPassaggioLivello.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraOperaSostegno.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraGalleria.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraAccesso.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraAreaTraffico.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraBanchina.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraCarreggiata.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCentroAbitato.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCorpoStradale.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEnum.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEvento.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEventoOnRoad.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraMarciapiede.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraPonte.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraRoad.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraTombino.cs" />

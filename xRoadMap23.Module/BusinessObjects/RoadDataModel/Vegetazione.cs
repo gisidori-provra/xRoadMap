@@ -11,11 +11,11 @@ using DevExpress.Persistent.Base;
 namespace xRoadMap.Module.BusinessObjects
 {
     [MapInheritance(MapInheritanceType.OwnTable)]
-    [NavigationItem("Catasto Strade")]
 
-    public class Carreggiata : EventoLineare, IEventoOnRoad
+    [NavigationItem("Catasto Strade")]
+    public class Vegetazione:EventoLineare,IEventoOnRoad
     {
-        public Carreggiata(Session session) : base(session)
+        public Vegetazione(Session session):base(session)
         {
 
         }
@@ -24,7 +24,7 @@ namespace xRoadMap.Module.BusinessObjects
         public Strada Strada
         {
             get => strada;
-            set => SetPropertyValue(nameof(Strada), ref strada, value);
+            set => SetPropertyValue(nameof(Strada),ref strada,value);
         }
 
         public override void SetStrada(Strada value)
@@ -32,21 +32,19 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
-        private double larghezza;
 
-        public double Larghezza
+        private TipoVegetazione tipoVegetazione;
+        public TipoVegetazione TipoVegetazione
         {
-            get => larghezza;
-            set => SetPropertyValue(nameof(Larghezza), ref larghezza, value);
+            get => tipoVegetazione;
+            set => SetPropertyValue(nameof(TipoVegetazione), ref tipoVegetazione, value);
         }
 
-
-
-        private TipoCarreggiata tipoCarreggiata;
-        public TipoCarreggiata TipoCarreggiata
+        private FunzioneVegetazione funzione;
+        public FunzioneVegetazione Funzione
         {
-            get => tipoCarreggiata;
-            set => SetPropertyValue(nameof(TipoCarreggiata), ref tipoCarreggiata, value);
+            get => funzione;
+            set => SetPropertyValue(nameof(Funzione),ref funzione,value);
         }
     }
 }

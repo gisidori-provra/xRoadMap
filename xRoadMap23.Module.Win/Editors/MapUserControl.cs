@@ -23,6 +23,11 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.CodeParser.VB;
 using NetTopologySuite.Operation;
+using DevExpress.Data.Filtering;
+using DevExpress.XtraRichEdit.SpellChecker;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.ClipboardSource.SpreadsheetML;
+using DevExpress.Utils;
 
 namespace xRoadMap.Module.Win.Editors
 {
@@ -40,6 +45,17 @@ namespace xRoadMap.Module.Win.Editors
         public MapUserControl()
         {
             InitializeComponent();
+
+            var checkContextButton = new CheckContextButton();
+            checkContextButton.AlignmentOptions.Position = ContextItemPosition.Center;
+            checkContextButton.Padding = new Padding(5);
+            checkContextButton.AlignmentOptions.Panel = ContextItemPanel.Left;
+            checkContextButton.Visibility = ContextItemVisibility.Visible;
+            checkedListBoxControl1.ContextButtons.Add(checkContextButton);
+
+            checkedListBoxControl1.ItemChecking += (s, e) => e.Cancel = true;
+
+
             //map.SearchPanelOptions.Visible = false;
             map.MapItemClick += map_MapItemClick;
             cartesianSourceCoordinateSystem1 = new CartesianSourceCoordinateSystem();
@@ -140,7 +156,8 @@ namespace xRoadMap.Module.Win.Editors
                             {
                                 if ("<"+ci.FullName+">" == dataMember)
                                 {
-                                    list = new XPCollection(xpo.Session, ci);
+                                    var crit = CriteriaOperator.Parse("STContains(?,?)", viewport, item.Shape);
+                                    list = new XPCollection(xpo.Session, ci,crit);
                                     break;
                                 }
                             }
@@ -149,21 +166,24 @@ namespace xRoadMap.Module.Win.Editors
                         else
                         {
                             var mInfo = xpo.GetNestedMemberInfo(dataMember);
-                            if (typeof(IXPGeometry).IsAssignableFrom(mInfo.MemberType))
+                            if (mInfo != null)
                             {
-                                list = new BindingList<IXPGeometry>();
-                                var i = xpo.GetNestedMemberValue(pair.Value);   // mInfo.GetValue(xpo);
-                                if (i != null)
-                                    list.Add(i);
+                                if (typeof(IXPGeometry).IsAssignableFrom(mInfo.MemberType))
+                                {
+                                    list = new BindingList<IXPGeometry>();
+                                    var i = xpo.GetNestedMemberValue(pair.Value);   // mInfo.GetValue(xpo);
+                                    if (i != null)
+                                        list.Add(i);
+                                }
+                                else
+                                    list = xpo.GetNestedMemberValue(pair.Value) as IBindingList;
                             }
-                            else
-                                list = xpo.GetNestedMemberValue(pair.Value) as IBindingList;
                         }
                         try
                         {
                             if (list != null)
                             {
-                                RefreshColorizer(vl.Colorizer, list);
+                                //RefreshColorizer(vl.Colorizer, list);
                                 foreach (IXPGeometry innerItem in list)
                                 {
                                     AddItem(innerItem, stor, pair.Key);
@@ -199,6 +219,7 @@ namespace xRoadMap.Module.Win.Editors
 
         }
 
+        List<LegendItem> legend = new List<LegendItem>();
 
         public void AddLayers(ITypeInfo objectTypeInfo, IModelNode info)
         {
@@ -207,13 +228,20 @@ namespace xRoadMap.Module.Win.Editors
             //map.Layers.Clear();
             //map.Layers.Add(informationLayer);
             this.dataSourceProperties.Clear();
+            legend.Clear();
+
             this.checkedListBoxControl1.Items.Clear();
 
             var modelRoot = info as IModelMapLayer;
             layer = AddVectorLayer(modelRoot);
             layer.Name = modelRoot.LayerName;
             layer.ViewportChanged += layer_ViewportChanged;
-            this.checkedListBoxControl1.Items.Add(modelRoot.LayerName, modelRoot.Titolo, CheckState.Checked, true);
+
+            legend.Add(new LegendItem(modelRoot));
+
+            //var item = new CheckedListBoxItem(modelRoot, modelRoot.Titolo, CheckState.Checked, true);
+            //this.checkedListBoxControl1.Items.Add(item);
+            
             layer.DataLoaded += this.Layer_DataLoaded;
             layer.Error += Layer_Error;
 
@@ -255,10 +283,17 @@ namespace xRoadMap.Module.Win.Editors
                     if (layer != null)
                     {
                         layer.Visible = model.Visible;
-                        this.checkedListBoxControl1.Items.Add(layer.Name, model.Titolo, model.Visible ? CheckState.Checked : CheckState.Unchecked, true);
+                        legend.Add(new LegendItem(model));
+                        //this.checkedListBoxControl1.Items.Add(layer.Name, model.Titolo, model.Visible ? CheckState.Checked : CheckState.Unchecked, true);
                     }
                 }
             }
+
+            this.checkedListBoxControl1.DataSource = legend;
+            this.checkedListBoxControl1.DisplayMember = nameof(LegendItem.Titolo);
+            //this.checkedListBoxControl1.CheckMember = nameof(LegendItem.Visible);
+            this.checkedListBoxControl1.ValueMember = nameof(LegendItem.LayerName);
+
             map.MapEditor.MapItemEdited += this.MapEditor_MapItemEdited;
         }
 
@@ -579,7 +614,7 @@ namespace xRoadMap.Module.Win.Editors
             SqlGeometryItem sqlStorageItem = null;
             if (item.Shape != null)
             {
-                if (viewport != null && item.Shape.Intersects(viewport))
+                //if (viewport != null && item.Shape.Intersects(viewport))
                 {
                     sqlStorageItem = new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID);
                     foreach (DevExpress.Xpo.Metadata.XPMemberInfo info in item.ClassInfo.Members)
@@ -641,9 +676,20 @@ namespace xRoadMap.Module.Win.Editors
             map.ZoomToFitLayerItems(new LayerBase[] { this.Layer });
         }
 
+        private void checkedListBoxControl1_SelectedValueChanged(object sender, System.EventArgs e)
+        {
+            ;
+        }
+
+
         private void checkedListBoxControl1_ItemCheck(object sender, DevExpress.XtraEditors.Controls.ItemCheckEventArgs e)
         {
-            var layerName = this.checkedListBoxControl1.Items[e.Index].Value as string;
+            var m = legend[e.Index];
+            LayerChecked(m.LayerName, e.State == CheckState.Checked);
+        }
+
+        private void LayerChecked(string layerName,bool check)
+        {
             var layer = map.Layers[layerName];
             if (layer is ImageLayer img)
             {
@@ -654,13 +700,12 @@ namespace xRoadMap.Module.Win.Editors
                         if (item is ImageLayer iml2)
                             if (iml2.DataProvider is WmsDataProvider wms2)
                                 if (wms2.ServerUri == wms.ServerUri)
-                                    item.Visible = (e.State == CheckState.Checked); 
+                                    item.Visible = check;
                     }
                     return;
                 }
             }
-            if (layer != null)
-                layer.Visible = (e.State == CheckState.Checked);
+            layer.Visible = check;
         }
 
         private void map_Click(object sender, EventArgs e)
@@ -699,6 +744,26 @@ namespace xRoadMap.Module.Win.Editors
             {
                 ;//TODO
             }
+        }
+
+        private void CheckedListBoxControl1_ContextButtonClick(object sender, ContextItemClickEventArgs e)
+        {
+            var dataItem = legend.Where(i => Equals(i.LayerName, e.DataItem)).FirstOrDefault();
+            if (dataItem == null)
+                return;
+            dataItem.Visible= !dataItem.Visible;
+            LayerChecked(dataItem.LayerName,dataItem.Visible);
+            (sender as Control).Refresh();
+        }
+
+        private void checkedListBoxControl1_CustomizeContextItem(object sender, DevExpress.XtraEditors.ViewInfo.ListBoxControlContextButtonCustomizeEventArgs e)
+        {
+            var checkContextButton = e.ContextItem as CheckContextButton;
+            var dataItem = legend.Where(i => Equals(i.LayerName, e.Item)).FirstOrDefault();
+            if (checkContextButton == null || dataItem == null)
+                return;
+
+            checkContextButton.Checked = dataItem.Visible;
         }
 
         //private void dockPanelBottom_Expanded(object sender, DevExpress.XtraBars.Docking.DockPanelEventArgs e)

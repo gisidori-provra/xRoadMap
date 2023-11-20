@@ -19,8 +19,15 @@ namespace xRoadMap.Module.BusinessObjects
         private string sezione;
         private string allegato;
         private string sviluppo;
-
         private int foglio;
+
+        public string Comune
+        {
+            get => comune;
+            set => SetPropertyValue(nameof(Comune),ref comune,value);
+        }
+       
+
         public int Foglio
         {
             get => foglio;

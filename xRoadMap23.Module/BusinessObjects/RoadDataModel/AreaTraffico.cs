@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace xRoadMap.Module.BusinessObjects
 {
     [MapInheritance(MapInheritanceType.OwnTable)]
+    [NavigationItem("Catasto Strade")]
 
     public class AreaTraffico : EventoLineare, IEventoOnRoad
     {

@@ -5,10 +5,13 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using DevExpress.Persistent.Base;
+
 namespace xRoadMap.Module.BusinessObjects
 {
 
     [MapInheritance(MapInheritanceType.OwnTable)]
+    [NavigationItem("Catasto Strade")]
     public partial class Banchina : EventoPuntuale, IEventoOnRoad
     {
         public Banchina(Session session) : base(session) { }

@@ -1,10 +1,322 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application>
   <Views Id="Views">
-    <ListView Id="TipoAtto_ListView">
+    <ListView Id="Tombino_MapView">
       <Columns Id="Columns">
-        <ColumnInfo Id="Codice" PropertyName="Codice" Index="0" />
+        <ColumnInfo Id="Atto" PropertyName="Atto" Width="70" Index="-1" />
       </Columns>
     </ListView>
+    <DetailView Id="Banchina_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" />
+        <PropertyEditor Id="Atto.Numero" PropertyName="Atto.Numero" />
+        <PropertyEditor Id="Atto.FileData" PropertyName="Atto.FileData" />
+        <PropertyEditor Id="Atto.Data" PropertyName="Atto.Data" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" Removed="True" />
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Atto">
+                <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                <LayoutItem Id="Atto" ViewItem="Atto" />
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Carreggiata_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Atto">
+                <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                <LayoutItem Id="Atto" ViewItem="Atto" />
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CentroAbitato_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="CentroAbitato">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Ciclabile_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Ciclabile">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CorpoStradale_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="CorpoStradale">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DispositivoRitenuta_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="DispositivoRitenuta">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="EventoLineareSuStrada_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Item2">
+                <LayoutGroup Id="Autoc864b807-ea8f-40b6-b7a9-f80788c842e2">
+                  <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto22ed0688-9e04-4974-ae13-ad4dd6a5615f">
+                  <LayoutGroup Id="Auto0a035f08-b686-4355-980f-0589cfc6d76e">
+                    <LayoutGroup Id="Auto7048bd1d-75a9-4ff6-b3c0-c993ef69de7c">
+                      <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                      <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                      <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                      <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                      <LayoutItem Id="Atto" ViewItem="Atto" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Galleria_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Item3">
+                <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                  <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                </LayoutGroup>
+                <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                <LayoutItem Id="Atto" ViewItem="Atto" />
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Marciapiede_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Marciapiede">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="OperaSostegno_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="OperaSostegno">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="PassaggioLivello_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="PassaggioLivello">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Sottopasso_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Sottopasso">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Tombino_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" />
+        <PropertyEditor Id="Atto.Numero" PropertyName="Atto.Numero" />
+        <PropertyEditor Id="Atto.FileData" PropertyName="Atto.FileData" />
+        <PropertyEditor Id="Atto.Data" PropertyName="Atto.Data" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors" Removed="True" />
+          <LayoutGroup Id="SimpleEditors">
+            <TabbedGroup Id="Item1">
+              <LayoutGroup Id="Atto">
+                <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                <LayoutItem Id="Atto" ViewItem="Atto" />
+              </LayoutGroup>
+            </TabbedGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Vegetazione_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Vegetazione">
+              <TabbedGroup Id="Item1">
+                <LayoutGroup Id="Item3">
+                  <LayoutGroup Id="Auto59350d3b-e49d-4dcb-8ce0-7482e8d1194d">
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" />
+                  </LayoutGroup>
+                  <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" />
+                  <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" />
+                  <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" />
+                  <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" />
+                  <LayoutItem Id="Atto" ViewItem="Atto" />
+                </LayoutGroup>
+              </TabbedGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>

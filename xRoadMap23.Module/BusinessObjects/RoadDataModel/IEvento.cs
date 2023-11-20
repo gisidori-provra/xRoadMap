@@ -7,7 +7,6 @@ namespace xRoadMap.Module.BusinessObjects
     public interface IEvento
     {
         int Oid { get; }
-        Atto Atto { get; set; }
         DateTime? DataFine { get; set; }
         DateTime? DataInizio { get; set; }
         TipoPosizione Tipo { get; set; }

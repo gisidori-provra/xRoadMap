@@ -126,6 +126,15 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
+
+    [Persistent("passaggi_a_livello_tipo")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipoPassaggioLivello : CodedDomain<double>
+    {
+        public TipoPassaggioLivello(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
     [Persistent("destinazione_area")]
     [NavigationItem("Impostazioni Catasto Strade")]
     public partial class TipoDestinazioneArea : CodedDomain<double>
@@ -133,6 +142,25 @@ namespace xRoadMap.Module.BusinessObjects
         public TipoDestinazioneArea(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
+
+
+    [Persistent("vegetazione_tipologia")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipoVegetazione : CodedDomain<double>
+    {
+        public TipoVegetazione(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("vegetazione_funzione")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class FunzioneVegetazione : CodedDomain<double>
+    {
+        public FunzioneVegetazione(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+
 
     [Persistent("disp_ritenuta_classif")]
     [NavigationItem("Impostazioni Catasto Strade")]
@@ -185,9 +213,9 @@ namespace xRoadMap.Module.BusinessObjects
 
     [Persistent("gallerie_impianti_vent")]
     [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipoImpiantoVentialazione : CodedDomain<double>
+    public partial class TipoImpiantoVentilazione : CodedDomain<double>
     {
-        public TipoImpiantoVentialazione(Session session) : base(session) { }
+        public TipoImpiantoVentilazione(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
@@ -256,6 +284,31 @@ namespace xRoadMap.Module.BusinessObjects
     public partial class TipologiaCostruttivaOperaSostegno : CodedDomain<string>
     {
         public TipologiaCostruttivaOperaSostegno(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("sovr_sott_tipo_opera")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipoSottopasso : CodedDomain<string>
+    {
+        public TipoSottopasso(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_tipo")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipoCiclabile : CodedDomain<double>
+    {
+        public TipoCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+
+    [Persistent("ciclabile_senso_percorrenza")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class SensoCiclabile : CodedDomain<double>
+    {
+        public SensoCiclabile(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 

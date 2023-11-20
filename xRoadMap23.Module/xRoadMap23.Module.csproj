@@ -161,6 +161,17 @@
     <Compile Include="BusinessObjects\CodedDomain.cs" />
     <Compile Include="BusinessObjects\FoglioCatastale.cs" />
     <Compile Include="BusinessObjects\IFrameContent.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\DispositivoRitenuta.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Cunetta.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Ciclabile.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Arginello.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Vegetazione.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Sottopasso.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\OperaSostegno.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Marciapiede.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Galleria.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\CorpoStradale.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\CentroAbitato.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Accesso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\AreaTraffico.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Atto.cs" />
@@ -176,6 +187,7 @@
     <Compile Include="BusinessObjects\RoadDataModel\Ispezione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ordinanza.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\OffsetCippo.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\PassaggioLivello.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Percorso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ponte.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Strada.cs" />
@@ -222,6 +234,7 @@
     <Compile Include="Xpo\Extensions.cs" />
     <Compile Include="Xpo\OracleSDEConnectionProvider.cs" />
     <Compile Include="Xpo\OracleSDEProviderFactory.cs" />
+    <Compile Include="Xpo\SpatialFunctions.cs" />
     <Compile Include="XPSTGeometry.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -258,11 +271,11 @@
     <None Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UnusableNodes6.xml">
+    <None Include="UnusableNodes1.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>
-    <None Include="UnusableNodes2.xml">
+    <None Include="UnusableNodes.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>

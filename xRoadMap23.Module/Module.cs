@@ -17,7 +17,8 @@ using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp.Xpo;
-
+using DevExpress.Data.Filtering;
+using xRoadMap.Module.Xpo;
 
 namespace xRoadMap.Module {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
@@ -26,6 +27,8 @@ namespace xRoadMap.Module {
             InitializeComponent();
             
             xRoadMap.Xpo.OracleSDEConnectionProvider.Register();
+
+            CriteriaOperator.RegisterCustomFunction(new STContainsFunction());
 
             //https://github.com/NetTopologySuite/NetTopologySuite/issues/573
 

@@ -13,9 +13,9 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class Carreggiata : EventoLineare, IEventoOnRoad
+    public class CorpoStradale:EventoLineare,IEventoOnRoad
     {
-        public Carreggiata(Session session) : base(session)
+        public CorpoStradale(Session session):base(session)
         {
 
         }
@@ -24,7 +24,7 @@ namespace xRoadMap.Module.BusinessObjects
         public Strada Strada
         {
             get => strada;
-            set => SetPropertyValue(nameof(Strada), ref strada, value);
+            set => SetPropertyValue(nameof(Strada),ref strada,value);
         }
 
         public override void SetStrada(Strada value)
@@ -32,21 +32,20 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
-        private double larghezza;
 
-        public double Larghezza
+        private TipoDelimitazione delimitazione;
+        public TipoDelimitazione Delimitazione
         {
-            get => larghezza;
-            set => SetPropertyValue(nameof(Larghezza), ref larghezza, value);
+            get => delimitazione;
+            set => SetPropertyValue(nameof(Delimitazione), ref delimitazione, value);
         }
 
-
-
-        private TipoCarreggiata tipoCarreggiata;
-        public TipoCarreggiata TipoCarreggiata
+        private TipologiaCorpoStradale tipoCorpoStradale;
+        public TipologiaCorpoStradale TipoCorpoStradale
         {
-            get => tipoCarreggiata;
-            set => SetPropertyValue(nameof(TipoCarreggiata), ref tipoCarreggiata, value);
+            get => tipoCorpoStradale;
+            set => SetPropertyValue(nameof(TipoCorpoStradale),ref tipoCorpoStradale,value);
         }
+
     }
 }

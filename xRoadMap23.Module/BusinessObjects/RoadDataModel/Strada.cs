@@ -156,8 +156,47 @@ namespace xRoadMap.Module.BusinessObjects
         public XPCollection<AreaTraffico> AreeTraffico => GetCollection<AreaTraffico>(nameof(AreeTraffico));
         [Association, Aggregated]
         public XPCollection<Banchina> Banchine => GetCollection<Banchina>();
+
+        [System.ComponentModel.DisplayName("Carreggiata")]
         [Association, Aggregated]
         public XPCollection<Carreggiata> Carreggiate => GetCollection<Carreggiata>();
+
+        [Association, Aggregated]
+        public XPCollection<CentroAbitato> CentriAbitati=> GetCollection<CentroAbitato>();
+
+        [Association, Aggregated]
+        public XPCollection<CorpoStradale> CorpiStradali=> GetCollection<CorpoStradale>();
+
+        [Association, Aggregated]
+        public XPCollection<Galleria> Gallerie => GetCollection<Galleria>();
+
+        [Association, Aggregated]
+        public XPCollection<Marciapiede> Marciapiedi => GetCollection<Marciapiede>();
+
+        [Association, Aggregated]
+        public XPCollection<OperaSostegno> OpereSostegno => GetCollection<OperaSostegno>();
+
+        [Association, Aggregated]
+        public XPCollection<PassaggioLivello> PassaggiLivello => GetCollection<PassaggioLivello>();
+
+        [Association, Aggregated]
+        public XPCollection<Sottopasso> Sottopassi => GetCollection<Sottopasso>();
+
+        [Association, Aggregated]
+        public XPCollection<Vegetazione> Vegetazione => GetCollection<Vegetazione>();
+
+        [Association, Aggregated]
+        public XPCollection<Arginello> Arginelli => GetCollection<Arginello>();
+
+        [Association, Aggregated]
+        public XPCollection<Ciclabile> Ciclabili => GetCollection<Ciclabile>();
+
+        [Association, Aggregated]
+        public XPCollection<Cunetta> Cunette => GetCollection<Cunetta>();
+
+        [Association, Aggregated]
+        public XPCollection<DispositivoRitenuta> DispositiviRitenuta => GetCollection<DispositivoRitenuta>();
+
         [Association, Aggregated]
         public XPCollection<EventoLineareSuStrada> EventiLineari => GetCollection<EventoLineareSuStrada>(nameof(EventiLineari));
 

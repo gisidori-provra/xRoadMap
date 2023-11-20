@@ -28,6 +28,24 @@ namespace xRoadMap.Module.BusinessObjects
             set => SetPropertyValue(nameof(Strada), ref strada, value);
         }
 
+        Atto fAtto;
+        [Aggregated, DevExpress.Persistent.Base.ExpandObjectMembers(DevExpress.Persistent.Base.ExpandObjectMembers.Never), NoForeignKey]
+        public Atto Atto
+        {
+            get { return fAtto; }
+            set { SetPropertyValue<Atto>(nameof(Atto), ref fAtto, value); }
+        }
+
+
+        private string urlCMS;
+        [VisibleInListView(false)]
+        [Size(512)]
+        public string UrlCMS
+        {
+            get => urlCMS;
+            set => SetPropertyValue(nameof(UrlCMS), ref urlCMS, value);
+        }
+
         public override void SetStrada(Strada value)
         {
             Strada = value;

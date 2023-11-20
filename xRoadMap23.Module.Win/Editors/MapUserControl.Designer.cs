@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapUserControl));
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelStreetView = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer2 = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -47,8 +53,9 @@
             this.map = new DevExpress.XtraMap.MapControl();
             this.vectorItemsLayer1 = new DevExpress.XtraMap.VectorItemsLayer();
             this.pushPinItemStorage = new DevExpress.XtraMap.MapItemStorage();
-            this.bingSearchDataProvider = new DevExpress.XtraMap.BingSearchDataProvider();
             this.informationLayer = new DevExpress.XtraMap.InformationLayer();
+            this.bingSearchDataProvider = new DevExpress.XtraMap.BingSearchDataProvider();
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.dockPanelStreetView.SuspendLayout();
             this.controlContainer2.SuspendLayout();
@@ -62,6 +69,7 @@
             this.dockPanelMap.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.map)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // dockManager
@@ -91,11 +99,11 @@
             this.dockPanelStreetView.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanelStreetView.FloatVertical = true;
             this.dockPanelStreetView.ID = new System.Guid("007eaa27-372b-425b-b280-d417ace3553c");
-            this.dockPanelStreetView.Location = new System.Drawing.Point(377, 0);
+            this.dockPanelStreetView.Location = new System.Drawing.Point(390, 0);
             this.dockPanelStreetView.Name = "dockPanelStreetView";
             this.dockPanelStreetView.Options.ShowCloseButton = false;
-            this.dockPanelStreetView.OriginalSize = new System.Drawing.Size(640, 267);
-            this.dockPanelStreetView.Size = new System.Drawing.Size(640, 607);
+            this.dockPanelStreetView.OriginalSize = new System.Drawing.Size(627, 267);
+            this.dockPanelStreetView.Size = new System.Drawing.Size(627, 607);
             this.dockPanelStreetView.Text = "StreetView";
             this.dockPanelStreetView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dockPanelStreetView_MouseMove);
             // 
@@ -108,7 +116,7 @@
             this.controlContainer2.Controls.Add(this.webBrowser);
             this.controlContainer2.Location = new System.Drawing.Point(4, 26);
             this.controlContainer2.Name = "controlContainer2";
-            this.controlContainer2.Size = new System.Drawing.Size(633, 578);
+            this.controlContainer2.Size = new System.Drawing.Size(620, 578);
             this.controlContainer2.TabIndex = 0;
             // 
             // btnZoomOut
@@ -117,7 +125,7 @@
             this.btnZoomOut.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomOut.ImageOptions.Image")));
             this.btnZoomOut.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnZoomOut.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnZoomOut.ImageOptions.SvgImage")));
-            this.btnZoomOut.Location = new System.Drawing.Point(564, 502);
+            this.btnZoomOut.Location = new System.Drawing.Point(551, 502);
             this.btnZoomOut.Name = "btnZoomOut";
             this.btnZoomOut.Size = new System.Drawing.Size(40, 40);
             this.btnZoomOut.TabIndex = 5;
@@ -129,7 +137,7 @@
             this.btnZoomIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomIn.ImageOptions.Image")));
             this.btnZoomIn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnZoomIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnZoomIn.ImageOptions.SvgImage")));
-            this.btnZoomIn.Location = new System.Drawing.Point(518, 502);
+            this.btnZoomIn.Location = new System.Drawing.Point(505, 502);
             this.btnZoomIn.Name = "btnZoomIn";
             this.btnZoomIn.Size = new System.Drawing.Size(40, 40);
             this.btnZoomIn.TabIndex = 4;
@@ -138,7 +146,7 @@
             // pitchTrackBarControl
             // 
             this.pitchTrackBarControl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pitchTrackBarControl.Location = new System.Drawing.Point(610, 0);
+            this.pitchTrackBarControl.Location = new System.Drawing.Point(597, 0);
             this.pitchTrackBarControl.Name = "pitchTrackBarControl";
             this.pitchTrackBarControl.Properties.AutoSize = false;
             this.pitchTrackBarControl.Properties.LabelAppearance.Options.UseTextOptions = true;
@@ -166,7 +174,7 @@
             this.headingTrackBarControl.Properties.Minimum = -180;
             this.headingTrackBarControl.Properties.SmallChange = 5;
             this.headingTrackBarControl.Properties.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.headingTrackBarControl.Size = new System.Drawing.Size(633, 28);
+            this.headingTrackBarControl.Size = new System.Drawing.Size(620, 28);
             this.headingTrackBarControl.TabIndex = 1;
             this.headingTrackBarControl.Value = 0;
             this.headingTrackBarControl.EditValueChanged += new System.EventHandler(this.trackBarControl_EditValueChanged);
@@ -177,7 +185,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(633, 578);
+            this.webBrowser.Size = new System.Drawing.Size(620, 578);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
@@ -190,8 +198,8 @@
             this.dockPanelTOC.Location = new System.Drawing.Point(0, 0);
             this.dockPanelTOC.Name = "dockPanelTOC";
             this.dockPanelTOC.Options.ShowCloseButton = false;
-            this.dockPanelTOC.OriginalSize = new System.Drawing.Size(130, 200);
-            this.dockPanelTOC.Size = new System.Drawing.Size(130, 607);
+            this.dockPanelTOC.OriginalSize = new System.Drawing.Size(202, 200);
+            this.dockPanelTOC.Size = new System.Drawing.Size(202, 607);
             this.dockPanelTOC.Text = "TOC";
             // 
             // dockPanel3_Container
@@ -199,33 +207,58 @@
             this.dockPanel3_Container.Controls.Add(this.checkedListBoxControl1);
             this.dockPanel3_Container.Location = new System.Drawing.Point(3, 26);
             this.dockPanel3_Container.Name = "dockPanel3_Container";
-            this.dockPanel3_Container.Size = new System.Drawing.Size(123, 578);
+            this.dockPanel3_Container.Size = new System.Drawing.Size(195, 578);
             this.dockPanel3_Container.TabIndex = 0;
             // 
             // checkedListBoxControl1
             // 
             this.checkedListBoxControl1.CheckOnClick = true;
+            this.checkedListBoxControl1.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
             this.checkedListBoxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkedListBoxControl1.ItemHeight = 30;
             this.checkedListBoxControl1.Location = new System.Drawing.Point(0, 0);
             this.checkedListBoxControl1.Name = "checkedListBoxControl1";
-            this.checkedListBoxControl1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.checkedListBoxControl1.Size = new System.Drawing.Size(123, 578);
+            this.checkedListBoxControl1.Size = new System.Drawing.Size(195, 578);
             this.checkedListBoxControl1.TabIndex = 0;
+            tableColumnDefinition1.Length.Type = DevExpress.XtraEditors.TableLayout.TableDefinitionLengthType.Pixel;
+            tableColumnDefinition1.Length.Value = 152D;
+            tableColumnDefinition2.Length.Type = DevExpress.XtraEditors.TableLayout.TableDefinitionLengthType.Pixel;
+            tableColumnDefinition2.Length.Value = 40D;
+            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
+            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
+            templatedItemElement1.FieldName = "LayerName";
+            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement1.Text = "LayerName";
+            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.ColumnIndex = 1;
+            templatedItemElement2.FieldName = "Image";
+            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.Text = "Image";
+            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            itemTemplateBase1.Elements.Add(templatedItemElement1);
+            itemTemplateBase1.Elements.Add(templatedItemElement2);
+            itemTemplateBase1.Name = "template1";
+            tableRowDefinition1.Length.Value = 15D;
+            itemTemplateBase1.Rows.Add(tableRowDefinition1);
+            this.checkedListBoxControl1.Templates.Add(itemTemplateBase1);
             this.checkedListBoxControl1.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.checkedListBoxControl1_ItemCheck);
+            this.checkedListBoxControl1.ContextButtonClick += new DevExpress.Utils.ContextItemClickEventHandler(this.CheckedListBoxControl1_ContextButtonClick);
+            this.checkedListBoxControl1.CustomizeContextItem += new DevExpress.XtraEditors.ViewInfo.ListBoxControlContextButtonCustomizeEventHandler(this.checkedListBoxControl1_CustomizeContextItem);
             // 
             // dockPanelMap
             // 
             this.dockPanelMap.Controls.Add(this.dockPanel1_Container);
             this.dockPanelMap.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanelMap.ID = new System.Guid("cbe939cf-0727-402c-9dc0-e0e6d837f83f");
-            this.dockPanelMap.Location = new System.Drawing.Point(130, 0);
+            this.dockPanelMap.Location = new System.Drawing.Point(202, 0);
             this.dockPanelMap.Name = "dockPanelMap";
             this.dockPanelMap.Options.ShowAutoHideButton = false;
             this.dockPanelMap.Options.ShowCloseButton = false;
             this.dockPanelMap.Options.ShowMaximizeButton = false;
             this.dockPanelMap.Options.ShowMinimizeButton = false;
-            this.dockPanelMap.OriginalSize = new System.Drawing.Size(247, 200);
-            this.dockPanelMap.Size = new System.Drawing.Size(247, 607);
+            this.dockPanelMap.OriginalSize = new System.Drawing.Size(188, 200);
+            this.dockPanelMap.Size = new System.Drawing.Size(188, 607);
             this.dockPanelMap.Text = "Map";
             // 
             // dockPanel1_Container
@@ -234,7 +267,7 @@
             this.dockPanel1_Container.Controls.Add(this.map);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 26);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(241, 578);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(182, 578);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // lblStatus
@@ -243,7 +276,7 @@
             this.lblStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblStatus.Location = new System.Drawing.Point(0, 550);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(241, 28);
+            this.lblStatus.Size = new System.Drawing.Size(182, 28);
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "labelControl1";
             // 
@@ -255,13 +288,13 @@
             this.map.Location = new System.Drawing.Point(0, 0);
             this.map.Name = "map";
             this.map.NavigationPanelOptions.Visible = false;
-            this.map.Size = new System.Drawing.Size(241, 578);
+            this.map.Size = new System.Drawing.Size(182, 578);
             this.map.TabIndex = 0;
             this.map.Click += new System.EventHandler(this.map_Click);
             this.map.MouseClick += new System.Windows.Forms.MouseEventHandler(this.map_MouseClick);
             this.vectorItemsLayer1.Data = this.pushPinItemStorage;
-            this.bingSearchDataProvider.SearchOptions.ResultsCount = 1;
             this.informationLayer.DataProvider = this.bingSearchDataProvider;
+            this.bingSearchDataProvider.SearchOptions.ResultsCount = 1;
             // 
             // MapUserControl
             // 
@@ -286,6 +319,7 @@
             this.dockPanelMap.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.map)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,5 +345,6 @@
         private DevExpress.XtraEditors.SimpleButton btnZoomOut;
         private DevExpress.XtraMap.InformationLayer informationLayer;
         private DevExpress.XtraMap.BingSearchDataProvider bingSearchDataProvider;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
     }
 }

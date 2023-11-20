@@ -52,13 +52,6 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<DateTime?>(nameof(DataFine), ref fDataFine, value); }
         }
 
-        Atto fAtto;
-        [Aggregated, DevExpress.Persistent.Base.ExpandObjectMembers(DevExpress.Persistent.Base.ExpandObjectMembers.Never), NoForeignKey]
-        public Atto Atto
-        {
-            get { return fAtto; }
-            set { SetPropertyValue<Atto>(nameof(Atto), ref fAtto, value); }
-        }
 
         protected Strada strada;
 
@@ -193,15 +186,6 @@ namespace xRoadMap.Module.BusinessObjects
 
 
 
-
-        private string urlCMS;
-        [VisibleInListView(false)]
-        [Size(512)]
-        public string UrlCMS
-        {
-            get => urlCMS;
-            set => SetPropertyValue(nameof(UrlCMS), ref urlCMS, value);
-        }
 
 
         double latitudine;

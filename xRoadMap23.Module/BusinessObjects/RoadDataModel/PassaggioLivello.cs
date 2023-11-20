@@ -13,18 +13,18 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class Carreggiata : EventoLineare, IEventoOnRoad
+    public class PassaggioLivello:EventoLineare,IEventoOnRoad
     {
-        public Carreggiata(Session session) : base(session)
+        public PassaggioLivello(Session session):base(session)
         {
-
+            
         }
 
         [Association]
         public Strada Strada
         {
             get => strada;
-            set => SetPropertyValue(nameof(Strada), ref strada, value);
+            set => SetPropertyValue(nameof(Strada),ref strada,value);
         }
 
         public override void SetStrada(Strada value)
@@ -32,21 +32,19 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
-        private double larghezza;
-
-        public double Larghezza
+        private int numeroBinari;
+        public int NumeroBinari
         {
-            get => larghezza;
-            set => SetPropertyValue(nameof(Larghezza), ref larghezza, value);
+            get => numeroBinari;
+            set => SetPropertyValue(nameof(NumeroBinari),ref numeroBinari,value);
         }
 
 
-
-        private TipoCarreggiata tipoCarreggiata;
-        public TipoCarreggiata TipoCarreggiata
+        private TipoPassaggioLivello tipoPassaggioLivello;
+        public TipoPassaggioLivello TipoPassaggioLivello
         {
-            get => tipoCarreggiata;
-            set => SetPropertyValue(nameof(TipoCarreggiata), ref tipoCarreggiata, value);
+            get => tipoPassaggioLivello;
+            set => SetPropertyValue(nameof(TipoPassaggioLivello), ref tipoPassaggioLivello, value);
         }
     }
 }
