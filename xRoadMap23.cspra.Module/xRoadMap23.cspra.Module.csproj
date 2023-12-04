@@ -97,6 +97,8 @@
     <Compile Include="BusinessObjects\cspraDataModel\cspraCunetta.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraCiclabile.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraArginello.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraIlluminazione.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraImpiantoPubblicitario.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraVegetazione.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraSovrappasso.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraPassaggioLivello.cs" />

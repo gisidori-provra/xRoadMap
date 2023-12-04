@@ -35,6 +35,12 @@ namespace xRoadMap.Module.Controllers
                 //case "Strade":
                 //    AggiornaStrade(os);
                 //    break;
+                case "ImpiantiPubblicitari":
+                    ImportaImpiantoPubblicitario(os);
+                    break; ;
+                case "Illuminazione":
+                    ImportaIlluminazione(os);
+                    break;
                 case "DispositiviRitenuta":
                     ImportaDispositiviRitenuta(os);
                     break;
@@ -128,6 +134,21 @@ namespace xRoadMap.Module.Controllers
             }
         }
 
+        private static void ImportaImpiantoPubblicitario(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraImpiantoPubblicitario>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    ImpiantoPubblicitario t = Import<ImpiantoPubblicitario>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    t.Testo = item.Testo;
+                    t.Bifacciale = item.Bifacciale?.ENUM_DESC?.Trim();
+                    os.CommitChanges();
+                }
+                catch { os.Rollback(); }
+            }
+        }
         private static void ImportaAccessi(IObjectSpace os)
         {
             var items = os.GetObjects<cspraAccessi>();
@@ -355,6 +376,26 @@ namespace xRoadMap.Module.Controllers
                     var acc = Import<Vegetazione>(os, item.EVE_ID, TipoPosizione.Coordinate);
                     acc.TipoVegetazione = GetOrCreateDomain<TipoVegetazione>(os, item.TipoVegetazione);
                     acc.Funzione = GetOrCreateDomain<FunzioneVegetazione>(os, item.Funzione);
+                    os.CommitChanges();
+                }
+                catch
+                {
+                    os.Rollback();
+                }
+            }
+        }
+
+        private static void ImportaIlluminazione(IObjectSpace os)
+        {
+            var items = os.GetObjects<cspraIlluminazione>();
+            foreach (var item in items)
+            {
+                try
+                {
+                    var acc = Import<Illuminazione>(os, item.EVE_ID, TipoPosizione.Coordinate);
+                    //var cAccesso = os.GetObjectByKey<cspraAccessi>(item.EVE_ID);
+                    acc.TipoIlluminazione = GetOrCreateDomain<TipoIlluminazione>(os, item.TipoIlluminazione);
+                    acc.TipoDisposizioneLampade = GetOrCreateDomain<TipoDisposizioneLampade>(os, item.Tipo);
                     os.CommitChanges();
                 }
                 catch

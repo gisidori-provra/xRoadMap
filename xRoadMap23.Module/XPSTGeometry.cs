@@ -45,6 +45,7 @@ namespace xRoadMap.Module.BusinessObjects
         [ModelDefault("AllowEdit","False")]
         [VisibleInListView(false)]
         [DevExpress.Xpo.DisplayName("Oid")]
+        [Browsable(false)]
         public int Oid
         {
             get => oid;

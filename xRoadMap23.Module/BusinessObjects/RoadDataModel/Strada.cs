@@ -198,6 +198,13 @@ namespace xRoadMap.Module.BusinessObjects
         public XPCollection<DispositivoRitenuta> DispositiviRitenuta => GetCollection<DispositivoRitenuta>();
 
         [Association, Aggregated]
+        public XPCollection<Illuminazione> Illuminazione => GetCollection<Illuminazione>();
+
+        [Association, Aggregated]
+        public XPCollection<ImpiantoPubblicitario> ImpiantiPubblicitari => GetCollection<ImpiantoPubblicitario>();
+
+
+        [Association, Aggregated]
         public XPCollection<EventoLineareSuStrada> EventiLineari => GetCollection<EventoLineareSuStrada>(nameof(EventiLineari));
 
         Strada IConStrada.Strada { get => this;}

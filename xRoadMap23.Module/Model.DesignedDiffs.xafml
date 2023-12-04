@@ -119,6 +119,7 @@
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="2" Visible="False" Titolo="Catasto" IsNewNode="True" />
             <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
             <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
           </MapLayers>
@@ -186,7 +187,6 @@
     </DetailView>
     <ListView Id="Accesso_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Strada" Index="1" />
         <ColumnInfo Id="Destinazione" Index="2" />
       </Columns>
@@ -1054,6 +1054,150 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="Illuminazione_DetailView">
+      <Items>
+        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+          <MapLayers>
+            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+          </MapLayers>
+        </PropertyEditor>
+        <PropertyEditor Id="Strada" PropertyName="Strada" IsNewNode="True" />
+        <PropertyEditor Id="Tipo" PropertyName="Tipo" IsNewNode="True" Removed="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Illuminazione" Direction="Vertical" RelativeSize="100">
+              <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Gruppo" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Illuminazione" IsNewNode="True">
+                  <LayoutGroup Id="Auto2d06a79a-96bc-41e7-8aa5-d4946c9f2da8" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                    <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="5.8076225045372052" IsNewNode="True" />
+                    <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="4.3557168784029034" IsNewNode="True" />
+                    <LayoutItem Id="TipoIlluminazione" ViewItem="TipoIlluminazione" Index="2" RelativeSize="4.3557168784029034" IsNewNode="True" />
+                    <LayoutItem Id="TipoDisposizioneLampade" ViewItem="TipoDisposizioneLampade" Index="3" RelativeSize="4.3557168784029034" IsNewNode="True" />
+                    <LayoutItem Id="Distanza" ViewItem="Distanza" Index="4" RelativeSize="81.125226860254088" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" Caption="Localizzazione" IsNewNode="True">
+                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="5.8076225045372052" IsNewNode="True" />
+                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="1" RelativeSize="4.3557168784029034" IsNewNode="True" />
+                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="4.3557168784029034" IsNewNode="True" />
+                  <LayoutItem Id="KmFine" ViewItem="KmFine" Index="3" RelativeSize="4.3557168784029034" IsNewNode="True" />
+                  <TabbedGroup Id="Item4" CaptionLocation="Top" Index="4" RelativeSize="81.125226860254088" IsNewNode="True">
+                    <LayoutGroup Id="EventoLineare" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" Caption="Coordinate iniziali" IsNewNode="True">
+                      <LayoutGroup Id="EventoLineare_col1" ShowCaption="False" Index="0" RelativeSize="49.9404052443385" IsNewNode="True">
+                        <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="7.8431372549019605" IsNewNode="True" />
+                        <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="5.882352941176471" IsNewNode="True" />
+                        <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="5.882352941176471" IsNewNode="True" />
+                        <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="80.3921568627451" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="EventoLineare_col2" ShowCaption="False" Index="1" RelativeSize="50.0595947556615" IsNewNode="True">
+                        <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="0" RelativeSize="7.8431372549019605" IsNewNode="True" />
+                        <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="1" RelativeSize="92.156862745098039" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="100" Caption="Coordinate finali" IsNewNode="True">
+                      <LayoutGroup Id="Auto954ecd59-d74a-4ada-84a5-8b8e45462787" ShowCaption="False" Index="0" RelativeSize="49.9404052443385" IsNewNode="True">
+                        <LayoutItem Id="XFine" ViewItem="XFine" Index="0" RelativeSize="7.8431372549019605" IsNewNode="True" />
+                        <LayoutItem Id="YFine" ViewItem="YFine" Index="1" RelativeSize="5.882352941176471" IsNewNode="True" />
+                        <LayoutItem Id="ZFine" ViewItem="ZFine" Index="2" RelativeSize="5.882352941176471" IsNewNode="True" />
+                        <LayoutItem Id="MFine" ViewItem="MFine" Index="3" RelativeSize="80.3921568627451" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Autocb12ef0e-987a-469b-a52a-205dd66ce322" ShowCaption="False" Index="1" RelativeSize="50.0595947556615" IsNewNode="True">
+                        <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="0" RelativeSize="7.8431372549019605" IsNewNode="True" />
+                        <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="1" RelativeSize="92.156862745098039" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </TabbedGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" Caption="Mappa" IsNewNode="True">
+                  <LayoutItem Id="Shape" ShowCaption="False" ViewItem="Shape" Index="0" RelativeSize="100" IsNewNode="True" />
+                </LayoutGroup>
+              </TabbedGroup>
+              <LayoutItem Id="Distanza" RelativeSize="5.3511705685618729" Removed="True" />
+              <LayoutItem Id="TipoDisposizioneLampade" RelativeSize="46.822742474916389" Removed="True" />
+              <LayoutItem Id="TipoIlluminazione" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPSTGeometry" Caption="Shape" Index="1" RelativeSize="48.74551971326165" Removed="True">
+              <LayoutItem Id="Shape" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ImpiantoPubblicitario_DetailView">
+      <Items>
+        <PropertyEditor Id="Shape" LayerName="Tombini" StrokeColor="192, 64, 0" StrokeWidth="6" TOCVisibility="Auto">
+          <MapLayers>
+            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
+            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+          </MapLayers>
+        </PropertyEditor>
+        <PropertyEditor Id="Strada" PropertyName="Strada" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100" Direction="Vertical">
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="ImpiantoPubblicitario" Index="0" ShowCaption="True" RelativeSize="100" Direction="Vertical" IsNewNode="True">
+                <LayoutGroup Id="Auto19225626-8e4d-4801-93e6-7ac9cb6c2733" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="Testo" ViewItem="Testo" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
+                  <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="3" RelativeSize="4.2780748663101607" IsNewNode="True" />
+                  <LayoutItem Id="DataFine" ViewItem="DataFine" Index="4" RelativeSize="81.461675579322645" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Localizzazione" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Localizzazione" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Autob781990b-f7d7-4501-b435-9374c92712da" ShowCaption="False" Caption="Autob781990b-f7d7-4501-b435-9374c92712da(14)" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
+                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="1" RelativeSize="4.2780748663101607" IsNewNode="True" />
+                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="4.2780748663101607" IsNewNode="True" />
+                  <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="3" RelativeSize="85.7397504456328" Caption="Corodinate" IsNewNode="True">
+                    <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="7.1428571428571432" IsNewNode="True" />
+                    <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="5.3571428571428568" IsNewNode="True" />
+                    <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="5.3571428571428568" IsNewNode="True" />
+                    <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="5.3571428571428568" IsNewNode="True" />
+                    <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="4" RelativeSize="5.3571428571428568" IsNewNode="True" />
+                    <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="5" RelativeSize="71.428571428571431" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Mappa" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" Caption="Mappa" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Shape" ShowCaption="False" ViewItem="Shape" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="XPSTGeometry" Caption="Shape" Index="3" RelativeSize="12.394957983193278" Removed="True">
+              <LayoutItem Id="Shape" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="EventoPuntuale" RelativeSize="40.7563025210084" Direction="Horizontal" Removed="True">
+              <LayoutGroup Id="EventoPuntuale_col1" RelativeSize="100" Caption="EventoPuntuale_col1" Removed="True">
+                <LayoutItem Id="Atto" RelativeSize="6.1895551257253381" Index="0" Removed="True" />
+                <LayoutItem Id="DataFine" RelativeSize="6.1895551257253381" Index="0" Removed="True" />
+                <LayoutItem Id="Km" RelativeSize="6.1895551257253381" Index="0" Removed="True" />
+                <LayoutItem Id="Tipo" RelativeSize="6.1895551257253381" Index="0" Removed="True" />
+                <LayoutItem Id="X" RelativeSize="6.1895551257253381" Index="0" Removed="True" />
+                <LayoutItem Id="Y" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="DataInizio" RelativeSize="6.1895551257253381" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="EventoPuntuale_col2" RelativeSize="50" Caption="EventoPuntuale_col2" Removed="True">
+                <LayoutItem Id="Event_id" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="M" RelativeSize="6.1895551257253381" Index="0" Removed="True" />
+                <LayoutItem Id="Offset" RelativeSize="93.810444874274665" Index="1" Removed="True" />
+                <LayoutItem Id="LatitudineSessagesimale" RelativeSize="4.6421663442940035" Index="2" Removed="True" />
+                <LayoutItem Id="LongitudineSessagesimale" RelativeSize="89.168278529980654" Index="2" Removed="True" />
+                <LayoutItem Id="Z" RelativeSize="6.1895551257253381" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="ImpiantoPubblicitario" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Marciapiede_DetailView">
       <Items>
         <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
@@ -1220,9 +1364,10 @@
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="2" Visible="False" Titolo="Catasto" IsNewNode="True" />
             <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="2" IsNewNode="True" />
             <MapLayer Id="Ponti" DataSourceProperty="Strada.Ponti" StrokeColor="Purple" StrokeWidth="2" LayerName="Ponti" Index="3" IsNewNode="True" />
-            <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="4" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Strada.Cippi" Index="4" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
         <PropertyEditor Id="Strada" PropertyName="Strada" IsNewNode="True" />
@@ -1342,7 +1487,6 @@
         <ColumnInfo Id="DalleOre" Index="-1" />
         <ColumnInfo Id="M" Index="-1" />
         <ColumnInfo Id="MFine" Index="-1" />
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Strada" Index="1" />
         <ColumnInfo Id="Strada.Denominazione" PropertyName="Strada.Denominazione" Index="2" Width="185" IsNewNode="True" />
         <ColumnInfo Id="Descrizione" Index="3" Width="244" />
@@ -1675,7 +1819,6 @@
     <ListView Id="Ponte_Ordinanze_ListView">
       <Columns>
         <ColumnInfo Id="Strada" Index="-1" />
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Descrizione" Index="1" />
         <ColumnInfo Id="DalleOre" Index="2" />
         <ColumnInfo Id="AlleOre" Index="3" />
@@ -1767,7 +1910,6 @@
     </DetailView>
     <ListView Id="Strada_Accessi_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="Destinazione" Width="171" Index="0" />
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
@@ -1776,7 +1918,6 @@
     <ListView Id="Strada_AreeTraffico_ListView">
       <Columns>
         <ColumnInfo Id="Denominazione" Index="-1" Width="402" />
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="TipoAreaTraffico" Index="0" Width="183" />
         <ColumnInfo Id="Km" Index="1" Width="179" />
         <ColumnInfo Id="KmFine" Index="2" Width="213" />
@@ -1785,7 +1926,6 @@
     </ListView>
     <ListView Id="Strada_Arginelli_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
         <ColumnInfo Id="LarghezzaDX" Index="3" />
@@ -1794,7 +1934,6 @@
     </ListView>
     <ListView Id="Strada_Banchine_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="TipoPavimentazione" Index="0" />
         <ColumnInfo Id="TipoSuperficie" Index="1" />
         <ColumnInfo Id="Km" Index="2" />
@@ -1803,7 +1942,6 @@
     </ListView>
     <ListView Id="Strada_Carreggiate_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="TipoCarreggiata" Index="0" />
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
@@ -1812,7 +1950,6 @@
     </ListView>
     <ListView Id="Strada_CentriAbitati_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="Nome" Width="321" />
         <ColumnInfo Id="Km" Index="1" Width="159" />
         <ColumnInfo Id="KmFine" Index="2" Width="204" />
@@ -1820,7 +1957,6 @@
     </ListView>
     <ListView Id="Strada_Ciclabili_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" Width="54" />
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
         <ColumnInfo Id="Larghezza" Index="3" Width="108" />
@@ -1836,7 +1972,6 @@
     </ListView>
     <ListView Id="Strada_CorpiStradali_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="TipoCorpoStradale" Index="0" />
         <ColumnInfo Id="Delimitazione" Index="1" />
         <ColumnInfo Id="Km" Index="2" />
@@ -1850,27 +1985,29 @@
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="0" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
             <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
-            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="2" Visible="False" Titolo="Catasto" IsNewNode="True" />
-            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="3" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
-            <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="4" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="5" IsNewNode="True" />
-            <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="4" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="6" IsNewNode="True" />
-            <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="4" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="6" IsNewNode="True" />
-            <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="4" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="7" IsNewNode="True" />
-            <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" Index="8" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Arginelli" LayerName="Arginelli" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Arginelli" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="DarkSeaGreen" Titolo="Arginelli" IsNewNode="True" />
-            <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="4" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="9" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
-            <MapLayer Id="Ciclabili" LayerName="Ciclabili" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Ciclabili" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="MediumVioletRed" Titolo="Ciclabili" IsNewNode="True" />
-            <MapLayer Id="CorpiStradali" LayerName="CorpiStradali" StrokeColor="OliveDrab" StrokeWidth="4" DataSourceProperty="CorpiStradali" Pattern="{TipoCorpoStradale.Descrizione}" Visible="False" AttributeName="" Index="9" TextColor="OliveDrab" IsNewNode="True" />
-            <MapLayer Id="Cunette" LayerName="Cunette" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Cunette" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="MediumVioletRed" Titolo="Cunette" IsNewNode="True" />
-            <MapLayer Id="DispRitenuta" LayerName="DispositiviRitenuta" StrokeColor="CornflowerBlue" StrokeWidth="4" DataSourceProperty="DispositiviRitenuta" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="CornflowerBlue" Titolo="Dispositivi di ritenuta" IsNewNode="True" />
-            <MapLayer Id="Gallerie" LayerName="Gallerie" StrokeColor="BlueViolet" StrokeWidth="4" DataSourceProperty="Gallerie" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="BlueViolet" IsNewNode="True" />
-            <MapLayer Id="Marciapiedi" LayerName="Marciapiedi" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Marciapiedi" Pattern="Marciapiede: {Larghezza}" Visible="False" AttributeName="" Index="9" TextColor="DarkSeaGreen" IsNewNode="True" />
-            <MapLayer Id="OpereSostegno" LayerName="OpereSostegno" StrokeColor="SlateBlue" StrokeWidth="4" DataSourceProperty="OpereSostegno" Pattern="{TipoOpera.Descrizione}" Visible="False" AttributeName="" Index="9" TextColor="SlateBlue" Titolo="Opere di sostegno" IsNewNode="True" />
-            <MapLayer Id="PassaggiLivello" LayerName="PassaggiLivello" StrokeColor="DarkOrchid" StrokeWidth="4" DataSourceProperty="PassaggiLivello" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="DarkOrchid" Titolo="Passaggi a Livello" IsNewNode="True" />
-            <MapLayer Id="Sottopassi" LayerName="Sottopassi" StrokeColor="Orchid" StrokeWidth="4" DataSourceProperty="Sottopassi" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="Orchid" Titolo="Sovra e Sottopassagi" IsNewNode="True" />
-            <MapLayer Id="Vegetazione" LayerName="Vegetazione" StrokeColor="GreenYellow" StrokeWidth="4" DataSourceProperty="Vegetazione" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="GreenYellow" Titolo="Vegetazione" IsNewNode="True" />
-            <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="10" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="3" Visible="False" Titolo="Catasto" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="4" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="5" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="6" IsNewNode="True" />
+            <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="4" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="7" IsNewNode="True" />
+            <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="4" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="8" IsNewNode="True" />
+            <MapLayer Id="Illuminazione" LayerName="Illuminazione" StrokeColor="Yellow" StrokeWidth="4" FillColor="Yellow" DataSourceProperty="Illuminazione" Pattern="" Visible="False" Index="9" IsNewNode="True" />
+            <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="4" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="10" IsNewNode="True" />
+            <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" Index="11" Visible="False" IsNewNode="True" />
+            <MapLayer Id="Arginelli" LayerName="Arginelli" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Arginelli" Pattern="" Visible="False" AttributeName="" Index="12" TextColor="DarkSeaGreen" Titolo="Arginelli" IsNewNode="True" />
+            <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="4" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="13" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
+            <MapLayer Id="Ciclabili" LayerName="Ciclabili" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Ciclabili" Pattern="" Visible="False" AttributeName="" Index="14" TextColor="MediumVioletRed" Titolo="Ciclabili" IsNewNode="True" />
+            <MapLayer Id="CorpiStradali" LayerName="CorpiStradali" StrokeColor="OliveDrab" StrokeWidth="4" DataSourceProperty="CorpiStradali" Pattern="{TipoCorpoStradale.Descrizione}" Visible="False" AttributeName="" Index="15" TextColor="OliveDrab" IsNewNode="True" />
+            <MapLayer Id="Cunette" LayerName="Cunette" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Cunette" Pattern="" Visible="False" AttributeName="" Index="16" TextColor="MediumVioletRed" Titolo="Cunette" IsNewNode="True" />
+            <MapLayer Id="DispRitenuta" LayerName="DispositiviRitenuta" StrokeColor="CornflowerBlue" StrokeWidth="4" DataSourceProperty="DispositiviRitenuta" Pattern="" Visible="False" AttributeName="" Index="17" TextColor="CornflowerBlue" Titolo="Dispositivi di ritenuta" IsNewNode="True" />
+            <MapLayer Id="Gallerie" LayerName="Gallerie" StrokeColor="BlueViolet" StrokeWidth="4" DataSourceProperty="Gallerie" Pattern="" Visible="False" AttributeName="" Index="18" TextColor="BlueViolet" IsNewNode="True" />
+            <MapLayer Id="Marciapiedi" LayerName="Marciapiedi" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Marciapiedi" Pattern="Marciapiede: {Larghezza}" Visible="False" AttributeName="" Index="19" TextColor="DarkSeaGreen" IsNewNode="True" />
+            <MapLayer Id="OpereSostegno" LayerName="OpereSostegno" StrokeColor="SlateBlue" StrokeWidth="4" DataSourceProperty="OpereSostegno" Pattern="{TipoOpera.Descrizione}" Visible="False" AttributeName="" Index="20" TextColor="SlateBlue" Titolo="Opere di sostegno" IsNewNode="True" />
+            <MapLayer Id="PassaggiLivello" LayerName="PassaggiLivello" StrokeColor="DarkOrchid" StrokeWidth="4" DataSourceProperty="PassaggiLivello" Pattern="" Visible="False" AttributeName="" Index="21" TextColor="DarkOrchid" Titolo="Passaggi a Livello" IsNewNode="True" />
+            <MapLayer Id="ImpiantiPubblicitari" DataSourceProperty="ImpiantiPubblicitari" LayerName="ImpiantiPubblicitari" StrokeWidth="4" Pattern="" TextColor="Thistle" FillColor="Black" Titolo="Impianti Pubblicitari" Visible="False" Index="22" StrokeColor="192, 0, 192" FontStyle="Italic" IsNewNode="True" />
+            <MapLayer Id="Sottopassi" LayerName="Sottopassi" StrokeColor="Orchid" StrokeWidth="4" DataSourceProperty="Sottopassi" Pattern="" Visible="False" AttributeName="" Index="23" TextColor="Orchid" Titolo="Sovra e Sottopassagi" IsNewNode="True" />
+            <MapLayer Id="Vegetazione" LayerName="Vegetazione" StrokeColor="GreenYellow" StrokeWidth="4" DataSourceProperty="Vegetazione" Pattern="" Visible="False" AttributeName="" Index="24" TextColor="GreenYellow" Titolo="Vegetazione" IsNewNode="True" />
+            <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="25" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" Visible="False" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
       </Items>
@@ -1880,20 +2017,20 @@
             <LayoutGroup Id="SimpleEditors" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
               <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="Strada" ShowCaption="True" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
-                  <LayoutGroup Id="Autobb6aa70f-547d-4fec-addd-89e2cccd3315" ShowCaption="False" Caption="Autobb6aa70f-547d-4fec-addd-89e2cccd3315(6)" Direction="Horizontal" Index="0" RelativeSize="19.607843137254903" IsNewNode="True">
-                    <LayoutGroup Id="Strada_col1" ShowCaption="False" Index="0" RelativeSize="49.301825993555319" IsNewNode="True">
+                  <LayoutGroup Id="Autobb6aa70f-547d-4fec-addd-89e2cccd3315" ShowCaption="False" Caption="Autobb6aa70f-547d-4fec-addd-89e2cccd3315(6)" Direction="Horizontal" Index="0" RelativeSize="19.963702359346641" IsNewNode="True">
+                    <LayoutGroup Id="Strada_col1" ShowCaption="False" Index="0" RelativeSize="49.07621247113164" IsNewNode="True">
                       <LayoutItem Id="Sigla" ViewItem="Sigla" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
                       <LayoutItem Id="Denominazione" ViewItem="Denominazione" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
                       <LayoutItem Id="ClassificaFunzionale" ViewItem="ClassificaFunzionale" Index="2" RelativeSize="49.090909090909093" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Strada_col2" ShowCaption="False" Index="1" RelativeSize="50.698174006444681" IsNewNode="True">
+                    <LayoutGroup Id="Strada_col2" ShowCaption="False" Index="1" RelativeSize="50.92378752886836" IsNewNode="True">
                       <LayoutItem Id="Numero" ViewItem="Numero" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
                       <LayoutItem Id="Asse" ViewItem="Asse" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
                       <LayoutItem Id="TipoAmministrazione" ViewItem="TipoAmministrazione" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
                       <LayoutItem Id="Tronco" ViewItem="Tronco" Index="3" RelativeSize="27.272727272727273" IsNewNode="True" />
                     </LayoutGroup>
                   </LayoutGroup>
-                  <TabbedGroup Id="Tabs" Index="1" RelativeSize="80.3921568627451" MultiLine="True" IsNewNode="True">
+                  <TabbedGroup Id="Tabs" Index="1" RelativeSize="80.036297640653359" MultiLine="True" IsNewNode="True">
                     <LayoutGroup Id="Item1" ShowCaption="True" Caption="Ordinanze" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                       <LayoutItem Id="Ordinanze" ViewItem="Ordinanze" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
@@ -1948,6 +2085,12 @@
                     <LayoutGroup Id="Item18" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="17" RelativeSize="100" Caption="Dispositivi di ritenuta" IsNewNode="True">
                       <LayoutItem Id="DispositiviRitenuta" ViewItem="DispositiviRitenuta" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
+                    <LayoutGroup Id="Item19" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="18" RelativeSize="100" Caption="Illuminazione" IsNewNode="True">
+                      <LayoutItem Id="Illuminazione" ViewItem="Illuminazione" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item20" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="19" RelativeSize="100" Caption="Impianti pubblicitari" IsNewNode="True">
+                      <LayoutItem Id="ImpiantiPubblicitari" ViewItem="ImpiantiPubblicitari" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
                   </TabbedGroup>
                 </LayoutGroup>
                 <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Mappa" RelativeSize="100" IsNewNode="True">
@@ -1966,12 +2109,10 @@
         <ColumnInfo Id="Km" Index="3" />
         <ColumnInfo Id="KmFine" Index="4" />
         <ColumnInfo Id="Distanza" Index="5" />
-        <ColumnInfo Id="Oid" Index="6" />
       </Columns>
     </ListView>
     <ListView Id="Strada_Gallerie_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="-1" />
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
         <ColumnInfo Id="IlluminazioneImbocco" Index="3" />
@@ -1979,6 +2120,19 @@
         <ColumnInfo Id="Ventilazione" Index="5" />
         <ColumnInfo Id="Stato" Index="6" />
         <ColumnInfo Id="Piazzole" Index="7" />
+      </Columns>
+    </ListView>
+    <ListView Id="Strada_Illuminazione_ListView">
+      <Columns>
+        <ColumnInfo Id="Km" Index="3" />
+        <ColumnInfo Id="KmFine" Index="4" />
+      </Columns>
+    </ListView>
+    <ListView Id="Strada_ImpiantiPubblicitari_ListView">
+      <Columns>
+        <ColumnInfo Id="Km" Index="0" />
+        <ColumnInfo Id="Testo" Index="1" />
+        <ColumnInfo Id="Bifacciale" Index="2" />
       </Columns>
     </ListView>
     <ListView Id="Strada_ListView">
@@ -2002,7 +2156,7 @@
         <ColumnInfo Id="Denominazione" PropertyName="Denominazione" Index="1" Width="531" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="Strada_MapListView" StrokeColor="Green" StrokeWidth="4" TextColor="128, 128, 255" TitleVisible="Visible" LayerName="Strade" ClassName="xRoadMap.Module.BusinessObjects.Strada" TOCVisibility="Visible" IsNewNode="True">
+    <ListView Id="Strada_MapListView" StrokeColor="Green" StrokeWidth="3" TextColor="128, 128, 255" TitleVisible="Visible" LayerName="Strade" ClassName="xRoadMap.Module.BusinessObjects.Strada" TOCVisibility="Visible" Pattern="{Sigla}" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Percorso" PropertyName="Percorso" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Shape" PropertyName="Shape" Width="70" Index="-1" IsNewNode="True" />
@@ -2019,22 +2173,30 @@
         <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
         <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
         <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="2" Visible="False" Titolo="Catasto" IsNewNode="True" />
-        <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Cippi" Index="3" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+        <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="3" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
         <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="4" Visible="False" IsNewNode="True" />
         <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="5" IsNewNode="True" />
-        <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="6" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="6" IsNewNode="True" />
-        <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="6" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="6" IsNewNode="True" />
-        <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="6" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="7" IsNewNode="True" />
+        <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="4" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="6" IsNewNode="True" />
+        <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="4" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="6" IsNewNode="True" />
+        <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="4" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="7" IsNewNode="True" />
         <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" Index="8" Visible="False" IsNewNode="True" />
-        <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="6" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="9" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
+        <MapLayer Id="Arginelli" LayerName="Arginelli" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Arginelli" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="DarkSeaGreen" Titolo="Arginelli" IsNewNode="True" />
+        <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="4" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="9" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
+        <MapLayer Id="Ciclabili" LayerName="Ciclabili" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Ciclabili" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="MediumVioletRed" Titolo="Ciclabili" IsNewNode="True" />
         <MapLayer Id="CorpiStradali" LayerName="CorpiStradali" StrokeColor="OliveDrab" StrokeWidth="4" DataSourceProperty="CorpiStradali" Pattern="{TipoCorpoStradale.Descrizione}" Visible="False" AttributeName="" Index="9" TextColor="OliveDrab" IsNewNode="True" />
-        <MapLayer Id="Gallerie" LayerName="Gallerie" StrokeColor="ForestGreen" StrokeWidth="4" DataSourceProperty="Gallerie" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="ForestGreen" IsNewNode="True" />
-        <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="10" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" IsNewNode="True" />
+        <MapLayer Id="Cunette" LayerName="Cunette" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Cunette" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="MediumVioletRed" Titolo="Cunette" IsNewNode="True" />
+        <MapLayer Id="DispRitenuta" LayerName="DispositiviRitenuta" StrokeColor="CornflowerBlue" StrokeWidth="4" DataSourceProperty="DispositiviRitenuta" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="CornflowerBlue" Titolo="Dispositivi di ritenuta" IsNewNode="True" />
+        <MapLayer Id="Gallerie" LayerName="Gallerie" StrokeColor="BlueViolet" StrokeWidth="4" DataSourceProperty="Gallerie" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="BlueViolet" IsNewNode="True" />
+        <MapLayer Id="Marciapiedi" LayerName="Marciapiedi" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Marciapiedi" Pattern="Marciapiede: {Larghezza}" Visible="False" AttributeName="" Index="9" TextColor="DarkSeaGreen" IsNewNode="True" />
+        <MapLayer Id="OpereSostegno" LayerName="OpereSostegno" StrokeColor="SlateBlue" StrokeWidth="4" DataSourceProperty="OpereSostegno" Pattern="{TipoOpera.Descrizione}" Visible="False" AttributeName="" Index="9" TextColor="SlateBlue" Titolo="Opere di sostegno" IsNewNode="True" />
+        <MapLayer Id="PassaggiLivello" LayerName="PassaggiLivello" StrokeColor="DarkOrchid" StrokeWidth="4" DataSourceProperty="PassaggiLivello" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="DarkOrchid" Titolo="Passaggi a Livello" IsNewNode="True" />
+        <MapLayer Id="Sottopassi" LayerName="Sottopassi" StrokeColor="Orchid" StrokeWidth="4" DataSourceProperty="Sottopassi" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="Orchid" Titolo="Sovra e Sottopassagi" IsNewNode="True" />
+        <MapLayer Id="Vegetazione" LayerName="Vegetazione" StrokeColor="GreenYellow" StrokeWidth="4" DataSourceProperty="Vegetazione" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="GreenYellow" Titolo="Vegetazione" IsNewNode="True" />
+        <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="10" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" Visible="False" IsNewNode="True" />
       </MapLayers>
     </ListView>
     <ListView Id="Strada_Marciapiedi_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" Width="59" />
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
         <ColumnInfo Id="Larghezza" Index="3" Width="124" />
@@ -2045,7 +2207,6 @@
         <ColumnInfo Id="Km" Index="2" />
         <ColumnInfo Id="KmFine" Index="3" />
         <ColumnInfo Id="Stato" Index="4" />
-        <ColumnInfo Id="Oid" Index="5" />
       </Columns>
     </ListView>
     <ListView Id="Strada_Ordinanze_ListView">
@@ -2053,7 +2214,6 @@
         <ColumnInfo Id="AlleOre" Index="-1" />
         <ColumnInfo Id="DalleOre" Index="-1" />
         <ColumnInfo Id="Ponte" Index="-1" />
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Descrizione" Index="1" />
         <ColumnInfo Id="DataInizio" Index="2" />
         <ColumnInfo Id="DataFine" Index="3" />
@@ -2065,7 +2225,6 @@
     </ListView>
     <ListView Id="Strada_PassaggiLivello_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="TipoPassaggioLivello" Index="1" Width="236" />
         <ColumnInfo Id="Km" Index="2" />
         <ColumnInfo Id="KmFine" Index="3" />
@@ -2084,7 +2243,6 @@
         <ColumnInfo Id="TipoPila" Index="-1" />
         <ColumnInfo Id="TipoSchemaStatico" Index="-1" />
         <ColumnInfo Id="TipoSpalla" Index="-1" />
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Nome" Width="336" Index="1" />
         <ColumnInfo Id="Km" Index="2" Width="184" />
         <ColumnInfo Id="KmFine" Index="3" Width="264" />
@@ -2104,12 +2262,10 @@
         <ColumnInfo Id="Km" Index="2" />
         <ColumnInfo Id="KmFine" Index="3" />
         <ColumnInfo Id="Stato" Index="4" />
-        <ColumnInfo Id="Oid" Index="5" />
       </Columns>
     </ListView>
     <ListView Id="Strada_Tombini_ListView" AllowEdit="True">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Km" Index="1" Width="103" />
         <ColumnInfo Id="Nome" Width="196" Index="2" />
         <ColumnInfo Id="Larghezza" Width="336" Index="3" />
@@ -2121,7 +2277,6 @@
         <ColumnInfo Id="Km" Index="1" />
         <ColumnInfo Id="KmFine" Index="2" />
         <ColumnInfo Id="Funzione" Index="3" />
-        <ColumnInfo Id="Oid" Index="4" />
       </Columns>
     </ListView>
     <ListView Id="TipoAtto_ListView">
@@ -2203,7 +2358,6 @@
     </DetailView>
     <ListView Id="Tombino_ListView">
       <Columns>
-        <ColumnInfo Id="Oid" Index="0" />
         <ColumnInfo Id="Strada" Index="1" />
         <ColumnInfo Id="Nome" Index="2" />
         <ColumnInfo Id="Larghezza" Index="3" />

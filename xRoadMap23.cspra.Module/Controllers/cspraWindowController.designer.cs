@@ -48,6 +48,8 @@
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem11 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem12 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem13 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem14 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem15 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             this.actionImport = new DevExpress.ExpressApp.Actions.SingleChoiceAction(this.components);
             // 
             // actionImport
@@ -106,6 +108,10 @@
             choiceActionItem12.Id = "Cunette";
             choiceActionItem13.Caption = "Dispositivi di ritenuta";
             choiceActionItem13.Id = "DispositiviRitenuta";
+            choiceActionItem14.Caption = "Illuminazione";
+            choiceActionItem14.Id = "Illuminazione";
+            choiceActionItem15.Caption = "Impianti Pubblicitari";
+            choiceActionItem15.Id = "ImpiantiPubblicitari";
             this.actionImport.Items.Add(choiceActionItem1);
             this.actionImport.Items.Add(choiceActionItem2);
             this.actionImport.Items.Add(choiceActionItem3);
@@ -125,6 +131,8 @@
             this.actionImport.Items.Add(choiceActionItem11);
             this.actionImport.Items.Add(choiceActionItem12);
             this.actionImport.Items.Add(choiceActionItem13);
+            this.actionImport.Items.Add(choiceActionItem14);
+            this.actionImport.Items.Add(choiceActionItem15);
             this.actionImport.ItemType = DevExpress.ExpressApp.Actions.SingleChoiceActionItemType.ItemIsOperation;
             this.actionImport.ShowItemsOnClick = true;
             this.actionImport.ToolTip = null;

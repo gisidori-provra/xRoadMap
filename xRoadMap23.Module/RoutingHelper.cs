@@ -66,10 +66,17 @@ namespace xRoadMap.Module
 
         public static double FromSessagesimale(string sessagesimale)
         {
+            int degrees=0;
+            int minutes=0;
+            int seconds=0;
             var tokens = sessagesimale.Split(' ','°','\'');
-            var degrees = int.Parse(tokens[0].Trim(' ','°'));
-            var minutes = int.Parse(tokens[1].Trim(' ', '\''));
-            var seconds = int.Parse(tokens[2].Trim(' ', '\''));
+
+            if (tokens.Length>0)
+                int.TryParse(tokens[0].Trim(' ','°'),out degrees);
+            if (tokens.Length>1)
+                int.TryParse(tokens[1].Trim(' ', '\''),out minutes);
+            if (tokens.Length>2)
+                int.TryParse(tokens[2].Trim(' ', '\''), out seconds);
 
             return degrees + minutes/60 + seconds/3600 ;
 

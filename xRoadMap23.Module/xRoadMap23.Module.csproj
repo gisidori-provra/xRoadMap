@@ -165,6 +165,8 @@
     <Compile Include="BusinessObjects\RoadDataModel\Cunetta.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ciclabile.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Arginello.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Illuminazione.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\ImpiantoPubblicitario.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Vegetazione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Sottopasso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\OperaSostegno.cs" />

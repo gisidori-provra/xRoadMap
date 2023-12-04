@@ -12,7 +12,7 @@ using DevExpress.Persistent.Base.General;
 namespace xRoadMap.Module.BusinessObjects
 {
     [NonPersistent]
-    public abstract partial class EventoLineare : XPSTGeometry, IEventoLineare,IEventoOnRoad
+    public abstract partial class EventoLineare : XPSTGeometry, IEventoLineareOnRoad
     {
         public EventoLineare(Session session) : base(session) { }
 
@@ -233,7 +233,6 @@ namespace xRoadMap.Module.BusinessObjects
 
         [System.ComponentModel.DisplayName("Latitudine (°'\")")]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
-        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [NonPersistent]
         public string LatitudineSessagesimale
         {
@@ -242,7 +241,7 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         [System.ComponentModel.DisplayName("Longitudine (°'\")")]
-        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+        //[DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [NonPersistent]
         public string LongitudineSessagesimale
@@ -252,7 +251,7 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         [System.ComponentModel.DisplayName("Latitudine Fine (°'\")")]
-        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+        //[DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [NonPersistent]
         public string LatitudineFineSessagesimale
@@ -263,7 +262,7 @@ namespace xRoadMap.Module.BusinessObjects
 
 
         [System.ComponentModel.DisplayName("Longitudine Fine (°'\")")]
-        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+//        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [NonPersistent]
         public string LongitudineFineSessagesimale

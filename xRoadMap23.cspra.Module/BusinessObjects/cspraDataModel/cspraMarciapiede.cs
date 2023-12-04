@@ -29,7 +29,7 @@ namespace xRoadMap.Module.BusinessObjects.cspra
         public double Larghezza
         {
             get => larghezza;
-            set => SetPropertyValue(nameof(larghezza), ref larghezza, value);   
+            set => SetPropertyValue(nameof(Larghezza), ref larghezza, value);   
         }
 
 
