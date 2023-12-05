@@ -36,16 +36,6 @@
           <Item Id="Ordinanza" Caption="Ordinanze" ViewId="Ordinanza_ListView" Index="0" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Eventi" Caption="Eventi" Index="2" Visible="False" IsNewNode="True">
-        <Items IsNewNode="True">
-          <Item Id="EventiLineariSuStrada" ViewId="EventoLineareSuStrada_ListView" Caption="Eventi su strade provinciali" Index="1" IsNewNode="True" />
-          <Item Id="ImpostazioniEventi" Caption="Impostazioni" IsNewNode="True">
-            <Items IsNewNode="True">
-              <Item Id="TipoEvento" ViewId="TipoEvento_ListView" Index="2" IsNewNode="True" />
-            </Items>
-          </Item>
-        </Items>
-      </Item>
       <Item Id="Default" Caption="Default" Index="3" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni Catasto Strade" Index="999" IsNewNode="True">
@@ -831,74 +821,6 @@
               <LayoutItem Id="Shape" Removed="True" />
             </LayoutGroup>
             <LayoutGroup Id="EventoLineare" Removed="True" />
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
-    <DetailView Id="EventoLineareSuStrada_DetailView">
-      <Items>
-        <PropertyEditor Id="Shape" LayerName="Evento" Pattern="{Descrizione}" TextColor="192, 64, 0" TOCVisibility="Auto" StrokeColor="192, 64, 0" StrokeWidth="6">
-          <MapLayers>
-            <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
-            <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Cippi chilometrici" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/CippiChilometrici/MapServer/WMSServer" LayerName="Cippi chilometrici" Index="2" Titolo="Cippi chilometrici" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
-          </MapLayers>
-        </PropertyEditor>
-        <PropertyEditor Id="Strada" PropertyName="Strada" IsNewNode="True" />
-      </Items>
-      <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="100" Direction="Vertical">
-            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
-              <LayoutGroup Id="EventoLineareSuStrada" Index="0" ShowCaption="True" RelativeSize="100" Direction="Vertical" IsNewNode="True">
-                <LayoutGroup Id="Auto6596de57-fd96-4f07-aef6-7fbd9ecebc40" ShowCaption="False" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
-                  <LayoutGroup Id="Auto2fcdc075-a89d-4cba-8eec-4271feb2bc76" ShowCaption="False" Index="0" RelativeSize="100" Caption="Limite di velocità (km/h)" IsNewNode="True">
-                    <LayoutItem Id="TipoEvento" ViewItem="TipoEvento" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
-                    <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="1" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                    <LayoutItem Id="DataFine" ViewItem="DataFine" Index="2" RelativeSize="90.017825311942957" IsNewNode="True" />
-                  </LayoutGroup>
-                </LayoutGroup>
-              </LayoutGroup>
-              <LayoutGroup Id="Localizzazione" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="Autob781990b-f7d7-4501-b435-9374c92712da" ShowCaption="False" Caption="Autob781990b-f7d7-4501-b435-9374c92712da(14)" Index="0" RelativeSize="100" IsNewNode="True">
-                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
-                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="1" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                  <LayoutItem Id="KmFine" ViewItem="KmFine" Index="3" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                  <TabbedGroup Id="Item4" CaptionLocation="Top" Index="4" RelativeSize="81.461675579322645" IsNewNode="True">
-                    <LayoutGroup Id="Group " ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Coordinate iniziali" IsNewNode="True">
-                      <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                      <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="5.741626794258373" IsNewNode="True" />
-                      <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="5.741626794258373" IsNewNode="True" />
-                      <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="5.741626794258373" IsNewNode="True" />
-                      <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="4" RelativeSize="5.741626794258373" IsNewNode="True" />
-                      <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="5" RelativeSize="69.377990430622" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" Caption="Coordinate finali" Direction="Horizontal" IsNewNode="True">
-                      <LayoutGroup Id="Autod13adba8-f94c-4715-ab49-404066ff6cd2" ShowCaption="False" Caption="Autod13adba8-f94c-4715-ab49-404066ff6cd2(26)" Index="0" RelativeSize="50.265111346765643" IsNewNode="True">
-                        <LayoutItem Id="XFine" ViewItem="XFine" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                        <LayoutItem Id="YFine" ViewItem="YFine" Index="1" RelativeSize="5.741626794258373" IsNewNode="True" />
-                        <LayoutItem Id="ZFine" ViewItem="ZFine" Index="2" RelativeSize="5.741626794258373" IsNewNode="True" />
-                        <LayoutItem Id="MFine" ViewItem="MFine" Index="3" RelativeSize="80.861244019138752" IsNewNode="True" />
-                      </LayoutGroup>
-                      <LayoutGroup Id="Autod4c39c6d-ce67-4119-9c22-d4ce6f3d6570" ShowCaption="False" Caption="Autod4c39c6d-ce67-4119-9c22-d4ce6f3d6570(31)" Index="1" RelativeSize="49.734888653234357" IsNewNode="True">
-                        <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                        <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="1" RelativeSize="92.3444976076555" IsNewNode="True" />
-                      </LayoutGroup>
-                    </LayoutGroup>
-                  </TabbedGroup>
-                </LayoutGroup>
-              </LayoutGroup>
-              <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" Caption="Mappa" IsNewNode="True">
-                <LayoutItem Id="Shape" ShowCaption="False" ViewItem="Shape" Index="0" RelativeSize="100" IsNewNode="True" />
-              </LayoutGroup>
-            </TabbedGroup>
-            <LayoutGroup Id="EventoLineare" Removed="True" />
-            <LayoutGroup Id="EventoLineareSuStrada" Removed="True" />
-            <LayoutGroup Id="XPSTGeometry" Caption="Shape" RelativeSize="28.04621848739496" Removed="True">
-              <LayoutItem Id="Shape" Removed="True" />
-            </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
@@ -1986,9 +1908,9 @@
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="1" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
             <MapLayer Id="CTR" LayerType="WMSLayer" Uri="http://sitportal.provincia.ra.it/arcgis/services/publish/CTR/MapServer/WMSServer" LayerName="CTR" Index="2" Visible="False" Titolo="CTR" IsNewNode="True" />
             <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="http://srvsitarcgis:6080/arcgis/services/publish/Catasto/MapServer/WMSServer" LayerName="Catasto" Index="3" Visible="False" Titolo="Catasto" IsNewNode="True" />
-            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="4" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="4" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" StrokeColor="192, 0, 192" IsNewNode="True" />
             <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="5" Visible="False" IsNewNode="True" />
-            <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="6" IsNewNode="True" />
+            <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="6" StrokeColor="192, 64, 0" IsNewNode="True" />
             <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="4" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="7" IsNewNode="True" />
             <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="4" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="8" IsNewNode="True" />
             <MapLayer Id="Illuminazione" LayerName="Illuminazione" StrokeColor="Yellow" StrokeWidth="4" FillColor="Yellow" DataSourceProperty="Illuminazione" Pattern="" Visible="False" Index="9" IsNewNode="True" />

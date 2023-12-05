@@ -325,6 +325,12 @@ namespace xRoadMap.Module.Win.Editors
             //this.barDockControlBottom.Text = e.Exception.Message;
         }
 
+
+        public void AddVectorLayer(VectorItemsLayer layer)
+        {
+            
+        }
+
         private VectorItemsLayer AddVectorLayer(IModelMapLayer model)
         {
 
@@ -557,7 +563,8 @@ namespace xRoadMap.Module.Win.Editors
         {
             pushPinItemStorage.Items.Clear();
         }
-        public void ShowPushpin(string message,Coordinate location,double? angle=null)
+
+        public void ShowPushpin(string message,Coordinate location,double? angle=null,string imageName = null)
         {
             MapPushpin mapPushpin = new MapPushpin();
             mapPushpin.Location = new DevExpress.XtraMap.CartesianPoint(location.X,location.Y);
@@ -565,8 +572,8 @@ namespace xRoadMap.Module.Win.Editors
             if (angle.HasValue)
             {
                 mapPushpin.Angle = (Math.PI * (angle.Value) / 180);
-                mapPushpin.SvgImage = ImageLoader.Instance.GetImageInfo("MoveUp").CreateSvgImage();
             }
+            mapPushpin.SvgImage = ImageLoader.Instance.GetImageInfo(imageName).CreateSvgImage();
             pushPinItemStorage.Items.Clear();
             pushPinItemStorage.Items.Add(mapPushpin);
             ShowMessage(message);
@@ -669,6 +676,14 @@ namespace xRoadMap.Module.Win.Editors
                         break;
                 }
             }
+        }
+
+        public void PanTo(Coordinate point)
+        {
+            var cPoint = new GeoPoint(point.Y,point.X);
+            //var anchorPoint = map.CoordPointToScreenPoint(cPoint);
+            map.CenterPoint = cPoint;
+            //map.Zoom(map.ZoomLevel, anchorPoint, true);
         }
 
         private void Layer_DataLoaded(object sender, DataLoadedEventArgs e)

@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MapUserControl));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanelStreetView = new DevExpress.XtraBars.Docking.DockPanel();
             this.controlContainer2 = new DevExpress.XtraBars.Docking.ControlContainer();
@@ -49,12 +49,12 @@
             this.checkedListBoxControl1 = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.dockPanelMap = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
-            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.map = new DevExpress.XtraMap.MapControl();
             this.vectorItemsLayer1 = new DevExpress.XtraMap.VectorItemsLayer();
             this.pushPinItemStorage = new DevExpress.XtraMap.MapItemStorage();
             this.informationLayer = new DevExpress.XtraMap.InformationLayer();
             this.bingSearchDataProvider = new DevExpress.XtraMap.BingSearchDataProvider();
+            this.lblStatus = new DevExpress.XtraEditors.LabelControl();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             this.dockPanelStreetView.SuspendLayout();
@@ -99,11 +99,11 @@
             this.dockPanelStreetView.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanelStreetView.FloatVertical = true;
             this.dockPanelStreetView.ID = new System.Guid("007eaa27-372b-425b-b280-d417ace3553c");
-            this.dockPanelStreetView.Location = new System.Drawing.Point(390, 0);
+            this.dockPanelStreetView.Location = new System.Drawing.Point(437, 0);
             this.dockPanelStreetView.Name = "dockPanelStreetView";
             this.dockPanelStreetView.Options.ShowCloseButton = false;
-            this.dockPanelStreetView.OriginalSize = new System.Drawing.Size(627, 267);
-            this.dockPanelStreetView.Size = new System.Drawing.Size(627, 607);
+            this.dockPanelStreetView.OriginalSize = new System.Drawing.Size(580, 267);
+            this.dockPanelStreetView.Size = new System.Drawing.Size(580, 607);
             this.dockPanelStreetView.Text = "StreetView";
             this.dockPanelStreetView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dockPanelStreetView_MouseMove);
             // 
@@ -116,7 +116,7 @@
             this.controlContainer2.Controls.Add(this.webBrowser);
             this.controlContainer2.Location = new System.Drawing.Point(4, 26);
             this.controlContainer2.Name = "controlContainer2";
-            this.controlContainer2.Size = new System.Drawing.Size(620, 578);
+            this.controlContainer2.Size = new System.Drawing.Size(573, 578);
             this.controlContainer2.TabIndex = 0;
             // 
             // btnZoomOut
@@ -125,7 +125,7 @@
             this.btnZoomOut.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomOut.ImageOptions.Image")));
             this.btnZoomOut.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnZoomOut.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnZoomOut.ImageOptions.SvgImage")));
-            this.btnZoomOut.Location = new System.Drawing.Point(551, 502);
+            this.btnZoomOut.Location = new System.Drawing.Point(504, 502);
             this.btnZoomOut.Name = "btnZoomOut";
             this.btnZoomOut.Size = new System.Drawing.Size(40, 40);
             this.btnZoomOut.TabIndex = 5;
@@ -137,7 +137,7 @@
             this.btnZoomIn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomIn.ImageOptions.Image")));
             this.btnZoomIn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnZoomIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnZoomIn.ImageOptions.SvgImage")));
-            this.btnZoomIn.Location = new System.Drawing.Point(505, 502);
+            this.btnZoomIn.Location = new System.Drawing.Point(458, 502);
             this.btnZoomIn.Name = "btnZoomIn";
             this.btnZoomIn.Size = new System.Drawing.Size(40, 40);
             this.btnZoomIn.TabIndex = 4;
@@ -146,7 +146,7 @@
             // pitchTrackBarControl
             // 
             this.pitchTrackBarControl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pitchTrackBarControl.Location = new System.Drawing.Point(597, 0);
+            this.pitchTrackBarControl.Location = new System.Drawing.Point(550, 0);
             this.pitchTrackBarControl.Name = "pitchTrackBarControl";
             this.pitchTrackBarControl.Properties.AutoSize = false;
             this.pitchTrackBarControl.Properties.LabelAppearance.Options.UseTextOptions = true;
@@ -174,7 +174,7 @@
             this.headingTrackBarControl.Properties.Minimum = -180;
             this.headingTrackBarControl.Properties.SmallChange = 5;
             this.headingTrackBarControl.Properties.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.headingTrackBarControl.Size = new System.Drawing.Size(620, 28);
+            this.headingTrackBarControl.Size = new System.Drawing.Size(573, 28);
             this.headingTrackBarControl.TabIndex = 1;
             this.headingTrackBarControl.Value = 0;
             this.headingTrackBarControl.EditValueChanged += new System.EventHandler(this.trackBarControl_EditValueChanged);
@@ -185,7 +185,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(620, 578);
+            this.webBrowser.Size = new System.Drawing.Size(573, 578);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("", System.UriKind.Relative);
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
@@ -220,28 +220,28 @@
             this.checkedListBoxControl1.Name = "checkedListBoxControl1";
             this.checkedListBoxControl1.Size = new System.Drawing.Size(195, 578);
             this.checkedListBoxControl1.TabIndex = 0;
-            tableColumnDefinition1.Length.Type = DevExpress.XtraEditors.TableLayout.TableDefinitionLengthType.Pixel;
-            tableColumnDefinition1.Length.Value = 152D;
-            tableColumnDefinition2.Length.Type = DevExpress.XtraEditors.TableLayout.TableDefinitionLengthType.Pixel;
-            tableColumnDefinition2.Length.Value = 40D;
-            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
-            templatedItemElement1.FieldName = "LayerName";
-            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement1.Text = "LayerName";
-            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ColumnIndex = 1;
-            templatedItemElement2.FieldName = "Image";
-            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.Text = "Image";
-            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            itemTemplateBase1.Elements.Add(templatedItemElement1);
-            itemTemplateBase1.Elements.Add(templatedItemElement2);
-            itemTemplateBase1.Name = "template1";
-            tableRowDefinition1.Length.Value = 15D;
-            itemTemplateBase1.Rows.Add(tableRowDefinition1);
-            this.checkedListBoxControl1.Templates.Add(itemTemplateBase1);
+            tableColumnDefinition3.Length.Type = DevExpress.XtraEditors.TableLayout.TableDefinitionLengthType.Pixel;
+            tableColumnDefinition3.Length.Value = 152D;
+            tableColumnDefinition4.Length.Type = DevExpress.XtraEditors.TableLayout.TableDefinitionLengthType.Pixel;
+            tableColumnDefinition4.Length.Value = 40D;
+            itemTemplateBase2.Columns.Add(tableColumnDefinition3);
+            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
+            templatedItemElement3.FieldName = "LayerName";
+            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement3.Text = "LayerName";
+            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.ColumnIndex = 1;
+            templatedItemElement4.FieldName = "Image";
+            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement4.Text = "Image";
+            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            itemTemplateBase2.Elements.Add(templatedItemElement3);
+            itemTemplateBase2.Elements.Add(templatedItemElement4);
+            itemTemplateBase2.Name = "template1";
+            tableRowDefinition2.Length.Value = 15D;
+            itemTemplateBase2.Rows.Add(tableRowDefinition2);
+            this.checkedListBoxControl1.Templates.Add(itemTemplateBase2);
             this.checkedListBoxControl1.ItemCheck += new DevExpress.XtraEditors.Controls.ItemCheckEventHandler(this.checkedListBoxControl1_ItemCheck);
             this.checkedListBoxControl1.ContextButtonClick += new DevExpress.Utils.ContextItemClickEventHandler(this.CheckedListBoxControl1_ContextButtonClick);
             this.checkedListBoxControl1.CustomizeContextItem += new DevExpress.XtraEditors.ViewInfo.ListBoxControlContextButtonCustomizeEventHandler(this.checkedListBoxControl1_CustomizeContextItem);
@@ -257,28 +257,18 @@
             this.dockPanelMap.Options.ShowCloseButton = false;
             this.dockPanelMap.Options.ShowMaximizeButton = false;
             this.dockPanelMap.Options.ShowMinimizeButton = false;
-            this.dockPanelMap.OriginalSize = new System.Drawing.Size(188, 200);
-            this.dockPanelMap.Size = new System.Drawing.Size(188, 607);
+            this.dockPanelMap.OriginalSize = new System.Drawing.Size(235, 200);
+            this.dockPanelMap.Size = new System.Drawing.Size(235, 607);
             this.dockPanelMap.Text = "Map";
             // 
             // dockPanel1_Container
             // 
-            this.dockPanel1_Container.Controls.Add(this.lblStatus);
             this.dockPanel1_Container.Controls.Add(this.map);
+            this.dockPanel1_Container.Controls.Add(this.lblStatus);
             this.dockPanel1_Container.Location = new System.Drawing.Point(3, 26);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(182, 578);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(229, 578);
             this.dockPanel1_Container.TabIndex = 0;
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblStatus.Location = new System.Drawing.Point(0, 550);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(182, 28);
-            this.lblStatus.TabIndex = 4;
-            this.lblStatus.Text = "labelControl1";
             // 
             // map
             // 
@@ -286,15 +276,29 @@
             this.map.Layers.Add(this.vectorItemsLayer1);
             this.map.Layers.Add(this.informationLayer);
             this.map.Location = new System.Drawing.Point(0, 0);
+            this.map.Measurements.ShowToolbar = true;
             this.map.Name = "map";
-            this.map.NavigationPanelOptions.Visible = false;
-            this.map.Size = new System.Drawing.Size(182, 578);
+            this.map.NavigationPanelOptions.Height = 30;
+            this.map.NavigationPanelOptions.ShowCoordinates = false;
+            this.map.NavigationPanelOptions.ShowMilesScale = false;
+            this.map.NavigationPanelOptions.ShowScrollButtons = false;
+            this.map.NavigationPanelOptions.ShowZoomTrackbar = false;
+            this.map.Size = new System.Drawing.Size(229, 550);
             this.map.TabIndex = 0;
             this.map.Click += new System.EventHandler(this.map_Click);
             this.map.MouseClick += new System.Windows.Forms.MouseEventHandler(this.map_MouseClick);
             this.vectorItemsLayer1.Data = this.pushPinItemStorage;
             this.informationLayer.DataProvider = this.bingSearchDataProvider;
             this.bingSearchDataProvider.SearchOptions.ResultsCount = 1;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblStatus.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblStatus.Location = new System.Drawing.Point(0, 550);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(229, 28);
+            this.lblStatus.TabIndex = 4;
             // 
             // MapUserControl
             // 

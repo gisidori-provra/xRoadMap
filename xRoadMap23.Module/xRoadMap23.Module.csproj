@@ -181,7 +181,6 @@
     <Compile Include="BusinessObjects\RoadDataModel\Carreggiata.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Cippo.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Enums.cs" />
-    <Compile Include="BusinessObjects\RoadDataModel\EventoLineareSuStrada.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\EventoLineare.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\EventoPuntuale.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\EventTable.cs" />

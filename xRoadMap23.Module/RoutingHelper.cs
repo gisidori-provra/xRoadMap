@@ -98,25 +98,25 @@ namespace xRoadMap.Module
                     offset -= 1000;
                     km += 1000;
                 }
-                var cp = st.Cippi.OrderBy(c => c.Misura).FirstOrDefault();      //Cippo iniziale
-                if (cp != null)
-                {
-                    offset += (int)cp.Misura;
-                    if (cp.Offset != null)
-                        offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
-                    while (offset >= 1000)
-                    {
-                        offset -= 1000;
-                        km += 1000;
-                    }
-                    while (offset < 0)
-                    {
-                        offset += 1000;
-                        km -= 1000;
-                    }
-                }
+                //var cp = st.Cippi.OrderBy(c => c.Misura).FirstOrDefault();      //Cippo iniziale
+                //if (cp != null)
+                //{
+                //    offset += (int)cp.Misura;
+                //    if (cp.Offset != null)
+                //        offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
+                //    while (offset >= 1000)
+                //    {
+                //        offset -= 1000;
+                //        km += 1000;
+                //    }
+                //    while (offset < 0)
+                //    {
+                //        offset += 1000;
+                //        km -= 1000;
+                //    }
+                //}
 
-                cp = st.Cippi.OrderByDescending(c => c.Misura).FirstOrDefault(c => c.Misura <= km);
+                var cp = st.Cippi.OrderByDescending(c => c.Misura).FirstOrDefault(c => c.Misura <= km);
                 if (cp != null)
                 {
                     if (cp.Offset != null)
@@ -136,10 +136,10 @@ namespace xRoadMap.Module
             return $"{km/1000:F0}{offset:+000;-000}";
         }
 
-        public static double GetMeasureFromChilometrica(IEventoOnRoad ev, string chilometrica)
+        public static double GetMeasureFromChilometrica(Strada strada, string chilometrica)
         {
-            if (ev == null)
-                throw new ArgumentNullException(nameof(ev));
+            if (strada == null)
+                throw new ArgumentNullException(nameof(strada));
 
             double cippo = 0;
             double offset = 0;
@@ -157,7 +157,7 @@ namespace xRoadMap.Module
                     !double.TryParse(chilometrica.Substring(pos), out offset))         //Offset con segno
                     return double.NaN;
             }
-            var cp = ev.Strada?.Cippi.FirstOrDefault(c => c.Misura == cippo * 1000);
+            var cp = strada?.Cippi.FirstOrDefault(c => c.Misura == cippo * 1000);
             if (cp != null)
             {
                 if (cp.Offset != null)
@@ -169,14 +169,15 @@ namespace xRoadMap.Module
 
         public static void LocalizzaPuntualeSuKilometrica(IEnumerable<EventoPuntuale> events)
         {
-            foreach (var item in events)
+            foreach (IEventoOnRoad item in events)
             {
-                item.M = RoutingHelper.GetMeasureFromChilometrica(item as IEventoOnRoad, item.Km);
+                item.M = RoutingHelper.GetMeasureFromChilometrica(item.Strada, item.Km);
                 var ev = (IEventoOnRoad)item;
                 var line = ev.Strada.Shape;
                 var loc = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, ev.M);
-                var seg = loc.GetSegment(line);
-                ev.Shape = new NetTopologySuite.Geometries.Point(seg.P0);
+                var coord = loc.GetCoordinate(line);
+                //var seg = loc.GetSegment(line);
+                ev.Shape = new NetTopologySuite.Geometries.Point(coord);
             }
         }
 
@@ -247,13 +248,13 @@ namespace xRoadMap.Module
             //UpdateShapeLine(events);
             //UpdateLineCoordinates(events);
 
-            foreach (var item in events)
+            foreach (IEventoLineareOnRoad item in events)
             {
-                item.M = RoutingHelper.GetMeasureFromChilometrica(item as IEventoOnRoad, item.Km);
+                item.M = RoutingHelper.GetMeasureFromChilometrica(item.Strada, item.Km);
                 if (string.IsNullOrEmpty(item.KmFine))
                     item.MFine = 9999999;
                 else
-                    item.MFine = RoutingHelper.GetMeasureFromChilometrica(item as IEventoOnRoad, item.KmFine);
+                    item.MFine = RoutingHelper.GetMeasureFromChilometrica(item.Strada, item.KmFine);
 
                 var ev = (IEventoLineareOnRoad)item;
                 var line = ev.Strada.Shape;
@@ -428,7 +429,7 @@ namespace xRoadMap.Module
             }
         }
 
-        public static void UpdateLineCoordinate(EventoLineare ev)
+        public static void UpdateLineCoordinate(IEventoLineare ev)
         {
             var shp = ev.Shape as NetTopologySuite.Geometries.LineString;
             if (shp == null)
