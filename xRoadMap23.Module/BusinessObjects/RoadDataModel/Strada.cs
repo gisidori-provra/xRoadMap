@@ -8,6 +8,7 @@ using System.Reflection;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using NetTopologySuite.Geometries;
+using DevExpress.ExpressApp.Model;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -204,6 +205,10 @@ namespace xRoadMap.Module.BusinessObjects
         public XPCollection<ImpiantoPubblicitario> ImpiantiPubblicitari => GetCollection<ImpiantoPubblicitario>();
 
         Strada IConStrada.Strada { get => this;}
+
+        [System.ComponentModel.DisplayName("Lunghezza geometrica")]
+        [ModelDefault("DisplayFormat","n0")]
+        public double Length => (Percorso?.Lenght).GetValueOrDefault();
     }
 
 }

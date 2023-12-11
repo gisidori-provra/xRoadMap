@@ -47,6 +47,8 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
 
+        public double MinM => System.Convert.ToDouble(Session.ExecuteScalar($"select sde.st_minm(shape) from percorso where objectid = {Oid}"));
+
     }
 
 }

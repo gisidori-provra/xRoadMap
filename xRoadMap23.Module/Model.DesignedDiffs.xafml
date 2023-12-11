@@ -257,7 +257,7 @@
     </DetailView>
     <DetailView Id="Arginello_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Arginelli" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -430,7 +430,7 @@
     </DetailView>
     <DetailView Id="CentroAbitato_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Centri abitati" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -504,7 +504,7 @@
     </DetailView>
     <DetailView Id="Ciclabile_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Ciclabili" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -620,7 +620,7 @@
     </DetailView>
     <DetailView Id="CorpoStradale_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Corpi stradali" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -748,7 +748,7 @@
     </DetailView>
     <DetailView Id="DispositivoRitenuta_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Dispositivi di ritenuta" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -827,7 +827,7 @@
     </DetailView>
     <DetailView Id="Galleria_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Gallerie" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -978,7 +978,7 @@
     </DetailView>
     <DetailView Id="Illuminazione_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Illuminazione" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -1053,7 +1053,7 @@
     </DetailView>
     <DetailView Id="ImpiantoPubblicitario_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Tombini" StrokeColor="192, 64, 0" StrokeWidth="6" TOCVisibility="Auto">
+        <PropertyEditor Id="Shape" LayerName="Impianti pubblicitari" StrokeColor="192, 64, 0" StrokeWidth="6" TOCVisibility="Auto">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -1122,7 +1122,7 @@
     </DetailView>
     <DetailView Id="Marciapiede_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Marcipapiedi" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -1198,7 +1198,7 @@
     </DetailView>
     <DetailView Id="OperaSostegno_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Opere di sostegno" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -1282,7 +1282,7 @@
         <PropertyEditor Id="Atto.FileData" PropertyName="Atto.FileData" IsNewNode="True" />
         <PropertyEditor Id="Atto.Numero" PropertyName="Atto.Numero" IsNewNode="True" />
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
-        <PropertyEditor Id="Shape" StrokeColor="Red" StrokeWidth="6" LayerName="Limitazione transito" TOCVisibility="Auto">
+        <PropertyEditor Id="Shape" StrokeColor="Red" StrokeWidth="6" LayerName="Ordinanze" TOCVisibility="Auto">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -1493,7 +1493,7 @@
     </ListView>
     <DetailView Id="PassaggioLivello_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="passaggi a livello" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -1752,7 +1752,7 @@
     </ListView>
     <DetailView Id="Sottopasso_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Sottopassi" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
@@ -2066,6 +2066,9 @@
         <ColumnInfo Id="Asse" Width="290" />
         <ColumnInfo Id="TipoAmministrazione" Width="290" />
         <ColumnInfo Id="Tronco" Width="308" />
+        <ColumnInfo Id="Percorso.Lenght" PropertyName="Percorso.Lenght" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="KMIniziale" Index="9" />
+        <ColumnInfo Id="KMFinale" Index="10" />
       </Columns>
       <Variants Current="List">
         <Variant Id="List" Caption="Elenco" ViewID="Strada_ListView" IsNewNode="True" />
@@ -2306,7 +2309,7 @@
     </ListView>
     <DetailView Id="Vegetazione_DetailView">
       <Items>
-        <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
+        <PropertyEditor Id="Shape" LayerName="Vegetazione" StrokeColor="Purple" StrokeWidth="6">
           <MapLayers>
             <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
             <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />

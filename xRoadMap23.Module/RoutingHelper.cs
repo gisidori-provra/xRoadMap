@@ -87,6 +87,8 @@ namespace xRoadMap.Module
             if (m == double.NaN)
                 return null;
 
+            var min = st.Percorso.MinM;
+            m += min;
 
             int km = (int)Math.Truncate(m/1000)*1000;
             int offset = (int)Math.Round(m - km,MidpointRounding.AwayFromZero);

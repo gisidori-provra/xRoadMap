@@ -61,6 +61,11 @@ namespace xRoadMap.Module.BusinessObjects
             set => SetPropertyValue(nameof(Shape), ref shape, value);
         }
 
+        //[PersistentAlias("[SDE.st_leght(shape)]")]
+        //public double Lenght => System.Convert.ToDouble(EvaluateAlias());
+        [ModelDefault("DisplayFormat","n0")]
+        [System.ComponentModel.DisplayName("Lunghezza geometrica")]
+        public double Lenght => (Shape?.Length).GetValueOrDefault();
 
 
     }

@@ -104,7 +104,7 @@ namespace xRoadMap.Module.Win.Controllers
                 //var seg = loc.GetSegment(line);
                 //var point = new NetTopologySuite.Geometries.Point(seg.P0);
                 var coord = RoutingHelper.ToWGS84(c);
-                MapUpdate(strada, coord, c,measure:m,imageName:"MapIt");
+                MapUpdate(strada, coord, c,measure:m,imageName:"MapIt",panTo:true);
                 //mapUserControl.ShowPushpin(pk, coord,imageName:"MapIt");
             }
 
@@ -328,7 +328,7 @@ namespace xRoadMap.Module.Win.Controllers
             MapUpdate(ViewCurrentObject.Strada,coord, etrs89);
         }
 
-        private void MapUpdate(Strada st, Coordinate coord,Coordinate etrs89,string location = null,double? measure = null,string imageName=null)
+        private void MapUpdate(Strada st, Coordinate coord,Coordinate etrs89,string location = null,double? measure = null,string imageName=null,bool panTo = false)
         {
             if (mapUserControl == null)
                 return;
@@ -365,8 +365,10 @@ namespace xRoadMap.Module.Win.Controllers
             var width = 640;
             if (controlPressed)
                 mapUserControl.WebBrowser.Url = new Uri($"https://maps.googleapis.com/maps/api/streetview?size={width}x{height}&location={coord.Y},{coord.X}&fov={fov}&heading={heading:F0}&pitch={pitch}&key={apikey}");
+    
+            if (panTo)
+                mapUserControl.PanTo(coord);
 
-            mapUserControl.PanTo(coord);
         }
 
         protected override void OnDeactivated()

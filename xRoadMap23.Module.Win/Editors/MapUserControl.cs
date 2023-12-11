@@ -689,6 +689,8 @@ namespace xRoadMap.Module.Win.Editors
         private void Layer_DataLoaded(object sender, DataLoadedEventArgs e)
         {
             map.ZoomToFitLayerItems(new LayerBase[] { this.Layer });
+            if (map.ZoomLevel == 1 || map.ZoomLevel>15)
+                map.ZoomLevel = 15;
         }
 
         private void checkedListBoxControl1_SelectedValueChanged(object sender, System.EventArgs e)
