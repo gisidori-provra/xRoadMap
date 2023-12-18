@@ -48,9 +48,12 @@ namespace xRoadMap.Module.Win.Controllers
             actionGoToPK.TargetViewType = ViewType.DetailView;
             actionGoToPK.Execute += actionGoToPK_Execute;
 
+#if debug
             loadFromFileAction = new SimpleAction(this, "LoadFromFile", PredefinedCategory.Edit);
-            loadFromFileAction.Caption = "Carica file";
+            loadFromFileAction.Caption = "Carica file (shp|gpx)";
+            loadFromFileAction.TargetViewType = ViewType.DetailView;
             loadFromFileAction.Execute += loadFromFileAction_Execute;
+#endif
         }
 
         private void loadFromFileAction_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -71,7 +74,7 @@ namespace xRoadMap.Module.Win.Controllers
                                 string path = System.IO.Path.GetDirectoryName(ofd.FileName);
                                 using (System.IO.FileStream fsDb = new System.IO.FileStream(path + "\\" + fileName + ".dbf",System.IO.FileMode.Open,System.IO.FileAccess.Read))
                                 {
-                                    shpFileAdapter.LoadFromStream(fs,fsDb);
+                                    shpFileAdapter.LoadFromStream(fs, fsDb);
                                 }
                                 vectorItemsLayer.Data = shpFileAdapter;
                                 break;

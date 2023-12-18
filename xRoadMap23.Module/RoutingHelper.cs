@@ -84,7 +84,11 @@ namespace xRoadMap.Module
 
         public static string GetChilometricaFromMeasure(Strada st,double m)
         {
+
             if (m == double.NaN)
+                return null;
+
+            if (st == null)
                 return null;
 
             var min = st.Percorso.MinM;
@@ -237,6 +241,7 @@ namespace xRoadMap.Module
                 item.MFine = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[1]);
                 item.Km = GetChilometricaFromMeasure(ev.Strada, item.M);
                 item.KmFine = GetChilometricaFromMeasure(ev.Strada, item.MFine);
+                UpdateLineCoordinate(item);
             }
 
 
