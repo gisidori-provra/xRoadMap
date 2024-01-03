@@ -106,7 +106,8 @@ namespace xRoadMap.Module.BusinessObjects
 
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
-        public bool Vigente => (!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
+        [PersistentAlias("(DataInizio IS NULL OR DataInizio<Today()) AND (DataFine IS NULL OR DataFine>Today())")]
+        public bool Vigente => (bool)EvaluateAlias() ; //(!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
 
         bool fLimiteMassa;
         [ImmediatePostData]

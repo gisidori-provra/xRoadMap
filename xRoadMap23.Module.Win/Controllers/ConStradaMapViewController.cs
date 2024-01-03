@@ -35,7 +35,8 @@ namespace xRoadMap.Module.Win.Controllers
 
         MapUserControl mapUserControl;
         ParametrizedAction actionGoToPK;
-        SimpleAction loadFromFileAction;
+        //SimpleAction loadFromFileAction;
+
         // Use CodeRush to create Controllers and Actions with a few keystrokes.
         // https://docs.devexpress.com/CodeRushForRoslyn/403133/
         public ConStradaMapViewController()
@@ -48,12 +49,10 @@ namespace xRoadMap.Module.Win.Controllers
             actionGoToPK.TargetViewType = ViewType.DetailView;
             actionGoToPK.Execute += actionGoToPK_Execute;
 
-#if debug
-            loadFromFileAction = new SimpleAction(this, "LoadFromFile", PredefinedCategory.Edit);
-            loadFromFileAction.Caption = "Carica file (shp|gpx)";
-            loadFromFileAction.TargetViewType = ViewType.DetailView;
-            loadFromFileAction.Execute += loadFromFileAction_Execute;
-#endif
+            //loadFromFileAction = new SimpleAction(this, "LoadFromFile", PredefinedCategory.Edit);
+            //loadFromFileAction.Caption = "Carica file (shp|gpx)";
+            //loadFromFileAction.TargetViewType = ViewType.DetailView;
+            //loadFromFileAction.Execute += loadFromFileAction_Execute;
         }
 
         private void loadFromFileAction_Execute(object sender, SimpleActionExecuteEventArgs e)

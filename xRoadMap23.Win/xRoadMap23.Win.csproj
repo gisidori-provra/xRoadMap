@@ -147,9 +147,6 @@
     <Content Include="Model.xafml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="xRoadMap.cmd">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="xRoadMap23.Win_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

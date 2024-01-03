@@ -13,22 +13,55 @@
     <Class Name="xRoadMap.Module.BusinessObjects.TipoAtto" ImageName="BO_Contract" />
     <Class Name="xRoadMap.Module.BusinessObjects.Tombino" DefaultListViewAllowEdit="True" />
   </BOModel>
-  <NavigationItems>
+  <NavigationItems NavigationStyle="Accordion">
     <Items>
-      <Item Id="Catasto Strade" Caption="Catasto strade" Index="0" IsNewNode="True">
+      <Item Id="Catasto Strade" Caption="Strade" Index="0" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Strade" ViewId="Strada_ListView" Caption="Strade" Index="0" IsNewNode="True" />
-          <Item Id="Accesso_ListView" Index="1" IsNewNode="True" />
-          <Item Id="AreaTraffico_ListView" Index="2" IsNewNode="True" />
-          <Item Id="Banchina_ListView" Index="3" IsNewNode="True" />
-          <Item Id="Carreggiata_ListView" Index="4" IsNewNode="True" />
-          <Item Id="CentroAbitato_ListView" Index="5" IsNewNode="True" />
-          <Item Id="CorpoStradale_ListView" Index="6" IsNewNode="True" />
-          <Item Id="Galleria_ListView" Index="7" IsNewNode="True" />
-          <Item Id="Marciapiede_ListView" Index="8" IsNewNode="True" />
-          <Item Id="OperaSostegno_ListView" Index="9" IsNewNode="True" />
-          <Item Id="PassaggioLivello_ListView" Index="10" IsNewNode="True" />
-          <Item Id="Ponte_ListView" Index="11" IsNewNode="True" />
+          <Item Id="Accesso_ListView" Index="1" Removed="True" />
+          <Item Id="AreaTraffico_ListView" Index="2" Removed="True" />
+          <Item Id="Banchina_ListView" Index="3" Removed="True" />
+          <Item Id="Carreggiata_ListView" Index="4" Removed="True" />
+          <Item Id="CentroAbitato_ListView" Index="5" Removed="True" />
+          <Item Id="CorpoStradale_ListView" Index="6" Removed="True" />
+          <Item Id="Galleria_ListView" Index="7" Removed="True" />
+          <Item Id="Marciapiede_ListView" Index="8" Removed="True" />
+          <Item Id="OperaSostegno_ListView" Index="9" Removed="True" />
+          <Item Id="PassaggioLivello_ListView" Index="10" Removed="True" />
+          <Item Id="Ponte_ListView" Index="11" Removed="True" />
+          <Item Id="@cfff70e7-cbe8-4520-a057-7e7a57dc2d4f" Caption="Catasto strade" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Accesso_ListView" Index="1" ViewId="Accesso_ListView" ObjectKey="" Caption="Accessi" IsNewNode="True" />
+              <Item Id="AreaTraffico_ListView" Index="2" ViewId="AreaTraffico_ListView" ObjectKey="" Caption="Aree Traffico" IsNewNode="True" />
+              <Item Id="Banchina_ListView" Index="3" ViewId="Banchina_ListView" ObjectKey="" Caption="Banchine" IsNewNode="True" />
+              <Item Id="Carreggiata_ListView" Index="4" ViewId="Carreggiata_ListView" ObjectKey="" Caption="Carreggiate" IsNewNode="True" />
+              <Item Id="CentroAbitato_ListView" Index="5" ViewId="CentroAbitato_ListView" ObjectKey="" Caption="Centri Abitati" IsNewNode="True" />
+              <Item Id="CorpoStradale_ListView" Index="6" ViewId="CorpoStradale_ListView" ObjectKey="" Caption="Corpi Stradali" IsNewNode="True" />
+              <Item Id="Galleria_ListView" Index="7" ViewId="Galleria_ListView" ObjectKey="" Caption="Gallerie" IsNewNode="True" />
+              <Item Id="Marciapiede_ListView" Index="8" ViewId="Marciapiede_ListView" ObjectKey="" Caption="Marciapiedi" IsNewNode="True" />
+              <Item Id="OperaSostegno_ListView" Index="9" ViewId="OperaSostegno_ListView" ObjectKey="" Caption="Opere di Sostegno" IsNewNode="True" />
+              <Item Id="PassaggioLivello_ListView" Index="10" ViewId="PassaggioLivello_ListView" ObjectKey="" Caption="Passaggi a Livello" IsNewNode="True" />
+              <Item Id="Ponte_ListView" Index="11" ViewId="Ponte_ListView" ObjectKey="" Caption="Ponti" IsNewNode="True" />
+              <Item Id="Arginello_ListView" ViewId="Arginello_ListView" ObjectKey="" Caption="Arginelli" IsNewNode="True" />
+              <Item Id="Ciclabile_ListView" ViewId="Ciclabile_ListView" ObjectKey="" Caption="Ciclabili" IsNewNode="True" />
+              <Item Id="Cunetta_ListView" ViewId="Cunetta_ListView" ObjectKey="" Caption="Cunette" IsNewNode="True" />
+              <Item Id="DispositivoRitenuta_ListView" ViewId="DispositivoRitenuta_ListView" ObjectKey="" Caption="Dispositivi di Ritenuta" IsNewNode="True" />
+              <Item Id="Illuminazione_ListView" ViewId="Illuminazione_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="ImpiantoPubblicitario_ListView" ViewId="ImpiantoPubblicitario_ListView" ObjectKey="" Caption="Impianti Pubblicitari" IsNewNode="True" />
+              <Item Id="Sottopasso_ListView" ViewId="Sottopasso_ListView" ObjectKey="" Caption="Sottopassi o sovrappassi" IsNewNode="True" />
+              <Item Id="Tombino_ListView" ViewId="Tombino_ListView" ObjectKey="" Caption="Tombini" IsNewNode="True" />
+              <Item Id="Vegetazione_ListView" ViewId="Vegetazione_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Arginello_ListView" Removed="True" />
+          <Item Id="Ciclabile_ListView" Removed="True" />
+          <Item Id="Cunetta_ListView" Removed="True" />
+          <Item Id="DispositivoRitenuta_ListView" Removed="True" />
+          <Item Id="Illuminazione_ListView" Removed="True" />
+          <Item Id="ImpiantoPubblicitario_ListView" Removed="True" />
+          <Item Id="Sottopasso_ListView" Removed="True" />
+          <Item Id="Tombino_ListView" Removed="True" />
+          <Item Id="Vegetazione_ListView" Removed="True" />
         </Items>
       </Item>
       <Item Id="Ordinanze" Caption="Ordinanze" Index="1" IsNewNode="True">
@@ -97,7 +130,7 @@
       <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni" Removed="True" />
     </Items>
   </NavigationItems>
-  <Options BingKey="AsiGHquEaIIBocV-MHDesAVViQSqcwGao_JxeaYIwlnmOMd53bPAYwrHRPn5D69Y" />
+  <Options BingKey="AsiGHquEaIIBocV-MHDesAVViQSqcwGao_JxeaYIwlnmOMd53bPAYwrHRPn5D69Y" DataAccessMode="ServerView" />
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="23.1.5.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="22.2.3.0" IsNewNode="True" />
@@ -175,7 +208,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Accesso_ListView">
+    <ListView Id="Accesso_ListView" Filter="">
       <Columns>
         <ColumnInfo Id="Strada" Index="1" />
         <ColumnInfo Id="Destinazione" Index="2" />
@@ -1403,7 +1436,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Ordinanza_ListView">
+    <ListView Id="Ordinanza_ListView" DataAccessMode="Client">
       <Columns>
         <ColumnInfo Id="AlleOre" Index="-1" />
         <ColumnInfo Id="DalleOre" Index="-1" />
@@ -1750,6 +1783,58 @@
         <ColumnInfo Id="Percorribilità" Index="7" />
       </Columns>
     </ListView>
+    <ListView Id="SegnalazioneStrada_Allegati_ListView">
+      <Columns>
+        <ColumnInfo Id="FileName" Width="252" />
+        <ColumnInfo Id="File" Width="102" />
+      </Columns>
+    </ListView>
+    <DetailView Id="SegnalazioneStrada_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="30.920060331825038">
+            <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Segnalazione" IsNewNode="True">
+                <LayoutItem Id="TipoSegnalazione" ViewItem="TipoSegnalazione" Index="0" RelativeSize="20" IsNewNode="True" />
+                <LayoutItem Id="Descrizione" ViewItem="Descrizione" Index="1" RelativeSize="80" CaptionLocation="Top" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="EventoPuntuale" ShowCaption="True" Caption="Localizzazione" Direction="Horizontal" Index="1" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="EventoPuntuale_col1" ShowCaption="False" Index="0" RelativeSize="49.946638207043755" IsNewNode="True">
+                  <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="20" IsNewNode="True" />
+                  <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="3" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="X" ViewItem="X" Index="4" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="Y" ViewItem="Y" Index="5" RelativeSize="20" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="EventoPuntuale_col2" ShowCaption="False" Index="1" RelativeSize="50.053361792956245" IsNewNode="True">
+                  <LayoutItem Id="Z" ViewItem="Z" Index="0" RelativeSize="20" IsNewNode="True" />
+                  <LayoutItem Id="M" ViewItem="M" Index="1" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="Event_id" ViewItem="Event_id" Index="2" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="Offset" ViewItem="Offset" Index="3" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="4" RelativeSize="15" IsNewNode="True" />
+                  <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="5" RelativeSize="20" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </TabbedGroup>
+            <LayoutGroup Id="XPSTGeometry" RelativeSize="15.319148936170214" Index="1" Caption="XPSTGeometry" Removed="True">
+              <LayoutItem Id="Lenght" RelativeSize="100" Index="0" Removed="True" />
+              <LayoutItem Id="Shape" RelativeSize="50" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="EventoPuntuale" Removed="True" />
+            <LayoutGroup Id="SegnalazioneStrada" RelativeSize="13.148788927335641" Caption="Tipo Segnalazione" Removed="True">
+              <LayoutItem Id="TipoSegnalazione" RelativeSize="100" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Allegati_Group" Direction="Vertical" RelativeSize="69.079939668174958" Index="1">
+            <LayoutItem Id="Allegati" RelativeSize="100" />
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="32.277526395173453" Caption="Descrizione" Removed="True">
+            <LayoutItem Id="Descrizione" RelativeSize="100" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Sottopasso_DetailView">
       <Items>
         <PropertyEditor Id="Shape" LayerName="Sottopassi" StrokeColor="Purple" StrokeWidth="6">
@@ -1939,79 +2024,94 @@
             <LayoutGroup Id="SimpleEditors" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
               <TabbedGroup Id="Item2" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="Strada" ShowCaption="True" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
-                  <LayoutGroup Id="Autobb6aa70f-547d-4fec-addd-89e2cccd3315" ShowCaption="False" Caption="Autobb6aa70f-547d-4fec-addd-89e2cccd3315(6)" Direction="Horizontal" Index="0" RelativeSize="19.963702359346641" IsNewNode="True">
-                    <LayoutGroup Id="Strada_col1" ShowCaption="False" Index="0" RelativeSize="49.07621247113164" IsNewNode="True">
-                      <LayoutItem Id="Sigla" ViewItem="Sigla" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
-                      <LayoutItem Id="Denominazione" ViewItem="Denominazione" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
-                      <LayoutItem Id="ClassificaFunzionale" ViewItem="ClassificaFunzionale" Index="2" RelativeSize="49.090909090909093" IsNewNode="True" />
+                  <LayoutGroup Id="Autobb6aa70f-547d-4fec-addd-89e2cccd3315" ShowCaption="False" Caption="Autobb6aa70f-547d-4fec-addd-89e2cccd3315(6)" Direction="Horizontal" Index="0" RelativeSize="21.753246753246753" IsNewNode="True">
+                    <LayoutGroup Id="Strada_col1" ShowCaption="False" Index="0" RelativeSize="49.046015712682376" IsNewNode="True">
+                      <LayoutItem Id="Sigla" ViewItem="Sigla" Index="0" RelativeSize="23.880597014925375" IsNewNode="True" />
+                      <LayoutItem Id="Denominazione" ViewItem="Denominazione" Index="1" RelativeSize="17.910447761194028" IsNewNode="True" />
+                      <LayoutItem Id="ClassificaFunzionale" ViewItem="ClassificaFunzionale" Index="2" RelativeSize="17.910447761194028" IsNewNode="True" />
+                      <LayoutItem Id="Length" ViewItem="Length" Index="3" RelativeSize="40.298507462686565" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Strada_col2" ShowCaption="False" Index="1" RelativeSize="50.92378752886836" IsNewNode="True">
-                      <LayoutItem Id="Numero" ViewItem="Numero" Index="0" RelativeSize="29.09090909090909" IsNewNode="True" />
-                      <LayoutItem Id="Asse" ViewItem="Asse" Index="1" RelativeSize="21.818181818181817" IsNewNode="True" />
-                      <LayoutItem Id="TipoAmministrazione" ViewItem="TipoAmministrazione" Index="2" RelativeSize="21.818181818181817" IsNewNode="True" />
-                      <LayoutItem Id="Tronco" ViewItem="Tronco" Index="3" RelativeSize="27.272727272727273" IsNewNode="True" />
+                    <LayoutGroup Id="Strada_col2" ShowCaption="False" Index="1" RelativeSize="50.953984287317624" IsNewNode="True">
+                      <LayoutItem Id="Numero" ViewItem="Numero" Index="0" RelativeSize="23.880597014925375" IsNewNode="True" />
+                      <LayoutItem Id="Asse" ViewItem="Asse" Index="1" RelativeSize="17.910447761194028" IsNewNode="True" />
+                      <LayoutItem Id="TipoAmministrazione" ViewItem="TipoAmministrazione" Index="2" RelativeSize="17.910447761194028" IsNewNode="True" />
+                      <LayoutItem Id="Tronco" ViewItem="Tronco" Index="3" RelativeSize="17.910447761194028" IsNewNode="True" />
+                      <LayoutItem Id="Stato" ViewItem="Stato" Index="4" RelativeSize="22.388059701492537" IsNewNode="True" />
                     </LayoutGroup>
                   </LayoutGroup>
-                  <TabbedGroup Id="Tabs" Index="1" RelativeSize="80.036297640653359" MultiLine="True" IsNewNode="True">
+                  <TabbedGroup Id="Tabs" Index="1" RelativeSize="78.246753246753244" MultiLine="True" IsNewNode="True">
                     <LayoutGroup Id="Item1" ShowCaption="True" Caption="Ordinanze" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                       <LayoutItem Id="Ordinanze" ViewItem="Ordinanze" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
-                    <LayoutGroup Id="Tombini" ShowCaption="True" Index="1" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Tombini" ViewItem="Tombini" Index="0" RelativeSize="100" IsNewNode="True" />
+                    <LayoutGroup Id="Item21" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Catasto strade" RelativeSize="100" IsNewNode="True">
+                      <TabbedGroup Id="Item23" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                        <LayoutGroup Id="Item3" ShowCaption="True" Caption="Accessi" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Accessi" ViewItem="Accessi" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item4" ShowCaption="True" Caption="Aree Traffico" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="AreeTraffico" ViewItem="AreeTraffico" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item16" ShowCaption="True" Caption="Arginelli" CaptionLocation="Top" Index="2" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Arginelli" ViewItem="Arginelli" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item6" ShowCaption="True" Caption="Banchine" CaptionLocation="Top" Index="3" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Banchine" ViewItem="Banchine" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item7" ShowCaption="True" Caption="Carreggiate" CaptionLocation="Top" Index="4" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Carreggiate" ViewItem="Carreggiate" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item10" ShowCaption="True" Caption="Centri abitati" CaptionLocation="Top" Index="5" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="CentriAbitati" ViewItem="CentriAbitati" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item17" ShowCaption="True" Caption="Ciclabili" CaptionLocation="Top" Index="6" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Ciclabili" ViewItem="Ciclabili" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item26" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="7" RelativeSize="100" Caption="Cippi" IsNewNode="True">
+                          <LayoutItem Id="Cippi" ViewItem="Cippi" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item8" ShowCaption="True" Caption="Corpi stradali" CaptionLocation="Top" Index="8" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="CorpiStradali" ViewItem="CorpiStradali" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item27" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="9" RelativeSize="100" Caption="Cunette" IsNewNode="True">
+                          <LayoutItem Id="Cunette" ViewItem="Cunette" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item18" ShowCaption="True" Caption="Dispositivi di ritenuta" CaptionLocation="Top" Index="10" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="DispositiviRitenuta" ViewItem="DispositiviRitenuta" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item9" ShowCaption="True" Caption="Gallerie" CaptionLocation="Top" Index="11" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Gallerie" ViewItem="Gallerie" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item24" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="12" RelativeSize="100" Caption="Illuminazione" IsNewNode="True">
+                          <LayoutItem Id="Illuminazione" ViewItem="Illuminazione" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item22" ShowCaption="True" CaptionLocation="Top" Index="13" RelativeSize="100" Caption="Impianti pubblicitari" IsNewNode="True">
+                          <LayoutItem Id="ImpiantiPubblicitari" ViewItem="ImpiantiPubblicitari" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item11" ShowCaption="True" Caption="Marciapiedi" CaptionLocation="Top" Index="14" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Marciapiedi" ViewItem="Marciapiedi" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item12" ShowCaption="True" Caption="Opere di sostegno" CaptionLocation="Top" Index="15" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="OpereSostegno" ViewItem="OpereSostegno" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item13" ShowCaption="True" Caption="Passaggi a Livello" CaptionLocation="Top" Index="16" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="PassaggiLivello" ViewItem="PassaggiLivello" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Ponti" ShowCaption="True" Index="17" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Ponti" ViewItem="Ponti" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item14" ShowCaption="True" Caption="Sovra e sottopassi" CaptionLocation="Top" Index="18" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Sottopassi" ViewItem="Sottopassi" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Tombini" ShowCaption="True" Index="19" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Tombini" ViewItem="Tombini" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Item15" ShowCaption="True" Caption="Vegetazione" CaptionLocation="Top" Index="20" RelativeSize="100" IsNewNode="True">
+                          <LayoutItem Id="Vegetazione" ViewItem="Vegetazione" Index="0" RelativeSize="100" IsNewNode="True" />
+                        </LayoutGroup>
+                      </TabbedGroup>
                     </LayoutGroup>
-                    <LayoutGroup Id="Ponti" ShowCaption="True" Index="2" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Ponti" ViewItem="Ponti" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item3" ShowCaption="True" Caption="Accessi" CaptionLocation="Top" Index="3" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Accessi" ViewItem="Accessi" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="4" RelativeSize="100" Caption="Aree Traffico" IsNewNode="True">
-                      <LayoutItem Id="AreeTraffico" ViewItem="AreeTraffico" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="5" Caption="Banchine" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Banchine" ViewItem="Banchine" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="6" Caption="Carreggiate" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Carreggiate" ViewItem="Carreggiate" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item8" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="7" RelativeSize="100" Caption="Corpi stradali" IsNewNode="True">
-                      <LayoutItem Id="CorpiStradali" ViewItem="CorpiStradali" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item9" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="8" Caption="Gallerie" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Gallerie" ViewItem="Gallerie" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item10" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="9" Caption="Centri abitati" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="CentriAbitati" ViewItem="CentriAbitati" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item11" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="10" Caption="Marciapiedi" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Marciapiedi" ViewItem="Marciapiedi" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item12" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="11" RelativeSize="100" Caption="Opere di sostegno" IsNewNode="True">
-                      <LayoutItem Id="OpereSostegno" ViewItem="OpereSostegno" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item13" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="12" Caption="Passaggi a Livello" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="PassaggiLivello" ViewItem="PassaggiLivello" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item14" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="13" RelativeSize="100" Caption="Sovra e sottopassi" IsNewNode="True">
-                      <LayoutItem Id="Sottopassi" ViewItem="Sottopassi" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item15" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="14" RelativeSize="100" Caption="Vegetazione" IsNewNode="True">
-                      <LayoutItem Id="Vegetazione" ViewItem="Vegetazione" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item16" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="15" Caption="Arginelli" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Arginelli" ViewItem="Arginelli" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item17" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="16" Caption="Ciclabili" RelativeSize="100" IsNewNode="True">
-                      <LayoutItem Id="Ciclabili" ViewItem="Ciclabili" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item18" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="17" RelativeSize="100" Caption="Dispositivi di ritenuta" IsNewNode="True">
-                      <LayoutItem Id="DispositiviRitenuta" ViewItem="DispositiviRitenuta" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item19" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="18" RelativeSize="100" Caption="Illuminazione" IsNewNode="True">
-                      <LayoutItem Id="Illuminazione" ViewItem="Illuminazione" Index="0" RelativeSize="100" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Item20" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="19" RelativeSize="100" Caption="Impianti pubblicitari" IsNewNode="True">
-                      <LayoutItem Id="ImpiantiPubblicitari" ViewItem="ImpiantiPubblicitari" Index="0" RelativeSize="100" IsNewNode="True" />
+                    <LayoutGroup Id="Item25" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" Caption="Segnalazioni" IsNewNode="True">
+                      <LayoutItem Id="Segnalazioni" ViewItem="Segnalazioni" Index="0" RelativeSize="100" IsNewNode="True" />
                     </LayoutGroup>
                   </TabbedGroup>
                 </LayoutGroup>
@@ -2180,6 +2280,15 @@
         <MapLayer Id="BingMap" LayerType="BingMapLayer" Index="1" LayerName="Mappa stradale" IsNewNode="True" />
         <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
       </MapLayers>
+    </ListView>
+    <ListView Id="Strada_Segnalazioni_ListView" AllowLink="False" AllowNew="False" AllowDelete="True" AllowUnlink="False">
+      <Columns>
+        <ColumnInfo Id="TipoSegnalazione" Index="0" Width="91" />
+        <ColumnInfo Id="Descrizione" Width="172" Index="1" />
+        <ColumnInfo Id="Km" Index="2" Width="117" />
+        <ColumnInfo Id="DataInizio" Index="3" />
+        <ColumnInfo Id="DataFine" Index="4" />
+      </Columns>
     </ListView>
     <ListView Id="Strada_Sottopassi_ListView">
       <Columns>

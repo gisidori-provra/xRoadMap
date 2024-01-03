@@ -10,15 +10,29 @@ using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 namespace xRoadMap.Module.BusinessObjects
 {
 
-    [Persistent(@"EV_SegnalazionePuntuale")]
+    [Persistent(@"SegnalazioneStrada")]
+    [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
-    public partial class SegnalazionePuntuale : EventoPuntuale
+    public partial class SegnalazioneStrada : EventoPuntuale,IEventoOnRoad
     {
-        public SegnalazionePuntuale(Session session) : base(session) { }
+        public SegnalazioneStrada(Session session) : base(session) { }
         public override void AfterConstruction()
         {
             base.AfterConstruction();
         }
+
+        [Association]
+        public Strada Strada
+        {
+            get => strada;
+            set => SetPropertyValue(nameof(Strada), ref strada, value);
+        }
+
+        public override void SetStrada(Strada value)
+        {
+            Strada = value;
+        }
+
 
         string fDescrizione;
         [Size(SizeAttribute.Unlimited)]
@@ -34,6 +48,10 @@ namespace xRoadMap.Module.BusinessObjects
             get => tipoSegnalazione;
             set => SetPropertyValue(nameof(TipoSegnalazione), ref tipoSegnalazione, value);
         }
+
+        [Association,Aggregated]
+        public XPCollection<AllegatoSegnalazioneStrada> Allegati => GetCollection<AllegatoSegnalazioneStrada>();
+        
 
     }
 

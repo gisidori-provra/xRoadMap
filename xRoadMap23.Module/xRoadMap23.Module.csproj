@@ -161,12 +161,15 @@
     <Compile Include="BusinessObjects\CodedDomain.cs" />
     <Compile Include="BusinessObjects\FoglioCatastale.cs" />
     <Compile Include="BusinessObjects\IFrameContent.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\Allegato.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\AllegatoSegnalazioneStrada.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\DispositivoRitenuta.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Cunetta.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ciclabile.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Arginello.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Illuminazione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\ImpiantoPubblicitario.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\SegnalazioneStrada.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Vegetazione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Sottopasso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\OperaSostegno.cs" />

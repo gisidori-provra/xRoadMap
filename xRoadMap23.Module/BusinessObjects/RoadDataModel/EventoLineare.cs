@@ -272,6 +272,7 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         Strada IConStrada.Strada => strada;
+
     }
 
 }

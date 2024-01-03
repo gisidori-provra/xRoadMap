@@ -131,7 +131,7 @@ namespace xRoadMap.Module.BusinessObjects
 
 
         [Association, NoForeignKey]
-        public XPCollection<Ordinanza> Ordinanze => GetCollection<Ordinanza>();
+        public XPCollection<Ordinanza> Ordinanze => GetCollection<Ordinanza>(nameof(Ordinanze));
 
         [Association(@"IspezioneReferencesPonte"), Aggregated]
         public XPCollection<Ispezione> Ispezioni { get { return GetCollection<Ispezione>(nameof(Ispezioni)); } }

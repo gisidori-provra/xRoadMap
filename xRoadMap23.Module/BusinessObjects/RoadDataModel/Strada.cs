@@ -156,7 +156,7 @@ namespace xRoadMap.Module.BusinessObjects
         [Association, Aggregated]
         public XPCollection<AreaTraffico> AreeTraffico => GetCollection<AreaTraffico>(nameof(AreeTraffico));
         [Association, Aggregated]
-        public XPCollection<Banchina> Banchine => GetCollection<Banchina>();
+        public XPCollection<Banchina> Banchine => GetCollection<Banchina>(nameof(Banchine));
 
         [System.ComponentModel.DisplayName("Carreggiata")]
         [Association, Aggregated]
@@ -203,6 +203,9 @@ namespace xRoadMap.Module.BusinessObjects
 
         [Association, Aggregated]
         public XPCollection<ImpiantoPubblicitario> ImpiantiPubblicitari => GetCollection<ImpiantoPubblicitario>();
+
+        [Association]
+        public XPCollection<SegnalazioneStrada> Segnalazioni => GetCollection<SegnalazioneStrada>();
 
         Strada IConStrada.Strada { get => this;}
 
