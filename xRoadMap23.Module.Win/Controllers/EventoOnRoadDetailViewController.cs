@@ -28,20 +28,22 @@ using xRoadMap.Module.Win.Editors;
 namespace xRoadMap.Module.Win.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class EventoOnRoadDetailViewController : ObjectViewController<DetailView,IEventoOnRoad>
+    public partial class EventoOnRoadDetailViewController : ObjectViewController<ObjectView,IEventoOnRoad>
     {
         MapUserControl mapUserControl;
+
         public EventoOnRoadDetailViewController()
         {
             InitializeComponent();
             // Target required Views (via the TargetXXX properties) and create their Actions.
-            this.TargetObjectType = typeof(IEventoOnRoad);
+
         }
         protected override void OnActivated()
         {
             base.OnActivated();
             // Perform various tasks depending on the target View.
-            View.CustomizeViewItemControl<Editors.MapEditor>(this, CustomizeViewItemControl, nameof(IEventoOnRoad.Shape));
+            if (View is DetailView dv)
+                dv.CustomizeViewItemControl<Editors.MapEditor>(this, CustomizeViewItemControl, nameof(IEventoOnRoad.Shape));
 
 
         }
@@ -103,6 +105,20 @@ namespace xRoadMap.Module.Win.Controllers
             {
                 RoutingHelper.LocalizzaLineareSuKilometrica(e.SelectedObjects.Cast<EventoLineare>());
             }
+            
+        }
+
+        private void simpleActionLocateRoad_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var strade = View.ObjectSpace.GetObjects<Strada>();
+            foreach (var item in e.SelectedObjects)
+            {
+                IEventoOnRoad ev = View.ObjectSpace.GetObject(item) as IEventoOnRoad;
+                ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade);
+            }
+            View.ObjectSpace.CommitChanges();
+            if (View is DevExpress.ExpressApp.ListView lv)
+                lv.CollectionSource.Reload();
         }
 
         private void simpleActionLocate_Execute(object sender, SimpleActionExecuteEventArgs e)

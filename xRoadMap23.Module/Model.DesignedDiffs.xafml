@@ -19,17 +19,7 @@
         <Items IsNewNode="True">
           <Item Id="Strade" ViewId="Strada_ListView" Caption="Strade" Index="0" IsNewNode="True" />
           <Item Id="Accesso_ListView" Index="1" Removed="True" />
-          <Item Id="AreaTraffico_ListView" Index="2" Removed="True" />
-          <Item Id="Banchina_ListView" Index="3" Removed="True" />
-          <Item Id="Carreggiata_ListView" Index="4" Removed="True" />
-          <Item Id="CentroAbitato_ListView" Index="5" Removed="True" />
-          <Item Id="CorpoStradale_ListView" Index="6" Removed="True" />
-          <Item Id="Galleria_ListView" Index="7" Removed="True" />
-          <Item Id="Marciapiede_ListView" Index="8" Removed="True" />
-          <Item Id="OperaSostegno_ListView" Index="9" Removed="True" />
-          <Item Id="PassaggioLivello_ListView" Index="10" Removed="True" />
-          <Item Id="Ponte_ListView" Index="11" Removed="True" />
-          <Item Id="@cfff70e7-cbe8-4520-a057-7e7a57dc2d4f" Caption="Catasto strade" IsNewNode="True">
+          <Item Id="CatastoStrade" Caption="Catasto strade" Index="1" IsNewNode="True">
             <Items IsNewNode="True">
               <Item Id="Accesso_ListView" Index="1" ViewId="Accesso_ListView" ObjectKey="" Caption="Accessi" IsNewNode="True" />
               <Item Id="AreaTraffico_ListView" Index="2" ViewId="AreaTraffico_ListView" ObjectKey="" Caption="Aree Traffico" IsNewNode="True" />
@@ -53,6 +43,17 @@
               <Item Id="Vegetazione_ListView" ViewId="Vegetazione_ListView" ObjectKey="" IsNewNode="True" />
             </Items>
           </Item>
+          <Item Id="AreaTraffico_ListView" Index="2" Removed="True" />
+          <Item Id="Segnalazioni" ViewId="SegnalazioneStrada_ListView" Caption="Segnalazioni" Index="2" IsNewNode="True" />
+          <Item Id="Banchina_ListView" Index="3" Removed="True" />
+          <Item Id="Carreggiata_ListView" Index="4" Removed="True" />
+          <Item Id="CentroAbitato_ListView" Index="5" Removed="True" />
+          <Item Id="CorpoStradale_ListView" Index="6" Removed="True" />
+          <Item Id="Galleria_ListView" Index="7" Removed="True" />
+          <Item Id="Marciapiede_ListView" Index="8" Removed="True" />
+          <Item Id="OperaSostegno_ListView" Index="9" Removed="True" />
+          <Item Id="PassaggioLivello_ListView" Index="10" Removed="True" />
+          <Item Id="Ponte_ListView" Index="11" Removed="True" />
           <Item Id="Arginello_ListView" Removed="True" />
           <Item Id="Ciclabile_ListView" Removed="True" />
           <Item Id="Cunetta_ListView" Removed="True" />
@@ -1792,28 +1793,26 @@
     <DetailView Id="SegnalazioneStrada_DetailView">
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="30.920060331825038">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="32.495511669658889">
             <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Segnalazione" IsNewNode="True">
-                <LayoutItem Id="TipoSegnalazione" ViewItem="TipoSegnalazione" Index="0" RelativeSize="20" IsNewNode="True" />
-                <LayoutItem Id="Descrizione" ViewItem="Descrizione" Index="1" RelativeSize="80" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutItem Id="TipoSegnalazione" ViewItem="TipoSegnalazione" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                <LayoutItem Id="Descrizione" ViewItem="Descrizione" Index="1" RelativeSize="76.470588235294116" CaptionLocation="Top" IsNewNode="True" />
               </LayoutGroup>
               <LayoutGroup Id="EventoPuntuale" ShowCaption="True" Caption="Localizzazione" Direction="Horizontal" Index="1" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="EventoPuntuale_col1" ShowCaption="False" Index="0" RelativeSize="49.946638207043755" IsNewNode="True">
-                  <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="20" IsNewNode="True" />
-                  <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="3" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="X" ViewItem="X" Index="4" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="Y" ViewItem="Y" Index="5" RelativeSize="20" IsNewNode="True" />
+                <LayoutGroup Id="EventoPuntuale_col1" ShowCaption="False" Index="0" RelativeSize="49.940546967895365" IsNewNode="True">
+                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                  <LayoutItem Id="X" ViewItem="X" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="Y" ViewItem="Y" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="Z" ViewItem="Z" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="M" ViewItem="M" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="EventoPuntuale_col2" ShowCaption="False" Index="1" RelativeSize="50.053361792956245" IsNewNode="True">
-                  <LayoutItem Id="Z" ViewItem="Z" Index="0" RelativeSize="20" IsNewNode="True" />
-                  <LayoutItem Id="M" ViewItem="M" Index="1" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="Event_id" ViewItem="Event_id" Index="2" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="Offset" ViewItem="Offset" Index="3" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="4" RelativeSize="15" IsNewNode="True" />
-                  <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="5" RelativeSize="20" IsNewNode="True" />
+                <LayoutGroup Id="EventoPuntuale_col2" ShowCaption="False" Index="1" RelativeSize="50.059453032104635" IsNewNode="True">
+                  <LayoutItem Id="Offset" ViewItem="Offset" Index="0" RelativeSize="23.529411764705884" IsNewNode="True" />
+                  <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="1" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="2" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="3" RelativeSize="17.647058823529413" IsNewNode="True" />
+                  <LayoutItem Id="Km" ViewItem="Km" Index="4" RelativeSize="23.529411764705884" IsNewNode="True" />
                 </LayoutGroup>
               </LayoutGroup>
             </TabbedGroup>
@@ -1826,7 +1825,7 @@
               <LayoutItem Id="TipoSegnalazione" RelativeSize="100" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="Allegati_Group" Direction="Vertical" RelativeSize="69.079939668174958" Index="1">
+          <LayoutGroup Id="Allegati_Group" Direction="Vertical" RelativeSize="67.504488330341118" Index="1">
             <LayoutItem Id="Allegati" RelativeSize="100" />
           </LayoutGroup>
           <LayoutGroup Id="SizeableEditors" RelativeSize="32.277526395173453" Caption="Descrizione" Removed="True">

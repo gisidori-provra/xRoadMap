@@ -31,28 +31,37 @@ namespace xRoadMap.Module
     public static class RoutingHelper
     {
 
-        public static Strada FindNearest(GeoPoint point,IObjectSpace os)
+        public static Strada FindNearest(GeoPoint point,IList<Strada> strade)
+        {
+            var c = ToETRS89(new NetTopologySuite.Geometries.Coordinate(point.Longitude, point.Latitude));
+            return FindNearest(c, strade);
+        }
+
+        public static Strada FindNearest(Geometry p, IList<Strada> strade)
         {
             Strada st = null;
             double min = double.PositiveInfinity;
-            var strade = os.GetObjects<Strada>();
-            var c = ToETRS89(new NetTopologySuite.Geometries.Coordinate(point.Longitude, point.Latitude));
-            var p = new NetTopologySuite.Geometries.Point(c);
             foreach (var item in strade)
             {
                 if (item.Shape == null)
                     continue;
 
-                var distOp = new NetTopologySuite.Operation.Distance.DistanceOp(item.Shape,p);
+                var distOp = new NetTopologySuite.Operation.Distance.DistanceOp(item.Shape, p);
                 var dist = distOp.Distance();
-                if (dist<min)
+                if (dist < min)
                 {
                     min = dist;
                     st = item;
                 }
             }
-            
+
             return st;
+
+        }
+        public static Strada FindNearest(NetTopologySuite.Geometries.Coordinate c, IList<Strada> strade)
+        {
+            var p = new NetTopologySuite.Geometries.Point(c);
+            return FindNearest(p, strade);
         }
 
 
@@ -175,15 +184,16 @@ namespace xRoadMap.Module
 
         public static void LocalizzaPuntualeSuKilometrica(IEnumerable<EventoPuntuale> events)
         {
-            foreach (IEventoOnRoad item in events)
+            foreach (EventoPuntuale item in events)
             {
-                item.M = RoutingHelper.GetMeasureFromChilometrica(item.Strada, item.Km);
                 var ev = (IEventoOnRoad)item;
+                item.M = GetMeasureFromChilometrica(ev.Strada, item.Km);
                 var line = ev.Strada.Shape;
                 var loc = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, ev.M);
                 var coord = loc.GetCoordinate(line);
                 //var seg = loc.GetSegment(line);
                 ev.Shape = new NetTopologySuite.Geometries.Point(coord);
+                UpdatePointCoordinate(item);
             }
         }
 
@@ -202,6 +212,7 @@ namespace xRoadMap.Module
             var point = ev.Shape as NetTopologySuite.Geometries.Point;
             item.Km = LocalizzaPuntualeSuXY(ev.Strada,point.Coordinate, out double m);
             item.M = m;
+            UpdatePointCoordinate(item);
         }
 
         public static string LocalizzaPuntualeSuXY(Strada st, NetTopologySuite.Geometries.Coordinate point,out double m)

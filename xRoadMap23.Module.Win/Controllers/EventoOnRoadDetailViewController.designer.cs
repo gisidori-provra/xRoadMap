@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.simpleActionLocate = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.simpleActionLocateRoad = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.simpleActionUpdateEvent = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.actionGetIFrame = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
             // 
@@ -46,6 +47,18 @@
             this.simpleActionLocate.ToolTip = "Aggiorna le progressive chilometriche in base alla geometria.";
             this.simpleActionLocate.TypeOfView = typeof(DevExpress.ExpressApp.DetailView);
             this.simpleActionLocate.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.simpleActionLocate_Execute);
+            // 
+            // simpleActionLocateRoad
+            // 
+            this.simpleActionLocateRoad.Caption = "Localizza strada";
+            this.simpleActionLocateRoad.Category = "Edit";
+            this.simpleActionLocateRoad.ConfirmationMessage = null;
+            this.simpleActionLocateRoad.Id = "LocateRoute";
+            this.simpleActionLocateRoad.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireMultipleObjects;
+            this.simpleActionLocateRoad.TargetObjectsCriteria = "Strada IS NULL";
+            this.simpleActionLocateRoad.TargetObjectsCriteriaMode = DevExpress.ExpressApp.Actions.TargetObjectsCriteriaMode.TrueForAll;
+            this.simpleActionLocateRoad.ToolTip = "Assegna la strada provinciale più vicina.";
+            this.simpleActionLocateRoad.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.simpleActionLocateRoad_Execute);
             // 
             // simpleActionUpdateEvent
             // 
@@ -79,6 +92,7 @@
             // LinearReferencingViewController
             // 
             this.Actions.Add(this.simpleActionLocate);
+            this.Actions.Add(this.simpleActionLocateRoad);
             this.Actions.Add(this.simpleActionUpdateEvent);
             this.Actions.Add(this.actionGetIFrame);
 
@@ -87,6 +101,8 @@
         #endregion
         private DevExpress.ExpressApp.Actions.SimpleAction simpleActionUpdateEvent;
         private DevExpress.ExpressApp.Actions.SimpleAction simpleActionLocate;
+        private DevExpress.ExpressApp.Actions.SimpleAction simpleActionLocateRoad;
         private DevExpress.ExpressApp.Actions.PopupWindowShowAction actionGetIFrame;
+
     }
 }
