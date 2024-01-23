@@ -110,15 +110,22 @@ namespace xRoadMap.Module.Win.Controllers
 
         private void simpleActionLocateRoad_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
+            double maxDistance = 30;
             var strade = View.ObjectSpace.GetObjects<Strada>();
             foreach (var item in e.SelectedObjects)
             {
                 IEventoOnRoad ev = View.ObjectSpace.GetObject(item) as IEventoOnRoad;
-                ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade);
+                ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade,maxDistance);
+                if (ev is EventoPuntuale ep)
+                    RoutingHelper.LocalizzaPuntualeSuXY(ep);
+                else if (ev is EventoLineare el)
+                    RoutingHelper.LocalizzaLineareSuXY(el);
             }
-            View.ObjectSpace.CommitChanges();
             if (View is DevExpress.ExpressApp.ListView lv)
+            {
+                View.ObjectSpace.CommitChanges();
                 lv.CollectionSource.Reload();
+            }
         }
 
         private void simpleActionLocate_Execute(object sender, SimpleActionExecuteEventArgs e)

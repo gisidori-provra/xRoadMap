@@ -31,37 +31,39 @@ namespace xRoadMap.Module
     public static class RoutingHelper
     {
 
-        public static Strada FindNearest(GeoPoint point,IList<Strada> strade)
+        public static Strada FindNearest(GeoPoint point,IList<Strada> strade,double distance = 0)
         {
             var c = ToETRS89(new NetTopologySuite.Geometries.Coordinate(point.Longitude, point.Latitude));
-            return FindNearest(c, strade);
+            return FindNearest(c, strade,distance);
         }
 
-        public static Strada FindNearest(Geometry p, IList<Strada> strade)
+        public static Strada FindNearest(Geometry p, IList<Strada> strade,double distance = 0 )
         {
             Strada st = null;
             double min = double.PositiveInfinity;
+            double dist = double.MinValue;
             foreach (var item in strade)
             {
                 if (item.Shape == null)
                     continue;
 
                 var distOp = new NetTopologySuite.Operation.Distance.DistanceOp(item.Shape, p);
-                var dist = distOp.Distance();
+                dist = distOp.Distance();
                 if (dist < min)
                 {
                     min = dist;
                     st = item;
                 }
             }
-
-            return st;
+            if (dist <= distance)
+                return st;
+            return null;
 
         }
-        public static Strada FindNearest(NetTopologySuite.Geometries.Coordinate c, IList<Strada> strade)
+        public static Strada FindNearest(NetTopologySuite.Geometries.Coordinate c, IList<Strada> strade,double distance = 0)
         {
             var p = new NetTopologySuite.Geometries.Point(c);
-            return FindNearest(p, strade);
+            return FindNearest(p, strade,distance);
         }
 
 
@@ -237,10 +239,16 @@ namespace xRoadMap.Module
             var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(line, point);
             return loc.GetSegment(line).Angle;
         }
-
         public static void LocalizzaLineareSuXY(IEnumerable<EventoLineare> events)
         {
             foreach (var item in events)
+            {
+                LocalizzaLineareSuXY(item);
+            }
+        }
+
+        public static void LocalizzaLineareSuXY(EventoLineare item)
+        {
             {
                 var ev = (IEventoLineareOnRoad)item;
                 var line = ev.Strada.Shape;
@@ -282,132 +290,6 @@ namespace xRoadMap.Module
                 ev.Shape = seg;
                 UpdateLineCoordinate(item);
             }
-        }
-
-        private static void UpdateShapeLine(IEnumerable<EventoLineare> events)
-        {
-            if (events.Count() == 0)
-                return;
-            var session = events.First().Session;
-
-            foreach (var ev in events)
-            {
-                var shp = session.FindObject<LayerEventoLineare>(new DevExpress.Data.Filtering.BinaryOperator(nameof(LayerEventoLineare.Evento), ev.Oid));
-                if (shp != null)
-                    ev.Shape = shp.Shape;
-            }
-        }
-
-        private static void UpdateKmLineare(IEnumerable<EventoLineare> events)
-        {
-            if (events.Count() == 0)
-                return;
-            var session = events.First().Session;
-
-            foreach (IEventoLineareOnRoad ev in events)
-            {
-                var shp = session.FindObject<EventTable>(new DevExpress.Data.Filtering.BinaryOperator(nameof(EventTable.Evento), ev.Oid));
-                if (shp != null)
-                {
-                    ev.M = shp.M;
-                    ev.MFine = shp.MFine;
-                    ev.Km = GetChilometricaFromMeasure(ev.Strada, ev.M);
-                    ev.KmFine = GetChilometricaFromMeasure(ev.Strada, ev.MFine);
-                }
-            }
-
-        }
-
-        private static void UpdateKmPuntuale(IEnumerable<EventoPuntuale> events)
-        {
-            if (events.Count() == 0)
-                return;
-            var session = events.First().Session;
-
-            foreach (IEventoOnRoad ev in events)
-            {
-                var shp = session.FindObject<EventTable>(new DevExpress.Data.Filtering.BinaryOperator(nameof(EventTable.Evento), ev.Oid));
-                if (shp != null)
-                {
-                    ev.M = shp.M;
-                    ev.Km = GetChilometricaFromMeasure(ev.Strada, ev.M);
-                }
-            }
-
-        }
-
-        private static void UpdateEventTableLineare(IEnumerable<EventoLineare> events)
-        {
-            if (events.Count() == 0)
-                return;
-            var session = events.First().Session;
-
-            var evTab = new XPCollection<EventTable>(session);
-
-            foreach (var item in evTab.ToList())
-            {
-                item.Delete();
-            }
-
-            var lay = new XPCollection<LayerEventoLineare>(session);
-            foreach (var item in lay.ToList())
-            {
-                item.Delete();
-            }
-
-            foreach (IEventoLineareOnRoad item in events)
-            {
-                evTab.Add(new EventTable(session) { Evento = item.Oid,M = item.M,MFine = item.MFine,Strada = item.Strada });
-            }
-
-            session.CommitTransaction();
-
-        }
-
-        private static void UpdateEventLayer(Session session, IEnumerable<IEventoOnRoad> events)
-        {
-            if (events.Count() == 0)
-                return;
-
-            var evTab = new XPCollection<LayerEventoPuntuale>(session);
-
-            foreach (var item in evTab.ToList())
-            {
-                item.Delete();
-            }
-            session.CommitTransaction();
-
-            foreach (IEventoOnRoad item in events)
-            {
-                evTab.Add(new LayerEventoPuntuale(session) { Evento = item.Oid, Shape = item.Shape,Strada = item.Strada});
-            }
-
-            session.CommitTransaction();
-        }
-
-
-        public static void LocatePointAlongRoute(IEnumerable<EventoPuntuale> events)
-        {
-            string gpName = "LocatePointAlongRoute";
-            if (events.Count() == 0)
-                return;
-            var session = events.First().Session;
-            UpdateEventLayer(session,events);
-            CallGPService(gpName, events);
-            UpdateKmPuntuale(events);
-            UpdatePointCoordinates(events);
-        }
-
-        public static void LocateLineAlongRoute(IEnumerable<EventoLineare> events)
-        {
-            string gpName = "LocateLineAlongRoute";
-            if (events.Count() == 0)
-                return;
-            var session = events.First().Session;
-            UpdateEventLayer(session, events);
-            CallGPService(gpName, events);
-            UpdateKmLineare(events);
-            UpdateLineCoordinates(events);
         }
 
         /// <summary>

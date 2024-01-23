@@ -24,4 +24,21 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
     }
+
+    [Persistent(@"SegnalazioneLineareStrada__ATTACH")]
+    public partial class AllegatoSegnalazioneLineareStrada : Allegato
+    {
+        public AllegatoSegnalazioneLineareStrada(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+
+        SegnalazioneLineareStrada segnalazione;
+        [Persistent(@"REL_OBJECTID")]
+        [Association]
+        public SegnalazioneLineareStrada SegnalazioneLineareStrada
+        {
+            get { return segnalazione; }
+            set { SetPropertyValue(nameof(SegnalazioneLineareStrada), ref segnalazione, value); }
+        }
+
+    }
 }
