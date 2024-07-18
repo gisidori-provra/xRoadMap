@@ -528,7 +528,7 @@ namespace xRoadMap.Module.Controllers
                 t = os.CreateObject<T>();
             t.Event_id = eve_id;
             t.Strada = rd;
-            t.M = eor.F_MEVENTS;
+            var m = eor.F_MEVENTS;
             t.X = ev.F_XEVENTS;
             t.Y = ev.F_YEVENTS;
             t.Z = ev.F_ZEVENTS;
@@ -556,12 +556,14 @@ namespace xRoadMap.Module.Controllers
                     //}
                 }
                 var tLin = t as EventoLineare;
-                tLin.MFine = eor.T_MEVENTS;
+                var mFine = eor.T_MEVENTS;
                 tLin.XFine = ev.T_XEVENTS;
                 tLin.YFine = ev.T_YEVENTS;
                 tLin.ZFine = ev.T_ZEVENTS;
-                tLin.Km = RoutingHelper.GetChilometricaFromMeasure(rd, tLin.M);
-                tLin.KmFine = RoutingHelper.GetChilometricaFromMeasure(rd,tLin.MFine);
+                tLin.Km = RoutingHelper.GetChilometricaFromMeasure(rd, m, out double pk);
+                tLin.KmFine = RoutingHelper.GetChilometricaFromMeasure(rd,mFine,out double pkFine);
+                tLin.M = pk;
+                tLin.MFine = pkFine;
                 RoutingHelper.UpdateLineCoordinate(tLin);
             }
             else
@@ -576,7 +578,8 @@ namespace xRoadMap.Module.Controllers
                 }
 
                 var tPoint = t as EventoPuntuale;
-                tPoint.Km = RoutingHelper.GetChilometricaFromMeasure(rd,tPoint.M);
+                tPoint.Km = RoutingHelper.GetChilometricaFromMeasure(rd,m, out double pk);
+                tPoint.M = pk;
                 RoutingHelper.UpdatePointCoordinate(tPoint);
             }
             return t;

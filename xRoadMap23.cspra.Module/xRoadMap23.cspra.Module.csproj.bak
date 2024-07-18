@@ -38,31 +38,31 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v22.2">
+    <Reference Include="DevExpress.Data.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Drawing.v22.2">
+    <Reference Include="DevExpress.Drawing.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.v22.2">
+    <Reference Include="DevExpress.ExpressApp.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v22.2">
+    <Reference Include="DevExpress.ExpressApp.Xpo.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Images.v22.2">
+    <Reference Include="DevExpress.Images.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v22.2">
+    <Reference Include="DevExpress.Persistent.Base.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v22.2">
+    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Printing.v22.2.Core">
+    <Reference Include="DevExpress.Printing.v23.1.Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v22.2">
+    <Reference Include="DevExpress.Xpo.v23.1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="NetTopologySuite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
@@ -93,10 +93,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\cspraDataModel\cspraDispRitenuta.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCunetta.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCiclabile.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraArginello.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraIlluminazione.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraImpiantoPubblicitario.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraVegetazione.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraSovrappasso.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraPassaggioLivello.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraOperaSostegno.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraGalleria.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraAccesso.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraAreaTraffico.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraBanchina.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCarreggiata.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCentroAbitato.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraCorpoStradale.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEnum.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEvento.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraEventoOnRoad.cs" />
+    <Compile Include="BusinessObjects\cspraDataModel\cspraMarciapiede.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraPonte.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraRoad.cs" />
     <Compile Include="BusinessObjects\cspraDataModel\cspraTombino.cs" />

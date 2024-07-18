@@ -1,33 +1,27 @@
-﻿using System;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Model;
+using DevExpress.ExpressApp.Utils;
+using DevExpress.Map;
+using DevExpress.Utils;
+using DevExpress.Xpo;
+using DevExpress.XtraEditors;
+using DevExpress.XtraMap;
+using GeoAPI.CoordinateSystems.Transformations;
+using NetTopologySuite.Geometries;
+using ProjNet.CoordinateSystems;
+using ProjNet.CoordinateSystems.Transformations;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraMap;
-using DevExpress.ExpressApp.DC;
-using DevExpress.ExpressApp.Model;
-using System.Collections;
-using NetTopologySuite.Geometries;
 using xRoadMap.Module.BusinessObjects;
-using DevExpress.Utils.Gesture;
-using DevExpress.XtraEditors;
-using DevExpress.XtraBars.Ribbon.RecentControl.Accessible;
-using DevExpress.Xpo;
 using xRoadMap.Module.Xpo;
-using DevExpress.Map;
-using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.Utils;
-using DevExpress.CodeParser.VB;
-using NetTopologySuite.Operation;
-using DevExpress.Data.Filtering;
-using DevExpress.XtraRichEdit.SpellChecker;
-using DevExpress.XtraEditors.Controls;
-using DevExpress.ClipboardSource.SpreadsheetML;
-using DevExpress.Utils;
 
 namespace xRoadMap.Module.Win.Editors
 {
@@ -270,7 +264,7 @@ namespace xRoadMap.Module.Win.Editors
                     switch (model.LayerType)
                     {
                         case LayerType.WMSLayer:
-                            layer = AddWMSLayer(model.Uri,model.LayerName);
+                            layer = AddWMSLayer(model.Uri,model.LayerName,model.Transparency);
                             break;
                         case LayerType.BingMapLayer:
                             string bingKey = ((IModelMapOptions)((IModelApplication)info.Root).Options).BingKey;
@@ -455,18 +449,28 @@ namespace xRoadMap.Module.Win.Editors
 
         //private Dictionary<string,List<string>> wmsLayers= new Dictionary<string,List<string>>();
 
-        private LayerBase AddWMSLayer(string uri,string activeLayerName,bool recurse = true)
+        private LayerBase AddWMSLayer(string uri,string activeLayerName,int? transparency=null, bool recurse = true)
         {
             ImageLayer imageLayer = new ImageLayer();
             imageLayer.Name = (recurse ? string.Empty : uri+"//") + activeLayerName;
             WmsDataProvider dataProvider = new WmsDataProvider();
             dataProvider.ServerUri = uri;
             dataProvider.ActiveLayerName = activeLayerName;
+            if (uri.Contains("wms.cartografia.agenziaentrate.gov.it"))
+                ;   // dataProvider.SetCoordinateConverter(new WMSPointConverter("25832"));
+
+            //dataProvider.CustomParameters.Add("SR", "EPSG:25832");
+
+            //if (activeLayerName == "Catasto")
+            //    dataProvider.SetCoordinateConverter(new WMSPointConverter("EPSG:6706"));
+
             //wmsLayers[uri] = new List<string>();
             dataProvider.WebRequest += DataProvider_WebRequest;
             dataProvider.ResponseCapabilities += DataProvider_ResponseCapabilities;
             dataProvider.ActiveLayerName = activeLayerName;
             imageLayer.DataProvider = dataProvider;
+            if (transparency != null && transparency.Value<=100 && transparency.Value>=0)
+                imageLayer.Transparency = (byte) (transparency * 255 / 100);
             map.Layers.Add(imageLayer);
             //wmsLayers[uri].Add(imageLayer.Name);
             return imageLayer;
@@ -477,7 +481,7 @@ namespace xRoadMap.Module.Win.Editors
                 {
                     foreach (var layer in e.Layers)
                     {
-                        AddWMSLayer(uri, layer.Name, false);
+                        AddWMSLayer(uri, layer.Name,transparency, false);
                         //var ndx = this.checkedListBoxControl1.Items.Add(layer.Name, layer.Title, CheckState.Checked, true);
                     }
                 }
@@ -492,6 +496,7 @@ namespace xRoadMap.Module.Win.Editors
         private void DataProvider_WebRequest(object sender, MapWebRequestEventArgs e)
         {
             //this.BeginInvoke(new LogMessageDelegate(LogMessage), $"WebRequest: {e.Uri.Host}");
+            System.Console.WriteLine(e.Uri.ToString());
         }
 
         private void LogMessage(string text)
@@ -793,5 +798,51 @@ namespace xRoadMap.Module.Win.Editors
         //    informationLayer.Visible = false;
         //}
 
+    }
+
+    class WMSPointConverter : IWmsPointConverter
+    {
+
+        ICoordinateTransformation trans;
+        string crsCode;
+        public WMSPointConverter(string CRSCode)
+        {
+            crsCode = CRSCode;
+            
+            //EPSG=25832
+            var fromWKT = "PROJCS[\"ETRS89 / UTM zone 32N\",GEOGCS[\"ETRS89\",DATUM[\"European_Terrestrial_Reference_System_1989\",SPHEROID[\"GRS 1980\",6378137,298.257222101,AUTHORITY[\"EPSG\",\"7019\"]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY[\"EPSG\",\"6258\"]],PRIMEM[\"Greenwich\",0,AUTHORITY[\"EPSG\",\"8901\"]],UNIT[\"degree\",0.0174532925199433,AUTHORITY[\"EPSG\",\"9122\"]],AUTHORITY[\"EPSG\",\"4258\"]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",9],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"metre\",1,AUTHORITY[\"EPSG\",\"9001\"]],AXIS[\"Easting\",EAST],AXIS[\"Northing\",NORTH],AUTHORITY[\"EPSG\",\"25832\"]]";
+            
+            //var fromWKT = "GEOGCS[\"GCS_ETRS_1989\",DATUM[\"D_ETRS_1989\",SPHEROID[\"GRS_1980\",6378137.0,298.257222101]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]]";
+
+            CoordinateSystemFactory csFact = new CoordinateSystemFactory();
+            CoordinateTransformationFactory ctFact = new CoordinateTransformationFactory();
+
+            var from = csFact.CreateFromWkt(fromWKT);
+
+            var to = GeographicCoordinateSystem.WGS84;  //csFact.CreateFromWkt(toWKT);
+
+            trans = ctFact.CreateFromCoordinateSystems(from, to);
+
+        }
+        public string CRSCode => crsCode;
+
+        public CoordPoint Convert(CoordPoint point)
+        {
+
+            if (point is DevExpress.XtraMap.GeoPoint gp)
+            {
+                if (gp.Latitude.CompareTo(double.NaN) != 0 && gp.Longitude.CompareTo(double.NaN) != 0)
+                {
+                    try
+                    {
+                        var p = trans.MathTransform.Transform(new double[] { gp.Longitude, gp.Latitude });
+                        var c = new GeoPoint(p[1], p[0]);
+                        return c;
+                    }
+                    catch { }
+                }
+            }
+            return point;
+        }
     }
 }

@@ -116,10 +116,13 @@ namespace xRoadMap.Module.Win.Controllers
             {
                 IEventoOnRoad ev = View.ObjectSpace.GetObject(item) as IEventoOnRoad;
                 ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade,maxDistance);
-                if (ev is EventoPuntuale ep)
-                    RoutingHelper.LocalizzaPuntualeSuXY(ep);
-                else if (ev is EventoLineare el)
-                    RoutingHelper.LocalizzaLineareSuXY(el);
+                if (ev.Strada != null)
+                {
+                    if (ev is EventoPuntuale ep)
+                        RoutingHelper.LocalizzaPuntualeSuXY(ep);
+                    else if (ev is EventoLineare el)
+                        RoutingHelper.LocalizzaLineareSuXY(el);
+                }
             }
             if (View is DevExpress.ExpressApp.ListView lv)
             {

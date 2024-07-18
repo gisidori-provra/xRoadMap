@@ -337,7 +337,10 @@ namespace xRoadMap.Module.Win.Controllers
             string apikey = "AIzaSyDTqlEhGm0HdYtQm7fdsqH8kXvLu_yG4C4";
             string km;
             if (measure != null)
-                km = RoutingHelper.GetChilometricaFromMeasure(st, measure.Value);
+            {
+                var m = measure.Value;
+                km = RoutingHelper.GetChilometricaFromMeasure(st, m, out double pk);
+            }
             else
                 km = RoutingHelper.LocalizzaPuntualeSuXY(st, etrs89, out double m);
             double? heading = null;

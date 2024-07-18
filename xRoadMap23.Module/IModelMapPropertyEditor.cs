@@ -78,6 +78,9 @@ namespace xRoadMap.Module
         [Category("Map")]
         int? StrokeWidth { get; set; }
         [Category("Map")]
+        int? Transparency { get; set; }
+
+        [Category("Map")]
         BusinessObjects.VisibilityMode TitleVisible { get; set; }
 
         [Description("Attributo usato per la etichetta")]

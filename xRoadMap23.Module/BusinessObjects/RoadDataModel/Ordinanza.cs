@@ -9,6 +9,7 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.Persistent.Base;
 using DevExpress.Utils.Filtering.Internal;
+using DevExpress.Persistent.Validation;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -176,14 +177,13 @@ namespace xRoadMap.Module.BusinessObjects
             set => SetPropertyValue(nameof(Percorribilità),ref fPercorribilità,value);    
         }
 
-        private bool centroAbitato;
-        [DevExpress.Xpo.DisplayName(@"Centro abitato")]
-        [VisibleInListView(false)]
-        public bool CentroAbitato
-        { 
-            get => centroAbitato;
-            set => SetPropertyValue(nameof(CentroAbitato),ref centroAbitato,value);
+        [Browsable(false)]
+        [RuleFromBoolProperty("Valido",DefaultContexts.Save, CustomMessageTemplate ="Specificare un tipo di limitazione")]
+        public bool IsValid
+        {
+            get => LimiteMassa || LimiteSagoma != TipoSagoma.Libero || LimiteVelocità || Percorribilità != TipoPercorrenza.Libero;
         }
+
 
     }
 

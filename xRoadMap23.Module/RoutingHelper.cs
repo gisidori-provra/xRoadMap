@@ -55,7 +55,7 @@ namespace xRoadMap.Module
                     st = item;
                 }
             }
-            if (dist <= distance)
+            if (min <= distance)
                 return st;
             return null;
 
@@ -72,7 +72,7 @@ namespace xRoadMap.Module
             var degrees = decimalDegrees;
             var minutes = ((decimalDegrees - (int)degrees) * 60);
             var seconds = ((minutes - (int)minutes)) * 60;
-            return $"{(int)degrees}°{(int)minutes}'{(int)seconds}''";
+            return $"{(int)degrees}°{(int)minutes}'{seconds:n4}''";
         }
 
         public static double FromSessagesimale(string sessagesimale)
@@ -93,8 +93,9 @@ namespace xRoadMap.Module
 
         }
 
-        public static string GetChilometricaFromMeasure(Strada st,double m)
+        public static string GetChilometricaFromMeasure(Strada st, double m,out double pk)
         {
+            pk = m;
 
             if (m == double.NaN)
                 return null;
@@ -102,54 +103,30 @@ namespace xRoadMap.Module
             if (st == null)
                 return null;
 
-            var min = st.Percorso.MinM;
-            m += min;
 
-            int km = (int)Math.Truncate(m/1000)*1000;
-            int offset = (int)Math.Round(m - km,MidpointRounding.AwayFromZero);
+            int km = (int)Math.Truncate(pk / 1000) * 1000;
+            int offset = (int)Math.Round(pk - km, MidpointRounding.AwayFromZero);
 
-            if (st != null)
+            var cp = st.Cippi.Where(c=>c.Offset != null).OrderByDescending(c => c.Offset.Measure).FirstOrDefault(c => c.Offset.Measure <= m);
+            if (cp != null)
             {
-                if (offset > 500)
-                {
-                    offset -= 1000;
-                    km += 1000;
-                }
-                //var cp = st.Cippi.OrderBy(c => c.Misura).FirstOrDefault();      //Cippo iniziale
-                //if (cp != null)
-                //{
-                //    offset += (int)cp.Misura;
-                //    if (cp.Offset != null)
-                //        offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
-                //    while (offset >= 1000)
-                //    {
-                //        offset -= 1000;
-                //        km += 1000;
-                //    }
-                //    while (offset < 0)
-                //    {
-                //        offset += 1000;
-                //        km -= 1000;
-                //    }
-                //}
-
-                var cp = st.Cippi.OrderByDescending(c => c.Misura).FirstOrDefault(c => c.Misura <= km);
-                if (cp != null)
-                {
-                    if (cp.Offset != null)
-                        offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
-                    while (offset >= 1000)
-                    {
-                        offset -= 1000;
-                        km += 1000;
-                    }
-                    while (offset < 0)
-                    {
-                        offset += 1000;
-                        km -= 1000;
-                    }
-                }
+                if (cp.Offset != null)
+                    offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
             }
+
+
+            while (offset >= 1000)
+            {
+                offset -= 1000;
+                km += 1000;
+            }
+            while (offset < 0)
+            {
+                offset += 1000;
+                km -= 1000;
+            }
+
+            pk = km  + offset;
             return $"{km/1000:F0}{offset:+000;-000}";
         }
 
@@ -174,13 +151,20 @@ namespace xRoadMap.Module
                     !double.TryParse(chilometrica.Substring(pos), out offset))         //Offset con segno
                     return double.NaN;
             }
-            var cp = strada?.Cippi.FirstOrDefault(c => c.Misura == cippo * 1000);
+            Cippo cp = null;
+            if (offset>=0)
+                cp = strada.Cippi.OrderBy(c=>c.Misura).Where(c=>c.Misura>=cippo*1000).FirstOrDefault();      //Cippo più vicino
+            else
+                cp = strada.Cippi.OrderByDescending(c => c.Misura).Where(c => c.Misura <= cippo * 1000).FirstOrDefault();      //Cippo più vicino
+
             if (cp != null)
             {
                 if (cp.Offset != null)
-                    return cp.Offset.Measure + offset;
+                    return (cippo*1000-cp.Misura) + cp.Offset.Measure + offset;
             }
-            return offset+cippo*1000;
+
+            return double.NaN;
+
         }
 
 
@@ -227,7 +211,7 @@ namespace xRoadMap.Module
             var dist = NetTopologySuite.Operation.Distance.DistanceOp.Distance(line, g1);
             if (dist < 50)
             {
-                var km = GetChilometricaFromMeasure(st, m);
+                var km = GetChilometricaFromMeasure(st, m,out double pk);
                 return km;
             }
             return null;
@@ -256,10 +240,13 @@ namespace xRoadMap.Module
                 var loc = new NetTopologySuite.LinearReferencing.LocationIndexOfLine(line);
                 
                 var ndx = loc.IndicesOf(subLine);
-                item.M = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[0]);
-                item.MFine = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[1]);
-                item.Km = GetChilometricaFromMeasure(ev.Strada, item.M);
-                item.KmFine = GetChilometricaFromMeasure(ev.Strada, item.MFine);
+                var m = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[0]);
+                var mFine = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[1]);
+                item.Km = GetChilometricaFromMeasure(ev.Strada,m,out double pk );
+                item.KmFine = GetChilometricaFromMeasure(ev.Strada,mFine,out double pkFine);
+                item.M = pk;
+                item.MFine = pkFine;
+
                 UpdateLineCoordinate(item);
             }
 
@@ -363,7 +350,7 @@ namespace xRoadMap.Module
             //        "PROJCS[\"ETRS89 / ETRS-TM35\",GEOGCS[\"ETRS89\",DATUM[\"D_ETRS_1989\",SPHEROID[\"GRS_1980\",6378137,298.257222101]],PRIMEM[\"Greenwich\",0],UNIT[\"Degree\",0.017453292519943295]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"latitude_of_origin\",0],PARAMETER[\"central_meridian\",27],PARAMETER[\"scale_factor\",0.9996],PARAMETER[\"false_easting\",500000],PARAMETER[\"false_northing\",0],UNIT[\"Meter\",1]]");
 
             string wkt = @"PROJCS[""ETRS89 / UTM zone 32N"",GEOGCS[""ETRS89"",DATUM[""European_Terrestrial_Reference_System_1989"",SPHEROID[""GRS 1980"",6378137,298.257222101,AUTHORITY[""EPSG"",""7019""]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY[""EPSG"",""6258""]],PRIMEM[""Greenwich"",0,AUTHORITY[""EPSG"",""8901""]],UNIT[""degree"",0.0174532925199433,AUTHORITY[""EPSG"",""9122""]],AUTHORITY[""EPSG"",""4258""]],PROJECTION[""Transverse_Mercator""],PARAMETER[""latitude_of_origin"",0],PARAMETER[""central_meridian"",9],PARAMETER[""scale_factor"",0.9996],PARAMETER[""false_easting"",500000],PARAMETER[""false_northing"",0],UNIT[""metre"",1,AUTHORITY[""EPSG"",""9001""]],AXIS[""Easting"",EAST],AXIS[""Northing"",NORTH],AUTHORITY[""EPSG"",""25832""]]";
-            GeoAPI.CoordinateSystems.ICoordinateSystem etr89 =
+            GeoAPI.CoordinateSystems.ICoordinateSystem etr89 = 
                 ProjNet.Converters.WellKnownText.CoordinateSystemWktReader.Parse(wkt, Encoding.ASCII) as GeoAPI.CoordinateSystems.ICoordinateSystem;
             var wgs84 = ProjNet.CoordinateSystems.GeographicCoordinateSystem.WGS84;
 

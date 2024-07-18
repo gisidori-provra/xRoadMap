@@ -5,12 +5,18 @@
       <Action Id="AggiornaGeometria" ImageName="SparklineLine" />
       <Action Id="GetIFrame" ImageName="Image_StretchMode" />
       <Action Id="LineLocateAlongRoute" ImageName="RightAngleConnector" />
-      <Action Id="SearchMap" ImageName="EnableSearch" PaintStyle="Image" />
     </Actions>
   </ActionDesign>
+  <BOModel>
+    <Class Name="xRoadMap.Module.BusinessObjects.Ordinanza">
+      <OwnMembers>
+        <Member Name="UrlCMS" PropertyEditorType="xRoadMap.Module.Win.Editors.WinHyperLinkStringPropertyEditor" MaskSettings="AwAAAA9NYXNrTWFuYWdlclR5cGUAgQFEZXZFeHByZXNzLkRhdGEuTWFzay5SZWdFeHBNYXNrTWFuYWdlciwgRGV2RXhwcmVzcy5EYXRhLnYyMy4yLCBWZXJzaW9uPTIzLjIuNC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEUTWFza01hbmFnZXJTaWduYXR1cmUHAhJpc09wdGltaXN0aWM9RmFsc2UEbWFzawcCrgEoKChodHRwfGh0dHBzfGZ0cClcOi8vKT9bYS16QS1aMC05XC1cLl0rXC5bYS16QS1aXXsyLDN9KDpbYS16QS1aMC05XSopPy8/KFthLXpBLVowLTlcLVwuX1w/XCxcJy9cXFwrJmFtcDthbXA7YW1wOyVcJCNcPX5dKSopfChbYS16QS1aMC05Ll8lKy1dK0BbYS16QS1aMC05Li1dK1wuW2EtekEtWl17Miw2fSk=" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
   <SchemaModules>
-    <SchemaModule Name="SystemModule" Version="23.1.5.0" IsNewNode="True" />
-    <SchemaModule Name="SystemWindowsFormsModule" Version="23.1.5.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="23.2.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
     <ListView Id="Ordinanza_ListViewMap" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />

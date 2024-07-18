@@ -24,7 +24,7 @@ namespace xRoadMap.Module.BusinessObjects
             get
             {
                 if (offsetCippo == null)
-                    offsetCippo = Session.GetObjectByKey<OffsetCippo>(this.Oid);
+                    offsetCippo = Session.GetObjectByCode<OffsetCippo>(this.Oid,nameof(OffsetCippo.Cippo));
                 return offsetCippo;
             }
         }
