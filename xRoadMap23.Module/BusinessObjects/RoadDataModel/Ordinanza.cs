@@ -22,6 +22,7 @@ namespace xRoadMap.Module.BusinessObjects
         public Ordinanza(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
+        [RuleRequiredField]
         [Association]
         public Strada Strada
         {

@@ -187,7 +187,8 @@ namespace xRoadMap.Module.Win.Controllers
                 var res = results.ElementAt(0);
                 mapUserControl.Map.SetCenterPoint(res.Location, true);
                 Strada st = RoutingHelper.FindNearest(res.Location,this.ObjectSpace.GetObjects<Strada>());
-                MapUpdate(st,res.Location,res.Address.FormattedAddress);
+                if (st != null)
+                    MapUpdate(st,res.Location,res.Address.FormattedAddress);
                 //mapUserControl.Map.Zoom(17);
             }
 

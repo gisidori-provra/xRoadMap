@@ -56,7 +56,7 @@ namespace xRoadMap.Module.BusinessObjects
     }
 
 
-    [Persistent(@"SegnalazioneStrada")]
+    [Persistent(@"SegnalazioneLineareStrada")]
     [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
     public partial class SegnalazioneLineareStrada : EventoLineare, IEventoLineareOnRoad

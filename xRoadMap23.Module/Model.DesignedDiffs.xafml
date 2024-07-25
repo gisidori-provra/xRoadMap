@@ -46,7 +46,7 @@
             </Items>
           </Item>
           <Item Id="AreaTraffico_ListView" Index="2" Removed="True" />
-          <Item Id="Segnalazioni" Caption="Segnalazioni" Index="2" ViewId="" ImageName="BO_Country_v92" IsNewNode="True">
+          <Item Id="Segnalazioni" Caption="Segnalazioni" Index="2" ImageName="BO_Country_v92" ViewId="" IsNewNode="True">
             <Items IsNewNode="True">
               <Item Id="SegnalazioneLineare" ViewId="SegnalazioneLineareStrada_ListView" Caption="Lineari" IsNewNode="True" />
               <Item Id="SegnalazioniPuntuali" ViewId="SegnalazioneStrada_ListView" Caption="Puntuali" IsNewNode="True" />
