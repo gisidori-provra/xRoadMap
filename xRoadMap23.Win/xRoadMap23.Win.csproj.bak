@@ -73,7 +73,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -211,7 +211,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PublishFile Include="DevExpress.BonusSkins.v23.1">
+    <PublishFile Include="DevExpress.BonusSkins.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -221,7 +221,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.ConditionalAppearance.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.ConditionalAppearance.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -231,7 +231,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.FileAttachment.Win.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.FileAttachment.Win.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -241,7 +241,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Objects.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Objects.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -251,7 +251,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Security.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Security.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -261,7 +261,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Security.Xpo.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Security.Xpo.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -271,7 +271,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Validation.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Validation.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -281,7 +281,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Validation.Win.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Validation.Win.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -291,7 +291,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.ViewVariantsModule.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.ViewVariantsModule.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -301,7 +301,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Win.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Win.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -311,7 +311,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.ExpressApp.Xpo.v23.1">
+    <PublishFile Include="DevExpress.ExpressApp.Xpo.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -321,7 +321,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.Office.v23.1.Core">
+    <PublishFile Include="DevExpress.Office.v23.2.Core">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -331,7 +331,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.Persistent.Base.v23.1">
+    <PublishFile Include="DevExpress.Persistent.Base.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -341,7 +341,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.Persistent.BaseImpl.Xpo.v23.1">
+    <PublishFile Include="DevExpress.Persistent.BaseImpl.Xpo.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -351,7 +351,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.RichEdit.v23.1.Core">
+    <PublishFile Include="DevExpress.RichEdit.v23.2.Core">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -361,7 +361,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.RichEdit.v23.1.Export">
+    <PublishFile Include="DevExpress.RichEdit.v23.2.Export">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -371,7 +371,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.Xpo.v23.1">
+    <PublishFile Include="DevExpress.Xpo.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -381,7 +381,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraBars.v23.1">
+    <PublishFile Include="DevExpress.XtraGrid.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -391,7 +391,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraEditors.v23.1">
+    <PublishFile Include="DevExpress.XtraNavBar.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -401,7 +401,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraGrid.v23.1">
+    <PublishFile Include="DevExpress.XtraRichEdit.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -411,57 +411,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
-    <PublishFile Include="DevExpress.XtraLayout.v23.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevExpress.XtraNavBar.v23.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevExpress.XtraPrinting.v23.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevExpress.XtraRichEdit.v23.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevExpress.XtraTreeList.v23.1">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>Assembly</FileType>
-    </PublishFile>
-    <PublishFile Include="DevExpress.XtraVerticalGrid.v23.1">
+    <PublishFile Include="DevExpress.XtraVerticalGrid.v23.2">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -474,16 +424,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance">
-      <Version>23.1.5</Version>
+      <Version>23.2.4</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Win">
-      <Version>23.1.5</Version>
+      <Version>23.2.4</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Validation.Win">
-      <Version>23.1.5</Version>
+      <Version>23.2.4</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule">
-      <Version>23.1.5</Version>
+      <Version>23.2.4</Version>
     </PackageReference>
     <PackageReference Include="Oracle.ManagedDataAccess">
       <Version>21.10.0</Version>
@@ -497,4 +447,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>

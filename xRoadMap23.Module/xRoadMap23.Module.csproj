@@ -86,7 +86,7 @@
     <Reference Include="DevExpress.Xpo.v23.2">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraMap.v23.2, Version=23.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraMap.v23.2, Version=23.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="GeoAPI, Version=1.7.5.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
       <HintPath>..\packages\GeoAPI.Core.1.7.5\lib\net45\GeoAPI.dll</HintPath>
     </Reference>
@@ -169,7 +169,8 @@
     <Compile Include="BusinessObjects\RoadDataModel\Arginello.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Illuminazione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\ImpiantoPubblicitario.cs" />
-    <Compile Include="BusinessObjects\RoadDataModel\SegnalazioneStrada.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\SegLinea.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\SegPunto.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Vegetazione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Sottopasso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\OperaSostegno.cs" />
@@ -310,7 +311,7 @@
   </Target>
   -->
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.4">
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

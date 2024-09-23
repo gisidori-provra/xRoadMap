@@ -8,16 +8,16 @@ using xRoadMap.Module.BusinessObjects;
 
 namespace xRoadMap.Module.BusinessObjects
 {
-    [Persistent(@"SegnalazioneStrada__ATTACH")]
+    [Persistent(@"SegPunto__ATTACH")]
     public partial class AllegatoSegnalazioneStrada : Allegato
     {
         public AllegatoSegnalazioneStrada(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
-        SegnalazioneStrada segnalazione;
+        SegPunto segnalazione;
         [Persistent(@"REL_OBJECTID")]
         [Association]
-        public SegnalazioneStrada SegnalazioneStrada
+        public SegPunto SegnalazioneStrada
         {
             get { return segnalazione; }
             set { SetPropertyValue(nameof(SegnalazioneStrada), ref segnalazione, value); }
@@ -25,16 +25,16 @@ namespace xRoadMap.Module.BusinessObjects
 
     }
 
-    [Persistent(@"SegnalazioneLineareStrada__ATTACH")]
+    [Persistent(@"SegLinea__ATTACH")]
     public partial class AllegatoSegnalazioneLineareStrada : Allegato
     {
         public AllegatoSegnalazioneLineareStrada(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
-        SegnalazioneLineareStrada segnalazione;
+        SegLinea segnalazione;
         [Persistent(@"REL_OBJECTID")]
         [Association]
-        public SegnalazioneLineareStrada SegnalazioneLineareStrada
+        public SegLinea SegnalazioneLineareStrada
         {
             get { return segnalazione; }
             set { SetPropertyValue(nameof(SegnalazioneLineareStrada), ref segnalazione, value); }

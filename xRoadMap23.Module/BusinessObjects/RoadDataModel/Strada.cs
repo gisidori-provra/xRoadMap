@@ -205,10 +205,10 @@ namespace xRoadMap.Module.BusinessObjects
         public XPCollection<ImpiantoPubblicitario> ImpiantiPubblicitari => GetCollection<ImpiantoPubblicitario>();
 
         [Association]
-        public XPCollection<SegnalazioneStrada> Segnalazioni => GetCollection<SegnalazioneStrada>();
+        public XPCollection<SegPunto> SegnalazioniPuntuali => GetCollection<SegPunto>();
 
         [Association]
-        public XPCollection<SegnalazioneLineareStrada> SegnalazioniLineari => GetCollection<SegnalazioneLineareStrada>();
+        public XPCollection<SegLinea> SegnalazioniLineari => GetCollection<SegLinea>();
 
         Strada IConStrada.Strada { get => this;}
 

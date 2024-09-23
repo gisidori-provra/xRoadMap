@@ -9,8 +9,8 @@
     <Class Name="xRoadMap.Module.BusinessObjects.Ispezione" DefaultListViewAllowEdit="True" />
     <Class Name="xRoadMap.Module.BusinessObjects.Ordinanza" DefaultListViewAllowEdit="True" />
     <Class Name="xRoadMap.Module.BusinessObjects.Ponte" DefaultListViewAllowEdit="True" />
-    <Class Name="xRoadMap.Module.BusinessObjects.SegnalazioneLineareStrada" ImageName="GeoPointMaps" />
-    <Class Name="xRoadMap.Module.BusinessObjects.SegnalazioneStrada" ImageName="GeoPointMaps" />
+    <Class Name="xRoadMap.Module.BusinessObjects.SegLinea" ImageName="GeoPointMaps" />
+    <Class Name="xRoadMap.Module.BusinessObjects.SegPunto" ImageName="GeoPointMaps" />
     <Class Name="xRoadMap.Module.BusinessObjects.Strada" ImageName="" />
     <Class Name="xRoadMap.Module.BusinessObjects.TipoAtto" ImageName="BO_Contract" />
     <Class Name="xRoadMap.Module.BusinessObjects.Tombino" DefaultListViewAllowEdit="True" />
@@ -48,8 +48,8 @@
           <Item Id="AreaTraffico_ListView" Index="2" Removed="True" />
           <Item Id="Segnalazioni" Caption="Segnalazioni" Index="2" ImageName="BO_Country_v92" ViewId="" IsNewNode="True">
             <Items IsNewNode="True">
-              <Item Id="SegnalazioneLineare" ViewId="SegnalazioneLineareStrada_ListView" Caption="Lineari" IsNewNode="True" />
-              <Item Id="SegnalazioniPuntuali" ViewId="SegnalazioneStrada_ListView" Caption="Puntuali" IsNewNode="True" />
+              <Item Id="SegnalazioneLineare" ViewId="SegLinea_ListView" Caption="Lineari" IsNewNode="True" />
+              <Item Id="SegnalazioniPuntuali" ViewId="SegPunto_ListView" Caption="Puntuali" IsNewNode="True" />
             </Items>
           </Item>
           <Item Id="Banchina_ListView" Index="3" Removed="True" />
@@ -1790,7 +1790,7 @@
         <ColumnInfo Id="Percorribilità" Index="7" />
       </Columns>
     </ListView>
-    <DetailView Id="SegnalazioneLineareStrada_DetailView">
+    <DetailView Id="SegLinea_DetailView">
       <Items>
         <PropertyEditor Id="Shape" LayerName="Segnalazione">
           <MapLayers>
@@ -1883,7 +1883,7 @@
                 <LayoutItem Id="ZFine" RelativeSize="9.375" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="SegnalazioneLineareStrada" RelativeSize="100" Caption="SegnalazioneLineareStrada" Removed="True">
+            <LayoutGroup Id="SegLinea" RelativeSize="100" Caption="SegLinea" Removed="True">
               <LayoutItem Id="Strada" RelativeSize="100" Removed="True" />
               <LayoutItem Id="TipoSegnalazione" RelativeSize="48.387096774193552" Removed="True" />
             </LayoutGroup>
@@ -1895,13 +1895,13 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="SegnalazioneStrada_Allegati_ListView">
+    <ListView Id="SegPunto_Allegati_ListView">
       <Columns>
         <ColumnInfo Id="FileName" Width="252" />
         <ColumnInfo Id="File" Width="102" />
       </Columns>
     </ListView>
-    <DetailView Id="SegnalazioneStrada_DetailView">
+    <DetailView Id="SegPunto_DetailView">
       <Items>
         <PropertyEditor Id="Shape" LayerName="Segnalazione" FillColor="White" StrokeColor="192, 0, 0" StrokeWidth="6" Pattern="{Descrizione}" TextColor="Maroon" TextGlowColor="255, 192, 128">
           <MapLayers>
@@ -1958,7 +1958,7 @@
               <LayoutItem Id="Shape" RelativeSize="50" Removed="True" />
             </LayoutGroup>
             <LayoutGroup Id="EventoPuntuale" Removed="True" />
-            <LayoutGroup Id="SegnalazioneStrada" RelativeSize="13.148788927335641" Caption="Tipo Segnalazione" Removed="True">
+            <LayoutGroup Id="SegPunto" RelativeSize="13.148788927335641" Caption="Tipo Segnalazione" Removed="True">
               <LayoutItem Id="TipoSegnalazione" RelativeSize="100" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
@@ -2424,7 +2424,7 @@
         <MapLayer Id="BingMapHybrid" LayerType="BingMapLayer" Index="2" LayerName="Immagini satellitari" BingMapKind="Hybrid" Visible="False" IsNewNode="True" />
       </MapLayers>
     </ListView>
-    <ListView Id="Strada_Segnalazioni_ListView" AllowLink="False" AllowNew="False" AllowDelete="True" AllowUnlink="False">
+    <ListView Id="Strada_SegnalazioniPuntuali_ListView" AllowLink="False" AllowNew="False" AllowDelete="True" AllowUnlink="False">
       <Columns>
         <ColumnInfo Id="TipoSegnalazione" Index="0" Width="91" />
         <ColumnInfo Id="Descrizione" Width="172" Index="1" />

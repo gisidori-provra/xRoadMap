@@ -12,32 +12,12 @@ namespace xRoadMap.Module.BusinessObjects
     [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     [DefaultProperty(nameof(Codice))]
-    public class TipoSegnalazione:XPCustomObject
+    [NavigationItem("Impostazioni")]
+    public class TipoSegnalazione:CodedDomain<int>
     {
         public TipoSegnalazione(Session session):base(session)
         {
 
-        }
-        private int oid;
-        [Key(true), VisibleInListView(false)]
-        public int Oid
-        {
-            get => oid;
-            set => SetPropertyValue(nameof(Oid), ref oid, value);
-        }
-        private string codice;
-        public string Codice
-        {
-            get => codice;
-            set => SetPropertyValue(nameof(Codice), ref codice, value);
-        }
-
-        private string descrizione;
-        [VisibleInListView(true)]
-        public string Descrizione
-        {
-            get => descrizione;
-            set => SetPropertyValue<string>(nameof(Descrizione), ref descrizione, value);
         }
     }
 }

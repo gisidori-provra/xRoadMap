@@ -13,6 +13,7 @@ namespace xRoadMap.Module.BusinessObjects
     [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     [DefaultProperty(nameof(Codice))]
+    [NavigationItem("Impostazioni")]
     public partial class TipoAtto : XPCustomObject
     {
         public TipoAtto(Session session) : base(session) { }
