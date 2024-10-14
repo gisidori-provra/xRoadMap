@@ -9,6 +9,7 @@ using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using NetTopologySuite.Geometries;
 using DevExpress.ExpressApp.Model;
+using DevExpress.ExpressApp;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -208,6 +209,7 @@ namespace xRoadMap.Module.BusinessObjects
         public XPCollection<SegPunto> SegnalazioniPuntuali => GetCollection<SegPunto>();
 
         [Association]
+
         public XPCollection<SegLinea> SegnalazioniLineari => GetCollection<SegLinea>();
 
         Strada IConStrada.Strada { get => this;}

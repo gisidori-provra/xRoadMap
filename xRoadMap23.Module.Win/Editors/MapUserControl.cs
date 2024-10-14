@@ -7,6 +7,7 @@ using DevExpress.Utils;
 using DevExpress.Xpo;
 using DevExpress.XtraEditors;
 using DevExpress.XtraMap;
+using DevExpress.XtraPrinting;
 using GeoAPI.CoordinateSystems.Transformations;
 using NetTopologySuite.Geometries;
 using ProjNet.CoordinateSystems;
@@ -18,6 +19,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using xRoadMap.Module.BusinessObjects;
@@ -273,6 +276,12 @@ namespace xRoadMap.Module.Win.Editors
                         case LayerType.VectorLayer:
                             layer = AddVectorLayer(model);
                             break;
+                        case LayerType.OpenStreetMap:
+                            layer = AddOpenStreetMap(model);
+                            break;
+                        case LayerType.ArcGisImagery:
+                            layer = AddArcgisImageryMap(model);
+                            break;
                     }
                     if (layer != null)
                     {
@@ -506,6 +515,55 @@ namespace xRoadMap.Module.Win.Editors
         }
 
         //private BingGeocodeDataProvider BingGeocodeDataProvider;
+
+        private LayerBase AddOpenStreetMap(IModelMapLayer model)
+        {
+            var layer = map.Layers[model.LayerName] as ImageLayer;
+            if (layer == null)
+            {
+                layer = new ImageLayer();
+                // Create an Open Street data provider.
+                OpenStreetMapDataProvider provider = new OpenStreetMapDataProvider();
+                layer.DataProvider = provider;
+
+                // Specify a template that is used to obtain image tiles. 
+                provider.TileUriTemplate = "https://{0}.tile.openstreetmap.org/{1}/{2}/{3}.png";
+                provider.Kind = OpenStreetMapKind.Basic;
+                provider.WebRequest += OnWebRequest;
+            }
+            
+            map.Layers.Add(layer);
+            layer.Name = model.LayerName;
+            return layer;
+        }
+
+
+        private LayerBase AddArcgisImageryMap(IModelMapLayer model)
+        {
+            var layer = map.Layers[model.LayerName] as ImageLayer;
+            if (layer == null)
+            {
+                layer = new ImageLayer();
+                // Create an Open Street data provider.
+                OpenStreetMapDataProvider provider = new OpenStreetMapDataProvider();
+                layer.DataProvider = provider;
+
+                // Specify a template that is used to obtain image tiles. 
+                provider.TileUriTemplate = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{1}/{3}/{2}.png";
+                provider.Kind = OpenStreetMapKind.Basic;
+                provider.WebRequest += OnWebRequest;
+            }
+
+            map.Layers.Add(layer);
+            layer.Name = model.LayerName;
+            return layer;
+        }
+
+        private void OnWebRequest(object sender, MapWebRequestEventArgs e)
+        {
+            e.UserAgent = "Sample app with OSM tiles";
+            e.Referer = "https://www.sitportal.provincia.ra.it/";
+        }
 
         private LayerBase AddBingMap(IModelMapLayer model,string bingKey)
         {

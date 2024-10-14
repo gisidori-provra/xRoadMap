@@ -47,7 +47,9 @@ namespace xRoadMap.Module
         VectorLayer,
         WMSLayer,
         BingMapLayer,
-        InformationLayer
+        InformationLayer,
+        OpenStreetMap,
+        ArcGisImagery
     }
 
     [Description("Descrive le proprietà del layer.")]

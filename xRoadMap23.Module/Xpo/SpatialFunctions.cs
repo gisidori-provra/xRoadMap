@@ -50,12 +50,12 @@ namespace xRoadMap.Module.Xpo
 
         public bool IsValidOperandCount(int count)
         {
-            throw new NotImplementedException();
+            return count == 2;
         }
 
         public bool IsValidOperandType(int operandIndex, int operandCount, Type type)
         {
-            throw new NotImplementedException();
+            return type == typeof(Geometry);
         }
     }
 }
