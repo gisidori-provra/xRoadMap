@@ -233,24 +233,31 @@ namespace xRoadMap.Module
 
         public static void LocalizzaLineareSuXY(EventoLineare item)
         {
-            {
-                var ev = (IEventoLineareOnRoad)item;
-                var line = ev.Strada.Shape;
-                var subLine = ev.Shape;
-                var loc = new NetTopologySuite.LinearReferencing.LocationIndexOfLine(line);
-                
-                var ndx = loc.IndicesOf(subLine);
-                var m = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[0]);
-                var mFine = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[1]);
-                item.Km = GetChilometricaFromMeasure(ev.Strada,m,out double pk );
-                item.KmFine = GetChilometricaFromMeasure(ev.Strada,mFine,out double pkFine);
-                item.M = pk;
-                item.MFine = pkFine;
+            var ev = (IEventoLineareOnRoad)item;
+            //var line = ev.Strada.Shape;
+            //var subLine = ev.Shape as LineString;
+            //var loc = new NetTopologySuite.LinearReferencing.LocationIndexOfLine(line);
 
-                UpdateLineCoordinate(item);
-            }
+            //var ndx = loc.IndicesOf(subLine);
+            //var m = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[0]);
+            //var mFine = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, ndx[1]);
+            //item.Km = GetChilometricaFromMeasure(ev.Strada,m,out double pk );
+            //item.KmFine = GetChilometricaFromMeasure(ev.Strada,mFine,out double pkFine);
+            //item.M = pk;
+            //item.MFine = pkFine;
+
+            var st = ev.Strada;
+            var subLine = ev.Shape as LineString;
+
+            item.Km = RoutingHelper.LocalizzaPuntualeSuXY(st, subLine.StartPoint.Coordinate, out double m);
+            item.M = m;
+
+            item.KmFine = RoutingHelper.LocalizzaPuntualeSuXY(st, subLine.EndPoint.Coordinate, out m);
+            item.MFine = m;
 
 
+
+            UpdateLineCoordinate(item);
         }
 
         public static void LocalizzaLineareSuKilometrica(IEnumerable<EventoLineare> events)
