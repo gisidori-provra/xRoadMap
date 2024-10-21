@@ -2152,6 +2152,8 @@
             <MapLayer Id="Sottopassi" LayerName="Sottopassi" StrokeColor="Orchid" StrokeWidth="4" DataSourceProperty="Sottopassi" Pattern="" Visible="False" AttributeName="" Index="24" TextColor="Orchid" Titolo="Sovra e Sottopassagi" IsNewNode="True" />
             <MapLayer Id="Vegetazione" LayerName="Vegetazione" StrokeColor="GreenYellow" StrokeWidth="4" DataSourceProperty="Vegetazione" Pattern="" Visible="False" AttributeName="" Index="25" TextColor="GreenYellow" Titolo="Vegetazione" IsNewNode="True" />
             <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="26" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" Visible="False" IsNewNode="True" />
+            <MapLayer Id="SegnalazioniLineari" LayerName="SegnalazioniLineari" DataSourceProperty="SegnalazioniLineari" Index="26" FillColor="DarkOrchid" StrokeWidth="4" Pattern="" StrokeColor="DarkOrchid" Titolo="Segnalazioni lineari" ColorizerType="None" AttributeName="" TextColor="DarkOrchid" TextGlowColor="White" Visible="False" IsNewNode="True" />
+            <MapLayer Id="SegnalazioniPuntuali" LayerName="SegnalazioniPuntuali" DataSourceProperty="SegnalazioniPuntuali" Index="26" FillColor="DarkOrchid" StrokeWidth="4" Pattern="" StrokeColor="DarkOrchid" Titolo="Segnalazioni puntuali" ColorizerType="None" AttributeName="" TextColor="DarkOrchid" TextGlowColor="White" Visible="False" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
       </Items>
