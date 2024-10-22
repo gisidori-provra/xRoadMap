@@ -55,7 +55,6 @@
             this.simpleActionLocateRoad.ConfirmationMessage = null;
             this.simpleActionLocateRoad.Id = "LocateRoute";
             this.simpleActionLocateRoad.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireMultipleObjects;
-            this.simpleActionLocateRoad.TargetObjectsCriteria = "Strada IS NULL";
             this.simpleActionLocateRoad.TargetObjectsCriteriaMode = DevExpress.ExpressApp.Actions.TargetObjectsCriteriaMode.TrueForAll;
             this.simpleActionLocateRoad.ToolTip = "Assegna la strada provinciale più vicina.";
             this.simpleActionLocateRoad.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.simpleActionLocateRoad_Execute);

@@ -115,7 +115,8 @@ namespace xRoadMap.Module.Win.Controllers
             foreach (var item in e.SelectedObjects)
             {
                 IEventoOnRoad ev = View.ObjectSpace.GetObject(item) as IEventoOnRoad;
-                ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade,maxDistance);
+                if (ev.Strada == null)
+                    ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade,maxDistance);    
                 if (ev.Strada != null)
                 {
                     if (ev is EventoPuntuale ep)
