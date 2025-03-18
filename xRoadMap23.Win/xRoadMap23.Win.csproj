@@ -18,14 +18,15 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>\\srvsitarcgis\sit\xRoadMap\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>\\srvsitarcgis\sit\xRoadMap\</InstallUrl>
     <ProductName>xRoadMap</ProductName>
     <PublisherName>Provincia di Ravenna</PublisherName>
     <SuiteName>xMap</SuiteName>

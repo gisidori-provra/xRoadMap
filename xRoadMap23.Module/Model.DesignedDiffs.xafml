@@ -138,9 +138,9 @@
       <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni" Removed="True" />
     </Items>
   </NavigationItems>
-  <Options DataAccessMode="ServerView" />
+  <Options DataAccessMode="Server" />
   <SchemaModules>
-    <SchemaModule Name="SystemModule" Version="23.2.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.9.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="22.2.3.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
@@ -543,6 +543,15 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="CentroAbitato_ListView" AllowEdit="True" NewItemRowPosition="Top">
+      <Columns>
+        <ColumnInfo Id="Nome" Width="100" />
+        <ColumnInfo Id="Strada" Width="183" />
+        <ColumnInfo Id="Tipo" Index="2" />
+        <ColumnInfo Id="Km" Index="3" />
+        <ColumnInfo Id="KmFine" Index="4" />
+      </Columns>
+    </ListView>
     <DetailView Id="Ciclabile_DetailView">
       <Items>
         <PropertyEditor Id="Shape" LayerName="Ciclabili" StrokeColor="Purple" StrokeWidth="6">
