@@ -15,10 +15,11 @@
     </Class>
   </BOModel>
   <SchemaModules>
-    <SchemaModule Name="SystemModule" Version="23.2.4.0" IsNewNode="True" />
-    <SchemaModule Name="SystemWindowsFormsModule" Version="23.2.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="23.2.9.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="23.2.9.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <ListView Id="Ciclabile_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <ListView Id="Ordinanza_ListViewMap" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <ListView Id="Ponte_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <DetailView Id="Strada_DetailView">

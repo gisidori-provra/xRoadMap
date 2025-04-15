@@ -230,8 +230,12 @@ namespace xRoadMap.Module.Win.Editors
             this.checkedListBoxControl1.Items.Clear();
 
             var modelRoot = info as IModelMapLayer;
+
+            if (modelRoot.LayerName == null)
+                modelRoot.LayerName = "layer";
+
             layer = AddVectorLayer(modelRoot);
-            layer.Name = modelRoot.LayerName;
+            //layer.Name = modelRoot.LayerName;
             layer.ViewportChanged += layer_ViewportChanged;
 
             legend.Add(new LegendItem(modelRoot));

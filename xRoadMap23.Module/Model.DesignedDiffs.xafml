@@ -138,7 +138,6 @@
       <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni" Removed="True" />
     </Items>
   </NavigationItems>
-  <Options DataAccessMode="Server" />
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="23.2.9.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="22.2.3.0" IsNewNode="True" />
@@ -631,6 +630,50 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Ciclabile_ListView">
+      <Variants>
+        <Variant Id="Elenco" ViewID="Ciclabile_ListView" Caption="Elenco" IsNewNode="True" />
+        <Variant Id="Mappa" ViewID="Ciclabile_MapListView" Caption="Mappa" IsNewNode="True" />
+      </Variants>
+    </ListView>
+    <ListView Id="Ciclabile_MapListView" ClassName="xRoadMap.Module.BusinessObjects.Ciclabile" StrokeColor="192, 0, 192" StrokeWidth="6" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="DataFine" PropertyName="DataFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DataInizio" PropertyName="DataInizio" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Event_id" PropertyName="Event_id" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Km" PropertyName="Km" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="KmFine" PropertyName="KmFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Latitudine" PropertyName="Latitudine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LatitudineFine" PropertyName="LatitudineFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LatitudineFineSessagesimale" PropertyName="LatitudineFineSessagesimale" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LatitudineSessagesimale" PropertyName="LatitudineSessagesimale" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Lenght" PropertyName="Lenght" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Longitudine" PropertyName="Longitudine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LongitudineFine" PropertyName="LongitudineFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LongitudineFineSessagesimale" PropertyName="LongitudineFineSessagesimale" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LongitudineSessagesimale" PropertyName="LongitudineSessagesimale" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="M" PropertyName="M" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="MFine" PropertyName="MFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Offset" PropertyName="Offset" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Shape" PropertyName="Shape" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Tipo" PropertyName="Tipo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="X" PropertyName="X" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="XFine" PropertyName="XFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Y" PropertyName="Y" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="YFine" PropertyName="YFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Z" PropertyName="Z" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="ZFine" PropertyName="ZFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Strada" PropertyName="Strada" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Larghezza" PropertyName="Larghezza" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Lunghezza" PropertyName="Lunghezza" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="TipoCiclabile" PropertyName="TipoCiclabile" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Senso" PropertyName="Senso" Index="4" IsNewNode="True" />
+      </Columns>
+      <MapLayers IsNewNode="True">
+        <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="0" IsNewNode="True" />
+        <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="0" IsNewNode="True" />
+      </MapLayers>
+    </ListView>
     <DetailView Id="Cippo_DetailView">
       <Items>
         <PropertyEditor Id="Shape">
