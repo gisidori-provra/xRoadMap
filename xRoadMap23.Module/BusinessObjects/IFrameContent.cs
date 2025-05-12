@@ -10,17 +10,15 @@ namespace xRoadMap.Module.BusinessObjects
 {
 
     [DomainComponent]
-    public class IFrameContent:DevExpress.ExpressApp.NonPersistentBaseObject
+    public class IFrameContent : DevExpress.ExpressApp.NonPersistentBaseObject
     {
-
         string iframe;
-        [Size(SizeAttribute.Unlimited)]
+
+        [FieldSize(FieldSizeAttribute.Unlimited)]
         public string IFrame
         {
             get => iframe;
             set => SetPropertyValue(ref iframe, value);
         }
-
-
     }
 }

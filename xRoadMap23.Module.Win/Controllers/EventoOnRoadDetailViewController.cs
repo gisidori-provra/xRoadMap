@@ -60,7 +60,7 @@ namespace xRoadMap.Module.Win.Controllers
             var selectedItems = mapUserControl.GetSelectedItems();
             if (selectedItems.Count == 1)
             {
-                var os = Application.CreateObjectSpace();
+                var os = Application.CreateObjectSpace(typeof(EventoLineare));
                 var item = selectedItems[0];
                 var view = Application.CreateDetailView(os, item, true);
                 Frame.SetView(view);

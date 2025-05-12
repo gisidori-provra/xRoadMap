@@ -42,7 +42,6 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<double>(nameof(Misura), ref fMisura, value); }
         }
 
-        [NonPersistent]
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
         public string Kilometro

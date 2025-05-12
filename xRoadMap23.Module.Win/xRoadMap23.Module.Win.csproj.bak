@@ -119,6 +119,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\MapUserControl.resx">
       <DependentUpon>MapUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -162,22 +163,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Win">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Security.Xpo">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Validation.Win">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Map.Core">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.Win.Map">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="NetTopologySuite">
       <Version>2.5.0</Version>
@@ -198,7 +199,7 @@
   </Target>
   -->
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.4">
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

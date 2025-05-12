@@ -29,7 +29,7 @@ namespace xRoadMap.Module.BusinessObjects.cspra
         public cspraEnum Delimitazione
         {
             get { return fDelimitazione; }
-            set { SetPropertyValue<cspraEnum>(nameof(DelayedAttribute), ref fDelimitazione, value); }
+            set { SetPropertyValue<cspraEnum>(nameof(Delimitazione), ref fDelimitazione, value); }
         }
 
         cspraEnum fTipo;

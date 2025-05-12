@@ -16,24 +16,24 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\srvsitarcgis\SIT\xRoadMap\</PublishUrl>
+    <PublishUrl>\\srvsitarcgis\sit\xRoadMap\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <UpdateUrl>\\srvsitarcgis\SIT\xRoadMap\</UpdateUrl>
+    <InstallUrl>\\srvsitarcgis\sit\xRoadMap\</InstallUrl>
     <ProductName>xRoadMap</ProductName>
     <PublisherName>Provincia di Ravenna</PublisherName>
     <SuiteName>xMap</SuiteName>
     <WebPage>default.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>38</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationRevision>47</ApplicationRevision>
+    <ApplicationVersion>1.0.0.47</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>false</BootstrapperEnabled>
@@ -424,16 +424,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Win">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Validation.Win">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule">
-      <Version>23.2.4</Version>
+      <Version>23.2.9</Version>
     </PackageReference>
     <PackageReference Include="Oracle.ManagedDataAccess">
       <Version>21.10.0</Version>
@@ -448,7 +448,7 @@
   </Target>
   -->
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.4">
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="23.2.9">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

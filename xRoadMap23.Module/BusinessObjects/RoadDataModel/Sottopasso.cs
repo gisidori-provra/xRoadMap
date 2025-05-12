@@ -43,7 +43,7 @@ namespace xRoadMap.Module.BusinessObjects
         public TipoIlluminazione Illuminazione
         {
             get => illuminazione;
-            set => SetPropertyValue(nameof(TipoIlluminazione), ref illuminazione, value);
+            set => SetPropertyValue(nameof(Illuminazione), ref illuminazione, value);
         }
 
         TipoStatoConservazione stato;

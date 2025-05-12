@@ -29,7 +29,7 @@ namespace xRoadMap.Module.Controllers
 
         private void actionImport_Execute(object sender, SingleChoiceActionExecuteEventArgs e)
         {
-            var os = this.Application.CreateObjectSpace();
+            var os = this.Application.CreateObjectSpace(typeof(cspraEvento));
             switch (e.SelectedChoiceActionItem.Id)
             {
                 //case "Strade":

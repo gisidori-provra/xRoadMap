@@ -29,7 +29,7 @@ namespace xRoadMap.Module.BusinessObjects.cspra
         public cspraEnum Tipologia
         {
             get { return tipologia; }
-            set { SetPropertyValue<cspraEnum>(nameof(tipologia), ref tipologia, value); }
+            set { SetPropertyValue<cspraEnum>(nameof(Tipologia), ref tipologia, value); }
         }
 
         cspraEnum senso;
