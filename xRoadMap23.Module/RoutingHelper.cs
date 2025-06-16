@@ -160,7 +160,10 @@ namespace xRoadMap.Module
             if (cp != null)
             {
                 if (cp.Offset != null)
-                    return (cippo*1000-cp.Misura) + cp.Offset.Measure + offset;
+                {
+                    var cpStrart = strada.Cippi.FirstOrDefault(c => c.TipoCippo.Codice == 2);   //Inizio Percorso
+                    return (cippo * 1000 - cp.Misura) + cp.Offset.Measure + offset - cpStrart?.Misura??0;
+                }
             }
 
             return double.NaN;

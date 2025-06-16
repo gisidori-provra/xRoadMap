@@ -101,6 +101,8 @@ namespace xRoadMap.Module.Win.Controllers
             {
                 var m = RoutingHelper.GetMeasureFromChilometrica(this.ViewCurrentObject.Strada, pk);
                 var line = strada.Shape;
+                var star = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, 0);
+
                 var loc = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, m);
                 var c = loc.GetCoordinate(line);
                 //var seg = loc.GetSegment(line);
