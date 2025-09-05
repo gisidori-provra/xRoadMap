@@ -17,17 +17,6 @@ namespace xRoadMap.Module.BusinessObjects
         public Cippo(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
 
-        private OffsetCippo offsetCippo;
-        [Browsable(false)]
-        public OffsetCippo Offset
-        {
-            get
-            {
-                if (offsetCippo == null)
-                    offsetCippo = Session.GetObjectByCode<OffsetCippo>(this.Oid,nameof(OffsetCippo.Cippo));
-                return offsetCippo;
-            }
-        }
         Strada fStrada;
         [Association(), NoForeignKey]
         public Strada Strada
@@ -52,7 +41,7 @@ namespace xRoadMap.Module.BusinessObjects
                 if (Misura %  1000 == 0)
                     return $"Km {km:N0}";
                 var offset = (Misura - km * 1000);
-                return $"Km {km:N0}+{offset:N0}";
+                return $"Km {km:N0}+{offset:000}";
             }
         }
 

@@ -93,52 +93,68 @@ namespace xRoadMap.Module
 
         }
 
-        public static string GetChilometricaFromMeasure(Strada st, double m,out double pk)
+        public static string GetChilometricaFromMeasure(Strada st, double m, out double pk)
         {
             pk = m;
 
-            if (m == double.NaN)
+            if (double.IsNaN(m) || st == null || st.Shape == null || st.Cippi == null || st.Cippi.Count == 0)
                 return null;
 
-            if (st == null)
-                return null;
+            // Trova il cippo più vicino alla misura m lungo la shape della strada
+            Cippo nearestCp = null;
+            double minDist = double.MaxValue;
+            double nearestCpMeasure = 0;
 
-
-            int km = (int)Math.Truncate(pk / 1000) * 1000;
-            int offset = (int)Math.Round(pk - km, MidpointRounding.AwayFromZero);
-
-            var cp = st.Cippi.Where(c=>c.Offset != null).OrderByDescending(c => c.Offset.Measure).FirstOrDefault(c => c.Offset.Measure <= m);
-            if (cp != null)
+            foreach (var cp in st.Cippi.Where(c=>c.Misura % 1000 == 0))     //Solo cippi principali
             {
-                if (cp.Offset != null)
-                    offset += (int)Math.Round(cp.Misura - cp.Offset.Measure, MidpointRounding.AwayFromZero);
+                if (cp.Shape == null)
+                    continue;
+
+                // Calcola la posizione del cippo lungo la shape della strada
+                var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(st.Shape, cp.Shape.Coordinate);
+                double cpMeasure = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(st.Shape, loc);
+
+                double dist = Math.Abs(m - cpMeasure);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                    nearestCp = cp;
+                    nearestCpMeasure = cpMeasure;
+                }
             }
 
+            if (nearestCp == null)
+                return null;
 
+            // Calcola km e offset rispetto al cippo più vicino
+            int km = (int)Math.Truncate(nearestCp.Misura / 1000);
+            int offset = (int) Math.Truncate(m-nearestCpMeasure);   // (int)Math.Round(m - (km*1000), MidpointRounding.AwayFromZero);
+
+            // Normalizza offset e km
             while (offset >= 1000)
             {
                 offset -= 1000;
-                km += 1000;
+                km += 1;
             }
-            while (offset < 0)
+            while (offset < 0 && km>0)
             {
                 offset += 1000;
-                km -= 1000;
+                km -= 1;
             }
 
-            pk = km  + offset;
-            return $"{km/1000:F0}{offset:+000;-000}";
+            pk = km * 1000 + offset;
+            return $"{km:F0}{offset:+000;-000}";
         }
 
         public static double GetMeasureFromChilometrica(Strada strada, string chilometrica)
         {
             if (strada == null)
                 throw new ArgumentNullException(nameof(strada));
+            if (chilometrica == null)
+                return 0;
 
             double cippo = 0;
             double offset = 0;
-            if (chilometrica == null)
-                return 0;
             var pos = chilometrica.IndexOfAny("+-".ToCharArray());
             if (pos == -1)
             {
@@ -148,19 +164,26 @@ namespace xRoadMap.Module
             else
             {
                 if (!double.TryParse(chilometrica.Substring(0, pos), out cippo) ||
-                    !double.TryParse(chilometrica.Substring(pos), out offset))         //Offset con segno
+                    !double.TryParse(chilometrica.Substring(pos), out offset)) // Offset con segno
                     return double.NaN;
             }
-            Cippo cp = null;
-            if (offset>=0)
-                cp = strada.Cippi.OrderBy(c=>c.Misura).Where(c=>c.Misura>=cippo*1000).FirstOrDefault();      //Cippo più vicino
-            else
-                cp = strada.Cippi.OrderByDescending(c => c.Misura).Where(c => c.Misura <= cippo * 1000).FirstOrDefault();      //Cippo più vicino
 
-            if (cp != null)
+            Cippo cp = null;
+            if (offset >= 0)
+                cp = strada.Cippi.OrderBy(c => c.Misura).Where(c => c.Misura >= cippo * 1000).FirstOrDefault();
+            else
+                cp = strada.Cippi.OrderByDescending(c => c.Misura).Where(c => c.Misura <= cippo * 1000).FirstOrDefault();
+
+            if (cp != null && cp.Shape != null && strada.Shape != null)
             {
-                if (cp.Offset != null)
-                    return (cippo*1000-cp.Misura) + cp.Offset.Measure + offset;
+                // Calcola la misura lineare del cippo sulla shape della strada
+                var point = cp.Shape.Coordinate;
+                var line = strada.Shape;
+                // Trova la posizione lungo la linea più vicina al punto del cippo
+                var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(line, point);
+                double misuraLineare = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, loc);
+
+                return misuraLineare + offset;
             }
 
             return double.NaN;

@@ -97,7 +97,6 @@
     <Compile Include="BusinessObjects\RoadDataModel\IEvento.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ispezione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ordinanza.cs" />
-    <Compile Include="BusinessObjects\RoadDataModel\OffsetCippo.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\PassaggioLivello.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Percorso.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ponte.cs" />
