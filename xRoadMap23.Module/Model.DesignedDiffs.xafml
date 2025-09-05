@@ -136,11 +136,12 @@
         </Items>
       </Item>
       <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni" Removed="True" />
+      <Item Id="Incidenti" Caption="Incidenti stradali" IsNewNode="True" />
     </Items>
   </NavigationItems>
   <Options DataAccessMode="Server" />
   <SchemaModules>
-    <SchemaModule Name="SystemModule" Version="23.2.9.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.7.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="22.2.3.0" IsNewNode="True" />
   </SchemaModules>
   <Views>

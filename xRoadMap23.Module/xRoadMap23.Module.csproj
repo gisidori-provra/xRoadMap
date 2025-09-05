@@ -75,6 +75,7 @@
     <Compile Include="BusinessObjects\RoadDataModel\Arginello.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Illuminazione.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\ImpiantoPubblicitario.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\IncidenteStradale.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\SegLinea.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\SegPunto.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Vegetazione.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="BusinessObjects\TipoStatoArco.cs" />
     <Compile Include="BusinessObjects\TipoStatoConservazione.cs" />
     <Compile Include="BusinessObjects\TipoTombino.cs" />
+    <Compile Include="Controllers\EventoViewController.cs" />
     <Compile Include="Controllers\OrdinanzaViewController.cs" />
     <Compile Include="Controllers\OrdinanzaViewController.Designer.cs">
       <DependentUpon>OrdinanzaViewController.cs</DependentUpon>
