@@ -212,6 +212,9 @@ namespace xRoadMap.Module.BusinessObjects
 
         public XPCollection<SegLinea> SegnalazioniLineari => GetCollection<SegLinea>();
 
+        [Association]
+        public XPCollection<IncidenteStradale> IncidentiStradali => GetCollection<IncidenteStradale>();
+
         Strada IConStrada.Strada { get => this;}
 
         [System.ComponentModel.DisplayName("Lunghezza geometrica")]
