@@ -312,4 +312,22 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
+    // Enumerazioni per il modello regionale Emilia-Romagna - dataset minimo DB LINEARE
+
+    [Persistent("ciclabile_stato_attuazione")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class StatoAttuazioneCiclabile : CodedDomain<string>
+    {
+        public StatoAttuazioneCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_limitazione_traffico")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class LimitazioneTrafficoCiclabile : CodedDomain<string>
+    {
+        public LimitazioneTrafficoCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
 }
