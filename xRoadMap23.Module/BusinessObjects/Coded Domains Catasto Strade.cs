@@ -330,4 +330,36 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
+    [Persistent("ciclabile_materiale_superficie")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class MaterialeSuperficieCiclabile : CodedDomain<string>
+    {
+        public MaterialeSuperficieCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_tipo_protezione")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipoProtezioneCiclabile : CodedDomain<string>
+    {
+        public TipoProtezioneCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_accessibilita")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class AccessibilitaCiclabile : CodedDomain<string>
+    {
+        public AccessibilitaCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_livello_priorita")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class PriorityLevelCiclabile : CodedDomain<string>
+    {
+        public PriorityLevelCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
 }

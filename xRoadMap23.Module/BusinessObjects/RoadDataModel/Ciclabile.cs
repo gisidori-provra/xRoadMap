@@ -12,7 +12,9 @@ namespace xRoadMap.Module.BusinessObjects
 {
     /// <summary>
     /// Classe per la gestione dei percorsi ciclabili.
-    /// Conforme al modello regionale Emilia-Romagna per il dataset minimo DB LINEARE:
+    /// Conforme al modello regionale Emilia-Romagna per il dataset minimo DB LINEARE e attributi estesi:
+    /// 
+    /// Attributi minimi richiesti:
     /// - ID_txt: identificativo univoco del tratto
     /// - STATO_AGG: stato di attuazione 
     /// - TIPO_CL_1/2: tipologia percorso ciclabile
@@ -20,6 +22,18 @@ namespace xRoadMap.Module.BusinessObjects
     /// - SEN_MARCIA: senso di marcia
     /// - FONTE: fonte del dato
     /// - NOTE: annotazioni
+    /// 
+    /// Attributi aggiuntivi per completezza del modello:
+    /// - MATERIALE_SUP: materiale superficie
+    /// - ILLUMINAZIONE: presenza illuminazione
+    /// - PENDENZA: pendenza percentuale
+    /// - TIPO_PROTEZIONE: tipo protezione ciclisti
+    /// - ENTE_GESTORE: ente responsabile gestione
+    /// - ANNO_COSTRUZIONE: anno di costruzione
+    /// - ULTIMA_MANUTENZIONE: data ultima manutenzione
+    /// - ACCESSIBILITA: livello accessibilità
+    /// - LIVELLO_PRIORITA: priorità nell'infrastruttura
+    /// - VELOCITA_MAX: velocità massima consentita
     /// </summary>
     [MapInheritance(MapInheritanceType.OwnTable)]
 
@@ -31,6 +45,7 @@ namespace xRoadMap.Module.BusinessObjects
 
         }
 
+        Strada strada;
         [Association]
         public Strada Strada
         {
@@ -137,6 +152,88 @@ namespace xRoadMap.Module.BusinessObjects
         {
             get => note;
             set => SetPropertyValue(nameof(NOTE), ref note, value);
+        }
+
+        // Attributi aggiuntivi per completezza del modello regionale
+
+        private MaterialeSuperficieCiclabile materialeSuperficie;
+        [DisplayName("Materiale Superficie")]
+        public MaterialeSuperficieCiclabile MATERIALE_SUP
+        {
+            get => materialeSuperficie;
+            set => SetPropertyValue(nameof(MATERIALE_SUP), ref materialeSuperficie, value);
+        }
+
+        private bool illuminazione;
+        [DisplayName("Illuminazione")]
+        public bool ILLUMINAZIONE
+        {
+            get => illuminazione;
+            set => SetPropertyValue(nameof(ILLUMINAZIONE), ref illuminazione, value);
+        }
+
+        private double pendenza;
+        [DisplayName("Pendenza (%)")]
+        public double PENDENZA
+        {
+            get => pendenza;
+            set => SetPropertyValue(nameof(PENDENZA), ref pendenza, value);
+        }
+
+        private TipoProtezioneCiclabile tipoProtezione;
+        [DisplayName("Tipo Protezione")]
+        public TipoProtezioneCiclabile TIPO_PROTEZIONE
+        {
+            get => tipoProtezione;
+            set => SetPropertyValue(nameof(TIPO_PROTEZIONE), ref tipoProtezione, value);
+        }
+
+        private string enteGestore;
+        [DisplayName("Ente Gestore")]
+        public string ENTE_GESTORE
+        {
+            get => enteGestore;
+            set => SetPropertyValue(nameof(ENTE_GESTORE), ref enteGestore, value);
+        }
+
+        private DateTime? annoCostruzione;
+        [DisplayName("Anno Costruzione")]
+        public DateTime? ANNO_COSTRUZIONE
+        {
+            get => annoCostruzione;
+            set => SetPropertyValue(nameof(ANNO_COSTRUZIONE), ref annoCostruzione, value);
+        }
+
+        private DateTime? ultimaManutenzione;
+        [DisplayName("Ultima Manutenzione")]
+        public DateTime? ULTIMA_MANUTENZIONE
+        {
+            get => ultimaManutenzione;
+            set => SetPropertyValue(nameof(ULTIMA_MANUTENZIONE), ref ultimaManutenzione, value);
+        }
+
+        private AccessibilitaCiclabile accessibilita;
+        [DisplayName("Accessibilità")]
+        public AccessibilitaCiclabile ACCESSIBILITA
+        {
+            get => accessibilita;
+            set => SetPropertyValue(nameof(ACCESSIBILITA), ref accessibilita, value);
+        }
+
+        private PriorityLevelCiclabile livelloPriorita;
+        [DisplayName("Livello Priorità")]
+        public PriorityLevelCiclabile LIVELLO_PRIORITA
+        {
+            get => livelloPriorita;
+            set => SetPropertyValue(nameof(LIVELLO_PRIORITA), ref livelloPriorita, value);
+        }
+
+        private double velocitaMax;
+        [DisplayName("Velocità Massima (km/h)")]
+        public double VELOCITA_MAX
+        {
+            get => velocitaMax;
+            set => SetPropertyValue(nameof(VELOCITA_MAX), ref velocitaMax, value);
         }
 
     }
