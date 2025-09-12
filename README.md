@@ -1,107 +1,107 @@
 # xRoadMap23
 
-A comprehensive road infrastructure management system developed for the Province of Ravenna, Italy. This application provides tools for managing, tracking, and maintaining road networks and associated infrastructure.
+Un sistema completo di gestione dell'infrastruttura stradale sviluppato per la Provincia di Ravenna, Italia. Questa applicazione fornisce strumenti per gestire, monitorare e mantenere le reti stradali e l'infrastruttura associata.
 
-## 🚗 Overview
+## 🚗 Panoramica
 
-xRoadMap23 is a Windows desktop application built with the DevExpress XAF (eXpressApp Framework) that enables efficient management of road infrastructure including roads, bridges, tunnels, lighting systems, vegetation, and various road furniture. The system integrates with spatial databases and provides comprehensive tools for infrastructure monitoring and reporting.
+xRoadMap23 è un'applicazione desktop Windows costruita con DevExpress XAF (eXpressApp Framework) che consente una gestione efficiente dell'infrastruttura stradale incluse strade, ponti, gallerie, sistemi di illuminazione, vegetazione e vario arredo stradale. Il sistema si integra con database spaziali e fornisce strumenti completi per il monitoraggio e la reportistica dell'infrastruttura.
 
-## ✨ Key Features
+## ✨ Caratteristiche Principali
 
-- **Road Network Management**: Complete management of road segments, intersections, and routing
-- **Infrastructure Tracking**: Monitor bridges, tunnels, lighting, vegetation, and other road furniture
-- **Spatial Data Integration**: GIS capabilities with spatial database support (Oracle SDE)
-- **Ordinance Management**: Track and manage municipal ordinances affecting road infrastructure
-- **Inspection System**: Schedule and record infrastructure inspections
-- **Synchronization Tools**: Utilities for data synchronization and import/export
-- **Multi-Module Architecture**: Modular design for extensibility and maintenance
+- **Gestione Rete Stradale**: Gestione completa di segmenti stradali, intersezioni e routing
+- **Monitoraggio Infrastrutture**: Monitoraggio di ponti, gallerie, illuminazione, vegetazione e altro arredo stradale
+- **Integrazione Dati Spaziali**: Capacità GIS con supporto database spaziali (Oracle SDE)
+- **Gestione Ordinanze**: Tracciamento e gestione delle ordinanze municipali che influenzano l'infrastruttura stradale
+- **Sistema Ispezioni**: Pianificazione e registrazione delle ispezioni dell'infrastruttura
+- **Strumenti Sincronizzazione**: Utilità per sincronizzazione dati e import/export
+- **Architettura Multi-Modulo**: Design modulare per estensibilità e manutenzione
 
-## 🛠️ Technology Stack
+## 🛠️ Stack Tecnologico
 
-- **.NET Framework 4.8**: Core application framework
-- **DevExpress XAF**: Enterprise application framework
-- **DevExpress Controls**: Rich UI components (v24.2.7)
-- **Oracle Database**: Primary data storage with spatial extensions
-- **NetTopologySuite**: Spatial geometry processing
-- **Windows Forms**: Desktop UI framework
+- **.NET Framework 4.8**: Framework applicativo core
+- **DevExpress XAF**: Framework per applicazioni enterprise
+- **DevExpress Controls**: Componenti UI ricchi (v24.2.7)
+- **Oracle Database**: Archiviazione dati primaria con estensioni spaziali
+- **NetTopologySuite**: Elaborazione geometrie spaziali
+- **Windows Forms**: Framework UI desktop
 
-## 📋 System Requirements
+## 📋 Requisiti di Sistema
 
-### Development Environment
-- **Visual Studio 2017 or later**
+### Ambiente di Sviluppo
+- **Visual Studio 2017 o successivo**
 - **.NET Framework 4.8 Developer Pack**
-- **DevExpress Controls v24.2.7** (license required)
+- **DevExpress Controls v24.2.7** (licenza richiesta)
 - **Oracle Data Access Components**
 
-### Runtime Environment
-- **Windows 10 or later**
+### Ambiente di Esecuzione
+- **Windows 10 o successivo**
 - **.NET Framework 4.8 Runtime**
-- **Oracle Client** (for database connectivity)
-- **Minimum 4GB RAM**
-- **100MB+ available disk space**
+- **Oracle Client** (per connettività database)
+- **Minimo 4GB RAM**
+- **100MB+ spazio disco disponibile**
 
-## 🏗️ Project Structure
+## 🏗️ Struttura del Progetto
 
 ```
 xRoadMap/
-├── xRoadMap23.sln                    # Main solution file
-├── SyncAppostamenti.sln              # Synchronization solution
-├── xRoadMap23.Module/                # Core business logic and data model
-│   ├── BusinessObjects/              # Domain entities (roads, bridges, etc.)
-│   ├── Controllers/                  # Business logic controllers
-│   └── DatabaseUpdate/               # Database migration scripts
-├── xRoadMap23.Module.Win/            # Windows-specific UI modules
-├── xRoadMap23.Win/                   # Main Windows Forms application
-├── xRoadMap23.cspra.Module/          # Province-specific extensions
-├── SyncAppostamenti/                 # Data synchronization utility
-├── SyncAppCmd/                       # Command-line sync tool
-├── SyncModule/                       # Synchronization module
-└── ImportTransiti/                   # Traffic data import utility
+├── xRoadMap23.sln                    # File soluzione principale
+├── SyncAppostamenti.sln              # Soluzione sincronizzazione
+├── xRoadMap23.Module/                # Logica business core e modello dati
+│   ├── BusinessObjects/              # Entità dominio (strade, ponti, etc.)
+│   ├── Controllers/                  # Controller logica business
+│   └── DatabaseUpdate/               # Script migrazione database
+├── xRoadMap23.Module.Win/            # Moduli UI specifici per Windows
+├── xRoadMap23.Win/                   # Applicazione Windows Forms principale
+├── xRoadMap23.cspra.Module/          # Estensioni specifiche provinciali
+├── SyncAppostamenti/                 # Utilità sincronizzazione dati
+├── SyncAppCmd/                       # Strumento sync da riga di comando
+├── SyncModule/                       # Modulo sincronizzazione
+└── ImportTransiti/                   # Utilità importazione dati traffico
 ```
 
-## 🚀 Getting Started
+## 🚀 Iniziare
 
-### Building the Application
+### Compilazione dell'Applicazione
 
-1. **Clone the repository**:
+1. **Clona il repository**:
    ```bash
    git clone https://github.com/GIsidori/xRoadMap.git
    cd xRoadMap
    ```
 
-2. **Install DevExpress Components**:
-   - Ensure DevExpress Universal subscription v24.2.7 is installed
-   - Register DevExpress assemblies in GAC if required
+2. **Installa i Componenti DevExpress**:
+   - Assicurati che DevExpress Universal subscription v24.2.7 sia installato
+   - Registra gli assembly DevExpress in GAC se richiesto
 
-3. **Configure Database Connection**:
-   - Update connection strings in `App.config` files
-   - Ensure Oracle database is accessible
-   - Run database update scripts if needed
+3. **Configura la Connessione Database**:
+   - Aggiorna le stringhe di connessione nei file `App.config`
+   - Assicurati che il database Oracle sia accessibile
+   - Esegui gli script di aggiornamento database se necessario
 
-4. **Build the Solution**:
+4. **Compila la Soluzione**:
    ```bash
-   # Using Visual Studio
-   Open xRoadMap23.sln in Visual Studio
+   # Utilizzando Visual Studio
+   Apri xRoadMap23.sln in Visual Studio
    Build -> Build Solution (Ctrl+Shift+B)
 
-   # Using MSBuild
+   # Utilizzando MSBuild
    msbuild xRoadMap23.sln /p:Configuration=Release
    ```
 
-### Running the Application
+### Esecuzione dell'Applicazione
 
-1. **Main Application**:
-   - Set `xRoadMap23.Win` as startup project
-   - Configure connection string in `App.config`
-   - Press F5 to run or build and run the executable
+1. **Applicazione Principale**:
+   - Imposta `xRoadMap23.Win` come progetto di avvio
+   - Configura la stringa di connessione in `App.config`
+   - Premi F5 per eseguire o compila ed esegui l'eseguibile
 
-2. **Synchronization Tools**:
-   - Build `SyncAppostamenti.sln` for data sync utilities
-   - Use `SyncAppCmd` for command-line operations
+2. **Strumenti di Sincronizzazione**:
+   - Compila `SyncAppostamenti.sln` per le utilità di sincronizzazione dati
+   - Usa `SyncAppCmd` per operazioni da riga di comando
 
-## 🗃️ Database Configuration
+## 🗃️ Configurazione Database
 
-The application requires an Oracle database with spatial extensions. Configure the connection string in the application's `App.config` file:
+L'applicazione richiede un database Oracle con estensioni spaziali. Configura la stringa di connessione nel file `App.config` dell'applicazione:
 
 ```xml
 <connectionStrings>
@@ -111,62 +111,62 @@ The application requires an Oracle database with spatial extensions. Configure t
 </connectionStrings>
 ```
 
-## 📊 Main Entities
+## 📊 Entità Principali
 
-The system manages various road infrastructure entities:
+Il sistema gestisce varie entità dell'infrastruttura stradale:
 
-- **Strada** (Roads): Main road segments and properties
-- **Ponte** (Bridges): Bridge structures and specifications
-- **Galleria** (Tunnels): Tunnel infrastructure
-- **Illuminazione** (Lighting): Street lighting systems
-- **Vegetazione** (Vegetation): Roadside vegetation management
-- **Tombino** (Manholes): Utility access points
-- **Ordinanza** (Ordinances): Municipal regulations
-- **Ispezione** (Inspections): Infrastructure inspection records
+- **Strada**: Segmenti stradali principali e proprietà
+- **Ponte**: Strutture e specifiche dei ponti
+- **Galleria**: Infrastruttura gallerie
+- **Illuminazione**: Sistemi di illuminazione stradale
+- **Vegetazione**: Gestione vegetazione stradale
+- **Tombino**: Punti di accesso utility
+- **Ordinanza**: Regolamenti municipali
+- **Ispezione**: Record ispezioni infrastruttura
 
-## 🔧 Development
+## 🔧 Sviluppo
 
-### Adding New Features
+### Aggiungere Nuove Funzionalità
 
-1. **Business Objects**: Add new entities in `xRoadMap23.Module/BusinessObjects/`
-2. **Controllers**: Implement business logic in appropriate controller classes
-3. **UI Customization**: Extend Windows forms in `xRoadMap23.Module.Win/`
-4. **Database Changes**: Update schema through XAF's database update mechanism
+1. **Business Objects**: Aggiungi nuove entità in `xRoadMap23.Module/BusinessObjects/`
+2. **Controllers**: Implementa logica business nelle classi controller appropriate
+3. **Personalizzazione UI**: Estendi Windows forms in `xRoadMap23.Module.Win/`
+4. **Modifiche Database**: Aggiorna schema attraverso il meccanismo di aggiornamento database XAF
 
-### Code Style
+### Stile del Codice
 
-- Follow Microsoft C# coding conventions
-- Use meaningful names for classes and methods
-- Document public APIs with XML comments
-- Implement proper error handling and logging
+- Segui le convenzioni di codifica Microsoft C#
+- Usa nomi significativi per classi e metodi
+- Documenta le API pubbliche con commenti XML
+- Implementa gestione errori e logging appropriati
 
-## 🤝 Contributing
+## 🤝 Contribuire
 
-This project is maintained by the Province of Ravenna. For contributions:
+Questo progetto è mantenuto dalla Provincia di Ravenna. Per contributi:
 
-1. Fork the repository
-2. Create a feature branch
-3. Implement changes with appropriate tests
-4. Submit a pull request with detailed description
+1. Fai un fork del repository
+2. Crea un branch per la nuova funzionalità
+3. Implementa le modifiche con test appropriati
+4. Invia una pull request con descrizione dettagliata
 
-## 📄 License
+## 📄 Licenza
 
-This project is proprietary software developed for the Province of Ravenna. Please contact the development team for licensing information.
+Questo progetto è software proprietario sviluppato per la Provincia di Ravenna. Contatta il team di sviluppo per informazioni sulla licenza.
 
-## 📞 Support
+## 📞 Supporto
 
-For technical support or questions:
+Per supporto tecnico o domande:
 
-- **Organization**: Provincia di Ravenna
-- **Application**: xRoadMap v1.0.0.47
+- **Organizzazione**: Provincia di Ravenna
+- **Applicazione**: xRoadMap v1.0.0.47
 - **Framework**: DevExpress XAF
 
-## 🗺️ Related Projects
+## 🗺️ Progetti Correlati
 
-- **ImportTransiti**: Traffic data import utility
-- **SyncAppostamenti**: Data synchronization tools
-- **SyncModule**: Core synchronization framework
+- **ImportTransiti**: Utilità importazione dati traffico
+- **SyncAppostamenti**: Strumenti sincronizzazione dati
+- **SyncModule**: Framework sincronizzazione core
 
 ---
 
-*This application is part of the digital infrastructure initiative of the Province of Ravenna for efficient road network management and maintenance.*
+*Questa applicazione fa parte dell'iniziativa infrastruttura digitale della Provincia di Ravenna per una gestione e manutenzione efficiente della rete stradale.*
