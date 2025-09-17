@@ -295,14 +295,6 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
-    [Persistent("ciclabile_tipo")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipoCiclabile : CodedDomain<double>
-    {
-        public TipoCiclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
-    }
-
 
     [Persistent("ciclabile_senso_percorrenza")]
     [NavigationItem("Impostazioni Catasto Strade")]
