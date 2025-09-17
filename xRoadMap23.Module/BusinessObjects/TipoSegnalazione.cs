@@ -12,7 +12,7 @@ namespace xRoadMap.Module.BusinessObjects
     [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     [DefaultProperty(nameof(Codice))]
-    [NavigationItem("Impostazioni")]
+    [NavigationItem("Impostazioni Catasto Strade")]
     public class TipoSegnalazione:CodedDomain<int>
     {
         public TipoSegnalazione(Session session):base(session)

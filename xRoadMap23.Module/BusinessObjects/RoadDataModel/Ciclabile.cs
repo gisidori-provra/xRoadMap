@@ -20,6 +20,14 @@ namespace xRoadMap.Module.BusinessObjects
 
         }
 
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Id_RER
+        {
+            get => iD_RER;
+            set => SetPropertyValue(nameof(Id_RER), ref iD_RER, value);
+        }
+
         [Association]
         public Strada Strada
         {
@@ -32,6 +40,8 @@ namespace xRoadMap.Module.BusinessObjects
             Strada = value;
         }
 
+        CiclabileStatoAgg statoAttuazione;
+        string iD_RER;
         double larghezza;
         public double Larghezza
         {
@@ -51,15 +61,24 @@ namespace xRoadMap.Module.BusinessObjects
         public TipoCiclabile TipoCiclabile
         {
             get => tipoCiclabile;
-            set => SetPropertyValue(nameof(TipoCiclabile),ref tipoCiclabile, value);
+            set => SetPropertyValue(nameof(TipoCiclabile), ref tipoCiclabile, value);
         }
 
         private SensoCiclabile senso;
         public SensoCiclabile Senso
         {
             get => senso;
-            set => SetPropertyValue(nameof(Senso),ref senso, value);    
+            set => SetPropertyValue(nameof(Senso), ref senso, value);
         }
+
+        [Persistent("Stato_AGG")]
+        public CiclabileStatoAgg StatoAttuazione
+        {
+            get => statoAttuazione;
+            set => SetPropertyValue(nameof(StatoAttuazione), ref statoAttuazione, value);
+        }
+
+        
 
     }
 }

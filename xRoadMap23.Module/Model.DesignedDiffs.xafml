@@ -77,69 +77,11 @@
           <Item Id="Ordinanza" Caption="Ordinanze" ViewId="Ordinanza_ListView" Index="0" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Default" Caption="Default" Index="3" IsNewNode="True">
-        <Items IsNewNode="True">
-          <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni Catasto Strade" Index="999" IsNewNode="True">
-            <Items IsNewNode="True">
-              <Item Id="ClassificazioneDispositivoRitenuta_ListView" ViewId="ClassificazioneDispositivoRitenuta_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="SensoPercorrenza_ListView" ViewId="SensoPercorrenza_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="StatoFrana_ListView" ViewId="StatoFrana_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TiplogiaCunetta_ListView" ViewId="TiplogiaCunetta_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoAmministrazione_ListView" ViewId="TipoAmministrazione_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoAreaTraffico_ListView" ViewId="TipoAreaTraffico_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoAsse_ListView" ViewId="TipoAsse_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoAttivitàFrana_ListView" ViewId="TipoAttivitàFrana_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoCarreggiata_ListView" ViewId="TipoCarreggiata_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoCippo_ListView" ViewId="TipoCippo_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoClassificaFunzionale_ListView" ViewId="TipoClassificaFunzionale_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoCliclabile_ListView" ViewId="TipoCliclabile_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoConfineAmministrativo_ListView" ViewId="TipoConfineAmministrativo_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoDelimitazione_ListView" ViewId="TipoDelimitazione_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoDestinazioneAccesso_ListView" ViewId="TipoDestinazioneAccesso_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoDestinazioneArea_ListView" ViewId="TipoDestinazioneArea_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoDispositivoRitenuta_ListView" ViewId="TipoDispositivoRitenuta_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoDisposizioneLampade_ListView" ViewId="TipoDisposizioneLampade_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoElementoAttraversato_ListView" ViewId="TipoElementoAttraversato_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoElementoStradale_ListView" ViewId="TipoElementoStradale_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoFonte_ListView" ViewId="TipoFonte_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoIlluminazione_ListView" ViewId="TipoIlluminazione_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipologiaCorpoStradale_ListView" ViewId="TipologiaCorpoStradale_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipologiaCostruttivaOperaSostegno_ListView" ViewId="TipologiaCostruttivaOperaSostegno_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipologiaGiunzione_ListView" ViewId="TipologiaGiunzione_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoMateriale_ListView" ViewId="TipoMateriale_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoMaterialeCippo_ListView" ViewId="TipoMaterialeCippo_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoMaterialeCunetta_ListView" ViewId="TipoMaterialeCunetta_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoMaterialeDispositivoRitenuta_ListView" ViewId="TipoMaterialeDispositivoRitenuta_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoMovimentoFrana_ListView" ViewId="TipoMovimentoFrana_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoOpera_ListView" ViewId="TipoOpera_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoOperaGalleria_ListView" ViewId="TipoOperaGalleria_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoOperaSostegno_ListView" ViewId="TipoOperaSostegno_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoOrografia_ListView" ViewId="TipoOrografia_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoPatrimonio_ListView" ViewId="TipoPatrimonio_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoRegolazioneGiunzione_ListView" ViewId="TipoRegolazioneGiunzione_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoRilievo_ListView" ViewId="TipoRilievo_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoSchemaStatico_ListView" ViewId="TipoSchemaStatico_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoSismicità_ListView" ViewId="TipoSismicità_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoStatoArco_ListView" ViewId="TipoStatoArco_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoStatoConservazione_ListView" ViewId="TipoStatoConservazione_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoSuperficie_ListView" ViewId="TipoSuperficie_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoTombino_ListView" ViewId="TipoTombino_ListView" ObjectKey="" IsNewNode="True" />
-              <Item Id="TipoTortuosita_ListView" ViewId="TipoTortuosita_ListView" ObjectKey="" IsNewNode="True" />
-            </Items>
-          </Item>
-          <Item Id="ImpostazioniOrdinanze" Caption="Impostazioni Ordinanze" IsNewNode="True">
-            <Items IsNewNode="True">
-              <Item Id="TipoAtto" ViewId="TipoAtto_ListView" IsNewNode="True" />
-            </Items>
-          </Item>
-          <Item Id="ModelDifference" ViewId="ModelDifference_ListView" Caption="Impostazioni utente" IsNewNode="True" />
-        </Items>
-      </Item>
-      <Item Id="Impostazioni Catasto Strade" Caption="Impostazioni" Removed="True" />
+      <Item Id="Default" Caption="Default" Index="3" IsNewNode="True" />
     </Items>
   </NavigationItems>
   <SchemaModules>
-    <SchemaModule Name="SystemModule" Version="23.2.9.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.7.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="22.2.3.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
