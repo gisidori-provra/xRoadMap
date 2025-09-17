@@ -45,9 +45,9 @@ namespace xRoadMap.Module.BusinessObjects
 
     [Persistent("ciclabile_tipo")]
     [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipoCliclabile : CodedDomain<double>
+    public partial class TipoCiclabile : CodedDomain<double>
     {
-        public TipoCliclabile(Session session) : base(session) { }
+        public TipoCiclabile(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
@@ -309,6 +309,46 @@ namespace xRoadMap.Module.BusinessObjects
     public partial class SensoCiclabile : CodedDomain<double>
     {
         public SensoCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_categoria_funzionale")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class CategoriaFunzionaleCiclabile : CodedDomain<double>
+    {
+        public CategoriaFunzionaleCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_tipologia_protezione")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipologiaProtezioneCiclabile : CodedDomain<double>
+    {
+        public TipologiaProtezioneCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_compatibilita_veicolare")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class CompatibilitaVeicolareCiclabile : CodedDomain<double>
+    {
+        public CompatibilitaVeicolareCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_connessione_rete")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class ConnessioneReteCiclabile : CodedDomain<double>
+    {
+        public ConnessioneReteCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
+    [Persistent("ciclabile_categoria_utenza")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class CategoriaUtenzaCiclabile : CodedDomain<double>
+    {
+        public CategoriaUtenzaCiclabile(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
