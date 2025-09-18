@@ -61,5 +61,128 @@ namespace xRoadMap.Module.BusinessObjects
             set => SetPropertyValue(nameof(Senso),ref senso, value);    
         }
 
+        // Regional specification fields
+        
+        private string codiceIdentificativoRegionale;
+        [Size(50)]
+        public string CodiceIdentificativoRegionale
+        {
+            get => codiceIdentificativoRegionale;
+            set => SetPropertyValue(nameof(CodiceIdentificativoRegionale), ref codiceIdentificativoRegionale, value);
+        }
+
+        private CategoriaFunzionaleCiclabile categoriaFunzionale;
+        public CategoriaFunzionaleCiclabile CategoriaFunzionale
+        {
+            get => categoriaFunzionale;
+            set => SetPropertyValue(nameof(CategoriaFunzionale), ref categoriaFunzionale, value);
+        }
+
+        private TipoPavimentazione tipoPavimentazione;
+        public TipoPavimentazione TipoPavimentazione
+        {
+            get => tipoPavimentazione;
+            set => SetPropertyValue(nameof(TipoPavimentazione), ref tipoPavimentazione, value);
+        }
+
+        private TipoStatoConservazione statoConservazione;
+        public TipoStatoConservazione StatoConservazione
+        {
+            get => statoConservazione;
+            set => SetPropertyValue(nameof(StatoConservazione), ref statoConservazione, value);
+        }
+
+        private TipologiaProtezioneCiclabile tipologiaProtezione;
+        public TipologiaProtezioneCiclabile TipologiaProtezione
+        {
+            get => tipologiaProtezione;
+            set => SetPropertyValue(nameof(TipologiaProtezione), ref tipologiaProtezione, value);
+        }
+
+        private CompatibilitaVeicolareCiclabile compatibilitaVeicolare;
+        public CompatibilitaVeicolareCiclabile CompatibilitaVeicolare
+        {
+            get => compatibilitaVeicolare;
+            set => SetPropertyValue(nameof(CompatibilitaVeicolare), ref compatibilitaVeicolare, value);
+        }
+
+        private double pendenzaMedia;
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n2")]
+        [DevExpress.ExpressApp.Model.ModelDefault("EditMask", "n2")]
+        public double PendenzaMedia
+        {
+            get => pendenzaMedia;
+            set => SetPropertyValue(nameof(PendenzaMedia), ref pendenzaMedia, value);
+        }
+
+        private double pendenzaMassima;
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n2")]
+        [DevExpress.ExpressApp.Model.ModelDefault("EditMask", "n2")]
+        public double PendenzaMassima
+        {
+            get => pendenzaMassima;
+            set => SetPropertyValue(nameof(PendenzaMassima), ref pendenzaMassima, value);
+        }
+
+        private TipoIlluminazione tipoIlluminazione;
+        public TipoIlluminazione TipoIlluminazione
+        {
+            get => tipoIlluminazione;
+            set => SetPropertyValue(nameof(TipoIlluminazione), ref tipoIlluminazione, value);
+        }
+
+        private bool accessibilitaDisabili;
+        public bool AccessibilitaDisabili
+        {
+            get => accessibilitaDisabili;
+            set => SetPropertyValue(nameof(AccessibilitaDisabili), ref accessibilitaDisabili, value);
+        }
+
+        private ConnessioneReteCiclabile connessioneRete;
+        public ConnessioneReteCiclabile ConnessioneRete
+        {
+            get => connessioneRete;
+            set => SetPropertyValue(nameof(ConnessioneRete), ref connessioneRete, value);
+        }
+
+        private CategoriaUtenzaCiclabile categoriaUtenza;
+        public CategoriaUtenzaCiclabile CategoriaUtenza
+        {
+            get => categoriaUtenza;
+            set => SetPropertyValue(nameof(CategoriaUtenza), ref categoriaUtenza, value);
+        }
+
+        private bool superficieAntisdrucciolo;
+        public bool SuperficieAntisdrucciolo
+        {
+            get => superficieAntisdrucciolo;
+            set => SetPropertyValue(nameof(SuperficieAntisdrucciolo), ref superficieAntisdrucciolo, value);
+        }
+
+        private bool presenzaCordolo;
+        public bool PresenzaCordolo
+        {
+            get => presenzaCordolo;
+            set => SetPropertyValue(nameof(PresenzaCordolo), ref presenzaCordolo, value);
+        }
+
+        private double altezzaCordolo;
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n2")]
+        [DevExpress.ExpressApp.Model.ModelDefault("EditMask", "n2")]
+        public double AltezzaCordolo
+        {
+            get => altezzaCordolo;
+            set => SetPropertyValue(nameof(AltezzaCordolo), ref altezzaCordolo, value);
+        }
+
+        private double distanzaCarreggiata;
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n2")]
+        [DevExpress.ExpressApp.Model.ModelDefault("EditMask", "n2")]
+        public double DistanzaCarreggiata
+        {
+            get => distanzaCarreggiata;
+            set => SetPropertyValue(nameof(DistanzaCarreggiata), ref distanzaCarreggiata, value);
+        }
+
     }
 }
