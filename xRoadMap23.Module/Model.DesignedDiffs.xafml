@@ -72,7 +72,12 @@
           <Item Id="Vegetazione_ListView" Removed="True" />
         </Items>
       </Item>
-      <Item Id="Ordinanze" Caption="Ordinanze" Index="1" IsNewNode="True">
+      <Item Id="@6ef2533f-b851-4e7e-8d01-ace0e6809ede" ViewId="" Caption="Ciclabili" Index="1" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Ciclabili" ViewId="Ciclabile_ListView" Caption="Ciclabili" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Ordinanze" Caption="Ordinanze" Index="2" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Ordinanza" Caption="Ordinanze" ViewId="Ordinanza_ListView" Index="0" IsNewNode="True" />
         </Items>
@@ -511,46 +516,110 @@
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
             <LayoutGroup Id="Ciclabile" Direction="Vertical" RelativeSize="100">
               <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
-                <LayoutGroup Id="Gruppo" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="0" RelativeSize="100" Caption="Ciclabile" IsNewNode="True">
-                  <LayoutGroup Id="Auto33fe1d22-b2a4-41bd-895e-3254349fb10b" ShowCaption="False" Caption="Auto33fe1d22-b2a4-41bd-895e-3254349fb10b(6)" Index="0" RelativeSize="43.212435233160619" IsNewNode="True">
-                    <LayoutItem Id="TipoCiclabile" ViewItem="TipoCiclabile" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
-                    <LayoutItem Id="Senso" ViewItem="Senso" Index="1" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                    <LayoutItem Id="Lunghezza" ViewItem="Lunghezza" Index="2" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                    <LayoutItem Id="Larghezza" ViewItem="Larghezza" Index="3" RelativeSize="85.7397504456328" IsNewNode="True" />
-                  </LayoutGroup>
-                  <LayoutGroup Id="Auto2d06a79a-96bc-41e7-8aa5-d4946c9f2da8" ShowCaption="False" Index="1" RelativeSize="56.787564766839381" IsNewNode="True">
-                    <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
-                    <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="94.29590017825312" IsNewNode="True" />
-                  </LayoutGroup>
+                <LayoutGroup Id="Gruppo" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Ciclabile" IsNewNode="True">
+                  <TabbedGroup Id="Item9" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                    <LayoutGroup Id="Item8" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Identificazione" Direction="Horizontal" IsNewNode="True">
+                      <LayoutGroup Id="Autoc5261d7a-5e33-45b2-9e3a-9e2bf21694a1" ShowCaption="False" Caption="Autoc5261d7a-5e33-45b2-9e3a-9e2bf21694a1(8)" Index="0" RelativeSize="45.762711864406782" IsNewNode="True">
+                        <LayoutItem Id="Nome" ViewItem="Nome" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                        <LayoutItem Id="StatoAttuazione" ViewItem="StatoAttuazione" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Comune" ViewItem="Comune" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Provincia" ViewItem="Provincia" Index="3" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="EuroVelo" ViewItem="EuroVelo" Index="4" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Snct" ViewItem="Snct" Index="5" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Bicitalia" ViewItem="Bicitalia" Index="6" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Rcr" ViewItem="Rcr" Index="7" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="AreaVasta" ViewItem="AreaVasta" Index="8" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="ReteLocale" ViewItem="ReteLocale" Index="9" RelativeSize="52.340425531914896" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Autoa62f2191-1e1b-498e-a0ca-45cac0e32790" ShowCaption="False" Caption="Autoa62f2191-1e1b-498e-a0ca-45cac0e32790(19)" Index="1" RelativeSize="54.237288135593218" IsNewNode="True">
+                        <LayoutItem Id="Toponimo" ViewItem="Toponimo" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                        <LayoutItem Id="Contesto" ViewItem="Contesto" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Vocazione" ViewItem="Vocazione" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="ClassificazioneBiciplan" ViewItem="ClassificazioneBiciplan" Index="3" RelativeSize="82.978723404255319" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" Direction="Horizontal" Caption="Informazioni descrittive" IsNewNode="True">
+                      <LayoutGroup Id="Autofee8bae8-37f4-43ad-801b-3c233d031801" ShowCaption="False" Caption="Autofee8bae8-37f4-43ad-801b-3c233d031801(25)" Index="0" RelativeSize="30.847457627118644" IsNewNode="True">
+                        <LayoutItem Id="TipoCL1" ViewItem="TipoCL1" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                        <LayoutItem Id="TipoCL2" ViewItem="TipoCL2" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="LimitazioneTraffico" ViewItem="LimitazioneTraffico" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Senso" ViewItem="Senso" Index="3" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Larghezza1" ViewItem="Larghezza1" Index="4" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                        <LayoutItem Id="Larghezza2" ViewItem="Larghezza2" Index="5" RelativeSize="72.765957446808514" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Auto4628cf19-4d1a-4e4f-a346-6951c13d6bca" ShowCaption="False" Caption="Auto4628cf19-4d1a-4e4f-a346-6951c13d6bca(32)" Direction="Horizontal" Index="1" RelativeSize="69.152542372881356" IsNewNode="True">
+                        <LayoutGroup Id="Autobe274cf7-0e16-4270-b2c6-77970a4c59cd" ShowCaption="False" Caption="Autobe274cf7-0e16-4270-b2c6-77970a4c59cd(33)" Index="0" RelativeSize="48.529411764705884" IsNewNode="True">
+                          <LayoutItem Id="Separatore1" ViewItem="Separatore1" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                          <LayoutItem Id="Separatore2" ViewItem="Separatore2" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Fondo1" ViewItem="Fondo1" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Fondo2" ViewItem="Fondo2" Index="3" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Infrastruttura" ViewItem="Infrastruttura" Index="4" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Attraversamento" ViewItem="Attraversamento" Index="5" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="DotazioniSicurezza" ViewItem="DotazioniSicurezza" Index="6" RelativeSize="67.659574468085111" IsNewNode="True" />
+                        </LayoutGroup>
+                        <LayoutGroup Id="Auto680bd29b-58e5-445f-ad98-d76311309409" ShowCaption="False" Caption="Auto680bd29b-58e5-445f-ad98-d76311309409(41)" Index="1" RelativeSize="51.470588235294116" IsNewNode="True">
+                          <LayoutItem Id="Argine" ViewItem="Argine" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                          <LayoutItem Id="Pendenza" ViewItem="Pendenza" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="SegnaliTuristici" ViewItem="SegnaliTuristici" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Alberature" ViewItem="Alberature" Index="3" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Illuminazione" ViewItem="Illuminazione" Index="4" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutGroup Id="Auto8aeb4ccc-17f3-449b-8c98-5d7671d433ae" ShowCaption="False" Caption="Auto8aeb4ccc-17f3-449b-8c98-5d7671d433ae(47)" Direction="Vertical" Index="5" RelativeSize="7.6595744680851068" IsNewNode="True">
+                            <LayoutItem Id="Monitoraggio" ViewItem="Monitoraggio" Index="0" RelativeSize="100" IsNewNode="True" />
+                          </LayoutGroup>
+                          <LayoutItem Id="LinkMonitoraggio" ViewItem="LinkMonitoraggio" Index="6" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="Criticità" ViewItem="Criticità" Index="7" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                          <LayoutItem Id="RaccordoSpezzate" ViewItem="RaccordoSpezzate" Index="8" RelativeSize="54.8936170212766" IsNewNode="True" />
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item10" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" Caption="Finanziamenti" IsNewNode="True">
+                      <LayoutItem Id="Finanziamento" ViewItem="Finanziamento" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                      <LayoutItem Id="TipoIntervento" ViewItem="TipoIntervento" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="Anno" ViewItem="Anno" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="DescrizioneIntervento" ViewItem="DescrizioneIntervento" Index="3" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="FonteFinanziamento" ViewItem="FonteFinanziamento" Index="4" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="IDFinFonte" ViewItem="IDFinFonte" Index="5" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="ImportoFinanziamento" ViewItem="ImportoFinanziamento" Index="6" RelativeSize="67.659574468085111" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item11" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="3" Caption="Metadati" RelativeSize="100" IsNewNode="True">
+                      <LayoutItem Id="DataCompilazione" ViewItem="DataCompilazione" Index="0" RelativeSize="6.8085106382978724" IsNewNode="True" />
+                      <LayoutItem Id="FonteCompilazione" ViewItem="FonteCompilazione" Index="1" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="Dettaglio" ViewItem="Dettaglio" Index="2" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="Immagini" ViewItem="Immagini" Index="3" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="Note" ViewItem="Note" Index="4" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="5" RelativeSize="5.1063829787234045" IsNewNode="True" />
+                      <LayoutItem Id="DataFine" ViewItem="DataFine" Index="6" RelativeSize="67.659574468085111" IsNewNode="True" />
+                    </LayoutGroup>
+                  </TabbedGroup>
                 </LayoutGroup>
                 <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" Caption="Localizzazione" IsNewNode="True">
-                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="5.7040998217468806" IsNewNode="True" />
-                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="1" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                  <LayoutItem Id="KmFine" ViewItem="KmFine" Index="3" RelativeSize="4.2780748663101607" IsNewNode="True" />
-                  <TabbedGroup Id="Item4" CaptionLocation="Top" Index="4" RelativeSize="81.461675579322645" IsNewNode="True">
+                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="6.3618290258449308" IsNewNode="True" />
+                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="1" RelativeSize="4.7713717693836974" IsNewNode="True" />
+                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="4.7713717693836974" IsNewNode="True" />
+                  <LayoutItem Id="KmFine" ViewItem="KmFine" Index="3" RelativeSize="4.7713717693836974" IsNewNode="True" />
+                  <TabbedGroup Id="Item4" CaptionLocation="Top" Index="4" RelativeSize="79.324055666003972" IsNewNode="True">
                     <LayoutGroup Id="EventoLineare" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" Caption="Coordinate iniziali" IsNewNode="True">
-                      <LayoutGroup Id="EventoLineare_col1" ShowCaption="False" Index="0" RelativeSize="49.6288441145281" IsNewNode="True">
-                        <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                        <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="5.741626794258373" IsNewNode="True" />
-                        <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="5.741626794258373" IsNewNode="True" />
-                        <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="80.861244019138752" IsNewNode="True" />
+                      <LayoutGroup Id="EventoLineare_col1" ShowCaption="False" Index="0" RelativeSize="49.367088607594937" IsNewNode="True">
+                        <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
+                        <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="6.70391061452514" IsNewNode="True" />
+                        <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="6.70391061452514" IsNewNode="True" />
+                        <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="77.6536312849162" IsNewNode="True" />
                       </LayoutGroup>
-                      <LayoutGroup Id="EventoLineare_col2" ShowCaption="False" Index="1" RelativeSize="50.3711558854719" IsNewNode="True">
-                        <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                        <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="1" RelativeSize="92.3444976076555" IsNewNode="True" />
+                      <LayoutGroup Id="EventoLineare_col2" ShowCaption="False" Index="1" RelativeSize="50.632911392405063" IsNewNode="True">
+                        <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
+                        <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="1" RelativeSize="91.061452513966486" IsNewNode="True" />
                       </LayoutGroup>
                     </LayoutGroup>
                     <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="100" Caption="Coordinate finali" IsNewNode="True">
-                      <LayoutGroup Id="Auto954ecd59-d74a-4ada-84a5-8b8e45462787" ShowCaption="False" Index="0" RelativeSize="49.6288441145281" IsNewNode="True">
-                        <LayoutItem Id="XFine" ViewItem="XFine" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                        <LayoutItem Id="YFine" ViewItem="YFine" Index="1" RelativeSize="5.741626794258373" IsNewNode="True" />
-                        <LayoutItem Id="ZFine" ViewItem="ZFine" Index="2" RelativeSize="5.741626794258373" IsNewNode="True" />
-                        <LayoutItem Id="MFine" ViewItem="MFine" Index="3" RelativeSize="80.861244019138752" IsNewNode="True" />
+                      <LayoutGroup Id="Auto954ecd59-d74a-4ada-84a5-8b8e45462787" ShowCaption="False" Index="0" RelativeSize="49.367088607594937" IsNewNode="True">
+                        <LayoutItem Id="XFine" ViewItem="XFine" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
+                        <LayoutItem Id="YFine" ViewItem="YFine" Index="1" RelativeSize="6.70391061452514" IsNewNode="True" />
+                        <LayoutItem Id="ZFine" ViewItem="ZFine" Index="2" RelativeSize="6.70391061452514" IsNewNode="True" />
+                        <LayoutItem Id="MFine" ViewItem="MFine" Index="3" RelativeSize="77.6536312849162" IsNewNode="True" />
                       </LayoutGroup>
-                      <LayoutGroup Id="Autocb12ef0e-987a-469b-a52a-205dd66ce322" ShowCaption="False" Index="1" RelativeSize="50.3711558854719" IsNewNode="True">
-                        <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="0" RelativeSize="7.6555023923444976" IsNewNode="True" />
-                        <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="1" RelativeSize="92.3444976076555" IsNewNode="True" />
+                      <LayoutGroup Id="Autocb12ef0e-987a-469b-a52a-205dd66ce322" ShowCaption="False" Index="1" RelativeSize="50.632911392405063" IsNewNode="True">
+                        <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="0" RelativeSize="8.938547486033519" IsNewNode="True" />
+                        <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="1" RelativeSize="91.061452513966486" IsNewNode="True" />
                       </LayoutGroup>
                     </LayoutGroup>
                   </TabbedGroup>
@@ -559,10 +628,63 @@
                   <LayoutItem Id="Shape" ShowCaption="False" ViewItem="Shape" Index="0" RelativeSize="100" IsNewNode="True" />
                 </LayoutGroup>
               </TabbedGroup>
-              <LayoutItem Id="Senso" RelativeSize="51.64473684210526" Index="1" Removed="True" />
-              <LayoutItem Id="TipoCiclabile" RelativeSize="3.9473684210526314" Index="1" Removed="True" />
-              <LayoutItem Id="Larghezza" Removed="True" />
-              <LayoutItem Id="Lunghezza" RelativeSize="3.9473684210526314" Removed="True" />
+              <LayoutGroup Id="Ciclabile_col2" Index="2" RelativeSize="6.8965517241379306" Caption="Ciclabile_col2" Removed="True">
+                <LayoutItem Id="Albertatura" RelativeSize="6.7264573991031389" Index="0" Removed="True" />
+                <LayoutItem Id="Anno" RelativeSize="11.811023622047244" Index="0" Removed="True" />
+                <LayoutItem Id="Argine" RelativeSize="5.7915057915057915" Index="0" Removed="True" />
+                <LayoutItem Id="Attraversamento" RelativeSize="5.30035335689046" Index="0" Removed="True" />
+                <LayoutItem Id="Criticità" RelativeSize="8.5714285714285712" Index="0" Removed="True" />
+                <LayoutItem Id="DataCompilazione" RelativeSize="22.388059701492537" Index="0" Removed="True" />
+                <LayoutItem Id="DescrizioneIntervento" RelativeSize="13.043478260869565" Index="0" Removed="True" />
+                <LayoutItem Id="Dettaglio" RelativeSize="34.883720930232556" Index="0" Removed="True" />
+                <LayoutItem Id="DotazioniSicurezza" RelativeSize="5.5350553505535052" Index="0" Removed="True" />
+                <LayoutItem Id="Finanziamento" RelativeSize="9.9337748344370862" Index="0" Removed="True" />
+                <LayoutItem Id="FonteCompilazione" RelativeSize="27.272727272727273" Index="0" Removed="True" />
+                <LayoutItem Id="FonteFinanziamento" RelativeSize="14.563106796116505" Index="0" Removed="True" />
+                <LayoutItem Id="IDFinFonte" RelativeSize="16.483516483516482" Index="0" Removed="True" />
+                <LayoutItem Id="Illuminazione" RelativeSize="7.109004739336493" Index="0" Removed="True" />
+                <LayoutItem Id="Immagini" RelativeSize="48.387096774193552" Index="0" Removed="True" />
+                <LayoutItem Id="ImportoFinanziamento" RelativeSize="18.9873417721519" Index="0" Removed="True" />
+                <LayoutItem Id="Infrastruttura" RelativeSize="5.0847457627118642" Index="0" Removed="True" />
+                <LayoutItem Id="LinkMonitoraggio" RelativeSize="8.02139037433155" Index="0" Removed="True" />
+                <LayoutItem Id="Monitoraggio" RelativeSize="7.5376884422110555" Index="0" Removed="True" />
+                <LayoutItem Id="Note" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Pendenza" RelativeSize="6.0728744939271255" Index="0" Removed="True" />
+                <LayoutItem Id="RaccordoSpezzate" RelativeSize="9.2024539877300615" Index="0" Removed="True" />
+                <LayoutItem Id="SegnaliTuristici" RelativeSize="6.3829787234042552" Index="0" Removed="True" />
+                <LayoutItem Id="TipoIntervento" RelativeSize="10.791366906474821" Index="0" Removed="True" />
+                <LayoutItem Id="Contesto" RelativeSize="3.761755485893417" Removed="True" />
+                <LayoutItem Id="Fondo2" RelativeSize="4.88599348534202" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Ciclabile_col1" RelativeSize="40.10889292196007" Caption="Ciclabile_col1" Removed="True">
+                <LayoutItem Id="ClassificazioneBiciplan" RelativeSize="13.913043478260869" Index="0" Removed="True" />
+                <LayoutItem Id="Fondo1" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Larghezza1" RelativeSize="23.880597014925375" Index="0" Removed="True" />
+                <LayoutItem Id="Larghezza2" RelativeSize="29.09090909090909" Index="0" Removed="True" />
+                <LayoutItem Id="LimitazioneTraffico" RelativeSize="20.253164556962027" Index="0" Removed="True" />
+                <LayoutItem Id="Nome" RelativeSize="10.596026490066226" Index="0" Removed="True" />
+                <LayoutItem Id="Separatore1" RelativeSize="37.2093023255814" Index="0" Removed="True" />
+                <LayoutItem Id="Separatore2" RelativeSize="51.612903225806448" Index="0" Removed="True" />
+                <LayoutItem Id="TipoCL1" RelativeSize="15.533980582524272" Index="0" Removed="True" />
+                <LayoutItem Id="TipoCL2" RelativeSize="17.582417582417584" Index="0" Removed="True" />
+                <LayoutItem Id="Toponimo" RelativeSize="11.510791366906474" Index="0" Removed="True" />
+                <LayoutItem Id="Vocazione" RelativeSize="12.598425196850394" Index="0" Removed="True" />
+                <LayoutItem Id="TipoCiclabile" RelativeSize="7.3619631901840492" Index="1" Removed="True" />
+                <LayoutItem Id="Larghezza" RelativeSize="3.6253776435045317" Index="2" Removed="True" />
+                <LayoutItem Id="Lunghezza" RelativeSize="3.761755485893417" Index="2" Removed="True" />
+                <LayoutItem Id="AreaVasta" RelativeSize="6.0301507537688446" Index="3" Removed="True" />
+                <LayoutItem Id="Bicitalia" RelativeSize="5.3811659192825116" Index="3" Removed="True" />
+                <LayoutItem Id="Comune" RelativeSize="4.4280442804428048" Index="3" Removed="True" />
+                <LayoutItem Id="EuroVelo" RelativeSize="4.8582995951417" Index="3" Removed="True" />
+                <LayoutItem Id="NoteShp" RelativeSize="4.2402826855123674" Index="3" Removed="True" />
+                <LayoutItem Id="Provincia" RelativeSize="4.6332046332046328" Index="3" Removed="True" />
+                <LayoutItem Id="Rcr" RelativeSize="5.6872037914691944" Index="3" Removed="True" />
+                <LayoutItem Id="ReteLocale" RelativeSize="6.4171122994652405" Index="3" Removed="True" />
+                <LayoutItem Id="Senso" RelativeSize="3.9087947882736156" Index="3" Removed="True" />
+                <LayoutItem Id="Snct" RelativeSize="5.1063829787234045" Index="3" Removed="True" />
+                <LayoutItem Id="StatoAttuazione" RelativeSize="4.0677966101694913" Index="3" Removed="True" />
+                <LayoutItem Id="Id_RER" RelativeSize="9.1428571428571423" Removed="True" />
+              </LayoutGroup>
             </LayoutGroup>
             <LayoutGroup Id="XPSTGeometry" Caption="Shape" Index="1" RelativeSize="48.74551971326165" Removed="True">
               <LayoutItem Id="Shape" Removed="True" />
@@ -573,6 +695,61 @@
       </Layout>
     </DetailView>
     <ListView Id="Ciclabile_ListView">
+      <Columns>
+        <ColumnInfo Id="Anno" Index="-1" />
+        <ColumnInfo Id="AreaVasta" Index="-1" />
+        <ColumnInfo Id="Argine" Index="-1" />
+        <ColumnInfo Id="Attraversamento" Index="-1" />
+        <ColumnInfo Id="Bicitalia" Index="-1" />
+        <ColumnInfo Id="ClassificazioneBiciplan" Index="-1" />
+        <ColumnInfo Id="Contesto" Index="-1" />
+        <ColumnInfo Id="Criticità" Index="-1" />
+        <ColumnInfo Id="DataCompilazione" Index="-1" />
+        <ColumnInfo Id="DescrizioneIntervento" Index="-1" />
+        <ColumnInfo Id="Dettaglio" Index="-1" />
+        <ColumnInfo Id="DotazioniSicurezza" Index="-1" />
+        <ColumnInfo Id="EuroVelo" Index="-1" />
+        <ColumnInfo Id="Finanziamento" Index="-1" />
+        <ColumnInfo Id="Fondo1" Index="-1" />
+        <ColumnInfo Id="Fondo2" Index="-1" />
+        <ColumnInfo Id="FonteCompilazione" Index="-1" />
+        <ColumnInfo Id="FonteFinanziamento" Index="-1" />
+        <ColumnInfo Id="Id_RER" Index="-1" />
+        <ColumnInfo Id="IDFinFonte" Index="-1" />
+        <ColumnInfo Id="Illuminazione" Index="-1" />
+        <ColumnInfo Id="Immagini" Index="-1" />
+        <ColumnInfo Id="ImportoFinanziamento" Index="-1" />
+        <ColumnInfo Id="Infrastruttura" Index="-1" />
+        <ColumnInfo Id="Larghezza1" Index="-1" />
+        <ColumnInfo Id="Larghezza2" Index="-1" />
+        <ColumnInfo Id="LimitazioneTraffico" Index="-1" />
+        <ColumnInfo Id="LinkMonitoraggio" Index="-1" />
+        <ColumnInfo Id="Monitoraggio" Index="-1" />
+        <ColumnInfo Id="NoteShp" Index="-1" />
+        <ColumnInfo Id="Pendenza" Index="-1" />
+        <ColumnInfo Id="Provincia" Index="-1" />
+        <ColumnInfo Id="RaccordoSpezzate" Index="-1" />
+        <ColumnInfo Id="Rcr" Index="-1" />
+        <ColumnInfo Id="ReteLocale" Index="-1" />
+        <ColumnInfo Id="SegnaliTuristici" Index="-1" />
+        <ColumnInfo Id="Separatore1" Index="-1" />
+        <ColumnInfo Id="Separatore2" Index="-1" />
+        <ColumnInfo Id="Snct" Index="-1" />
+        <ColumnInfo Id="TipoCL1" Index="-1" />
+        <ColumnInfo Id="TipoCL2" Index="-1" />
+        <ColumnInfo Id="TipoIntervento" Index="-1" />
+        <ColumnInfo Id="Toponimo" Index="-1" />
+        <ColumnInfo Id="Vocazione" Index="-1" />
+        <ColumnInfo Id="Nome" Width="140" />
+        <ColumnInfo Id="Strada" Index="1" Width="100" />
+        <ColumnInfo Id="StatoAttuazione" Index="2" Width="155" />
+        <ColumnInfo Id="TipoCiclabile" Index="3" Width="146" />
+        <ColumnInfo Id="Senso" Index="4" />
+        <ColumnInfo Id="Larghezza" Index="5" />
+        <ColumnInfo Id="Lunghezza" Index="6" />
+        <ColumnInfo Id="Comune" Index="7" Width="149" />
+        <ColumnInfo Id="Note" Index="8" Width="168" />
+      </Columns>
       <Variants>
         <Variant Id="Elenco" ViewID="Ciclabile_ListView" Caption="Elenco" IsNewNode="True" />
         <Variant Id="Mappa" ViewID="Ciclabile_MapListView" Caption="Mappa" IsNewNode="True" />
