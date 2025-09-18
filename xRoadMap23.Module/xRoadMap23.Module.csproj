@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\CodedDomain.cs" />
+    <Compile Include="BusinessObjects\Comune.cs" />
     <Compile Include="BusinessObjects\FoglioCatastale.cs" />
     <Compile Include="BusinessObjects\IFrameContent.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Allegato.cs" />
@@ -180,14 +181,6 @@
     <None Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="UnusableNodes1.xml">
-      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="UnusableNodes.xml">
-      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
-      <SubType>Designer</SubType>
-    </None>
     <EmbeddedResource Include="Images\directons.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

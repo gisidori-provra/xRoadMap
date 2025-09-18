@@ -45,9 +45,9 @@ namespace xRoadMap.Module.BusinessObjects
 
     [Persistent("ciclabile_tipo")]
     [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipoCiclabile : CodedDomain<double>
+    public partial class TipoCliclabile : CodedDomain<double>
     {
-        public TipoCiclabile(Session session) : base(session) { }
+        public TipoCliclabile(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
@@ -295,6 +295,14 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
+    [Persistent("ciclabile_tipo")]
+    [NavigationItem("Impostazioni Catasto Strade")]
+    public partial class TipoCiclabile : CodedDomain<double>
+    {
+        public TipoCiclabile(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+    }
+
 
     [Persistent("ciclabile_senso_percorrenza")]
     [NavigationItem("Impostazioni Catasto Strade")]
@@ -304,44 +312,158 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
-    [Persistent("ciclabile_categoria_funzionale")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class CategoriaFunzionaleCiclabile : CodedDomain<double>
+    #region Ciclabili Emilia-Romagna
+
+    [Persistent("ciclabili_stato_agg")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileStatoAgg : CodedDomain<short>
     {
-        public CategoriaFunzionaleCiclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public CiclabileStatoAgg(Session session) : base(session) { }
     }
 
-    [Persistent("ciclabile_tipologia_protezione")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipologiaProtezioneCiclabile : CodedDomain<double>
+    [Persistent("ciclabili_r_eurov")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileEurov : CodedDomain<string>
     {
-        public TipologiaProtezioneCiclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public CiclabileEurov(Session session) : base(session) { }
     }
 
-    [Persistent("ciclabile_compatibilita_veicolare")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class CompatibilitaVeicolareCiclabile : CodedDomain<double>
+
+    [Persistent("ciclabili_bicitalia")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileBicitalia : CodedDomain<string>
     {
-        public CompatibilitaVeicolareCiclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public CiclabileBicitalia(Session session) : base(session) { }
     }
 
-    [Persistent("ciclabile_connessione_rete")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class ConnessioneReteCiclabile : CodedDomain<double>
+    [Persistent("ciclabili_snct")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileSnct : CodedDomain<string>
     {
-        public ConnessioneReteCiclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public CiclabileSnct(Session session) : base(session) { }
     }
 
-    [Persistent("ciclabile_categoria_utenza")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class CategoriaUtenzaCiclabile : CodedDomain<double>
+    [Persistent("ciclabili_r_rcr")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileRcr : CodedDomain<string>
     {
-        public CategoriaUtenzaCiclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public CiclabileRcr(Session session) : base(session) { }
     }
+
+    [Persistent("ciclabili_contesto")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileContesto : CodedDomain<short>
+    {
+        public CiclabileContesto(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_vocazione")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileVocazione : CodedDomain<short>
+    {
+        public CiclabileVocazione(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_class_plan")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileClassPlan : CodedDomain<short>
+    {
+        public CiclabileClassPlan(Session session) : base(session) { }
+    }
+
+
+    [Persistent("ciclabili_tipo_cl_1")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileTipoCl1 : CodedDomain<short>
+    {
+        public CiclabileTipoCl1(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_lim_tr")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileLimTr : CodedDomain<short>
+    {
+        public CiclabileLimTr(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_sen_marcia")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileSensoMarcia : CodedDomain<short>
+    {
+        public CiclabileSensoMarcia(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_separ_1")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileSepar1 : CodedDomain<short>
+    {
+        public CiclabileSepar1(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_fondo")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileFondo : CodedDomain<short>
+    {
+        public CiclabileFondo(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_infrastr")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileInfrastr : CodedDomain<short>
+    {
+        public CiclabileInfrastr(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_segnal_tur")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileSegnalTur : CodedDomain<short>
+    {
+        public CiclabileSegnalTur(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_alberature")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileAlbertature : CodedDomain<short>
+    {
+        public CiclabileAlbertature(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_illuminazione")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileIlluminazione : CodedDomain<short>
+    {
+        public CiclabileIlluminazione(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_racc_spezz")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileRaccordoSpezzate : CodedDomain<short>
+    {
+        public CiclabileRaccordoSpezzate(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_finanz")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileFinanz : CodedDomain<short>
+    {
+        public CiclabileFinanz(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_tipo_int")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileTipoInt : CodedDomain<short>
+    {
+        public CiclabileTipoInt(Session session) : base(session) { }
+    }
+
+    [Persistent("ciclabili_inter_mod")]
+    [NavigationItem("Impostazioni Ciclabili")]
+    public partial class CiclabileInterMod : CodedDomain<short>
+    {
+        public CiclabileInterMod(Session session) : base(session) { }
+    }
+
+
+    #endregion
 
 }
