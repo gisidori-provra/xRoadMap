@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace xRoadMap.Module.BusinessObjects
 {
+    [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     [NavigationItem("Impostazioni")]
     public class Comune : XPCustomObject
@@ -44,6 +45,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     }
 
+    [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     [NavigationItem("Impostazioni")]
     public class Provincia : XPCustomObject
@@ -77,6 +79,7 @@ namespace xRoadMap.Module.BusinessObjects
         string nome;
     }
 
+    [OptimisticLocking(false)]
     [DeferredDeletion(false)]
     [NavigationItem("Impostazioni")]
     public class Regione : XPCustomObject
