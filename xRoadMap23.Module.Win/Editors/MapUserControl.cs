@@ -469,8 +469,9 @@ namespace xRoadMap.Module.Win.Editors
             WmsDataProvider dataProvider = new WmsDataProvider();
             dataProvider.ServerUri = uri;
             dataProvider.ActiveLayerName = activeLayerName;
-            if (uri.Contains("wms.cartografia.agenziaentrate.gov.it"))
-                ;   // dataProvider.SetCoordinateConverter(new WMSPointConverter("25832"));
+
+            //if (uri.Contains("wms.cartografia.agenziaentrate.gov.it"))
+            // dataProvider.SetCoordinateConverter(new WMSPointConverter("25832"));
 
             //dataProvider.CustomParameters.Add("SR", "EPSG:25832");
 
