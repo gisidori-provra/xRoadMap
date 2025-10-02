@@ -560,8 +560,8 @@ namespace xRoadMap.Module.Controllers
                 tLin.XFine = ev.T_XEVENTS;
                 tLin.YFine = ev.T_YEVENTS;
                 tLin.ZFine = ev.T_ZEVENTS;
-                tLin.Km = RoutingHelper.GetChilometricaFromMeasure(rd, m, out double pk);
-                tLin.KmFine = RoutingHelper.GetChilometricaFromMeasure(rd,mFine,out double pkFine);
+                tLin.Km = RoutingHelper.GetChilometricaFromMeasure(rd, m,false, out double pk);
+                tLin.KmFine = RoutingHelper.GetChilometricaFromMeasure(rd,mFine,false, out double pkFine);
                 tLin.M = pk;
                 tLin.MFine = pkFine;
                 RoutingHelper.UpdateLineCoordinate(tLin);
@@ -578,7 +578,7 @@ namespace xRoadMap.Module.Controllers
                 }
 
                 var tPoint = t as EventoPuntuale;
-                tPoint.Km = RoutingHelper.GetChilometricaFromMeasure(rd,m, out double pk);
+                tPoint.Km = RoutingHelper.GetChilometricaFromMeasure(rd,m,false, out double pk);
                 tPoint.M = pk;
                 RoutingHelper.UpdatePointCoordinate(tPoint);
             }

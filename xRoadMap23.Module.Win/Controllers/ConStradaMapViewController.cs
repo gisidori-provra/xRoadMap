@@ -340,7 +340,7 @@ namespace xRoadMap.Module.Win.Controllers
             if (measure != null)
             {
                 var m = measure.Value;
-                km = RoutingHelper.GetChilometricaFromMeasure(st, m, out double pk);
+                km = RoutingHelper.GetChilometricaFromMeasure(st, m,false, out double pk);
             }
             else
                 km = RoutingHelper.LocalizzaPuntualeSuXY(st, etrs89, out double m);
@@ -365,6 +365,7 @@ namespace xRoadMap.Module.Win.Controllers
                 message = $"{location} {message}";
 
             mapUserControl.ShowPushpin(message, coord,controlPressed ? heading : null,controlPressed ? "MoveUp" : imageName);
+            //mapUserControl.ShowPushpin(message, coord, heading , "MoveUp");
 
             var pitch = mapUserControl.PitchTrackBarControl.Value.ToString();
             var height = 640;

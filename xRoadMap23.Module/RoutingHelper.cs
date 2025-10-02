@@ -93,7 +93,7 @@ namespace xRoadMap.Module
 
         }
 
-        public static string GetChilometricaFromMeasure(Strada st, double m, out double pk)
+        public static string GetChilometricaFromMeasure(Strada st, double m,bool relative, out double pk)
         {
             pk = m;
 
@@ -105,7 +105,9 @@ namespace xRoadMap.Module
             double minDist = double.MaxValue;
             double nearestCpMeasure = 0;
 
-            foreach (var cp in st.Cippi.Where(c=>c.Misura % 1000 == 0))     //Solo cippi principali
+            //nearestCp = st.Cippi.Where(c => c.Misura <= m).OrderByDescending(c=>c.Misura).FirstOrDefault();
+
+            foreach (var cp in st.Cippi)     
             {
                 if (cp.Shape == null)
                     continue;
@@ -113,8 +115,10 @@ namespace xRoadMap.Module
                 // Calcola la posizione del cippo lungo la shape della strada
                 var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(st.Shape, cp.Shape.Coordinate);
                 double cpMeasure = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(st.Shape, loc);
+                if (cpMeasure > m)
+                    continue;
 
-                double dist = Math.Abs(m - cpMeasure);
+                double dist = (m - cpMeasure);
                 if (dist < minDist)
                 {
                     minDist = dist;
@@ -126,9 +130,13 @@ namespace xRoadMap.Module
             if (nearestCp == null)
                 return null;
 
+            //// Calcola la posizione del cippo lungo la shape della strada
+            //var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(st.Shape, nearestCp.Shape.Coordinate);
+            //nearestCpMeasure = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(st.Shape, loc);
+
             // Calcola km e offset rispetto al cippo più vicino
             int km = (int)Math.Truncate(nearestCp.Misura / 1000);
-            int offset = (int) Math.Truncate(m-nearestCpMeasure);   // (int)Math.Round(m - (km*1000), MidpointRounding.AwayFromZero);
+            int offset = (int) Math.Truncate(m-nearestCpMeasure+ (relative ? nearestCp.Misura % 1000 : 0));   // (int)Math.Round(m - (km*1000), MidpointRounding.AwayFromZero);
 
             // Normalizza offset e km
             while (offset >= 1000)
@@ -183,7 +191,7 @@ namespace xRoadMap.Module
                 var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(line, point);
                 double misuraLineare = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLength(line, loc);
 
-                return misuraLineare + offset;
+                return misuraLineare + offset - (cp.Misura % 1000);
             }
 
             return double.NaN;
@@ -234,7 +242,7 @@ namespace xRoadMap.Module
             var dist = NetTopologySuite.Operation.Distance.DistanceOp.Distance(line, g1);
             if (dist < 50)
             {
-                var km = GetChilometricaFromMeasure(st, m,out double pk);
+                var km = GetChilometricaFromMeasure(st, m, true, out double pk);
                 return km;
             }
             return null;
