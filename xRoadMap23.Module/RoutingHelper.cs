@@ -128,7 +128,7 @@ namespace xRoadMap.Module
             }
 
             if (nearestCp == null)
-                return null;
+                nearestCp = st.Cippi.OrderBy(c => c.Misura).FirstOrDefault();
 
             //// Calcola la posizione del cippo lungo la shape della strada
             //var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(st.Shape, nearestCp.Shape.Coordinate);
