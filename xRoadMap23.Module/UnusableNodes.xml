@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="DenominazioneStrada_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Denominazione" Direction="Vertical" RelativeSize="100">
+              <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100">
+                <LayoutGroup Id="Gruppo" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Denominazione">
+                  <LayoutGroup Id="Auto673b4730-5e48-43ea-ac77-89be806261c4" ShowCaption="False" Caption="Auto673b4730-5e48-43ea-ac77-89be806261c4(6)" Direction="Horizontal" Index="0" RelativeSize="100">
+                    <LayoutGroup Id="Auto885d9cc1-319f-41ed-819b-9f496ad4540d" ShowCaption="False" Caption="" Index="0" RelativeSize="60.36036036036036">
+                      <LayoutItem Id="Denominazione" ViewItem="Denominazione" Index="0" RelativeSize="6.3872255489021956" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Auto2d06a79a-96bc-41e7-8aa5-d4946c9f2da8" ShowCaption="False" Index="1" RelativeSize="39.63963963963964">
+                      <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="6.3872255489021956" />
+                      <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="93.6127744510978" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" Caption="Localizzazione">
+                  <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="6.3872255489021956" />
+                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="1" RelativeSize="4.7904191616766463" />
+                  <LayoutItem Id="Km" ViewItem="Km" Index="2" RelativeSize="4.7904191616766463" />
+                  <LayoutItem Id="KmFine" ViewItem="KmFine" Index="3" RelativeSize="4.7904191616766463" />
+                  <TabbedGroup Id="Item4" CaptionLocation="Top" Index="4" RelativeSize="79.241516966067863">
+                    <LayoutGroup Id="EventoLineare" ShowCaption="True" Direction="Horizontal" Index="0" RelativeSize="100" Caption="Coordinate iniziali">
+                      <LayoutGroup Id="EventoLineare_col1" ShowCaption="False" Index="0" RelativeSize="49.884526558891451">
+                        <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="8.98876404494382" />
+                        <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="6.7415730337078648" />
+                        <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="6.7415730337078648" />
+                        <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="77.528089887640448" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="EventoLineare_col2" ShowCaption="False" Index="1" RelativeSize="50.115473441108549">
+                        <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="0" RelativeSize="8.98876404494382" />
+                        <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="1" RelativeSize="91.011235955056179" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Direction="Horizontal" Index="1" RelativeSize="100" Caption="Coordinate finali">
+                      <LayoutGroup Id="Auto954ecd59-d74a-4ada-84a5-8b8e45462787" ShowCaption="False" Index="0" RelativeSize="49.884526558891451">
+                        <LayoutItem Id="XFine" ViewItem="XFine" Index="0" RelativeSize="8.98876404494382" />
+                        <LayoutItem Id="YFine" ViewItem="YFine" Index="1" RelativeSize="6.7415730337078648" />
+                        <LayoutItem Id="ZFine" ViewItem="ZFine" Index="2" RelativeSize="6.7415730337078648" />
+                        <LayoutItem Id="MFine" ViewItem="MFine" Index="3" RelativeSize="77.528089887640448" />
+                      </LayoutGroup>
+                      <LayoutGroup Id="Autocb12ef0e-987a-469b-a52a-205dd66ce322" ShowCaption="False" Index="1" RelativeSize="50.115473441108549">
+                        <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="0" RelativeSize="8.98876404494382" />
+                        <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="1" RelativeSize="91.011235955056179" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </TabbedGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" RelativeSize="100" Caption="Mappa">
+                  <LayoutItem Id="Shape" ShowCaption="False" ViewItem="Shape" Index="0" RelativeSize="100" />
+                </LayoutGroup>
+              </TabbedGroup>
+              <LayoutItem Id="Denominazione" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

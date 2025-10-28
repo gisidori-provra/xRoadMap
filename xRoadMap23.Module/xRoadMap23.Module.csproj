@@ -70,6 +70,7 @@
     <Compile Include="BusinessObjects\IFrameContent.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Allegato.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\AllegatoSegnalazioneStrada.cs" />
+    <Compile Include="BusinessObjects\RoadDataModel\DenominazioneStrada.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\DispositivoRitenuta.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Cunetta.cs" />
     <Compile Include="BusinessObjects\RoadDataModel\Ciclabile.cs" />

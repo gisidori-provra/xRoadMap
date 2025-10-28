@@ -82,9 +82,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\EventoOnRoadDetailViewController.cs" />
-    <Compile Include="Controllers\EventoOnRoadDetailViewController.designer.cs">
-      <DependentUpon>EventoOnRoadDetailViewController.cs</DependentUpon>
+    <Compile Include="Controllers\EventoOnRoadViewController.cs" />
+    <Compile Include="Controllers\EventoOnRoadViewController.designer.cs">
+      <DependentUpon>EventoOnRoadViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\ConStradaMapViewController.cs" />
     <Compile Include="Controllers\ConStradaMapViewController.Designer.cs">
@@ -114,8 +114,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controllers\EventoOnRoadDetailViewController.resx">
-      <DependentUpon>EventoOnRoadDetailViewController.cs</DependentUpon>
+    <EmbeddedResource Include="Controllers\EventoOnRoadViewController.resx">
+      <DependentUpon>EventoOnRoadViewController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editors\MapUserControl.resx">
       <DependentUpon>MapUserControl.cs</DependentUpon>

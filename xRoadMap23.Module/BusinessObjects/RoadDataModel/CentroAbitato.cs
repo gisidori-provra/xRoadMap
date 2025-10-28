@@ -33,11 +33,19 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
 
-        private string  nome;
+        TipoClassificaFunzionale classificaFunzionale;
+        private string nome;
         public string Nome
         {
             get => nome;
             set => SetPropertyValue(nameof(Nome), ref nome, value);
+        }
+
+        
+        public TipoClassificaFunzionale ClassificaFunzionale
+        {
+            get => classificaFunzionale;
+            set => SetPropertyValue(nameof(ClassificaFunzionale), ref classificaFunzionale, value);
         }
     }
 }

@@ -5,6 +5,7 @@
       <Action Id="AggiornaGeometria" ImageName="SparklineLine" />
       <Action Id="GetIFrame" ImageName="Image_StretchMode" />
       <Action Id="LineLocateAlongRoute" ImageName="RightAngleConnector" />
+      <Action Id="LocateRoute" ImageName="GeoPointMaps" />
     </Actions>
   </ActionDesign>
   <BOModel>
@@ -15,8 +16,8 @@
     </Class>
   </BOModel>
   <SchemaModules>
-    <SchemaModule Name="SystemModule" Version="23.2.9.0" IsNewNode="True" />
-    <SchemaModule Name="SystemWindowsFormsModule" Version="23.2.9.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.2.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="24.2.7.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
     <ListView Id="Ciclabile_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />

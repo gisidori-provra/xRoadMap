@@ -10,6 +10,7 @@ using DevExpress.Persistent.Base;
 using NetTopologySuite.Geometries;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp;
+using xRoadMap.Module.BusinessObjects.RoadDataModel;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -205,12 +206,16 @@ namespace xRoadMap.Module.BusinessObjects
         [Association, Aggregated]
         public XPCollection<ImpiantoPubblicitario> ImpiantiPubblicitari => GetCollection<ImpiantoPubblicitario>();
 
+        [Association(), Aggregated]
+        public XPCollection<DenominazioneStrada> Denominazioni => GetCollection<DenominazioneStrada>();
+
         [Association]
         public XPCollection<SegPunto> SegnalazioniPuntuali => GetCollection<SegPunto>();
 
         [Association]
 
         public XPCollection<SegLinea> SegnalazioniLineari => GetCollection<SegLinea>();
+
 
         Strada IConStrada.Strada { get => this;}
 

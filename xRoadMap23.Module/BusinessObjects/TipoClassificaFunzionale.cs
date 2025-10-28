@@ -9,12 +9,12 @@ using DevExpress.Persistent.Base;
 
 namespace xRoadMap.Module.BusinessObjects
 {
-
     [NavigationItem("Impostazioni Catasto Strade")]
     public partial class TipoClassificaFunzionale : CodedValues<string>
     {
         public TipoClassificaFunzionale(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
+
     }
 
 }
