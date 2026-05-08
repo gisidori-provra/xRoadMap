@@ -7,16 +7,14 @@ using System.ComponentModel;
 using System.Reflection;
 using NetTopologySuite.Geometries;
 using DevExpress.Persistent.Base;
-using DevExpress.Xpo.DB;
-using OracleInternal.Secure.Network;
-using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base.General;
 
 namespace xRoadMap.Module.BusinessObjects
 {
     [NonPersistent]
-    public partial class EventoPuntuale : XPSTGeometry, IEvento, IEventoOnRoad
+    public abstract partial class EventoLineare : XPSTGeometry, IEventoLineareOnRoad
     {
-        public EventoPuntuale(Session session) : base(session) { }
+        public EventoLineare(Session session) : base(session) { }
 
         public override void AfterConstruction()
         {
@@ -30,40 +28,43 @@ namespace xRoadMap.Module.BusinessObjects
             //switch (Tipo)
             //{
             //    case TipoPosizione.ProgressivaChilometrica:
-            //        this.M = RoutingHelper.GetMeasureFromChilometrica(this as IEventoOnRoad, this.Km);
+            //        this.MFine = RoutingHelper.GetMeasureFromChilometrica(this as IEventoOnRoad, this.KmFine);
             //        break;
             //    case TipoPosizione.Coordinate:
-            //        this.Km = RoutingHelper.GetChilometricaFromMeasure(this as IEventoOnRoad, this.M);
+            //        this.KmFine = RoutingHelper.GetChilometricaFromMeasure(this as IEventoOnRoad, this.MFine);
             //        break;
             //}
-
         }
 
+
         DateTime? fDataInizio;
+        [ImmediatePostData]
         public DateTime? DataInizio
         {
             get { return fDataInizio; }
             set { SetPropertyValue<DateTime?>(nameof(DataInizio), ref fDataInizio, value); }
         }
         DateTime? fDataFine;
+        [ImmediatePostData]
         public DateTime? DataFine
         {
             get { return fDataFine; }
             set { SetPropertyValue<DateTime?>(nameof(DataFine), ref fDataFine, value); }
         }
 
+
         protected Strada strada;
 
         public virtual void SetStrada(Strada value)
         {
-            SetPropertyValue<Strada>(nameof(Strada),ref strada , value);
+            throw new NotImplementedException();
         }
 
         Strada IEventoOnRoad.Strada { get => strada; set => SetStrada(value); }
 
         string km;
         [DevExpress.Xpo.DisplayName("Progressiva chilometrica")]
-        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("Km",Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#",Enabled = false)]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("Km", Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#", Enabled = false)]
         public string Km
         {
             get => km;
@@ -119,19 +120,53 @@ namespace xRoadMap.Module.BusinessObjects
             set => SetPropertyValue(nameof(M), ref m, value);
         }
 
-        int eve_id;
-        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
-        public int Event_id
+        string kmFine;
+        [DevExpress.Xpo.DisplayName("Progressiva chilometrica finale")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFine", Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#", Enabled = false)]
+        public string KmFine
         {
-            get => eve_id;
-            set => SetPropertyValue(nameof(Event_id),ref eve_id, value);
+            get => kmFine;
+            set => SetPropertyValue(nameof(KmFine), ref kmFine, value);
         }
 
-        double offset;
-        public double Offset
+        double xFine;
+        [DevExpress.Xpo.DisplayName(@"Coord. X Finale")]
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        public double XFine
         {
-            get => offset;
-            set => SetPropertyValue(nameof(Offset),ref offset, value);
+            get => xFine;
+            set => SetPropertyValue(nameof(XFine), ref xFine, value);
+        }
+
+        double yFine;
+        [DevExpress.Xpo.DisplayName(@"Coord. Y Finale")]
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        public double YFine
+        {
+            get => yFine;
+            set => SetPropertyValue(nameof(YFine), ref yFine, value);
+        }
+
+        double zFine;
+        [DevExpress.Xpo.DisplayName(@"Coord. Z Finale")]
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        public double ZFine
+        {
+            get => zFine;
+            set => SetPropertyValue(nameof(ZFine), ref zFine, value);
+        }
+
+        double mFine;
+        [DevExpress.Xpo.DisplayName(@"Coord. M Finale")]
+        [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        public double MFine
+        {
+            get => mFine;
+            set => SetPropertyValue(nameof(MFine), ref mFine, value);
         }
 
         double latitudine;
@@ -147,16 +182,38 @@ namespace xRoadMap.Module.BusinessObjects
         double longitudine;
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
-        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit","False")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         public double Longitudine
         {
             get => longitudine;
             set => SetPropertyValue(nameof(Longitudine), ref longitudine, value);
         }
 
+        //[Association, Aggregated]
+        //public XPCollection<AllegatoEventoLineare> Allegati => GetCollection<AllegatoEventoLineare>();
+
+        double latitudineFine;
+        [VisibleInListView(false)]
+        [VisibleInDetailView(false)]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        public double LatitudineFine
+        {
+            get => latitudineFine;
+            set => SetPropertyValue(nameof(LatitudineFine), ref latitudineFine, value);
+        }
+
+        double longitudineFine;
+        [VisibleInListView(false)]
+        [VisibleInDetailView(false)]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        public double LongitudineFine
+        {
+            get => longitudineFine;
+            set => SetPropertyValue(nameof(LongitudineFine), ref longitudineFine, value);
+        }
+
         [System.ComponentModel.DisplayName("Latitudine (°'\")")]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
-        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [NonPersistent]
         public string LatitudineSessagesimale
         {
@@ -165,7 +222,7 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         [System.ComponentModel.DisplayName("Longitudine (°'\")")]
-        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineSessagesimale",Enabled =false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+        //[DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
         [NonPersistent]
         public string LongitudineSessagesimale
@@ -174,11 +231,28 @@ namespace xRoadMap.Module.BusinessObjects
             set => Longitudine = RoutingHelper.FromSessagesimale(value);
         }
 
+        [System.ComponentModel.DisplayName("Latitudine Fine (°'\")")]
+        //[DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [NonPersistent]
+        public string LatitudineFineSessagesimale
+        {
+            get => RoutingHelper.ToSessagesimale(LatitudineFine);
+            set => LatitudineFine = RoutingHelper.FromSessagesimale(value);
+        }
+
+
+        [System.ComponentModel.DisplayName("Longitudine Fine (°'\")")]
+//        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+        [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [NonPersistent]
+        public string LongitudineFineSessagesimale
+        {
+            get => RoutingHelper.ToSessagesimale(LongitudineFine);
+            set => LongitudineFine = RoutingHelper.FromSessagesimale(value);
+        }
+
         Strada IConStrada.Strada => strada;
-
-        //[Association, Aggregated]
-        //public XPCollection<AllegatoEventoPuntuale> Allegati => GetCollection<AllegatoEventoPuntuale>();
-
 
     }
 

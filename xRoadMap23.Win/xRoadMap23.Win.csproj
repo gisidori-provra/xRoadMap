@@ -183,10 +183,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\xRoadMap23.cspra.Module\xRoadMap23.cspra.Module.csproj">
-      <Project>{240fc54c-5a6f-465e-af10-338a5f949f7a}</Project>
-      <Name>xRoadMap23.cspra.Module</Name>
-    </ProjectReference>
     <ProjectReference Include="..\xRoadMap23.Module.Win\xRoadMap23.Module.Win.csproj">
       <Project>{2899E79D-D0CF-4679-A6C0-20D370186BB2}</Project>
       <Name>xRoadMap23.Module.Win</Name>

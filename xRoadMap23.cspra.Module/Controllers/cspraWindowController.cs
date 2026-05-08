@@ -196,7 +196,7 @@ namespace xRoadMap.Module.Controllers
                 try
                 {
                     var acc = Import<Banchina>(os, item.EVE_ID, TipoPosizione.Coordinate);
-                    acc.TipoPavimentazione = GetOrCreateDomain<TipoPavimentazione>(os, item.TipoPav);
+                    acc.TipoPavimentazione = GetOrCreateDomain<TipoPavimentazioneBanchina>(os, item.TipoPav);
                     acc.TipoSuperficie = GetOrCreateDomain<TipoSuperficie>(os, item.TipoSuperficie);
                     acc.Larghezza = item.Larghezza;
                     os.CommitChanges();
@@ -532,7 +532,6 @@ namespace xRoadMap.Module.Controllers
             t.X = ev.F_XEVENTS;
             t.Y = ev.F_YEVENTS;
             t.Z = ev.F_ZEVENTS;
-            t.Offset = eor.E_OFFSET;
             t.Tipo = tipoLocalizzazione;
 
             if (t.GetType().IsSubclassOf(typeof(EventoLineare)))

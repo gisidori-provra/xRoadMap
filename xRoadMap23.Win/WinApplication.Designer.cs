@@ -36,7 +36,6 @@
             this.viewVariantsModule = new DevExpress.ExpressApp.ViewVariantsModule.ViewVariantsModule();
             this.xRoadMap23Module1 = new xRoadMap.Module.xRoadMap23Module();
             this.xRoadMap23WindowsFormsModule1 = new xRoadMap.Module.Win.xRoadMap23WindowsFormsModule();
-            this.cspraModule = new xRoadMap.cspra.Module.cspraModule();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // securityStrategyComplex1
@@ -75,7 +74,6 @@
             this.Modules.Add(this.validationWindowsFormsModule);
             this.Modules.Add(this.xRoadMap23Module1);
             this.Modules.Add(this.xRoadMap23WindowsFormsModule1);
-            this.Modules.Add(this.cspraModule);
             this.Security = this.securityStrategyComplex1;
             this.UseOldTemplates = false;
             this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.xRoadMap23WindowsFormsApplication_DatabaseVersionMismatch);
@@ -98,7 +96,6 @@
         private DevExpress.ExpressApp.ViewVariantsModule.ViewVariantsModule viewVariantsModule;
         private xRoadMap.Module.xRoadMap23Module xRoadMap23Module1;
         private Module.Win.xRoadMap23WindowsFormsModule xRoadMap23WindowsFormsModule1;
-        private xRoadMap.cspra.Module.cspraModule cspraModule; 
         private DevExpress.ExpressApp.Security.AuthenticationActiveDirectory authenticationActiveDirectory1;
         
     }

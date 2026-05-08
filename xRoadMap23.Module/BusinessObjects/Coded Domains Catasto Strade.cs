@@ -20,9 +20,9 @@ namespace xRoadMap.Module.BusinessObjects
 
     [Persistent("banchine_tipo_pav")]
     [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipoPavimentazione: CodedDomain<double>
+    public partial class TipoPavimentazioneBanchina: CodedDomain<double>
     {
-        public TipoPavimentazione(Session session) : base(session) { }
+        public TipoPavimentazioneBanchina(Session session) : base(session) { }
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 

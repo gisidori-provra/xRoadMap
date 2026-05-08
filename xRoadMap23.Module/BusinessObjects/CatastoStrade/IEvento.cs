@@ -18,8 +18,7 @@ namespace xRoadMap.Module.BusinessObjects
         double M { get; set; }
         double Latitudine { get; set; }
         double Longitudine { get; set; }
-        int Event_id { get; set; }
-        double Offset { get; set; }
+
 
     }
 

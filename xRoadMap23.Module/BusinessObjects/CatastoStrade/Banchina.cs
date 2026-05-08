@@ -37,12 +37,12 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<double>(nameof(Larghezza), ref fLarghezza, value); }
         }
 
-        TipoPavimentazione fTipoPavimentazione;
+        TipoPavimentazioneBanchina fTipoPavimentazione;
         [NoForeignKey]
-        public TipoPavimentazione TipoPavimentazione
+        public TipoPavimentazioneBanchina TipoPavimentazione
         {
             get { return fTipoPavimentazione; }
-            set { SetPropertyValue(nameof(BusinessObjects.TipoPavimentazione), ref fTipoPavimentazione, value); }
+            set { SetPropertyValue(nameof(TipoPavimentazione), ref fTipoPavimentazione, value); }
         }
 
         TipoSuperficie fTipoSuperficie;
