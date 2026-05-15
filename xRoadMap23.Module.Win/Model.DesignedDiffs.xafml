@@ -15,12 +15,136 @@
       </OwnMembers>
     </Class>
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Incidenti stradali">
+        <Items>
+          <Item Id="Incidente_ListView" ViewId="Incidente_PivotListView" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="24.2.7.0" IsNewNode="True" />
     <SchemaModule Name="SystemWindowsFormsModule" Version="24.2.7.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
     <ListView Id="Ciclabile_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
+    <ListView Id="Incidente_ListView" DataAccessMode="DataView" />
+    <ListView Id="Incidente_PivotListView" ClassName="xRoadMap.Module.BusinessObjects.Incidenti.Incidente" EditorTypeName="DevExpress.ExpressApp.PivotGrid.Win.PivotGridListEditor" DataAccessMode="DataView" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="DataFine" PropertyName="DataFine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="DataInizio" PropertyName="DataInizio" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Km" PropertyName="Km" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Latitudine" PropertyName="Latitudine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LatitudineSessagesimale" PropertyName="LatitudineSessagesimale" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Lenght" PropertyName="Lenght" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Longitudine" PropertyName="Longitudine" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="LongitudineSessagesimale" PropertyName="LongitudineSessagesimale" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="M" PropertyName="M" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Shape" PropertyName="Shape" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Tipo" PropertyName="Tipo" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="X" PropertyName="X" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Y" PropertyName="Y" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Z" PropertyName="Z" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="NomeStrada" PropertyName="NomeStrada" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="AnnoIncidente" PropertyName="AnnoIncidente" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="MeseIncidente" PropertyName="MeseIncidente" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="CodiceProvincia" PropertyName="CodiceProvincia" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="CodiceComune" PropertyName="CodiceComune" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="NumeroOrdine" PropertyName="NumeroOrdine" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="GiornoIncidente" PropertyName="GiornoIncidente" Index="6" IsNewNode="True" />
+        <ColumnInfo Id="OraIncidente" PropertyName="OraIncidente" Index="7" IsNewNode="True" />
+        <ColumnInfo Id="MinutiIncidente" PropertyName="MinutiIncidente" Index="8" IsNewNode="True" />
+        <ColumnInfo Id="OrganoRilevazione" PropertyName="OrganoRilevazione" Index="9" IsNewNode="True" />
+        <ColumnInfo Id="OrganoCoordinatore" PropertyName="OrganoCoordinatore" Index="10" IsNewNode="True" />
+        <ColumnInfo Id="LocalizzazioneIncidente" PropertyName="LocalizzazioneIncidente" Index="11" IsNewNode="True" />
+        <ColumnInfo Id="DenominazioneStrada" PropertyName="DenominazioneStrada" Index="12" IsNewNode="True" />
+        <ColumnInfo Id="Ettometrica" PropertyName="Ettometrica" Index="13" IsNewNode="True" />
+        <ColumnInfo Id="TroncoStrada" PropertyName="TroncoStrada" Index="14" IsNewNode="True" />
+        <ColumnInfo Id="TipoStrada" PropertyName="TipoStrada" Index="15" IsNewNode="True" />
+        <ColumnInfo Id="Pavimentazione" PropertyName="Pavimentazione" Index="16" IsNewNode="True" />
+        <ColumnInfo Id="Intersezione" PropertyName="Intersezione" Index="17" IsNewNode="True" />
+        <ColumnInfo Id="FondoStradale" PropertyName="FondoStradale" Index="18" IsNewNode="True" />
+        <ColumnInfo Id="Segnaletica" PropertyName="Segnaletica" Index="19" IsNewNode="True" />
+        <ColumnInfo Id="CondizioniMeteorologiche" PropertyName="CondizioniMeteorologiche" Index="20" IsNewNode="True" />
+        <ColumnInfo Id="NaturaIncidente" PropertyName="NaturaIncidente" Index="21" IsNewNode="True" />
+        <ColumnInfo Id="TipoVeicoloA" PropertyName="TipoVeicoloA" Index="22" IsNewNode="True" />
+        <ColumnInfo Id="CilindrataVeicoloA" PropertyName="CilindrataVeicoloA" Index="23" IsNewNode="True" />
+        <ColumnInfo Id="PesoVeicoloA" PropertyName="PesoVeicoloA" Index="24" IsNewNode="True" />
+        <ColumnInfo Id="TargaVeicoloA" PropertyName="TargaVeicoloA" Index="25" IsNewNode="True" />
+        <ColumnInfo Id="SiglaVeicoloA" PropertyName="SiglaVeicoloA" Index="26" IsNewNode="True" />
+        <ColumnInfo Id="AnnoImmatricolazioneVeicoloA" PropertyName="AnnoImmatricolazioneVeicoloA" Index="27" IsNewNode="True" />
+        <ColumnInfo Id="AnnoRevisioneVeicoloA" PropertyName="AnnoRevisioneVeicoloA" Index="28" IsNewNode="True" />
+        <ColumnInfo Id="ChilometriVeicoloA" PropertyName="ChilometriVeicoloA" Index="29" IsNewNode="True" />
+        <ColumnInfo Id="TipoVeicoloB" PropertyName="TipoVeicoloB" Index="30" IsNewNode="True" />
+        <ColumnInfo Id="CilindrataVeicoloB" PropertyName="CilindrataVeicoloB" Index="31" IsNewNode="True" />
+        <ColumnInfo Id="PesoVeicoloB" PropertyName="PesoVeicoloB" Index="32" IsNewNode="True" />
+        <ColumnInfo Id="TargaVeicoloB" PropertyName="TargaVeicoloB" Index="33" IsNewNode="True" />
+        <ColumnInfo Id="SiglaVeicoloB" PropertyName="SiglaVeicoloB" Index="34" IsNewNode="True" />
+        <ColumnInfo Id="AnnoImmatricolazioneVeicoloB" PropertyName="AnnoImmatricolazioneVeicoloB" Index="35" IsNewNode="True" />
+        <ColumnInfo Id="AnnoRevisioneVeicoloB" PropertyName="AnnoRevisioneVeicoloB" Index="36" IsNewNode="True" />
+        <ColumnInfo Id="ChilometriVeicoloB" PropertyName="ChilometriVeicoloB" Index="37" IsNewNode="True" />
+        <ColumnInfo Id="TipoVeicoloC" PropertyName="TipoVeicoloC" Index="38" IsNewNode="True" />
+        <ColumnInfo Id="CilindrataVeicoloC" PropertyName="CilindrataVeicoloC" Index="39" IsNewNode="True" />
+        <ColumnInfo Id="PesoVeicoloC" PropertyName="PesoVeicoloC" Index="40" IsNewNode="True" />
+        <ColumnInfo Id="TargaVeicoloC" PropertyName="TargaVeicoloC" Index="41" IsNewNode="True" />
+        <ColumnInfo Id="SiglaVeicoloC" PropertyName="SiglaVeicoloC" Index="42" IsNewNode="True" />
+        <ColumnInfo Id="AnnoImmatricolazioneVeicoloC" PropertyName="AnnoImmatricolazioneVeicoloC" Index="43" IsNewNode="True" />
+        <ColumnInfo Id="AnnoRevisioneVeicoloC" PropertyName="AnnoRevisioneVeicoloC" Index="44" IsNewNode="True" />
+        <ColumnInfo Id="ChilometriVeicoloC" PropertyName="ChilometriVeicoloC" Index="45" IsNewNode="True" />
+        <ColumnInfo Id="CircostanzaVeicoloA" PropertyName="CircostanzaVeicoloA" Index="46" IsNewNode="True" />
+        <ColumnInfo Id="CircostanzaDifettiVeicoloA" PropertyName="CircostanzaDifettiVeicoloA" Index="47" IsNewNode="True" />
+        <ColumnInfo Id="CircostanzaConducenteA" PropertyName="CircostanzaConducenteA" Index="48" IsNewNode="True" />
+        <ColumnInfo Id="CircostanzaVeicoloB" PropertyName="CircostanzaVeicoloB" Index="49" IsNewNode="True" />
+        <ColumnInfo Id="CircostanzaDifettiVeicoloB" PropertyName="CircostanzaDifettiVeicoloB" Index="50" IsNewNode="True" />
+        <ColumnInfo Id="CircostanzaConducenteB" PropertyName="CircostanzaConducenteB" Index="51" IsNewNode="True" />
+        <ColumnInfo Id="EtaConducenteA" PropertyName="EtaConducenteA" Index="52" IsNewNode="True" />
+        <ColumnInfo Id="SessoConducenteA" PropertyName="SessoConducenteA" Index="53" IsNewNode="True" />
+        <ColumnInfo Id="EsitoConducenteA" PropertyName="EsitoConducenteA" Index="54" IsNewNode="True" />
+        <ColumnInfo Id="TipoPatenteConducenteA" PropertyName="TipoPatenteConducenteA" Index="55" IsNewNode="True" />
+        <ColumnInfo Id="AnnoRilascioPatenteA" PropertyName="AnnoRilascioPatenteA" Index="56" IsNewNode="True" />
+        <ColumnInfo Id="ConducenteProfessionaleA" PropertyName="ConducenteProfessionaleA" Index="57" IsNewNode="True" />
+        <ColumnInfo Id="ObbligoCascoCinturaA" PropertyName="ObbligoCascoCinturaA" Index="58" IsNewNode="True" />
+        <ColumnInfo Id="InfoCascoCinturaConducenteA" PropertyName="InfoCascoCinturaConducenteA" Index="59" IsNewNode="True" />
+        <ColumnInfo Id="InfoCascoCinturaPasseggeroA" PropertyName="InfoCascoCinturaPasseggeroA" Index="60" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriMortiMaschiA" PropertyName="NumeroPasseggeriMortiMaschiA" Index="61" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriMortiFemmineA" PropertyName="NumeroPasseggeriMortiFemmineA" Index="62" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriFeritiMaschiA" PropertyName="NumeroPasseggeriFeritiMaschiA" Index="63" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriFeritiSFemmineA" PropertyName="NumeroPasseggeriFeritiSFemmineA" Index="64" IsNewNode="True" />
+        <ColumnInfo Id="EtaConducenteB" PropertyName="EtaConducenteB" Index="65" IsNewNode="True" />
+        <ColumnInfo Id="SessoConducenteB" PropertyName="SessoConducenteB" Index="66" IsNewNode="True" />
+        <ColumnInfo Id="EsitoConducenteB" PropertyName="EsitoConducenteB" Index="67" IsNewNode="True" />
+        <ColumnInfo Id="TipoPatenteConducenteB" PropertyName="TipoPatenteConducenteB" Index="68" IsNewNode="True" />
+        <ColumnInfo Id="AnnoRilascioPatenteB" PropertyName="AnnoRilascioPatenteB" Index="69" IsNewNode="True" />
+        <ColumnInfo Id="ConducenteProfessionaleB" PropertyName="ConducenteProfessionaleB" Index="70" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriMortiMaschiB" PropertyName="NumeroPasseggeriMortiMaschiB" Index="71" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriMortiFemmineB" PropertyName="NumeroPasseggeriMortiFemmineB" Index="72" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriFeritiMaschiB" PropertyName="NumeroPasseggeriFeritiMaschiB" Index="73" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriFeritiSFemmineB" PropertyName="NumeroPasseggeriFeritiSFemmineB" Index="74" IsNewNode="True" />
+        <ColumnInfo Id="EtaConducenteC" PropertyName="EtaConducenteC" Index="75" IsNewNode="True" />
+        <ColumnInfo Id="SessoConducenteC" PropertyName="SessoConducenteC" Index="76" IsNewNode="True" />
+        <ColumnInfo Id="EsitoConducenteC" PropertyName="EsitoConducenteC" Index="77" IsNewNode="True" />
+        <ColumnInfo Id="TipoPatenteConducenteC" PropertyName="TipoPatenteConducenteC" Index="78" IsNewNode="True" />
+        <ColumnInfo Id="AnnoRilascioPatenteC" PropertyName="AnnoRilascioPatenteC" Index="79" IsNewNode="True" />
+        <ColumnInfo Id="ConducenteProfessionaleC" PropertyName="ConducenteProfessionaleC" Index="80" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriMortiMaschiC" PropertyName="NumeroPasseggeriMortiMaschiC" Index="81" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriMortiFemmineC" PropertyName="NumeroPasseggeriMortiFemmineC" Index="82" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriFeritiMaschiC" PropertyName="NumeroPasseggeriFeritiMaschiC" Index="83" IsNewNode="True" />
+        <ColumnInfo Id="NumeroPasseggeriFeritiSFemmineC" PropertyName="NumeroPasseggeriFeritiSFemmineC" Index="84" IsNewNode="True" />
+        <ColumnInfo Id="NumeroAltriVeicoliCoinvolti" PropertyName="NumeroAltriVeicoliCoinvolti" Index="85" IsNewNode="True" />
+        <ColumnInfo Id="NumeroAltriMortiMaschi" PropertyName="NumeroAltriMortiMaschi" Index="86" IsNewNode="True" />
+        <ColumnInfo Id="NumeroAltriMortiFemmine" PropertyName="NumeroAltriMortiFemmine" Index="87" IsNewNode="True" />
+        <ColumnInfo Id="NumeroAltriFeritiMaschi" PropertyName="NumeroAltriFeritiMaschi" Index="88" IsNewNode="True" />
+        <ColumnInfo Id="NumeroAltriFeritiSFemmine" PropertyName="NumeroAltriFeritiSFemmine" Index="89" IsNewNode="True" />
+        <ColumnInfo Id="TotaleMortiPrime24Ore" PropertyName="TotaleMortiPrime24Ore" Index="90" IsNewNode="True" />
+        <ColumnInfo Id="TotaleMortiEntro30Giorni" PropertyName="TotaleMortiEntro30Giorni" Index="91" IsNewNode="True" />
+        <ColumnInfo Id="TotaleReriti" PropertyName="TotaleReriti" Index="92" IsNewNode="True" />
+        <ColumnInfo Id="CodiceIdentificativoEnte" PropertyName="CodiceIdentificativoEnte" Index="93" IsNewNode="True" />
+        <ColumnInfo Id="CodiceIdentificativoCarabinieri" PropertyName="CodiceIdentificativoCarabinieri" Index="94" IsNewNode="True" />
+      </Columns>
+      <PivotSettings Settings="﻿&lt;XtraSerializer version=&quot;1.0&quot; application=&quot;PivotGrid&quot;&gt;&#xD;&#xA;  &lt;property name=&quot;#LayoutVersion&quot; /&gt;&#xD;&#xA;  &lt;property name=&quot;#LayoutScaleFactor&quot;&gt;@1,Width=1@1,Height=1&lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;FixedColumnFieldValues&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;  &lt;property name=&quot;Fields&quot; iskey=&quot;true&quot; value=&quot;9&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;Item1&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_AnnoIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;AnnoIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item2&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_GiornoIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;ColumnArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;GiornoIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Visible&quot;&gt;false&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item3&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_MeseIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;MeseIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;2&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;5&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item4&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_NaturaIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;NaturaIncidente&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;3&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;3&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item5&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_Segnaletica&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;Segnaletica&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;4&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;4&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item6&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_TotaleMortiPrime24Ore&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;TotaleMortiPrime24Ore&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;5&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item7&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_TotaleMortiEntro30Giorni&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;TotaleMortiEntro30Giorni&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;6&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item8&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_DenominazioneStrada&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Area&quot;&gt;RowArea&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;DenominazioneStrada&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;7&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;0&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Item9&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;      &lt;property name=&quot;ImageIndex&quot;&gt;-1&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;ToolTips&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;        &lt;property name=&quot;HeaderText&quot; /&gt;&#xD;&#xA;        &lt;property name=&quot;ValueText&quot; /&gt;&#xD;&#xA;      &lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldEditName&quot; /&gt;&#xD;&#xA;      &lt;property name=&quot;Name&quot;&gt;Field_1_NumeroOrdine&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;FieldName&quot;&gt;NumeroOrdine&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SummaryType&quot;&gt;Count&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Index&quot;&gt;8&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;AreaIndex&quot;&gt;2&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;SortOrder&quot;&gt;Descending&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;MinWidth&quot;&gt;20&lt;/property&gt;&#xD;&#xA;      &lt;property name=&quot;Width&quot;&gt;100&lt;/property&gt;&#xD;&#xA;    &lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;Prefilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;ShowOperandTypeIcon&quot;&gt;false&lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;Enabled&quot;&gt;false&lt;/property&gt;&#xD;&#xA;    &lt;property name=&quot;CriteriaString&quot; /&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;ActiveFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;Enabled&quot;&gt;false&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;OptionsCustomization&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;CustomizationFormStyle&quot;&gt;Excel2007&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;OptionsChartDataSource&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;DataProvideMode&quot;&gt;UseCustomSettings&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;OptionsFilter&quot; isnull=&quot;true&quot; iskey=&quot;true&quot;&gt;&#xD;&#xA;    &lt;property name=&quot;DefaultFilterEditorView&quot;&gt;VisualAndText&lt;/property&gt;&#xD;&#xA;  &lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;FixedLineWidth&quot;&gt;2&lt;/property&gt;&#xD;&#xA;  &lt;property name=&quot;Groups&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;  &lt;property name=&quot;FormatRules&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;  &lt;property name=&quot;FormatConditions&quot; iskey=&quot;true&quot; value=&quot;0&quot; /&gt;&#xD;&#xA;&lt;/XtraSerializer&gt;" ShowChart="True" IsNewNode="True" />
+    </ListView>
     <ListView Id="Ordinanza_ListViewMap" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <ListView Id="Ponte_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <DetailView Id="Strada_DetailView">
