@@ -162,7 +162,22 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win">
+      <Version>24.2.7</Version>
+    </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Win">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.PivotChart">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.PivotGrid">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.PivotGrid.Win">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Win">
       <Version>24.2.7</Version>
     </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Security.Xpo">

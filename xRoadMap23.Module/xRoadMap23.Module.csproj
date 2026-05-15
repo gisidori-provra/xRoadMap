@@ -210,6 +210,18 @@
     <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance">
       <Version>24.2.7</Version>
     </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.PivotChart">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.PivotGrid">
+      <Version>24.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2">
+      <Version>24.2.7</Version>
+    </PackageReference>
     <PackageReference Include="DevExpress.ExpressApp.Security.Xpo">
       <Version>24.2.7</Version>
     </PackageReference>

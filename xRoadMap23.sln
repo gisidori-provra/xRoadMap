@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xRoadMap23.Module.Win", "xR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xRoadMap23.Win", "xRoadMap23.Win\xRoadMap23.Win.csproj", "{B20B098B-9026-4F93-920E-81468738D6F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xRoadMap23.cspra.Module", "xRoadMap23.cspra.Module\xRoadMap23.cspra.Module.csproj", "{240FC54C-5A6F-465E-AF10-338A5F949F7A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,12 +34,6 @@ Global
 		{B20B098B-9026-4F93-920E-81468738D6F1}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
 		{B20B098B-9026-4F93-920E-81468738D6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B20B098B-9026-4F93-920E-81468738D6F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{240FC54C-5A6F-465E-AF10-338A5F949F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{240FC54C-5A6F-465E-AF10-338A5F949F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{240FC54C-5A6F-465E-AF10-338A5F949F7A}.EasyTest|Any CPU.ActiveCfg = EasyTest|Any CPU
-		{240FC54C-5A6F-465E-AF10-338A5F949F7A}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
-		{240FC54C-5A6F-465E-AF10-338A5F949F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{240FC54C-5A6F-465E-AF10-338A5F949F7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

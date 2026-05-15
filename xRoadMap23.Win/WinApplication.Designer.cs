@@ -28,7 +28,7 @@
             this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
             this.authenticationActiveDirectory1 = new DevExpress.ExpressApp.Security.AuthenticationActiveDirectoryCI();
-            this.objectsModule = new DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule();
+            //this.objectsModule = new DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule(); //https://devexpress.com/kb=T1312589
             this.conditionalAppearanceModule = new DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule();
             this.fileAttachmentsWindowsFormsModule = new DevExpress.ExpressApp.FileAttachments.Win.FileAttachmentsWindowsFormsModule();
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
@@ -66,7 +66,7 @@
             this.Modules.Add(this.module1);
             this.Modules.Add(this.module2);
             this.Modules.Add(this.securityModule1);
-            this.Modules.Add(this.objectsModule);
+            //this.Modules.Add(this.objectsModule); //https://devexpress.com/kb=T1312589
             this.Modules.Add(this.conditionalAppearanceModule);
             this.Modules.Add(this.validationModule);
             this.Modules.Add(this.viewVariantsModule);
@@ -88,7 +88,7 @@
         private DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule module2;
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
         private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
-        private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule;
+        //private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule; //https://devexpress.com/kb=T1312589
         private DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule conditionalAppearanceModule;
         private DevExpress.ExpressApp.FileAttachments.Win.FileAttachmentsWindowsFormsModule fileAttachmentsWindowsFormsModule;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
