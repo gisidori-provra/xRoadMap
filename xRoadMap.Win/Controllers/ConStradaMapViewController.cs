@@ -1,0 +1,368 @@
+﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Actions;
+using DevExpress.Persistent.Base;
+using DevExpress.XtraMap;
+using NetTopologySuite.Geometries;
+using xRoadMap.Module.BusinessObjects;
+using xRoadMap.Module.Win.Editors;
+
+namespace xRoadMap.Module.Win.Controllers
+{
+    // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
+    public partial class ConStradaMapViewController : ObjectViewController<ObjectView,IConStrada>
+    {
+
+        MapUserControl mapUserControl;
+        ParametrizedAction actionGoToPK;
+        //SimpleAction loadFromFileAction;
+
+        // Use CodeRush to create Controllers and Actions with a few keystrokes.
+        // https://docs.devexpress.com/CodeRushForRoslyn/403133/
+        public ConStradaMapViewController()
+        {
+            InitializeComponent();
+            // Target required Views (via the TargetXXX properties) and create their Actions.
+            actionGoToPK = new ParametrizedAction(this, "GoToPK", PredefinedCategory.Edit, typeof(string));
+            actionGoToPK.Caption = "Vai a PK";
+            actionGoToPK.ToolTip = "Vai alla progressiva chilometrica";
+            actionGoToPK.TargetViewType = ViewType.DetailView;
+            actionGoToPK.Execute += actionGoToPK_Execute;
+
+            //loadFromFileAction = new SimpleAction(this, "LoadFromFile", PredefinedCategory.Edit);
+            //loadFromFileAction.Caption = "Carica file (shp|gpx)";
+            //loadFromFileAction.TargetViewType = ViewType.DetailView;
+            //loadFromFileAction.Execute += loadFromFileAction_Execute;
+        }
+
+        private void loadFromFileAction_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "GPX file (*.gpx)|*.gpx|shape file (*.shp)|*.shp";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    var vectorItemsLayer = new VectorItemsLayer();
+                    using (System.IO.FileStream fs = new System.IO.FileStream(ofd.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    {
+                        switch (System.IO.Path.GetExtension(ofd.FileName))
+                        {
+                            case ".shp":
+                                var shpFileAdapter = new ShapefileDataAdapter();
+                                string fileName = System.IO.Path.GetFileNameWithoutExtension(ofd.FileName);
+                                string path = System.IO.Path.GetDirectoryName(ofd.FileName);
+                                using (System.IO.FileStream fsDb = new System.IO.FileStream(path + "\\" + fileName + ".dbf",System.IO.FileMode.Open,System.IO.FileAccess.Read))
+                                {
+                                    shpFileAdapter.LoadFromStream(fs, fsDb);
+                                }
+                                vectorItemsLayer.Data = shpFileAdapter;
+                                break;
+                            case ".gpx":
+                                var gpxFileAdapter = new GpxFileDataAdapter();
+                                gpxFileAdapter.LoadFromStream(fs);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    mapUserControl.AddVectorLayer(vectorItemsLayer);
+                }
+            }
+        }
+
+
+        private void actionGoToPK_Execute(object sender, EventArgs e)
+        {
+            var strada = this.ViewCurrentObject.Strada;
+            var pk = actionGoToPK.Value as string;
+            if (string.IsNullOrWhiteSpace(pk))
+                mapUserControl.ClearPushpin();
+            else
+            {
+                var m = RoutingHelper.GetMeasureFromChilometrica(this.ViewCurrentObject.Strada, pk);
+                var line = strada.Shape;
+                var loc = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, m);
+                var c = loc.GetCoordinate(line);
+                //var seg = loc.GetSegment(line);
+                //var point = new NetTopologySuite.Geometries.Point(seg.P0);
+                var coord = RoutingHelper.ToWGS84(c);
+                MapUpdate(strada, coord, c,measure:m,imageName:"MapIt",panTo:true);
+                //mapUserControl.ShowPushpin(pk, coord,imageName:"MapIt");
+            }
+
+        }
+
+        protected override void OnActivated()
+        {
+            base.OnActivated();
+            // Perform various tasks depending on the target View.
+            //this.Active["MapEditor"] = this.View.GetItems<Editors.MapEditor>().Count>0;
+            if (View is DetailView dv)
+            {
+                dv.CustomizeViewItemControl<Editors.MapEditor>(this, CustomizeViewItemControl);
+            }
+            if (View is DevExpress.ExpressApp.ListView lv)
+            {
+                lv.ControlsCreated += lv_ControlsCreated;
+            }
+
+            this.View.CurrentObjectChanged += view_CurrentObjectChanged;
+        }
+
+        private void lv_ControlsCreated(object sender, EventArgs e)
+        {
+            if (View is DevExpress.ExpressApp.ListView lv && lv.Editor is MapListEditor mapEditor)
+            {
+                mapUserControl = mapEditor.Control as MapUserControl;
+                SubscribeMapControl(mapUserControl);
+            }
+        }
+
+        private void view_CurrentObjectChanged(object sender, EventArgs e)
+        {
+            var line = ViewCurrentObject?.Strada?.Shape as NetTopologySuite.Geometries.LineString;
+            if (line != null)
+            {
+                var point = new DevExpress.XtraMap.CartesianPoint(line.StartPoint.X, line.StartPoint.Y);
+                Coordinate etrs89 = new Coordinate(point.X,point.Y);
+                if (mapUserControl != null)
+                    MapUpdateETRS89(ViewCurrentObject.Strada, etrs89);
+            }
+        }
+
+        private void CustomizeViewItemControl(Editors.MapEditor viewItem)
+        {
+            mapUserControl = viewItem.MapControl;
+            SubscribeMapControl(mapUserControl);
+        }
+
+        private void SubscribeMapControl(MapUserControl mapUserControl)
+        {
+            mapUserControl.Map.MouseMove += map_MouseMove;
+            mapUserControl.Map.MouseDown += map_MouseDown;
+            mapUserControl.Map.MouseUp += map_MouseUp;
+            mapUserControl.HeadingTrackBarControl.ValueChanged += trackBarControl_ValueChanged;
+            mapUserControl.PitchTrackBarControl.ValueChanged += trackBarControl_ValueChanged;
+            mapUserControl.ZoomInButton.Click += zoomInButton_Click;
+            mapUserControl.ZoomOutButton.Click += zoomOutButton_Click;
+            mapUserControl.Map.KeyDown += mapUserControl_KeyDown;
+            mapUserControl.Map.KeyUp += mapUserControl_KeyUp;
+            //mapUserControl.SearchProvider.SearchCompleted += searchProvider_SearchCompleted;
+            mapUserControl.InformationLayer.ViewportChanged += viewportChanged;
+        }
+
+        GeoPoint topLeft;
+        GeoPoint bottomRight;
+        private void viewportChanged(object sender, ViewportChangedEventArgs e)
+        {
+            topLeft = e.TopLeft as GeoPoint;
+            bottomRight = e.BottomRight as GeoPoint;    
+        }
+
+        //private void searchProvider_SearchCompleted(object sender, BingSearchCompletedEventArgs e)
+        //{
+        //    var results = e.RequestResult.SearchResults.Cast<BingLocationInformation>().OrderByDescending(r=>r.Confidence);
+        //    if (results != null && results.Count() > 0)
+        //    {
+        //        var res = results.ElementAt(0);
+        //        mapUserControl.Map.SetCenterPoint(res.Location, true);
+        //        Strada st = RoutingHelper.FindNearest(res.Location,this.ObjectSpace.GetObjects<Strada>());
+        //        if (st != null)
+        //            MapUpdate(st,res.Location,res.Address.FormattedAddress);
+        //        //mapUserControl.Map.Zoom(17);
+        //    }
+
+        //}
+
+        private void mapUserControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            controlPressed = altPressed = false;
+        }
+
+        bool controlPressed;
+        bool altPressed;
+        int keyValue;
+        private void mapUserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            controlPressed = e.Control;
+            altPressed = e.Alt;
+            keyValue = e.KeyValue;
+        }
+
+
+        private void UnsubscribeMapControl(MapUserControl mapUserControl)
+        {
+            mapUserControl.Map.MouseMove -= map_MouseMove;
+            mapUserControl.Map.MouseDown -= map_MouseDown;
+            mapUserControl.Map.MouseUp -= map_MouseUp;
+            mapUserControl.HeadingTrackBarControl.ValueChanged -= trackBarControl_ValueChanged;
+            mapUserControl.PitchTrackBarControl.ValueChanged -= trackBarControl_ValueChanged;
+            mapUserControl.ZoomInButton.Click -= zoomInButton_Click;
+            mapUserControl.ZoomOutButton.Click -= zoomOutButton_Click;
+            mapUserControl.Map.KeyDown -= mapUserControl_KeyDown;
+            mapUserControl.Map.KeyUp -= mapUserControl_KeyUp;
+            //mapUserControl.SearchProvider.SearchCompleted -= searchProvider_SearchCompleted;
+            mapUserControl.InformationLayer.ViewportChanged += viewportChanged;
+        }
+
+        private void map_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseMoving = false;
+        }
+
+        bool mouseMoving = false;
+        private void map_MouseMove(object sender, MouseEventArgs e)
+        {
+            mouseMoving = true;
+        }
+
+        private void zoomOutButton_Click(object sender, EventArgs e)
+        {
+            if (fov < 120)
+            {
+                fov += 10;
+                controlPressed = true;
+                MapUpdate(currentLocation);
+                controlPressed = false;
+            }
+        }
+
+        private void zoomInButton_Click(object sender, EventArgs e)
+        {
+            if (fov > 10)
+            {
+                fov -= 10;
+                controlPressed = true;
+                MapUpdate(currentLocation);
+                controlPressed = false;
+            }
+        }
+
+        private void trackBarControl_ValueChanged(object sender, EventArgs e)
+        {
+            controlPressed= true;
+            MapUpdate(currentLocation);
+            controlPressed = false;
+        }
+
+        protected override void OnViewControlsCreated()
+        {
+            base.OnViewControlsCreated();
+            // Access and customize the target View control.
+        }
+
+        private void map_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && !mouseMoving) 
+            {
+                //var line = ViewCurrentObject.Shape;
+                //var dist = NetTopologySuite.Operation.Distance.DistanceOp.Distance(line, point);
+                MapUpdate(e.Location);
+            }
+        }
+
+        System.Drawing.Point currentLocation;
+
+        private void MapUpdate(System.Drawing.Point location)
+        {
+            if (ViewCurrentObject == null)
+                return;
+
+            currentLocation = location;
+
+            var st = ViewCurrentObject.Strada;
+            MapUpdate(st, location);
+        }
+
+        private void MapUpdate(Strada st, System.Drawing.Point location)
+        {
+            
+            if (st?.Shape != null)
+            {
+                var map = mapUserControl.Map;
+                //var os = Application.CreateObjectSpace(typeof(EventoPuntuale));
+                var point = map.ScreenPointToCoordPoint(location);
+                MapUpdate(st, point);
+            }
+        }
+
+        private void MapUpdate(Strada st, DevExpress.Map.CoordPoint point,string address = null)
+        {
+            var coord = new Coordinate(point.GetX(), point.GetY());
+            MapUpdateWGS84(st,coord,address);
+        }
+
+        int fov = 90;
+
+        private void MapUpdateWGS84(Strada st, Coordinate coord,string address = null)
+        {
+            var etrs89 = RoutingHelper.ToETRS89(coord);
+            MapUpdate(st,coord,etrs89,address);
+        }
+
+        private void MapUpdateETRS89(Strada st,Coordinate etrs89)
+        {
+            var coord = RoutingHelper.ToWGS84(etrs89);
+            MapUpdate(st, coord, etrs89);
+        }
+
+        private void MapUpdate(Coordinate coord, Coordinate etrs89)
+        {
+            MapUpdate(ViewCurrentObject.Strada,coord, etrs89);
+        }
+
+        private void MapUpdate(Strada st, Coordinate coord,Coordinate etrs89,string location = null,double? measure = null,string imageName=null,bool panTo = false)
+        {
+            if (mapUserControl == null)
+                return;
+            string apikey = "AIzaSyDTqlEhGm0HdYtQm7fdsqH8kXvLu_yG4C4";
+            string km;
+            if (measure != null)
+            {
+                var m = measure.Value;
+                km = RoutingHelper.GetChilometricaFromMeasure(st, m,false, out double pk);
+            }
+            else
+                km = RoutingHelper.LocalizzaPuntualeSuXY(st, etrs89, out double m);
+            double? heading = null;
+            var lng = RoutingHelper.ToSessagesimale(coord.X);
+            var lat = RoutingHelper.ToSessagesimale(coord.Y);
+            var latlong = $"Lat: {lat} Long: {lng}";
+            mapUserControl.ClearPushpin();
+            string message;
+            if (km != null)
+            {
+                var angle = ((RoutingHelper.GetBearing(st, etrs89) / Math.PI * 180) + 360) % 360;
+                double bearing = (90 - angle + 360) % 360;
+                heading = (bearing + mapUserControl.HeadingTrackBarControl.Value) % 360;
+                message = $"{st.Sigla} {st.Denominazione} - PK: {km} - {latlong}";
+            }
+            else
+            {
+                message = latlong;
+            }
+            if (location != null)
+                message = $"{location} {message}";
+
+            mapUserControl.ShowPushpin(message, coord,controlPressed ? heading : null,controlPressed ? "MoveUp" : imageName);
+            //mapUserControl.ShowPushpin(message, coord, heading , "MoveUp");
+
+            var pitch = mapUserControl.PitchTrackBarControl.Value.ToString();
+            var height = 640;
+            var width = 640;
+            if (controlPressed)
+                mapUserControl.WebBrowser.Url = new Uri($"https://maps.googleapis.com/maps/api/streetview?size={width}x{height}&location={coord.Y},{coord.X}&fov={fov}&heading={heading:F0}&pitch={pitch}&key={apikey}");
+    
+            if (panTo)
+                mapUserControl.PanTo(coord);
+
+        }
+
+        protected override void OnDeactivated()
+        {
+            // Unsubscribe from previously subscribed events and release other references and resources.
+            if (mapUserControl != null)
+                UnsubscribeMapControl(mapUserControl);
+            base.OnDeactivated();
+        }
+    }
+}
