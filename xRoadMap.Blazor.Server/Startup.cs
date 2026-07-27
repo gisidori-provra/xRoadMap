@@ -68,6 +68,7 @@ namespace xRoadMap.Blazor.Server
                         options.ConnectionString = connectionString;
                         options.ThreadSafe = true;
                         options.UseSharedDataStoreProvider = true;
+                        options.AllowICommandChannelDoWithSecurityContext = true;
                     })
                     .AddNonPersistent();
                 builder.Security
