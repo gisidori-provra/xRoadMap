@@ -120,9 +120,9 @@ namespace xRoadMap.Module.Win.Editors
 
         private void UnsubscribeMapEvents()
         {
-            mapControl.Map.MapItemClick -= Map_MapItemClick;
-            mapControl.Map.MapItemDoubleClick -= Map_MapItemDoubleClick;
-            mapControl.Map.ObjectSelected -= Map_ObjectSelected;
+            mapControl?.Map?.MapItemClick -= Map_MapItemClick;
+            mapControl?.Map?.MapItemDoubleClick -= Map_MapItemDoubleClick;
+            mapControl?.Map?.ObjectSelected -= Map_ObjectSelected;
         }
 
         private void SubscribeMapEvents()

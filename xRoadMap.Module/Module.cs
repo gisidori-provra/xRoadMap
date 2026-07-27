@@ -39,7 +39,7 @@ namespace xRoadMap.Module
             RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule));
             RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ReportsV2.ReportsModuleV2));
             RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Validation.ValidationModule));
-
+            RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ViewVariantsModule.ViewVariantsModule));
             STContainsFunction.Register();
 
             NetTopologySuite.NtsGeometryServices.Instance = new NetTopologySuite.NtsGeometryServices(
