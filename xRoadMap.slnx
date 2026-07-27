@@ -1,0 +1,10 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="EasyTest" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="xRoadMap.Blazor.Server/xRoadMap.Blazor.Server.csproj" />
+  <Project Path="xRoadMap.Module/xRoadMap.Module.csproj" />
+  <Project Path="xRoadMap.Win/xRoadMap.Win.csproj" />
+</Solution>
