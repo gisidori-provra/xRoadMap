@@ -9,10 +9,17 @@ using System.Threading.Tasks;
 
 namespace xRoadMap.Module.BusinessObjects
 {
-    public class DenominazioneStrada : EventoLineare, IEventoOnRoad
+    public class DenominazioneStrada : EventoSuStrada, IEventoOnRoad
     {
         public DenominazioneStrada(Session session) : base(session)
         { }
+
+        public override void AfterConstruction()
+        {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
+            base.AfterConstruction();
+        }
+
 
         [Association]
         public Strada Strada

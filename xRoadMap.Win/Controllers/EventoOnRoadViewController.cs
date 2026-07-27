@@ -28,7 +28,7 @@ using xRoadMap.Module.Win.Editors;
 namespace xRoadMap.Module.Win.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class EventoOnRoadViewController : ObjectViewController<ObjectView,IEventoOnRoad>
+    public partial class EventoOnRoadViewController : ObjectViewController<ObjectView,EventoSuStrada>
     {
         MapUserControl mapUserControl;
 
@@ -60,7 +60,7 @@ namespace xRoadMap.Module.Win.Controllers
             var selectedItems = mapUserControl.GetSelectedItems();
             if (selectedItems.Count == 1)
             {
-                var os = Application.CreateObjectSpace(typeof(EventoLineare));
+                var os = Application.CreateObjectSpace(typeof(EventoSuStrada));
                 var item = selectedItems[0];
                 var view = Application.CreateDetailView(os, item, true);
                 Frame.SetView(view);
@@ -96,14 +96,14 @@ namespace xRoadMap.Module.Win.Controllers
 
         private void simpleActionUpdateEvent_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-
-            if (typeof(EventoPuntuale).IsAssignableFrom(View.ObjectTypeInfo.Type))
+            
+            if (ViewCurrentObject.TipoGeometria == TipoGeometriaEvento.Puntuale)
             {
-                RoutingHelper.LocalizzaPuntualeSuKilometrica(e.SelectedObjects.Cast<EventoPuntuale>());
+                RoutingHelper.LocalizzaPuntualeSuKilometrica(e.SelectedObjects.Cast<EventoSuStrada>());
             }
-            if (typeof(EventoLineare).IsAssignableFrom(View.ObjectTypeInfo.Type))
+            if (ViewCurrentObject.TipoGeometria == TipoGeometriaEvento.Lineare)
             {
-                RoutingHelper.LocalizzaLineareSuKilometrica(e.SelectedObjects.Cast<EventoLineare>());
+                RoutingHelper.LocalizzaLineareSuKilometrica(e.SelectedObjects.Cast<EventoSuStrada>());
             }
             
         }
@@ -112,17 +112,16 @@ namespace xRoadMap.Module.Win.Controllers
         {
             double maxDistance = 30;
             var strade = View.ObjectSpace.GetObjects<Strada>();
-            foreach (var item in e.SelectedObjects)
+            foreach (EventoSuStrada ev in e.SelectedObjects)
             {
-                IEventoOnRoad ev = View.ObjectSpace.GetObject(item) as IEventoOnRoad;
-                if (ev.Strada == null)
-                    ev.Strada = RoutingHelper.FindNearest(ev.Shape, strade,maxDistance);    
-                if (ev.Strada != null)
+                if (ev.GetStrada() == null)
+                    ev.SetStrada(RoutingHelper.FindNearest(ev.Shape, strade,maxDistance));    
+                if (ev.GetStrada() != null)
                 {
-                    if (ev is EventoPuntuale ep)
-                        RoutingHelper.LocalizzaPuntualeSuXY(ep);
-                    else if (ev is EventoLineare el)
-                        RoutingHelper.LocalizzaLineareSuXY(el);
+                    if (ev.TipoGeometria == TipoGeometriaEvento.Puntuale)
+                        RoutingHelper.LocalizzaPuntualeSuXY(ev);
+                    else if (ev.TipoGeometria == TipoGeometriaEvento.Lineare)
+                        RoutingHelper.LocalizzaLineareSuXY(ev);
                 }
             }
             if (View is DevExpress.ExpressApp.ListView lv)
@@ -135,13 +134,13 @@ namespace xRoadMap.Module.Win.Controllers
         private void simpleActionLocate_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
 
-            if (typeof(EventoPuntuale).IsAssignableFrom(View.ObjectTypeInfo.Type))
+            if (ViewCurrentObject.TipoGeometria == TipoGeometriaEvento.Puntuale)
             {
-                RoutingHelper.LocalizzaPuntualeSuXY(e.SelectedObjects.Cast<EventoPuntuale>());
+                RoutingHelper.LocalizzaPuntualeSuXY(e.SelectedObjects.Cast<EventoSuStrada>());
             }
-            if (typeof(EventoLineare).IsAssignableFrom(View.ObjectTypeInfo.Type))
+            if (ViewCurrentObject.TipoGeometria == TipoGeometriaEvento.Lineare)
             {
-                RoutingHelper.LocalizzaLineareSuXY(e.SelectedObjects.Cast<EventoLineare>());
+                RoutingHelper.LocalizzaLineareSuXY(e.SelectedObjects.Cast<EventoSuStrada>());
             }
         }
 

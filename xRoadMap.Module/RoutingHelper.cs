@@ -199,9 +199,9 @@ namespace xRoadMap.Module
         }
 
 
-        public static void LocalizzaPuntualeSuKilometrica(IEnumerable<EventoPuntuale> events)
+        public static void LocalizzaPuntualeSuKilometrica(IEnumerable<EventoSuStrada> events)
         {
-            foreach (EventoPuntuale item in events)
+            foreach (EventoSuStrada item in events)
             {
                 var ev = (IEventoOnRoad)item;
                 item.M = GetMeasureFromChilometrica(ev.Strada, item.Km);
@@ -214,7 +214,7 @@ namespace xRoadMap.Module
             }
         }
 
-        public static void LocalizzaPuntualeSuXY(IEnumerable<EventoPuntuale> events)
+        public static void LocalizzaPuntualeSuXY(IEnumerable<EventoSuStrada> events)
         {
 
             foreach (var item in events)
@@ -223,7 +223,7 @@ namespace xRoadMap.Module
             }
         }
 
-        public static void LocalizzaPuntualeSuXY(EventoPuntuale item)
+        public static void LocalizzaPuntualeSuXY(EventoSuStrada item)
         {
             var ev = (IEventoOnRoad)item;
             var point = ev.Shape as NetTopologySuite.Geometries.Point;
@@ -254,7 +254,7 @@ namespace xRoadMap.Module
             var loc = NetTopologySuite.LinearReferencing.LocationIndexOfPoint.IndexOf(line, point);
             return loc.GetSegment(line).Angle;
         }
-        public static void LocalizzaLineareSuXY(IEnumerable<EventoLineare> events)
+        public static void LocalizzaLineareSuXY(IEnumerable<EventoSuStrada> events)
         {
             foreach (var item in events)
             {
@@ -262,9 +262,9 @@ namespace xRoadMap.Module
             }
         }
 
-        public static void LocalizzaLineareSuXY(EventoLineare item)
+        public static void LocalizzaLineareSuXY(EventoSuStrada item)
         {
-            var ev = (IEventoLineareOnRoad)item;
+            var ev = item;
             //var line = ev.Strada.Shape;
             //var subLine = ev.Shape as LineString;
             //var loc = new NetTopologySuite.LinearReferencing.LocationIndexOfLine(line);
@@ -277,7 +277,7 @@ namespace xRoadMap.Module
             //item.M = pk;
             //item.MFine = pkFine;
 
-            var st = ev.Strada;
+            var st = ev.GetStrada();
             var subLine = ev.Shape as LineString;
 
             item.Km = RoutingHelper.LocalizzaPuntualeSuXY(st, subLine.StartPoint.Coordinate, out double m);
@@ -291,7 +291,7 @@ namespace xRoadMap.Module
             UpdateLineCoordinate(item);
         }
 
-        public static void LocalizzaLineareSuKilometrica(IEnumerable<EventoLineare> events)
+        public static void LocalizzaLineareSuKilometrica(IEnumerable<EventoSuStrada> events)
         {
             //string gpName = "MakeLineRouteEventLayer";
             //UpdateEventTableLineare(events);
@@ -299,16 +299,16 @@ namespace xRoadMap.Module
             //UpdateShapeLine(events);
             //UpdateLineCoordinates(events);
 
-            foreach (IEventoLineareOnRoad item in events)
+            foreach (EventoSuStrada item in events)
             {
-                item.M = RoutingHelper.GetMeasureFromChilometrica(item.Strada, item.Km);
+                item.M = RoutingHelper.GetMeasureFromChilometrica(item.GetStrada(), item.Km);
                 if (string.IsNullOrEmpty(item.KmFine))
                     item.MFine = 9999999;
                 else
-                    item.MFine = RoutingHelper.GetMeasureFromChilometrica(item.Strada, item.KmFine);
+                    item.MFine = RoutingHelper.GetMeasureFromChilometrica(item.GetStrada(), item.KmFine);
 
                 var ev = (IEventoLineareOnRoad)item;
-                var line = ev.Strada.Shape;
+                var line = ev.GetStrada().Shape;
                 var loc1 = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, ev.M);
                 var loc2 = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, ev.MFine);
                 var seg = NetTopologySuite.LinearReferencing.ExtractLineByLocation.Extract(line,loc1,loc2);
@@ -322,7 +322,7 @@ namespace xRoadMap.Module
         /// </summary>
         /// <param name="point"></param>
         /// <returns></returns>
-        public static void UpdatePointCoordinates(IEnumerable<EventoPuntuale> events)
+        public static void UpdatePointCoordinates(IEnumerable<EventoSuStrada> events)
         {
             foreach (var ev in events)
             {
@@ -331,7 +331,7 @@ namespace xRoadMap.Module
         }
 
 
-        public static void UpdatePointCoordinate(EventoPuntuale ev)
+        public static void UpdatePointCoordinate(EventoSuStrada ev)
         {
             NetTopologySuite.Geometries.Point shp = ev.Shape as NetTopologySuite.Geometries.Point;
             if (shp == null)
@@ -346,7 +346,7 @@ namespace xRoadMap.Module
             ev.Latitudine = c.Y;
         }
 
-        public static void UpdateLineCoordinates(IEnumerable<EventoLineare> events)
+        public static void UpdateLineCoordinates(IEnumerable<EventoSuStrada> events)
         {
             foreach (var ev in events)
             {
@@ -354,7 +354,7 @@ namespace xRoadMap.Module
             }
         }
 
-        public static void UpdateLineCoordinate(IEventoLineare ev)
+        public static void UpdateLineCoordinate(EventoSuStrada ev)
         {
             var shp = ev.Shape as NetTopologySuite.Geometries.LineString;
             if (shp == null)

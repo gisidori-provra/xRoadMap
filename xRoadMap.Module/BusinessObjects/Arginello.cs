@@ -13,11 +13,16 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
 
     [NavigationItem("Catasto Strade")]
-    public class Arginello:EventoLineare,IEventoOnRoad
+    public class Arginello:EventoSuStrada,IEventoOnRoad
     {
         public Arginello(Session session):base(session)
         {
 
+        }
+        public override void AfterConstruction()
+        {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
+            base.AfterConstruction();
         }
 
         [Association]

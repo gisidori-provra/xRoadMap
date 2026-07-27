@@ -14,12 +14,19 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class Marciapiede:EventoLineare,IEventoOnRoad
+    public class Marciapiede:EventoSuStrada,IEventoOnRoad
     {
         public Marciapiede(Session session):base(session)
         {
 
         }
+
+        public override void AfterConstruction()
+        {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
+            base.AfterConstruction();
+        }
+
 
         [Association]
         public Strada Strada

@@ -12,9 +12,9 @@ using DevExpress.Persistent.Base.General;
 namespace xRoadMap.Module.BusinessObjects
 {
     [NonPersistent]
-    public abstract partial class EventoLineare : XPSTGeometry, IEventoLineareOnRoad
+    public abstract partial class EventoSuStrada : XPSTGeometry, IEventoOnRoad
     {
-        public EventoLineare(Session session) : base(session) { }
+        public EventoSuStrada(Session session) : base(session) { }
 
         public override void AfterConstruction()
         {
@@ -36,6 +36,13 @@ namespace xRoadMap.Module.BusinessObjects
             //}
         }
 
+        TipoGeometriaEvento tipoGeometriaEvento;
+        [ImmediatePostData]
+        public TipoGeometriaEvento TipoGeometria
+        {
+            get => tipoGeometriaEvento;
+            set => SetPropertyValue(nameof(TipoGeometria), ref tipoGeometriaEvento, value);
+        }
 
         DateTime? fDataInizio;
         [ImmediatePostData]
@@ -60,7 +67,8 @@ namespace xRoadMap.Module.BusinessObjects
             throw new NotImplementedException();
         }
 
-        Strada IEventoOnRoad.Strada { get => strada; set => SetStrada(value); }
+        
+        public Strada GetStrada() => strada;
 
         string km;
         [DevExpress.Xpo.DisplayName("Progressiva chilometrica")]
@@ -123,6 +131,7 @@ namespace xRoadMap.Module.BusinessObjects
         string kmFine;
         [DevExpress.Xpo.DisplayName("Progressiva chilometrica finale")]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFine", Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#", Enabled = false)]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public string KmFine
         {
             get => kmFine;
@@ -133,6 +142,7 @@ namespace xRoadMap.Module.BusinessObjects
         [DevExpress.Xpo.DisplayName(@"Coord. X Finale")]
         [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("XFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public double XFine
         {
             get => xFine;
@@ -143,6 +153,7 @@ namespace xRoadMap.Module.BusinessObjects
         [DevExpress.Xpo.DisplayName(@"Coord. Y Finale")]
         [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("YFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public double YFine
         {
             get => yFine;
@@ -153,6 +164,7 @@ namespace xRoadMap.Module.BusinessObjects
         [DevExpress.Xpo.DisplayName(@"Coord. Z Finale")]
         [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("ZFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public double ZFine
         {
             get => zFine;
@@ -163,6 +175,7 @@ namespace xRoadMap.Module.BusinessObjects
         [DevExpress.Xpo.DisplayName(@"Coord. M Finale")]
         [DevExpress.ExpressApp.Model.ModelDefault("DisplayFormat", "n0")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("MFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public double MFine
         {
             get => mFine;
@@ -215,6 +228,7 @@ namespace xRoadMap.Module.BusinessObjects
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public double LatitudineFine
         {
             get => latitudineFine;
@@ -225,6 +239,7 @@ namespace xRoadMap.Module.BusinessObjects
         [VisibleInListView(false)]
         [VisibleInDetailView(false)]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public double LongitudineFine
         {
             get => longitudineFine;
@@ -253,6 +268,7 @@ namespace xRoadMap.Module.BusinessObjects
         [System.ComponentModel.DisplayName("Latitudine Fine (°'\")")]
         //[DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LatitudineFineSessagesimaleTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         [NonPersistent]
         public string LatitudineFineSessagesimale
         {
@@ -262,8 +278,9 @@ namespace xRoadMap.Module.BusinessObjects
 
 
         [System.ComponentModel.DisplayName("Longitudine Fine (°'\")")]
-//        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
+        //        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineSessagesimale", Enabled = false, Criteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#")]
         [DevExpress.ExpressApp.Model.ModelDefault("AllowEdit", "False")]
+        [DevExpress.ExpressApp.ConditionalAppearance.Appearance("LongitudineFineSessagesimaleTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         [NonPersistent]
         public string LongitudineFineSessagesimale
         {

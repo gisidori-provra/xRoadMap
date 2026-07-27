@@ -7,11 +7,12 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
     [System.ComponentModel.DisplayName("Segnalazione lineare")]
-    public partial class SegLinea : EventoLineare, IEventoLineareOnRoad
+    public partial class SegLinea : EventoSuStrada, IEventoLineareOnRoad
     {
         public SegLinea(Session session) : base(session) { }
         public override void AfterConstruction()
         {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
             base.AfterConstruction();
         }
 

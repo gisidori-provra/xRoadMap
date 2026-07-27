@@ -10,6 +10,9 @@
     <RootNamespace>xRoadMap.Module</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="BusinessObjects\EventoLineare.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>

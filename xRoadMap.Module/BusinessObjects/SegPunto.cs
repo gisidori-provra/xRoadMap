@@ -14,11 +14,12 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
     [System.ComponentModel.DisplayName("Segnalazione puntuale")]
-    public partial class SegPunto : EventoPuntuale,IEventoOnRoad
+    public partial class SegPunto : EventoSuStrada
     {
         public SegPunto(Session session) : base(session) { }
         public override void AfterConstruction()
         {
+            TipoGeometria = TipoGeometriaEvento.Puntuale;
             base.AfterConstruction();
         }
 

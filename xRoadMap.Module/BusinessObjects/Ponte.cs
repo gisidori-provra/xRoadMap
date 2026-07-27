@@ -12,10 +12,15 @@ namespace xRoadMap.Module.BusinessObjects
 
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
-    public partial class Ponte : EventoLineare, IEventoLineareOnRoad
+    public partial class Ponte : EventoSuStrada, IEventoLineareOnRoad
     {
         public Ponte(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public override void AfterConstruction()
+        {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
+            base.AfterConstruction();
+        }
+
 
         [Association]
         public Strada Strada

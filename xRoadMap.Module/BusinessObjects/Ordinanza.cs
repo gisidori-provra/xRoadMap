@@ -17,10 +17,14 @@ namespace xRoadMap.Module.BusinessObjects
 
     [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
-    public partial class Ordinanza: EventoLineare,IEventoLineareOnRoad
+    public partial class Ordinanza: EventoSuStrada,IEventoLineareOnRoad
     {
         public Ordinanza(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        public override void AfterConstruction()
+        {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
+            base.AfterConstruction();
+        }
 
         [RuleRequiredField]
         [Association]

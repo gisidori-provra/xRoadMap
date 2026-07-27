@@ -36,7 +36,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     public interface IEventoOnRoad:IEvento,IConStrada
     {
-        new Strada Strada { get; set; }
+        Strada GetStrada();
     }
 
     public interface IConStrada

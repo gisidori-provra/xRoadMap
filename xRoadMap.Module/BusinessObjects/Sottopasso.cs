@@ -13,12 +13,19 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class Sottopasso:EventoLineare,IEventoOnRoad
+    public class Sottopasso:EventoSuStrada,IEventoOnRoad
     {
         public Sottopasso(Session session):base(session)
         {
 
         }
+
+        public override void AfterConstruction()
+        {
+            TipoGeometria = TipoGeometriaEvento.Lineare;
+            base.AfterConstruction();
+        }
+
 
         [Association]
         public Strada Strada
