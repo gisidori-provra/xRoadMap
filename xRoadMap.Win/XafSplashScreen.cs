@@ -14,14 +14,14 @@ namespace xRoadMap.Win
     {
         void LoadBlankLogo()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string blankLogoResourceName = assembly.GetName().Name + ".Images.Logo.svg";
-            Stream svgStream = assembly.GetManifestResourceStream(blankLogoResourceName);
-            if (svgStream != null)
-            {
-                svgStream.Position = 0;
-                peLogo.SvgImage = SvgImage.FromStream(svgStream);
-            }
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+            //string blankLogoResourceName = assembly.GetName().Name + ".Images.Logo.svg";
+            //Stream svgStream = assembly.GetManifestResourceStream(blankLogoResourceName);
+            //if (svgStream != null)
+            //{
+            //    svgStream.Position = 0;
+            //    peLogo.SvgImage = SvgImage.FromStream(svgStream);
+            //}
         }
         protected override void DrawContent(GraphicsCache graphicsCache, Skin skin)
         {
@@ -42,7 +42,7 @@ namespace xRoadMap.Win
         {
             InitializeComponent();
             LoadBlankLogo();
-            this.labelCopyright.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Company Name" + System.Environment.NewLine + "All rights reserved.";
+            //this.labelCopyright.Text = "Copyright © " + DateTime.Now.Year.ToString() + " Company Name" + System.Environment.NewLine + "All rights reserved.";
             UpdateLabelsPosition();
         }
 

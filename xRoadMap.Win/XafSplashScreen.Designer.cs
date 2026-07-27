@@ -47,23 +47,23 @@
             // progressBarControl
             // 
             progressBarControl.EditValue = 0;
-            progressBarControl.Location = new Point(74, 271);
+            progressBarControl.Location = new Point(75, 231);
             progressBarControl.Name = "progressBarControl";
             progressBarControl.Properties.Appearance.BorderColor = Color.FromArgb(195, 194, 194);
             progressBarControl.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            progressBarControl.Properties.EndColor = Color.FromArgb(255, 114, 0);
+            progressBarControl.Properties.EndColor = Color.Green;
             progressBarControl.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             progressBarControl.Properties.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             progressBarControl.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             progressBarControl.Properties.ProgressViewStyle = DevExpress.XtraEditors.Controls.ProgressViewStyle.Solid;
-            progressBarControl.Properties.StartColor = Color.FromArgb(255, 144, 0);
+            progressBarControl.Properties.StartColor = Color.GreenYellow;
             progressBarControl.Size = new Size(350, 16);
             progressBarControl.TabIndex = 5;
             // 
             // labelCopyright
             // 
             labelCopyright.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            labelCopyright.Location = new Point(24, 324);
+            labelCopyright.Location = new Point(12, 312);
             labelCopyright.Name = "labelCopyright";
             labelCopyright.Size = new Size(119, 13);
             labelCopyright.TabIndex = 6;
@@ -94,7 +94,7 @@
             // peLogo
             // 
             peLogo.EditValue = Win.Properties.Resources.LogoProvincia124x160;
-            peLogo.Location = new Point(400, 293);
+            peLogo.Location = new Point(400, 280);
             peLogo.Name = "peLogo";
             peLogo.Properties.AllowFocused = false;
             peLogo.Properties.Appearance.BackColor = Color.Transparent;
