@@ -35,6 +35,14 @@ namespace xRoadMap.Module.Win.Controllers
             this.simpleActionLocateRoad = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.simpleActionUpdateEvent = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.actionGetIFrame = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
+            this.simpleActionShowLocation = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+
+            this.simpleActionShowLocation.Caption = "Mostra posizione";
+            this.simpleActionShowLocation.Category = "Edit";
+            this.simpleActionShowLocation.Id = "ShowLocation";
+            this.simpleActionShowLocation.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireSingleObject;
+            this.simpleActionShowLocation.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
+            this.simpleActionShowLocation.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.simpleActionShowLocation_Execute);
             // 
             // simpleActionLocate
             // 
@@ -94,6 +102,7 @@ namespace xRoadMap.Module.Win.Controllers
             this.Actions.Add(this.simpleActionLocateRoad);
             this.Actions.Add(this.simpleActionUpdateEvent);
             this.Actions.Add(this.actionGetIFrame);
+            this.Actions.Add(this.simpleActionShowLocation);
 
         }
 
@@ -101,6 +110,7 @@ namespace xRoadMap.Module.Win.Controllers
         private DevExpress.ExpressApp.Actions.SimpleAction simpleActionUpdateEvent;
         private DevExpress.ExpressApp.Actions.SimpleAction simpleActionLocate;
         private DevExpress.ExpressApp.Actions.SimpleAction simpleActionLocateRoad;
+        private DevExpress.ExpressApp.Actions.SimpleAction simpleActionShowLocation;
         private DevExpress.ExpressApp.Actions.PopupWindowShowAction actionGetIFrame;
 
     }

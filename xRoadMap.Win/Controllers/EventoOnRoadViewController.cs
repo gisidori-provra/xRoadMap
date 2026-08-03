@@ -131,6 +131,15 @@ namespace xRoadMap.Module.Win.Controllers
             }
         }
 
+        private void simpleActionShowLocation_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            var ev = View.CurrentObject as EventoSuStrada;
+            var dv = Application.FindDetailViewId(typeof(EventoSuStrada));
+            e.ShowViewParameters.CreatedView = Application.CreateDetailView(this.ObjectSpace,dv,false,ev);
+            e.ShowViewParameters.TargetWindow = TargetWindow.NewModalWindow;
+        }
+
+
         private void simpleActionLocate_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
 

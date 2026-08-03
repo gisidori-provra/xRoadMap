@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Ordinanza_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="OperaSostegno_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Accesso_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="AreaTraffico_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Arginello_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Banchina_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoPuntuale" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Carreggiata_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CentroAbitato_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Ciclabile_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CorpoStradale_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Cunetta_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DenominazioneStrada_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="DispositivoRitenuta_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Galleria_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Illuminazione_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ImpiantoPubblicitario_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoPuntuale" RelativeSize="40.7563025210084" Direction="Horizontal" Removed="True">
+              <LayoutGroup Id="EventoPuntuale_col1" RelativeSize="100" Caption="EventoPuntuale_col1" Removed="True">
+                <LayoutItem Id="Atto" RelativeSize="6.189555125725338" Index="0" ViewItem="Atto" Removed="True" />
+                <LayoutItem Id="DataFine" RelativeSize="6.189555125725338" Index="0" ViewItem="DataFine" Removed="True" />
+                <LayoutItem Id="Km" RelativeSize="6.189555125725338" Index="0" ViewItem="Km" Removed="True" />
+                <LayoutItem Id="Tipo" RelativeSize="6.189555125725338" Index="0" ViewItem="Tipo" Removed="True" />
+                <LayoutItem Id="X" RelativeSize="6.189555125725338" Index="0" ViewItem="X" Removed="True" />
+                <LayoutItem Id="Y" RelativeSize="100" Index="0" ViewItem="Y" Removed="True" />
+                <LayoutItem Id="DataInizio" RelativeSize="6.189555125725338" ViewItem="DataInizio" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="EventoPuntuale_col2" RelativeSize="50" Caption="EventoPuntuale_col2" Removed="True">
+                <LayoutItem Id="Event_id" RelativeSize="100" Index="0" ViewItem="Event_id" Removed="True" />
+                <LayoutItem Id="M" RelativeSize="6.189555125725338" Index="0" ViewItem="M" Removed="True" />
+                <LayoutItem Id="Offset" RelativeSize="93.81044487427467" Index="1" ViewItem="Offset" Removed="True" />
+                <LayoutItem Id="LatitudineSessagesimale" RelativeSize="4.6421663442940035" Index="2" ViewItem="LatitudineSessagesimale" Removed="True" />
+                <LayoutItem Id="LongitudineSessagesimale" RelativeSize="89.16827852998065" Index="2" ViewItem="LongitudineSessagesimale" Removed="True" />
+                <LayoutItem Id="Z" RelativeSize="6.189555125725338" ViewItem="Z" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Marciapiede_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="PassaggioLivello_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Ponte_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="SegPunto_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoPuntuale" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Sottopasso_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Tombino_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoPuntuale" RelativeSize="40.7563025210084" Direction="Horizontal" Removed="True">
+              <LayoutGroup Id="EventoPuntuale_col1" RelativeSize="100" Caption="EventoPuntuale_col1" Removed="True">
+                <LayoutItem Id="Atto" RelativeSize="6.189555125725338" Index="0" ViewItem="Atto" Removed="True" />
+                <LayoutItem Id="DataFine" RelativeSize="6.189555125725338" Index="0" ViewItem="DataFine" Removed="True" />
+                <LayoutItem Id="Km" RelativeSize="6.189555125725338" Index="0" ViewItem="Km" Removed="True" />
+                <LayoutItem Id="Tipo" RelativeSize="6.189555125725338" Index="0" ViewItem="Tipo" Removed="True" />
+                <LayoutItem Id="X" RelativeSize="6.189555125725338" Index="0" ViewItem="X" Removed="True" />
+                <LayoutItem Id="Y" RelativeSize="100" Index="0" ViewItem="Y" Removed="True" />
+                <LayoutItem Id="DataInizio" RelativeSize="6.189555125725338" ViewItem="DataInizio" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="EventoPuntuale_col2" RelativeSize="50" Caption="EventoPuntuale_col2" Removed="True">
+                <LayoutItem Id="Event_id" RelativeSize="100" Index="0" ViewItem="Event_id" Removed="True" />
+                <LayoutItem Id="M" RelativeSize="6.189555125725338" Index="0" ViewItem="M" Removed="True" />
+                <LayoutItem Id="Offset" RelativeSize="93.81044487427467" Index="1" ViewItem="Offset" Removed="True" />
+                <LayoutItem Id="LatitudineSessagesimale" RelativeSize="4.6421663442940035" Index="2" ViewItem="LatitudineSessagesimale" Removed="True" />
+                <LayoutItem Id="LongitudineSessagesimale" RelativeSize="89.16827852998065" Index="2" ViewItem="LongitudineSessagesimale" Removed="True" />
+                <LayoutItem Id="Z" RelativeSize="6.189555125725338" ViewItem="Z" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Vegetazione_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="EventoLineare" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
