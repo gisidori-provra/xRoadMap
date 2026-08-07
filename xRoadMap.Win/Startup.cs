@@ -71,11 +71,11 @@ namespace xRoadMap.Win
                 .AddPasswordAuthentication(options =>
                 {
                     options.IsSupportChangePassword = true;
-                })
-                .AddWindowsAuthentication(options =>
-                {
-                    options.CreateUserAutomatically();
                 });
+                //.AddWindowsAuthentication(options =>
+                //{
+                //    options.CreateUserAutomatically();
+                //});
             builder.AddBuildStep(application =>
             {
                 application.ConnectionString = connectionString;
