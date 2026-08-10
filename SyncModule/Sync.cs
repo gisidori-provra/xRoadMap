@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OracleClient;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace SyncModule
 {
@@ -72,32 +73,34 @@ namespace SyncModule
 
             foreach (GisDataSet.CAPE_APPOSTAMENTIRow nRow in ds.CAPE_APPOSTAMENTI)
             {
-                if (nRow.CAPE_TMPAPPOSTAMENTIRowParent != null)
+                if (Convert.IsDBNull(nRow["ATC"]) == false && Convert.IsDBNull(nRow["ORD"]) == false)
                 {
-                    GisDataSet.CAPE_TMPAPPOSTAMENTIRow row = nRow.CAPE_TMPAPPOSTAMENTIRowParent;
-                    foreach (DataColumn col in ds.CAPE_TMPAPPOSTAMENTI.Columns)
+                    GisDataSet.CAPE_TMPAPPOSTAMENTIRow row = ds.CAPE_TMPAPPOSTAMENTI.FirstOrDefault(r=>r.ATC == nRow.ATC && r.ORD == nRow.ORD);
+                    if (row != null)
                     {
-                        if (ds.CAPE_APPOSTAMENTI.Columns.Contains(col.ColumnName))
+                        foreach (DataColumn col in ds.CAPE_TMPAPPOSTAMENTI.Columns)
                         {
-                            if (row.IsNull(col) || row[col].Equals(""))
-                                nRow[col.ColumnName] = global::System.Convert.DBNull;
-                            else
+                            if (ds.CAPE_APPOSTAMENTI.Columns.Contains(col.ColumnName))
                             {
-                                if (col.DataType == typeof(string) && col.MaxLength != -1)
-                                {
-                                    string s = (string)row[col];
-                                    DataColumn destCol = ds.CAPE_APPOSTAMENTI.Columns[col.ColumnName];
-                                    int len = s.Length < destCol.MaxLength ? s.Length : destCol.MaxLength;
-                                    nRow[col.ColumnName] = ((string)row[col]).Substring(0, len);
-                                }
+                                if (row.IsNull(col) || row[col].Equals(""))
+                                    nRow[col.ColumnName] = global::System.Convert.DBNull;
                                 else
                                 {
-                                    nRow[col.ColumnName] = row[col];
+                                    if (col.DataType == typeof(string) && col.MaxLength != -1)
+                                    {
+                                        string s = (string)row[col];
+                                        DataColumn destCol = ds.CAPE_APPOSTAMENTI.Columns[col.ColumnName];
+                                        int len = s.Length < destCol.MaxLength ? s.Length : destCol.MaxLength;
+                                        nRow[col.ColumnName] = ((string)row[col]).Substring(0, len);
+                                    }
+                                    else
+                                    {
+                                        nRow[col.ColumnName] = row[col];
+                                    }
                                 }
                             }
                         }
                     }
-                    
                 }
             }
             ta.Update(ds.CAPE_APPOSTAMENTI);
