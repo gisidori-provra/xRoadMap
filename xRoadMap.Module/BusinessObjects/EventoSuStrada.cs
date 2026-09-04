@@ -67,6 +67,8 @@ namespace xRoadMap.Module.BusinessObjects
             throw new NotImplementedException();
         }
 
+        [System.ComponentModel.DisplayName("Strada")]
+        public Strada StradaBase => strada;
         
         public Strada GetStrada() => strada;
 
@@ -189,16 +191,6 @@ namespace xRoadMap.Module.BusinessObjects
             get => eve_id;
             set => SetPropertyValue(nameof(Event_id), ref eve_id, value);
         }
-
-        double offset;
-        public double Offset
-        {
-            get => offset;
-            set => SetPropertyValue(nameof(Offset), ref offset, value);
-        }
-
-
-
 
 
         double latitudine;

@@ -18,7 +18,6 @@ namespace xRoadMap.Module.BusinessObjects
         double Latitudine { get; set; }
         double Longitudine { get; set; }
         int Event_id { get; set; }
-        double Offset { get; set; }
 
     }
 
@@ -36,7 +35,6 @@ namespace xRoadMap.Module.BusinessObjects
 
     public interface IEventoOnRoad:IEvento,IConStrada
     {
-        Strada GetStrada();
     }
 
     public interface IConStrada

@@ -1,4 +1,5 @@
-﻿using xRoadMap.Module.BusinessObjects;
+﻿using DevExpress.Persistent.Base;
+using xRoadMap.Module.BusinessObjects;
 
 namespace xRoadMap.Module.Win.Controllers
 {
@@ -51,7 +52,7 @@ namespace xRoadMap.Module.Win.Controllers
             this.simpleActionLocate.ConfirmationMessage = null;
             this.simpleActionLocate.Id = "LineLocateAlongRoute";
             this.simpleActionLocate.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireSingleObject;
-            this.simpleActionLocate.TargetObjectsCriteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate# AND Strada IS NOT NULL";
+            this.simpleActionLocate.TargetObjectsCriteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate# AND StradaBase IS NOT NULL";
             this.simpleActionLocate.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
             this.simpleActionLocate.ToolTip = "Aggiorna le progressive chilometriche in base alla geometria.";
             this.simpleActionLocate.TypeOfView = typeof(DevExpress.ExpressApp.DetailView);
@@ -65,7 +66,7 @@ namespace xRoadMap.Module.Win.Controllers
             this.simpleActionLocateRoad.Id = "LocateRoute";
             this.simpleActionLocateRoad.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireMultipleObjects;
             this.simpleActionLocateRoad.TargetObjectsCriteriaMode = DevExpress.ExpressApp.Actions.TargetObjectsCriteriaMode.TrueForAll;
-            this.simpleActionLocateRoad.TargetObjectsCriteria = $"{nameof(IEventoOnRoad.Strada)} IS NULL";
+            this.simpleActionLocateRoad.TargetObjectsCriteria = $"{nameof(EventoSuStrada.StradaBase)} IS NULL";
             this.simpleActionLocateRoad.ToolTip = "Assegna la strada provinciale più vicina.";
             this.simpleActionLocateRoad.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.simpleActionLocateRoad_Execute);
             // 
@@ -77,7 +78,7 @@ namespace xRoadMap.Module.Win.Controllers
             this.simpleActionUpdateEvent.Id = "AggiornaGeometria";
             this.simpleActionUpdateEvent.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireMultipleObjects;
             this.simpleActionUpdateEvent.TargetObjectsCriteriaMode = DevExpress.ExpressApp.Actions.TargetObjectsCriteriaMode.TrueForAll;
-            this.simpleActionUpdateEvent.TargetObjectsCriteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate# AND Strada IS NOT NULL";
+            this.simpleActionUpdateEvent.TargetObjectsCriteria = "Tipo <> ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate# AND StradaBase IS NOT NULL";
             this.simpleActionUpdateEvent.ToolTip = "Aggiorna geometria in base alle progressive chilometriche.";
             this.simpleActionUpdateEvent.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.simpleActionUpdateEvent_Execute);
             // 

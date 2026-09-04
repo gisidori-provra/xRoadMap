@@ -25,8 +25,8 @@
     <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Blazor" Version="26.1.*" />
     <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="26.1.*" />
     <PackageReference Include="DevExpress.ExpressApp.Validation.Blazor" Version="26.1.*" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="8.0.17" />
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.7.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="10.0.11" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.300" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xRoadMap.Module\xRoadMap.Module.csproj" />

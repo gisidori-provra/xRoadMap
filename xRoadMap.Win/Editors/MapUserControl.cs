@@ -235,9 +235,10 @@ namespace xRoadMap.Module.Win.Editors
             var modelRoot = info as IModelMapLayer;
 
             if (modelRoot.LayerName == null)
-                modelRoot.LayerName = "layer";
+                modelRoot.LayerName = objectTypeInfo.Name;
 
             layer = AddVectorLayer(modelRoot);
+            layer.ZIndex = 0;
             //layer.Name = modelRoot.LayerName;
             layer.ViewportChanged += layer_ViewportChanged;
 
@@ -268,13 +269,14 @@ namespace xRoadMap.Module.Win.Editors
                         break;
                 }
 
+                int zIndex = 1;
                 foreach (IModelMapLayer model in mapInfo.MapLayers.OrderBy(l => l.Index))
                 {
                     LayerBase layer = null;
                     switch (model.LayerType)
                     {
                         case LayerType.WMSLayer:
-                            layer = AddWMSLayer(model.Uri,model.LayerName,model.Transparency);
+                            layer = AddWMSLayer(model.Uri,model.LayerName,model.Transparency.GetValueOrDefault(0),model.Visible,true);
                             break;
                         //case LayerType.BingMapLayer:
                         //    string bingKey = ((IModelMapOptions)((IModelApplication)info.Root).Options).BingKey;
@@ -292,7 +294,9 @@ namespace xRoadMap.Module.Win.Editors
                     }
                     if (layer != null)
                     {
-                        layer.Visible = model.Visible;
+                        layer.ZIndex = zIndex++;
+                        LayerChecked(layer.Name, model.Visible);
+                        //layer.Visible = model.Visible;
                         legend.Add(new LegendItem(model));
                         //this.checkedListBoxControl1.Items.Add(layer.Name, model.Titolo, model.Visible ? CheckState.Checked : CheckState.Unchecked, true);
                     }
@@ -369,7 +373,7 @@ namespace xRoadMap.Module.Win.Editors
                 //    pattern = mInfo.AssociatedMemberInfo.MemberTypeInfo.DefaultMember?.Name;
                 //if (pattern == null)
                 //    pattern = mInfo.ListElementTypeInfo.KeyMember.Name;
-                dataSourceProperties.Add(model.LayerName, dataSourceProperty);
+                dataSourceProperties.Add(layer.Name, dataSourceProperty);
             }
 
             //if (model.Pattern != null)
@@ -465,7 +469,7 @@ namespace xRoadMap.Module.Win.Editors
 
         //private Dictionary<string,List<string>> wmsLayers= new Dictionary<string,List<string>>();
 
-        private LayerBase AddWMSLayer(string uri,string activeLayerName,int? transparency=null, bool recurse = true)
+        private LayerBase AddWMSLayer(string uri,string activeLayerName,int transparency,bool visible , bool recurse)
         {
             ImageLayer imageLayer = new ImageLayer();
             imageLayer.Name = (recurse ? string.Empty : uri+"//") + activeLayerName;
@@ -486,8 +490,9 @@ namespace xRoadMap.Module.Win.Editors
             dataProvider.ResponseCapabilities += DataProvider_ResponseCapabilities;
             dataProvider.ActiveLayerName = activeLayerName;
             imageLayer.DataProvider = dataProvider;
-            if (transparency != null && transparency.Value<=100 && transparency.Value>=0)
+            if (transparency<=100 && transparency>0)
                 imageLayer.Transparency = (byte) (transparency * 255 / 100);
+            imageLayer.Visible = visible;
             map.Layers.Add(imageLayer);
             //wmsLayers[uri].Add(imageLayer.Name);
             return imageLayer;
@@ -498,7 +503,7 @@ namespace xRoadMap.Module.Win.Editors
                 {
                     foreach (var layer in e.Layers)
                     {
-                        AddWMSLayer(uri, layer.Name,transparency, false);
+                        AddWMSLayer(uri, layer.Name,transparency, visible,false);
                         //var ndx = this.checkedListBoxControl1.Items.Add(layer.Name, layer.Title, CheckState.Checked, true);
                     }
                 }

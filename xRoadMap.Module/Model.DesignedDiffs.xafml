@@ -90,8 +90,9 @@
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
   <SchemaModules>
-    <SchemaModule Name="CloneObjectModule" Version="26.1.3.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="26.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="CloneObjectModule" Version="26.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="26.1.4.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="26.1.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
     <DetailView Id="Accesso_DetailView">
@@ -580,7 +581,7 @@
         <Variant Id="Mappa" ViewID="Ciclabile_MapListView" Caption="Mappa" IsNewNode="True" />
       </Variants>
     </ListView>
-    <ListView Id="Ciclabile_MapListView" ClassName="xRoadMap.Module.BusinessObjects.Ciclabile" StrokeColor="192, 0, 192" StrokeWidth="6" IsNewNode="True">
+    <ListView Id="Ciclabile_MapListView" StrokeColor="192, 0, 192" StrokeWidth="6" ClassName="xRoadMap.Module.BusinessObjects.Ciclabile" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="DataFine" PropertyName="DataFine" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="DataInizio" PropertyName="DataInizio" Index="-1" IsNewNode="True" />
@@ -598,7 +599,6 @@
         <ColumnInfo Id="LongitudineSessagesimale" PropertyName="LongitudineSessagesimale" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="M" PropertyName="M" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="MFine" PropertyName="MFine" Index="-1" IsNewNode="True" />
-        <ColumnInfo Id="Offset" PropertyName="Offset" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Shape" PropertyName="Shape" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Tipo" PropertyName="Tipo" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="X" PropertyName="X" Index="-1" IsNewNode="True" />
@@ -835,52 +835,79 @@
       </Layout>
     </DetailView>
     <DetailView Id="EventoSuStrada_DetailView">
+      <HiddenActions>
+        <ActionLink ActionId="ShowLocation" IsNewNode="True" />
+      </HiddenActions>
       <Items>
-        <PropertyEditor Id="Shape">
+        <PropertyEditor Id="Shape" StrokeColor="255, 0, 0" StrokeWidth="4">
           <MapLayers>
-            <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="0" IsNewNode="True" />
-            <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="0" IsNewNode="True" />
-            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="4" IsNewNode="True" />
-            <MapLayer Id="Cippi" LayerName="0" DataSourceProperty="Strada.Cippi" Index="5" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Strada.Cippi" Index="0" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="Ponti" DataSourceProperty="Strada.Ponti" StrokeColor="Purple" StrokeWidth="2" LayerName="Ponti" Index="1" IsNewNode="True" />
+            <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="2" IsNewNode="True" />
+            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php" LayerName="Catasto" Transparency="60" Index="3" Visible="False" Titolo="Catasto" IsNewNode="True" />
+            <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="4" IsNewNode="True" />
+            <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="5" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="Auto8c9f79eb-d1d9-4929-877a-d9693df9d025" ShowCaption="False" Caption="Auto8c9f79eb-d1d9-4929-877a-d9693df9d025(3)" Direction="Horizontal" Index="0" RelativeSize="35.313001605136435" IsNewNode="True">
-              <LayoutGroup Id="EventoSuStrada" ShowCaption="True" Caption="Evento Su Strada" Index="0" RelativeSize="34.629981024667934" IsNewNode="True">
-                <LayoutGroup Id="EventoSuStrada_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
-                  <LayoutItem Id="TipoGeometria" ViewItem="TipoGeometria" Index="0" RelativeSize="17.391304347826086" IsNewNode="True" />
-                  <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="1" RelativeSize="13.043478260869565" IsNewNode="True" />
-                  <LayoutItem Id="DataFine" ViewItem="DataFine" Index="2" RelativeSize="13.043478260869565" IsNewNode="True" />
-                  <LayoutItem Id="Tipo" ViewItem="Tipo" Index="3" RelativeSize="13.043478260869565" IsNewNode="True" />
-                  <LayoutItem Id="Lenght" ViewItem="Lenght" Index="4" RelativeSize="13.043478260869565" IsNewNode="True" />
-                  <LayoutItem Id="Offset" ViewItem="Offset" Index="5" RelativeSize="30.434782608695652" IsNewNode="True" />
+            <LayoutGroup Id="Auto8c9f79eb-d1d9-4929-877a-d9693df9d025" ShowCaption="False" Caption="Auto8c9f79eb-d1d9-4929-877a-d9693df9d025(3)" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutGroup Id="EventoSuStrada_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutGroup Id="Auto8136a55f-745d-4fc9-9451-41101c234f2d" ShowCaption="False" Caption="Auto8136a55f-745d-4fc9-9451-41101c234f2d(7)" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutGroup Id="Auto7d742d4b-036a-42ca-b2c3-d52b220188bb" ShowCaption="False" Caption="Auto7d742d4b-036a-42ca-b2c3-d52b220188bb(8)" Index="0" RelativeSize="0.10121457489878542" IsNewNode="True" />
+                  <LayoutGroup Id="Autoe39c1a4d-33be-4ac2-817f-c440d3a804ea" ShowCaption="False" Caption="Autoe39c1a4d-33be-4ac2-817f-c440d3a804ea(12)" Index="1" RelativeSize="99.89878542510121" IsNewNode="True">
+                    <TabbedGroup Id="Item3" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                      <LayoutGroup Id="Item5" ShowCaption="True" Caption="Posizione" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
+                        <LayoutItem Id="StradaBase" ViewItem="StradaBase" Index="0" RelativeSize="5.745062836624776" IsNewNode="True" />
+                        <LayoutItem Id="TipoGeometria" ViewItem="TipoGeometria" Index="1" RelativeSize="4.308797127468582" IsNewNode="True" />
+                        <LayoutItem Id="Tipo" ViewItem="Tipo" Index="2" RelativeSize="4.308797127468582" IsNewNode="True" />
+                        <LayoutGroup Id="Auto9aa72e56-cc04-4688-8102-c60b8e303a9e" ShowCaption="False" Caption="Auto9aa72e56-cc04-4688-8102-c60b8e303a9e(12)" Index="3" RelativeSize="85.63734290843806" IsNewNode="True">
+                          <LayoutGroup Id="Autob844e6b2-67f3-4bbe-bf15-6c4a32861d9b" ShowCaption="False" Caption="Autob844e6b2-67f3-4bbe-bf15-6c4a32861d9b(16)" Index="0" RelativeSize="100" IsNewNode="True">
+                            <LayoutItem Id="Lenght" ViewItem="Lenght" Index="0" RelativeSize="6.289308176100629" IsNewNode="True" />
+                            <LayoutGroup Id="Autod26a248c-d5f4-4114-8b49-88a05c5693ee" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="93.71069182389937" IsNewNode="True">
+                              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Inizio" CaptionLocation="Top" Index="0" RelativeSize="53.50515463917526" IsNewNode="True">
+                                <LayoutItem Id="Km" ViewItem="Km" Index="0" RelativeSize="7.729468599033816" IsNewNode="True" />
+                                <LayoutGroup Id="Autoa5022062-f44c-440b-917e-4f4d471e12ea" ShowCaption="False" Caption="Autoa5022062-f44c-440b-917e-4f4d471e12ea(18)" Direction="Horizontal" Index="1" RelativeSize="92.27053140096618" IsNewNode="True">
+                                  <LayoutGroup Id="Autoff97f267-4442-4acf-a5c3-909e66971629" ShowCaption="False" Caption="Autoff97f267-4442-4acf-a5c3-909e66971629(19)" Index="0" RelativeSize="53.98406374501992" IsNewNode="True">
+                                    <LayoutItem Id="X" ViewItem="X" Index="0" RelativeSize="7.853403141361256" IsNewNode="True" />
+                                    <LayoutItem Id="Y" ViewItem="Y" Index="1" RelativeSize="6.282722513089006" IsNewNode="True" />
+                                    <LayoutItem Id="Z" ViewItem="Z" Index="2" RelativeSize="6.282722513089006" IsNewNode="True" />
+                                    <LayoutItem Id="M" ViewItem="M" Index="3" RelativeSize="79.58115183246073" IsNewNode="True" />
+                                  </LayoutGroup>
+                                  <LayoutGroup Id="Auto628448ef-5bc9-4723-b460-0eb9aeb6bd8a" ShowCaption="False" Caption="Auto628448ef-5bc9-4723-b460-0eb9aeb6bd8a(23)" Index="1" RelativeSize="46.01593625498008" IsNewNode="True">
+                                    <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="0" RelativeSize="7.853403141361256" IsNewNode="True" />
+                                    <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="1" RelativeSize="92.14659685863874" IsNewNode="True" />
+                                  </LayoutGroup>
+                                </LayoutGroup>
+                              </LayoutGroup>
+                              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Fine" CaptionLocation="Top" Index="1" RelativeSize="46.49484536082474" IsNewNode="True">
+                                <LayoutItem Id="KmFine" ViewItem="KmFine" Index="0" RelativeSize="7.729468599033816" IsNewNode="True" />
+                                <LayoutGroup Id="Autoc89599c2-4265-4883-9211-ba38a1ca7e80" ShowCaption="False" Caption="Autoc89599c2-4265-4883-9211-ba38a1ca7e80(29)" Direction="Horizontal" Index="1" RelativeSize="92.27053140096618" IsNewNode="True">
+                                  <LayoutGroup Id="Auto5787423c-4df8-4e20-9e33-e54a0036ebda" ShowCaption="False" Caption="Auto5787423c-4df8-4e20-9e33-e54a0036ebda(30)" Index="0" RelativeSize="50" IsNewNode="True">
+                                    <LayoutItem Id="XFine" ViewItem="XFine" Index="0" RelativeSize="7.853403141361256" IsNewNode="True" />
+                                    <LayoutItem Id="YFine" ViewItem="YFine" Index="1" RelativeSize="6.282722513089006" IsNewNode="True" />
+                                    <LayoutItem Id="ZFine" ViewItem="ZFine" Index="2" RelativeSize="6.282722513089006" IsNewNode="True" />
+                                    <LayoutItem Id="MFine" ViewItem="MFine" Index="3" RelativeSize="79.58115183246073" IsNewNode="True" />
+                                  </LayoutGroup>
+                                  <LayoutGroup Id="Auto1b531e47-a888-4a3f-9458-a4c4623a8d1c" ShowCaption="False" Caption="Auto1b531e47-a888-4a3f-9458-a4c4623a8d1c(34)" Index="1" RelativeSize="50" IsNewNode="True">
+                                    <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="0" RelativeSize="7.853403141361256" IsNewNode="True" />
+                                    <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="1" RelativeSize="92.14659685863874" IsNewNode="True" />
+                                  </LayoutGroup>
+                                </LayoutGroup>
+                              </LayoutGroup>
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                      <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" Caption="Mappa" RelativeSize="100" IsNewNode="True">
+                        <LayoutItem Id="Shape" ViewItem="Shape" Index="0" RelativeSize="100" ShowCaption="False" IsNewNode="True" />
+                      </LayoutGroup>
+                    </TabbedGroup>
+                  </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
-              <LayoutGroup Id="Item1" ShowCaption="True" Caption="Inizio" CaptionLocation="Top" Index="1" RelativeSize="32.5426944971537" IsNewNode="True">
-                <LayoutItem Id="Km" ViewItem="Km" Index="0" RelativeSize="17.391304347826086" IsNewNode="True" />
-                <LayoutItem Id="X" ViewItem="X" Index="1" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="Y" ViewItem="Y" Index="2" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="Z" ViewItem="Z" Index="3" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="M" ViewItem="M" Index="4" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="LongitudineSessagesimale" ViewItem="LongitudineSessagesimale" Index="5" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="LatitudineSessagesimale" ViewItem="LatitudineSessagesimale" Index="6" RelativeSize="17.391304347826086" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Item2" ShowCaption="True" Caption="Fine" CaptionLocation="Top" Index="2" RelativeSize="32.82732447817837" IsNewNode="True">
-                <LayoutItem Id="KmFine" ViewItem="KmFine" Index="0" RelativeSize="17.391304347826086" IsNewNode="True" />
-                <LayoutItem Id="XFine" ViewItem="XFine" Index="1" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="YFine" ViewItem="YFine" Index="2" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="ZFine" ViewItem="ZFine" Index="3" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="MFine" ViewItem="MFine" Index="4" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="LongitudineFineSessagesimale" ViewItem="LongitudineFineSessagesimale" Index="5" RelativeSize="13.043478260869565" IsNewNode="True" />
-                <LayoutItem Id="LatitudineFineSessagesimale" ViewItem="LatitudineFineSessagesimale" Index="6" RelativeSize="17.391304347826086" IsNewNode="True" />
-              </LayoutGroup>
-            </LayoutGroup>
-            <LayoutGroup Id="XPSTGeometry" RelativeSize="64.68699839486356" Caption="XPSTGeometry">
-              <LayoutItem Id="Shape" RelativeSize="100" ShowCaption="False" />
-              <LayoutItem Id="Lenght" RelativeSize="93.37748344370861" Removed="True" />
             </LayoutGroup>
             <LayoutGroup Id="EventoSuStrada" RelativeSize="53.054662379421224" Removed="True">
               <LayoutGroup Id="EventoSuStrada_col1" RelativeSize="50">
@@ -921,6 +948,10 @@
                 <LayoutItem Id="YFine" RelativeSize="8.080808080808081" Removed="True" />
                 <LayoutItem Id="ZFine" RelativeSize="8.080808080808081" Removed="True" />
               </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPSTGeometry" Caption="XPSTGeometry" RelativeSize="15.95197255574614" Removed="True">
+              <LayoutItem Id="Lenght" Index="0" RelativeSize="100" Removed="True" />
+              <LayoutItem Id="Shape" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
@@ -1227,12 +1258,11 @@
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
         <PropertyEditor Id="Shape" StrokeColor="Red" StrokeWidth="6" LayerName="Ordinanze" TOCVisibility="Auto">
           <MapLayers>
-            <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="0" IsNewNode="True" />
-            <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="0" IsNewNode="True" />
-            <MapLayer Id="Fogli catastali" LayerType="WMSLayer" Uri="https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php" LayerName="Catasto" Index="2" Visible="False" Titolo="Catasto" Transparency="60" IsNewNode="True" />
+            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Strada.Cippi" Index="0" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="Ponti" DataSourceProperty="Strada.Ponti" StrokeColor="Purple" StrokeWidth="2" LayerName="Ponti" Index="1" IsNewNode="True" />
             <MapLayer Id="Strade" LayerName="Strade" DataSourceProperty="Strada" Index="2" StrokeColor="Green" StrokeWidth="2" IsNewNode="True" />
-            <MapLayer Id="Ponti" DataSourceProperty="Strada.Ponti" StrokeColor="Purple" StrokeWidth="2" LayerName="Ponti" Index="3" IsNewNode="True" />
-            <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Strada.Cippi" Index="4" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
+            <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="4" IsNewNode="True" />
+            <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="5" IsNewNode="True" />
           </MapLayers>
         </PropertyEditor>
         <PropertyEditor Id="Strada" PropertyName="Strada" IsNewNode="True" />
@@ -1242,59 +1272,71 @@
           <LayoutGroup Id="SimpleEditors" RelativeSize="100" Direction="Vertical">
             <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Ordinanza" IsNewNode="True">
-                <LayoutGroup Id="Auto6354ac1f-11fc-4480-8419-b1ac58428389" ShowCaption="False" Caption="Auto6354ac1f-11fc-4480-8419-b1ac58428389" Direction="Vertical" Index="0" RelativeSize="7.416267942583732" IsNewNode="True">
+                <LayoutGroup Id="Auto6354ac1f-11fc-4480-8419-b1ac58428389" ShowCaption="False" Caption="Auto6354ac1f-11fc-4480-8419-b1ac58428389" Direction="Vertical" Index="0" RelativeSize="32.47863247863248" IsNewNode="True">
                   <LayoutGroup Id="Auto48c4ae27-dc95-46ba-b704-8802be9e16b9" ShowCaption="False" Caption="Auto48c4ae27-dc95-46ba-b704-8802be9e16b9" Index="0" RelativeSize="100" IsNewNode="True">
-                    <LayoutGroup Id="Auto1449ad13-c7f4-4264-a3cf-824eb01e854b" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                      <LayoutGroup Id="Autoba918eac-2f05-46da-9d22-2167ae9e1205" ShowCaption="False" Index="0" RelativeSize="46.90553745928339" IsNewNode="True">
-                        <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="51.61290322580645" IsNewNode="True" />
-                        <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="48.38709677419355" IsNewNode="True" />
-                      </LayoutGroup>
-                      <LayoutGroup Id="Auto6395a65a-3030-4b20-a842-abf0a7332abc" ShowCaption="False" Index="1" RelativeSize="53.09446254071661" IsNewNode="True">
-                        <LayoutItem Id="DalleOre" ViewItem="DalleOre" Index="0" RelativeSize="51.61290322580645" IsNewNode="True" />
-                        <LayoutItem Id="AlleOre" ViewItem="AlleOre" Index="1" RelativeSize="48.38709677419355" IsNewNode="True" />
+                    <LayoutGroup Id="Auto1449ad13-c7f4-4264-a3cf-824eb01e854b" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
+                      <LayoutGroup Id="Autoba918eac-2f05-46da-9d22-2167ae9e1205" ShowCaption="False" Index="0" RelativeSize="100" Caption="Autoba918eac-2f05-46da-9d22-2167ae9e1205" IsNewNode="True">
+                        <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="21.05263157894737" IsNewNode="True" />
+                        <LayoutGroup Id="Auto411830de-c22d-47f2-a91f-ade42ff29837" ShowCaption="False" Caption="Auto411830de-c22d-47f2-a91f-ade42ff29837(10)" Direction="Horizontal" Index="1" RelativeSize="39.473684210526315" IsNewNode="True">
+                          <LayoutItem Id="TipoGeometria" ViewItem="TipoGeometria" Index="0" RelativeSize="50" IsNewNode="True" />
+                          <LayoutGroup Id="Autofea597f4-6dde-4409-8692-c207b15afc8e" ShowCaption="False" Caption="Autofea597f4-6dde-4409-8692-c207b15afc8e(12)" Index="1" RelativeSize="50" IsNewNode="True">
+                            <LayoutItem Id="Km" ViewItem="Km" Index="0" RelativeSize="50" IsNewNode="True" />
+                            <LayoutItem Id="KmFine" ViewItem="KmFine" Index="1" RelativeSize="50" IsNewNode="True" />
+                          </LayoutGroup>
+                        </LayoutGroup>
+                        <LayoutGroup Id="Autofbe16505-aaf7-4443-ad64-bef7dbfda8b7" ShowCaption="False" Caption="Autofbe16505-aaf7-4443-ad64-bef7dbfda8b7(10)" Direction="Horizontal" Index="2" RelativeSize="39.473684210526315" IsNewNode="True">
+                          <LayoutGroup Id="Autob39511e4-e55e-4c05-8914-2d26c9dfa221" ShowCaption="False" Caption="Autob39511e4-e55e-4c05-8914-2d26c9dfa221(11)" Index="0" RelativeSize="33.43685300207039" IsNewNode="True">
+                            <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="50" IsNewNode="True" />
+                            <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="50" IsNewNode="True" />
+                          </LayoutGroup>
+                          <LayoutGroup Id="Autoa447e4c7-3fa8-4f5a-b6ac-ea97421dcef4" ShowCaption="False" Caption="Autoa447e4c7-3fa8-4f5a-b6ac-ea97421dcef4(14)" Index="1" RelativeSize="66.5631469979296" IsNewNode="True">
+                            <LayoutItem Id="DalleOre" ViewItem="DalleOre" Index="0" RelativeSize="50" IsNewNode="True" />
+                            <LayoutItem Id="AlleOre" ViewItem="AlleOre" Index="1" RelativeSize="50" IsNewNode="True" />
+                          </LayoutGroup>
+                        </LayoutGroup>
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
                 </LayoutGroup>
-                <LayoutGroup Id="Autob935f538-f14f-4016-976c-7020421b37bb" ShowCaption="False" Caption="Autob935f538-f14f-4016-976c-7020421b37bb(14)" Direction="Horizontal" Index="1" RelativeSize="7.177033492822966" IsNewNode="True">
-                  <LayoutGroup Id="Auto278a858f-3d0d-4cbf-b62c-3bcc118a81c8" ShowCaption="False" Caption="Auto278a858f-3d0d-4cbf-b62c-3bcc118a81c8(15)" Index="0" RelativeSize="74.51140065146579" IsNewNode="True">
+                <LayoutGroup Id="Autob935f538-f14f-4016-976c-7020421b37bb" ShowCaption="False" Caption="Autob935f538-f14f-4016-976c-7020421b37bb(14)" Direction="Horizontal" Index="1" RelativeSize="12.820512820512821" IsNewNode="True">
+                  <LayoutGroup Id="Auto278a858f-3d0d-4cbf-b62c-3bcc118a81c8" ShowCaption="False" Caption="Auto278a858f-3d0d-4cbf-b62c-3bcc118a81c8(15)" Index="0" RelativeSize="74.22360248447205" IsNewNode="True">
                     <LayoutGroup Id="Auto85f01d8e-3662-4a12-aa75-dd1bfd4bcf00" ShowCaption="False" Caption="Auto85f01d8e-3662-4a12-aa75-dd1bfd4bcf00(16)" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
-                      <LayoutGroup Id="Autoa1a03fda-1e6d-46b0-9812-4ec9a70f510f" ShowCaption="False" Caption="Autoa1a03fda-1e6d-46b0-9812-4ec9a70f510f(17)" Index="0" RelativeSize="33.77049180327869" IsNewNode="True">
+                      <LayoutGroup Id="Autoa1a03fda-1e6d-46b0-9812-4ec9a70f510f" ShowCaption="False" Caption="Autoa1a03fda-1e6d-46b0-9812-4ec9a70f510f(17)" Index="0" RelativeSize="33.333333333333336" IsNewNode="True">
                         <LayoutItem Id="LimiteMassa" ViewItem="LimiteMassa" Index="0" RelativeSize="50" ShowCaption="False" IsNewNode="True" />
                         <LayoutItem Id="Portata" ViewItem="Portata" Index="1" RelativeSize="50" IsNewNode="True" />
                       </LayoutGroup>
-                      <LayoutGroup Id="Autoa50be039-4013-43c3-b105-471d4f53e25d" ShowCaption="False" Caption="Autoa50be039-4013-43c3-b105-471d4f53e25d(21)" Index="1" RelativeSize="66.22950819672131" Direction="Horizontal" IsNewNode="True">
-                        <LayoutGroup Id="Auto35b9ea7d-4fae-463c-829d-259543351c25" ShowCaption="False" Caption="Auto35b9ea7d-4fae-463c-829d-259543351c25(21)" Index="0" RelativeSize="50" IsNewNode="True">
+                      <LayoutGroup Id="Autoa50be039-4013-43c3-b105-471d4f53e25d" ShowCaption="False" Caption="Autoa50be039-4013-43c3-b105-471d4f53e25d(21)" Index="1" RelativeSize="66.66666666666667" Direction="Horizontal" IsNewNode="True">
+                        <LayoutGroup Id="Auto35b9ea7d-4fae-463c-829d-259543351c25" ShowCaption="False" Caption="Auto35b9ea7d-4fae-463c-829d-259543351c25(21)" Index="0" RelativeSize="49.7907949790795" IsNewNode="True">
                           <LayoutItem Id="LimiteSagoma" ShowCaption="False" ViewItem="LimiteSagoma" Index="0" RelativeSize="50" IsNewNode="True" />
                           <LayoutItem Id="Sagoma" ViewItem="Sagoma" Index="1" RelativeSize="50" IsNewNode="True" />
                         </LayoutGroup>
-                        <LayoutGroup Id="Auto507edc55-8fc3-41fa-a4f1-d0d422e73f2b" ShowCaption="False" Caption="Auto507edc55-8fc3-41fa-a4f1-d0d422e73f2b(24)" Index="1" RelativeSize="50" IsNewNode="True">
+                        <LayoutGroup Id="Auto507edc55-8fc3-41fa-a4f1-d0d422e73f2b" ShowCaption="False" Caption="Auto507edc55-8fc3-41fa-a4f1-d0d422e73f2b(24)" Index="1" RelativeSize="50.2092050209205" IsNewNode="True">
                           <LayoutItem Id="LimiteVelocità" ShowCaption="False" ViewItem="LimiteVelocità" Index="0" RelativeSize="50" IsNewNode="True" />
                           <LayoutItem Id="Velocità" ViewItem="Velocità" Index="1" RelativeSize="50" IsNewNode="True" />
                         </LayoutGroup>
                       </LayoutGroup>
                     </LayoutGroup>
                   </LayoutGroup>
-                  <LayoutGroup Id="Auto3690a8fa-809a-4564-9134-f603cfeff1af" ShowCaption="False" Caption="Auto3690a8fa-809a-4564-9134-f603cfeff1af(27)" Index="1" RelativeSize="25.4885993485342" IsNewNode="True">
+                  <LayoutGroup Id="Auto3690a8fa-809a-4564-9134-f603cfeff1af" ShowCaption="False" Caption="Auto3690a8fa-809a-4564-9134-f603cfeff1af(27)" Index="1" RelativeSize="25.77639751552795" IsNewNode="True">
                     <LayoutItem Id="Percorribilità" ViewItem="Percorribilità" Index="0" RelativeSize="100" IsNewNode="True" />
                   </LayoutGroup>
                 </LayoutGroup>
-                <LayoutItem Id="Descrizione" ViewItem="Descrizione" Index="2" RelativeSize="85.4066985645933" CaptionLocation="Top" IsNewNode="True" />
+                <LayoutItem Id="Descrizione" ViewItem="Descrizione" Index="2" RelativeSize="54.7008547008547" CaptionLocation="Top" IsNewNode="True" />
               </LayoutGroup>
               <LayoutGroup Id="Atto" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="Autob145182c-9c7a-41f2-8985-a78258bd7f14" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                   <LayoutGroup Id="Autod6bf9c65-ef80-49b5-87ed-6569e16259e3" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
-                    <LayoutItem Id="Atto" ViewItem="Atto" Index="0" RelativeSize="3.827751196172249" IsNewNode="True" />
-                    <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" Index="1" RelativeSize="2.8708133971291865" IsNewNode="True" />
-                    <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" Index="2" RelativeSize="2.8708133971291865" IsNewNode="True" />
-                    <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" Index="3" RelativeSize="2.8708133971291865" IsNewNode="True" />
-                    <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" Index="4" RelativeSize="2.8708133971291865" IsNewNode="True" />
-                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" Index="5" RelativeSize="84.68899521531101" CaptionLocation="Top" IsNewNode="True" />
+                    <LayoutItem Id="Atto" ViewItem="Atto" Index="0" RelativeSize="6.837606837606837" IsNewNode="True" />
+                    <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" Index="1" RelativeSize="5.128205128205129" IsNewNode="True" />
+                    <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" Index="2" RelativeSize="5.128205128205129" IsNewNode="True" />
+                    <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" Index="3" RelativeSize="5.128205128205129" IsNewNode="True" />
+                    <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" Index="4" RelativeSize="5.128205128205129" IsNewNode="True" />
+                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" Index="5" RelativeSize="72.64957264957265" CaptionLocation="Top" IsNewNode="True" />
                   </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
-              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" Caption="Map" RelativeSize="100" IsNewNode="True">
-                <LayoutItem Id="Shape" ShowCaption="False" ViewItem="Shape" Index="0" RelativeSize="100" IsNewNode="True" />
+              <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="2" Caption="Mappa" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="Shape" ViewItem="Shape" Index="0" RelativeSize="100" ShowCaption="False" IsNewNode="True" />
               </LayoutGroup>
             </TabbedGroup>
             <LayoutGroup Id="EventoSuStrada" Removed="True" />
@@ -1338,7 +1380,7 @@
         <Variant Id="Mappa" ViewID="Ordinanza_ListViewMap" Caption="Mappa" IsNewNode="True" />
       </Variants>
     </ListView>
-    <ListView Id="Ordinanza_ListViewMap" StrokeColor="SteelBlue" StrokeWidth="4" LayerName="LimitazioniTransito" ClassName="xRoadMap.Module.BusinessObjects.Ordinanza" Pattern="{Strada.Sigla}" IsNewNode="True">
+    <ListView Id="Ordinanza_ListViewMap" StrokeColor="SteelBlue" StrokeWidth="4" LayerName="LimitazioniTransito" Pattern="{Strada.Sigla}" ClassName="xRoadMap.Module.BusinessObjects.Ordinanza" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="AlleOre" PropertyName="AlleOre" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="DalleOre" PropertyName="DalleOre" Index="-1" IsNewNode="True" />
@@ -1352,7 +1394,6 @@
         <ColumnInfo Id="LongitudineSessagesimale" PropertyName="LongitudineSessagesimale" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="M" PropertyName="M" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="MFine" PropertyName="MFine" Index="-1" IsNewNode="True" />
-        <ColumnInfo Id="Offset" PropertyName="Offset" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Shape" PropertyName="Shape" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Tipo" PropertyName="Tipo" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="UrlCMS" PropertyName="UrlCMS" Index="-1" IsNewNode="True" />
@@ -1445,7 +1486,6 @@
         <PropertyEditor Id="DataFine" PropertyName="DataFine" IsNewNode="True" Removed="True" />
         <PropertyEditor Id="DataInizio" PropertyName="DataInizio" IsNewNode="True" Removed="True" />
         <PropertyEditor Id="KmFine" PropertyName="KmFine" IsNewNode="True" Removed="True" />
-        <PropertyEditor Id="Offset" Removed="True" />
         <PropertyEditor Id="Shape" PropertyName="Shape" StrokeColor="192, 0, 192" StrokeWidth="6" LayerName="Ponti" IsNewNode="True" Removed="True">
           <MapLayers IsNewNode="True">
             <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="0" IsNewNode="True" />
@@ -1930,7 +1970,6 @@
         <ColumnInfo Id="LongitudineSessagesimale" Index="-1" />
         <ColumnInfo Id="M" Index="-1" />
         <ColumnInfo Id="MFine" Index="-1" />
-        <ColumnInfo Id="Offset" Index="-1" />
         <ColumnInfo Id="Tipo" Index="-1" />
         <ColumnInfo Id="X" Index="-1" />
         <ColumnInfo Id="XFine" Index="-1" />
@@ -2165,7 +2204,7 @@
         <ColumnInfo Id="Denominazione" PropertyName="Denominazione" Index="1" Width="531" IsNewNode="True" />
       </Columns>
     </ListView>
-    <ListView Id="Strada_MapListView" StrokeColor="Green" StrokeWidth="3" TextColor="128, 128, 255" TitleVisible="Visible" LayerName="Strade" ClassName="xRoadMap.Module.BusinessObjects.Strada" TOCVisibility="Visible" Pattern="{Sigla}" IsNewNode="True">
+    <ListView Id="Strada_MapListView" StrokeColor="Green" StrokeWidth="3" TextColor="128, 128, 255" TitleVisible="Visible" LayerName="Strade" TOCVisibility="Visible" Pattern="{Sigla}" ClassName="xRoadMap.Module.BusinessObjects.Strada" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Percorso" PropertyName="Percorso" Width="70" Index="-1" IsNewNode="True" />
         <ColumnInfo Id="Shape" PropertyName="Shape" Width="70" Index="-1" IsNewNode="True" />

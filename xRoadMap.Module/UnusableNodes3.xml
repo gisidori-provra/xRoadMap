@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="Ordinanza_ListViewMap">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Offset" PropertyName="Offset" Index="-1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Ciclabile_MapListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Offset" PropertyName="Offset" Index="-1" />
+      </Columns>
+    </ListView>
+    <DetailView Id="EventoSuStrada_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Auto8c9f79eb-d1d9-4929-877a-d9693df9d025">
+              <LayoutGroup Id="EventoSuStrada_col1">
+                <LayoutGroup Id="Auto8136a55f-745d-4fc9-9451-41101c234f2d">
+                  <LayoutGroup Id="Autoe39c1a4d-33be-4ac2-817f-c440d3a804ea">
+                    <TabbedGroup Id="Item4">
+                      <LayoutGroup Id="Item3">
+                        <LayoutGroup Id="Item5">
+                          <LayoutGroup Id="Auto9aa72e56-cc04-4688-8102-c60b8e303a9e">
+                            <LayoutGroup Id="Auto18125f3d-d129-4fd7-af8a-e5a17054b711">
+                              <LayoutItem Id="Offset" ViewItem="Offset" />
+                            </LayoutGroup>
+                          </LayoutGroup>
+                        </LayoutGroup>
+                      </LayoutGroup>
+                    </TabbedGroup>
+                  </LayoutGroup>
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Ponte_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="Offset" Removed="True" />
+      </Items>
+    </DetailView>
+    <ListView Id="Strada_Cunette_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Offset" Index="-1" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

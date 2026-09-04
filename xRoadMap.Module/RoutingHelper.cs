@@ -264,7 +264,7 @@ namespace xRoadMap.Module
 
         public static void LocalizzaLineareSuXY(EventoSuStrada item)
         {
-            var ev = item;
+            IEventoOnRoad ev = item;
             //var line = ev.Strada.Shape;
             //var subLine = ev.Shape as LineString;
             //var loc = new NetTopologySuite.LinearReferencing.LocationIndexOfLine(line);
@@ -276,8 +276,9 @@ namespace xRoadMap.Module
             //item.KmFine = GetChilometricaFromMeasure(ev.Strada,mFine,out double pkFine);
             //item.M = pk;
             //item.MFine = pkFine;
+            
+            var st = ev.Strada;
 
-            var st = ev.GetStrada();
             var subLine = ev.Shape as LineString;
 
             item.Km = RoutingHelper.LocalizzaPuntualeSuXY(st, subLine.StartPoint.Coordinate, out double m);
@@ -308,7 +309,7 @@ namespace xRoadMap.Module
                     item.MFine = RoutingHelper.GetMeasureFromChilometrica(item.GetStrada(), item.KmFine);
 
                 var ev = (IEventoLineareOnRoad)item;
-                var line = ev.GetStrada().Shape;
+                var line = ev.Strada.Shape;
                 var loc1 = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, ev.M);
                 var loc2 = NetTopologySuite.LinearReferencing.LengthLocationMap.GetLocation(line, ev.MFine);
                 var seg = NetTopologySuite.LinearReferencing.ExtractLineByLocation.Extract(line,loc1,loc2);
