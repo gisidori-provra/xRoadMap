@@ -10,6 +10,7 @@ using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.Persistent.Base;
 using DevExpress.Utils.Filtering.Internal;
 using DevExpress.Persistent.Validation;
+using DevExpress.Office.NumberConverters;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -17,7 +18,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     [MapInheritance(MapInheritanceType.OwnTable)]
     [DefaultProperty(nameof(Descrizione))]
-    public partial class Ordinanza: EventoSuStrada,IEventoLineareOnRoad
+    public partial class Ordinanza : EventoSuStrada, IEventoLineareOnRoad
     {
         public Ordinanza(Session session) : base(session) { }
         public override void AfterConstruction()
@@ -96,7 +97,7 @@ namespace xRoadMap.Module.BusinessObjects
         [ModelDefault("DisplayFormat", "{0:hh\\:mm}")]
         [ModelDefault("EditMaskType", "DateTime")]
         [ModelDefault("EditMask", @"HH:mm")]
-        [Appearance("AlleOre.Enabled",Enabled =false,Criteria ="DataFine IS NULL")]
+        [Appearance("AlleOre.Enabled", Enabled = false, Criteria = "DataFine IS NULL")]
         public TimeSpan? AlleOre
         {
             get => DataFine?.TimeOfDay;
@@ -113,7 +114,7 @@ namespace xRoadMap.Module.BusinessObjects
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
         [PersistentAlias("(DataInizio IS NULL OR DataInizio<=Today()) AND (DataFine IS NULL OR DataFine>Today())")]
-        public bool Vigente => (bool)EvaluateAlias() ; //(!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
+        public bool Vigente => (bool)EvaluateAlias(); //(!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
 
         bool fLimiteMassa;
         [ImmediatePostData]
@@ -164,7 +165,7 @@ namespace xRoadMap.Module.BusinessObjects
 
         int fVelocità;
         [DevExpress.Xpo.DisplayName(@"Limite di velocità (km/h)")]
-        [Appearance("LimiteVelocità",criteria:"NOT LimiteVelocità",Enabled = false)]
+        [Appearance("LimiteVelocità", criteria: "NOT LimiteVelocità", Enabled = false)]
         [VisibleInListView(false)]
         [Persistent("Velocita")]
         public int Velocità
@@ -179,17 +180,59 @@ namespace xRoadMap.Module.BusinessObjects
         public TipoPercorrenza Percorribilità
         {
             get => fPercorribilità;
-            set => SetPropertyValue(nameof(Percorribilità),ref fPercorribilità,value);    
+            set => SetPropertyValue(nameof(Percorribilità), ref fPercorribilità, value);
         }
 
         [Browsable(false)]
-        [RuleFromBoolProperty("Valido",DefaultContexts.Save, CustomMessageTemplate ="Specificare un tipo di limitazione")]
+        [RuleFromBoolProperty("Valido", DefaultContexts.Save, CustomMessageTemplate = "Specificare un tipo di limitazione")]
         public bool IsValid
         {
             get => LimiteMassa || LimiteSagoma != TipoSagoma.Libero || LimiteVelocità || Percorribilità != TipoPercorrenza.Libero;
         }
 
 
+
+        private Ordinanza fOrdinanzaPrecedente;
+
+        [Association]
+        [ToolTip("Ordinanza che viene modificata o revocata dall'ordinanza corrente")]
+        [DataSourceCriteria("Stato <> ##Enum#xRoadMap.Module.BusinessObjects.StatoValidità,Revocata# AND Strada='@This.Strada'")]
+        public Ordinanza OrdinanzaPrecedente
+        {
+            get => fOrdinanzaPrecedente;
+            set
+            {
+                if (SetPropertyValue(nameof(OrdinanzaPrecedente), ref fOrdinanzaPrecedente, value))
+                {
+                    if (fOrdinanzaPrecedente != null && fOrdinanzaPrecedente.Stato == StatoValidità.Vigente)
+                    {
+                        fOrdinanzaPrecedente.Stato = StatoValidità.Modificata;
+                    }
+                }
+            }
+        }
+        
+        [Association]
+        public XPCollection<Ordinanza> OrdinanzeSuccessive
+        {
+            get
+            {
+                return GetCollection<Ordinanza>(nameof(OrdinanzeSuccessive));
+            }
+        }
+
+        private StatoValidità fStato;
+        public StatoValidità Stato
+        {
+            get => fStato;
+            set => SetPropertyValue(nameof(Stato), ref fStato, value);
+        }
     }
 
+    public enum StatoValidità
+    {
+        Vigente = 0,
+        Modificata = 1,
+        Revocata = 2,
+    }
 }

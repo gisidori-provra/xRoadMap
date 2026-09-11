@@ -28,63 +28,6 @@
   </SchemaModules>
   <Views>
     <ListView Id="Ciclabile_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
-    <DetailView Id="Ordinanza_DetailView">
-      <Items>
-        <ActionContainerViewItem Id="Posizione" ActionContainer="ShowMap" Caption="Posizione" IsNewNode="True" />
-      </Items>
-      <Layout>
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <TabbedGroup Id="Item1">
-              <LayoutGroup Id="Item7">
-                <LayoutGroup Id="Auto6354ac1f-11fc-4480-8419-b1ac58428389" RelativeSize="15.210355987055015">
-                  <LayoutGroup Id="Auto48c4ae27-dc95-46ba-b704-8802be9e16b9">
-                    <LayoutGroup Id="Auto1449ad13-c7f4-4264-a3cf-824eb01e854b">
-                      <LayoutGroup Id="Autoba918eac-2f05-46da-9d22-2167ae9e1205">
-                        <LayoutGroup Id="Auto4280035a-d14d-4354-9e99-b0f311418dc6" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="36.170212765957444" IsNewNode="True">
-                          <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="88.7920298879203" IsNewNode="True" />
-                          <LayoutItem Id="Posizione" TextAlignMode="CustomSize" ViewItem="Posizione" Index="1" RelativeSize="11.207970112079702" IsNewNode="True" />
-                        </LayoutGroup>
-                        <LayoutGroup Id="Autofbe16505-aaf7-4443-ad64-bef7dbfda8b7" Caption="Autofbe16505-aaf7-4443-ad64-bef7dbfda8b7(10)" RelativeSize="63.829787234042556">
-                          <LayoutGroup Id="Autob39511e4-e55e-4c05-8914-2d26c9dfa221" Caption="Autob39511e4-e55e-4c05-8914-2d26c9dfa221(11)" RelativeSize="33.623910336239106">
-                            <LayoutItem Id="DataInizio" RelativeSize="50" />
-                            <LayoutItem Id="DataFine" RelativeSize="50" />
-                          </LayoutGroup>
-                          <LayoutGroup Id="Autoa447e4c7-3fa8-4f5a-b6ac-ea97421dcef4" Caption="Autoa447e4c7-3fa8-4f5a-b6ac-ea97421dcef4(14)" RelativeSize="66.3760896637609">
-                            <LayoutItem Id="DalleOre" RelativeSize="50" />
-                            <LayoutItem Id="AlleOre" RelativeSize="50" />
-                          </LayoutGroup>
-                        </LayoutGroup>
-                        <LayoutItem Id="Strada" Removed="True" />
-                      </LayoutGroup>
-                    </LayoutGroup>
-                  </LayoutGroup>
-                </LayoutGroup>
-                <LayoutGroup Id="Autob935f538-f14f-4016-976c-7020421b37bb">
-                  <LayoutGroup Id="Auto278a858f-3d0d-4cbf-b62c-3bcc118a81c8" RelativeSize="76.71232876712328">
-                    <LayoutGroup Id="Auto85f01d8e-3662-4a12-aa75-dd1bfd4bcf00">
-                      <LayoutGroup Id="Autoa1a03fda-1e6d-46b0-9812-4ec9a70f510f" RelativeSize="35.22727272727273">
-                        <LayoutItem Id="LimiteMassa" RelativeSize="48.333333333333336" />
-                        <LayoutItem Id="Portata" RelativeSize="51.666666666666664" />
-                      </LayoutGroup>
-                      <LayoutGroup Id="Autoa50be039-4013-43c3-b105-471d4f53e25d" RelativeSize="64.77272727272727">
-                        <LayoutGroup Id="Auto35b9ea7d-4fae-463c-829d-259543351c25" RelativeSize="45.11278195488722" />
-                        <LayoutGroup Id="Auto507edc55-8fc3-41fa-a4f1-d0d422e73f2b" RelativeSize="54.88721804511278">
-                          <LayoutItem Id="LimiteVelocità" RelativeSize="48.333333333333336" />
-                          <LayoutItem Id="Velocità" RelativeSize="51.666666666666664" />
-                        </LayoutGroup>
-                      </LayoutGroup>
-                    </LayoutGroup>
-                  </LayoutGroup>
-                  <LayoutGroup Id="Auto3690a8fa-809a-4564-9134-f603cfeff1af" RelativeSize="23.28767123287671" />
-                </LayoutGroup>
-                <LayoutItem Id="Descrizione" RelativeSize="75.08090614886731" />
-              </LayoutGroup>
-            </TabbedGroup>
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
     <ListView Id="Ordinanza_ListViewMap" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <ListView Id="Ponte_MapListView" EditorTypeName="xRoadMap.Module.Win.Editors.MapListEditor" />
     <DetailView Id="Strada_DetailView">

@@ -270,7 +270,7 @@ namespace xRoadMap.Module.Win.Editors
                 }
 
                 int zIndex = 1;
-                foreach (IModelMapLayer model in mapInfo.MapLayers.OrderBy(l => l.Index))
+                foreach (IModelMapLayer model in mapInfo.MapLayers.OrderBy(l => l.Index>=0?0:1).ThenBy(l => l.Index))    //Mette in fondo i layer con index negativo, poi ordina per index crescente
                 {
                     LayerBase layer = null;
                     switch (model.LayerType)
