@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Security;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
@@ -16,6 +17,12 @@ namespace xRoadMap.Module.BusinessObjects
         DateTime lockoutEnd;
 
         public ApplicationUser(Session session) : base(session) { }
+
+        public override void AfterConstruction()
+        {
+            this.Roles.Add(Session.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Default")));
+            base.AfterConstruction();
+        }
 
         [Browsable(false)]
         public int AccessFailedCount
@@ -45,7 +52,7 @@ namespace xRoadMap.Module.BusinessObjects
         {
             ApplicationUserLoginInfo result = new ApplicationUserLoginInfo(Session);
             result.LoginProviderName = loginProviderName;
-            result.ProviderUserKey = providerUserKey;
+            result.ProviderUserKey = providerUserKey.ToLowerInvariant();
             result.User = this;
             return result;
         }

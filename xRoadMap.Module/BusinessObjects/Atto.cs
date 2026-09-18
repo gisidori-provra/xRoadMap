@@ -21,7 +21,7 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
 
         [VisibleInListView(true),VisibleInDetailView(false)]
-        public string Titolo => $"{this.Tipo?.Descrizione} nr {this.Numero} del {this.Data.ToString("d")}";
+        public string Titolo => $"{this.Tipo?.Descrizione} nr {this.Numero} del {this.Data:d}";
 
         int fOid;
         [Key(true)]
@@ -51,6 +51,7 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<string>(nameof(Numero), ref fNumero, value); }
         }
         FileData fFileData;
+        [System.ComponentModel.DisplayName("File")]
         public FileData FileData
         {
             get { return fFileData; }

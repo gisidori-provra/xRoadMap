@@ -1250,12 +1250,19 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Ordinanza_Allegati_ListView">
+      <Columns>
+        <ColumnInfo Id="Descrizione" Index="0" Width="144" />
+        <ColumnInfo Id="FileName" Index="1" />
+      </Columns>
+    </ListView>
     <DetailView Id="Ordinanza_DetailView">
       <Items>
         <PropertyEditor Id="Atto.Data" PropertyName="Atto.Data" IsNewNode="True" />
         <PropertyEditor Id="Atto.FileData" PropertyName="Atto.FileData" IsNewNode="True" />
         <PropertyEditor Id="Atto.Numero" PropertyName="Atto.Numero" IsNewNode="True" />
         <PropertyEditor Id="Atto.Tipo" PropertyName="Atto.Tipo" IsNewNode="True" />
+        <PropertyEditor Id="OrdinanzeSuccessive" Caption="Modificata da" />
         <PropertyEditor Id="Shape" StrokeColor="Red" StrokeWidth="6" LayerName="Ordinanze" TOCVisibility="Auto">
           <MapLayers>
             <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Strada.Cippi" Index="0" StrokeColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
@@ -1272,31 +1279,31 @@
           <LayoutGroup Id="SimpleEditors" RelativeSize="100" Direction="Vertical">
             <TabbedGroup Id="Item1" CaptionLocation="Top" Index="0" RelativeSize="100" IsNewNode="True">
               <LayoutGroup Id="Item7" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="0" RelativeSize="100" Caption="Ordinanza" IsNewNode="True">
-                <LayoutGroup Id="Auto6354ac1f-11fc-4480-8419-b1ac58428389" ShowCaption="False" Caption="Auto6354ac1f-11fc-4480-8419-b1ac58428389" Direction="Vertical" Index="0" RelativeSize="17.953321364452425" IsNewNode="True">
+                <LayoutGroup Id="Auto6354ac1f-11fc-4480-8419-b1ac58428389" ShowCaption="False" Caption="Auto6354ac1f-11fc-4480-8419-b1ac58428389" Direction="Vertical" Index="0" RelativeSize="14.76725521669342" IsNewNode="True">
                   <LayoutGroup Id="Auto48c4ae27-dc95-46ba-b704-8802be9e16b9" ShowCaption="False" Caption="Auto48c4ae27-dc95-46ba-b704-8802be9e16b9" Index="0" RelativeSize="100" IsNewNode="True">
                     <LayoutGroup Id="Auto1449ad13-c7f4-4264-a3cf-824eb01e854b" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                       <LayoutGroup Id="Autoba918eac-2f05-46da-9d22-2167ae9e1205" ShowCaption="False" Index="0" RelativeSize="100" Caption="Autoba918eac-2f05-46da-9d22-2167ae9e1205" IsNewNode="True">
-                        <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="32" IsNewNode="True" />
-                        <LayoutGroup Id="Auto411830de-c22d-47f2-a91f-ade42ff29837" ShowCaption="False" Caption="Auto411830de-c22d-47f2-a91f-ade42ff29837(10)" Direction="Horizontal" Index="1" RelativeSize="68" IsNewNode="True">
-                          <LayoutItem Id="TipoGeometria" ViewItem="TipoGeometria" Index="0" RelativeSize="20.53036783575706" IsNewNode="True" />
-                          <LayoutGroup Id="Autofea597f4-6dde-4409-8692-c207b15afc8e" ShowCaption="False" Caption="Autofea597f4-6dde-4409-8692-c207b15afc8e(12)" Direction="Horizontal" Index="1" RelativeSize="79.46963216424294" IsNewNode="True">
-                            <LayoutGroup Id="Auto56bfa93b-3c6b-4c19-8e7e-6fbfef8e1634" ShowCaption="False" Caption="" Index="0" RelativeSize="22.820236813778255" IsNewNode="True">
-                              <LayoutItem Id="Km" ViewItem="Km" Index="0" RelativeSize="44.11764705882353" IsNewNode="True" />
-                              <LayoutItem Id="KmFine" ViewItem="KmFine" Index="1" RelativeSize="55.88235294117647" IsNewNode="True" />
+                        <LayoutItem Id="Strada" ViewItem="Strada" Index="0" RelativeSize="34.78260869565217" IsNewNode="True" />
+                        <LayoutGroup Id="Auto411830de-c22d-47f2-a91f-ade42ff29837" ShowCaption="False" Caption="Auto411830de-c22d-47f2-a91f-ade42ff29837(10)" Direction="Horizontal" Index="1" RelativeSize="65.21739130434783" IsNewNode="True">
+                          <LayoutItem Id="TipoGeometria" ViewItem="TipoGeometria" Index="0" RelativeSize="20.379965457685664" IsNewNode="True" />
+                          <LayoutGroup Id="Autofea597f4-6dde-4409-8692-c207b15afc8e" ShowCaption="False" Caption="Autofea597f4-6dde-4409-8692-c207b15afc8e(12)" Direction="Horizontal" Index="1" RelativeSize="79.62003454231433" IsNewNode="True">
+                            <LayoutGroup Id="Auto56bfa93b-3c6b-4c19-8e7e-6fbfef8e1634" ShowCaption="False" Caption="Auto56bfa93b-3c6b-4c19-8e7e-6fbfef8e1634(13)" Index="0" RelativeSize="23.10195227765727" IsNewNode="True">
+                              <LayoutItem Id="Km" ViewItem="Km" Index="0" RelativeSize="50" IsNewNode="True" />
+                              <LayoutItem Id="KmFine" ViewItem="KmFine" Index="1" RelativeSize="50" IsNewNode="True" />
                             </LayoutGroup>
-                            <LayoutGroup Id="Auto05f6beb4-c781-47bb-a35b-fb40bd974829" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="77.17976318622175" IsNewNode="True">
-                              <LayoutGroup Id="Auto23c806d8-c6d1-4db7-9e5b-1a85b6be4f0c" ShowCaption="False" Caption="" Index="0" RelativeSize="29.567642956764296" IsNewNode="True">
-                                <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="44.11764705882353" IsNewNode="True" />
-                                <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="55.88235294117647" IsNewNode="True" />
+                            <LayoutGroup Id="Auto05f6beb4-c781-47bb-a35b-fb40bd974829" ShowCaption="False" Caption="Auto05f6beb4-c781-47bb-a35b-fb40bd974829(16)" Direction="Horizontal" Index="1" RelativeSize="76.89804772234274" IsNewNode="True">
+                              <LayoutGroup Id="Auto23c806d8-c6d1-4db7-9e5b-1a85b6be4f0c" ShowCaption="False" Caption="Auto23c806d8-c6d1-4db7-9e5b-1a85b6be4f0c(17)" Index="0" RelativeSize="30.324400564174894" IsNewNode="True">
+                                <LayoutItem Id="DataInizio" ViewItem="DataInizio" Index="0" RelativeSize="50" IsNewNode="True" />
+                                <LayoutItem Id="DataFine" ViewItem="DataFine" Index="1" RelativeSize="50" IsNewNode="True" />
                               </LayoutGroup>
-                              <LayoutGroup Id="Auto27b0e706-10ec-486f-8900-60a6f71b46bf" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="70.4323570432357" IsNewNode="True">
-                                <LayoutGroup Id="Auto5e14716b-e79a-4036-aef6-9fcecc545734" ShowCaption="False" Caption="" Index="0" RelativeSize="51.881188118811885" IsNewNode="True">
-                                  <LayoutItem Id="DalleOre" ViewItem="DalleOre" Index="0" RelativeSize="44.11764705882353" IsNewNode="True" />
-                                  <LayoutItem Id="AlleOre" ViewItem="AlleOre" Index="1" RelativeSize="55.88235294117647" IsNewNode="True" />
+                              <LayoutGroup Id="Auto27b0e706-10ec-486f-8900-60a6f71b46bf" ShowCaption="False" Caption="Auto27b0e706-10ec-486f-8900-60a6f71b46bf(20)" Direction="Horizontal" Index="1" RelativeSize="69.6755994358251" IsNewNode="True">
+                                <LayoutGroup Id="Auto5e14716b-e79a-4036-aef6-9fcecc545734" ShowCaption="False" Caption="Auto5e14716b-e79a-4036-aef6-9fcecc545734(21)" Index="0" RelativeSize="51.61943319838057" IsNewNode="True">
+                                  <LayoutItem Id="DalleOre" ViewItem="DalleOre" Index="0" RelativeSize="50" IsNewNode="True" />
+                                  <LayoutItem Id="AlleOre" ViewItem="AlleOre" Index="1" RelativeSize="50" IsNewNode="True" />
                                 </LayoutGroup>
-                                <LayoutGroup Id="Auto836a0e18-3c12-489a-9965-ef9718896b27" ShowCaption="False" Caption="" Index="1" RelativeSize="48.118811881188115" IsNewNode="True">
-                                  <LayoutItem Id="Stato" ViewItem="Stato" Index="0" RelativeSize="52.94117647058823" IsNewNode="True" />
-                                  <LayoutItem Id="OrdinanzaPrecedente" ViewItem="OrdinanzaPrecedente" Index="1" RelativeSize="47.05882352941177" IsNewNode="True" />
+                                <LayoutGroup Id="Auto836a0e18-3c12-489a-9965-ef9718896b27" ShowCaption="False" Caption="Auto836a0e18-3c12-489a-9965-ef9718896b27(24)" Index="1" RelativeSize="48.38056680161943" IsNewNode="True">
+                                  <LayoutItem Id="Stato" ViewItem="Stato" Index="0" RelativeSize="50" IsNewNode="True" />
+                                  <LayoutItem Id="OrdinanzaPrecedente" ViewItem="OrdinanzaPrecedente" Index="1" RelativeSize="50" IsNewNode="True" />
                                 </LayoutGroup>
                               </LayoutGroup>
                             </LayoutGroup>
@@ -1306,37 +1313,56 @@
                     </LayoutGroup>
                   </LayoutGroup>
                 </LayoutGroup>
-                <LayoutItem Id="Descrizione" ViewItem="Descrizione" CaptionLocation="Top" Index="1" RelativeSize="14.542190305206462" IsNewNode="True" />
-                <LayoutGroup Id="Auto3d14baff-e28b-4d37-bc67-a972bca0d5db" ShowCaption="False" Caption="" Direction="Horizontal" Index="2" RelativeSize="11.131059245960502" IsNewNode="True">
-                  <LayoutGroup Id="Autofecda213-41eb-40f5-9cdf-b7a254f109b5" ShowCaption="False" Caption="" Index="0" RelativeSize="18.733960650128314" IsNewNode="True">
-                    <LayoutItem Id="LimiteMassa" ShowCaption="False" ViewItem="LimiteMassa" Index="0" RelativeSize="48.38709677419355" IsNewNode="True" />
-                    <LayoutItem Id="Portata" ViewItem="Portata" Index="1" RelativeSize="51.61290322580645" IsNewNode="True" />
-                  </LayoutGroup>
-                  <LayoutGroup Id="Autocf31bc4e-3886-48e6-add9-adf0d3d8d411" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="62.788708297690334" IsNewNode="True">
-                    <LayoutGroup Id="Auto165248e0-4c6c-4f91-9543-4e2082c2ff93" ShowCaption="False" Caption="" Index="0" RelativeSize="71.2534059945504" IsNewNode="True">
-                      <LayoutItem Id="LimiteSagoma" ShowCaption="False" ViewItem="LimiteSagoma" Index="0" RelativeSize="48.38709677419355" IsNewNode="True" />
-                      <LayoutItem Id="Sagoma" ViewItem="Sagoma" Index="1" RelativeSize="51.61290322580645" IsNewNode="True" />
-                    </LayoutGroup>
-                    <LayoutGroup Id="Auto171cb988-7f4d-4573-895a-83d6d5053a3b" ShowCaption="False" Caption="" Index="1" RelativeSize="28.74659400544959" IsNewNode="True">
-                      <LayoutItem Id="LimiteVelocità" ShowCaption="False" ViewItem="LimiteVelocità" Index="0" RelativeSize="48.38709677419355" IsNewNode="True" />
-                      <LayoutItem Id="Velocità" ViewItem="Velocità" Index="1" RelativeSize="51.61290322580645" IsNewNode="True" />
-                    </LayoutGroup>
-                  </LayoutGroup>
-                  <LayoutItem Id="Percorribilità" ViewItem="Percorribilità" Index="2" RelativeSize="18.477331052181352" IsNewNode="True" />
+                <LayoutGroup Id="Autobea45018-d68d-45bc-a21c-417921c5826b" ShowCaption="False" Caption="Autobea45018-d68d-45bc-a21c-417921c5826b(27)" Direction="Horizontal" Index="1" RelativeSize="17.335473515248797" IsNewNode="True">
+                  <LayoutItem Id="Descrizione" ViewItem="Descrizione" CaptionLocation="Top" Index="0" RelativeSize="50" IsNewNode="True" />
+                  <LayoutItem Id="Note" ViewItem="Note" CaptionLocation="Top" Index="1" RelativeSize="50" IsNewNode="True" />
                 </LayoutGroup>
-                <LayoutGroup Id="OrdinanzeSuccessive_Group" ShowCaption="True" Caption="Ordinanze Successive" Index="3" RelativeSize="56.37342908438061" IsNewNode="True">
+                <LayoutGroup Id="Auto3d14baff-e28b-4d37-bc67-a972bca0d5db" ShowCaption="False" Caption="Auto3d14baff-e28b-4d37-bc67-a972bca0d5db(28)" Direction="Horizontal" Index="2" RelativeSize="16.21187800963082" IsNewNode="True">
+                  <LayoutGroup Id="Autofecda213-41eb-40f5-9cdf-b7a254f109b5" ShowCaption="False" Caption="Autofecda213-41eb-40f5-9cdf-b7a254f109b5(29)" Index="0" RelativeSize="23.575129533678755" IsNewNode="True">
+                    <LayoutGroup Id="Item3" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Limite di portata" IsNewNode="True">
+                      <LayoutItem Id="LimiteMassa" ShowCaption="False" ViewItem="LimiteMassa" Index="0" RelativeSize="50" IsNewNode="True" />
+                      <LayoutItem Id="Portata" ViewItem="Portata" Index="1" RelativeSize="50" IsNewNode="True" />
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autocf31bc4e-3886-48e6-add9-adf0d3d8d411" ShowCaption="False" Caption="Autocf31bc4e-3886-48e6-add9-adf0d3d8d411(32)" Direction="Horizontal" Index="1" RelativeSize="46.1139896373057" IsNewNode="True">
+                    <LayoutGroup Id="Auto165248e0-4c6c-4f91-9543-4e2082c2ff93" ShowCaption="False" Caption="Auto165248e0-4c6c-4f91-9543-4e2082c2ff93(33)" Index="0" RelativeSize="49.62546816479401" IsNewNode="True">
+                      <LayoutGroup Id="Item4" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Limite di sagoma" IsNewNode="True">
+                        <LayoutItem Id="LimiteSagoma" ShowCaption="False" ViewItem="LimiteSagoma" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="Sagoma" ViewItem="Sagoma" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                    <LayoutGroup Id="Auto171cb988-7f4d-4573-895a-83d6d5053a3b" ShowCaption="False" Caption="Auto171cb988-7f4d-4573-895a-83d6d5053a3b(36)" Index="1" RelativeSize="50.37453183520599" IsNewNode="True">
+                      <LayoutGroup Id="Item5" ShowCaption="True" CaptionLocation="Top" Index="0" RelativeSize="100" Caption="Limite di velocità" IsNewNode="True">
+                        <LayoutItem Id="LimiteVelocità" ShowCaption="False" ViewItem="LimiteVelocità" Index="0" RelativeSize="50" IsNewNode="True" />
+                        <LayoutItem Id="Velocità" ViewItem="Velocità" Index="1" RelativeSize="50" IsNewNode="True" />
+                      </LayoutGroup>
+                    </LayoutGroup>
+                  </LayoutGroup>
+                  <LayoutGroup Id="Item6" ShowCaption="True" CaptionLocation="Top" Index="2" RelativeSize="30.310880829015545" Caption="Limite di percorribilità" IsNewNode="True">
+                    <LayoutItem Id="Percorribilità" ViewItem="Percorribilità" Index="0" RelativeSize="100" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutGroup Id="OrdinanzeSuccessive_Group" ShowCaption="True" Caption="Modificata da:" Index="3" RelativeSize="51.68539325842696" IsNewNode="True">
                   <LayoutItem Id="OrdinanzeSuccessive" ViewItem="OrdinanzeSuccessive" Index="0" RelativeSize="100" IsNewNode="True" />
                 </LayoutGroup>
               </LayoutGroup>
               <LayoutGroup Id="Atto" ShowCaption="True" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
                 <LayoutGroup Id="Autob145182c-9c7a-41f2-8985-a78258bd7f14" ShowCaption="False" Direction="Vertical" Index="0" RelativeSize="100" IsNewNode="True">
                   <LayoutGroup Id="Autod6bf9c65-ef80-49b5-87ed-6569e16259e3" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
-                    <LayoutItem Id="Atto" ViewItem="Atto" Index="0" RelativeSize="5.745062836624776" IsNewNode="True" />
-                    <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" Index="1" RelativeSize="4.308797127468582" IsNewNode="True" />
-                    <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" Index="2" RelativeSize="4.308797127468582" IsNewNode="True" />
-                    <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" Index="3" RelativeSize="4.308797127468582" IsNewNode="True" />
-                    <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" Index="4" RelativeSize="4.308797127468582" IsNewNode="True" />
-                    <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" Index="5" RelativeSize="77.0197486535009" CaptionLocation="Top" IsNewNode="True" />
+                    <LayoutGroup Id="Autofc3843da-9509-4d18-8573-a12bb3bd0a62" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="31.781701444622794" IsNewNode="True">
+                      <LayoutGroup Id="Autob0f4bd9f-d381-4505-9fc9-45b8f214e13d" ShowCaption="False" Caption="" Index="0" RelativeSize="32.98791018998273" IsNewNode="True">
+                        <LayoutItem Id="Atto" ViewItem="Atto" Index="0" RelativeSize="16.161616161616163" IsNewNode="True" />
+                        <LayoutItem Id="Atto.Data" ViewItem="Atto.Data" Index="1" RelativeSize="12.121212121212121" IsNewNode="True" />
+                        <LayoutItem Id="Atto.Tipo" ViewItem="Atto.Tipo" Index="2" RelativeSize="12.121212121212121" IsNewNode="True" />
+                        <LayoutItem Id="Atto.Numero" ViewItem="Atto.Numero" Index="3" RelativeSize="12.121212121212121" IsNewNode="True" />
+                        <LayoutItem Id="Atto.FileData" ViewItem="Atto.FileData" Index="4" RelativeSize="12.121212121212121" IsNewNode="True" />
+                        <LayoutItem Id="UrlCMS" ViewItem="UrlCMS" CaptionLocation="Top" Index="5" RelativeSize="35.35353535353536" IsNewNode="True" />
+                      </LayoutGroup>
+                      <LayoutItem Id="Item8" Index="1" RelativeSize="67.01208981001727" IsNewNode="True" />
+                    </LayoutGroup>
+                    <LayoutGroup Id="Allegati" ShowCaption="True" Index="1" RelativeSize="68.2182985553772" IsNewNode="True">
+                      <LayoutItem Id="Allegati" ViewItem="Allegati" Index="0" RelativeSize="100" IsNewNode="True" />
+                    </LayoutGroup>
                   </LayoutGroup>
                 </LayoutGroup>
               </LayoutGroup>
@@ -1350,9 +1376,12 @@
               <LayoutItem Id="Shape" ViewItem="Shape" Removed="True" />
             </LayoutGroup>
           </LayoutGroup>
-          <LayoutGroup Id="OrdinanzeSuccessive_Group" Direction="Vertical" Index="1" RelativeSize="55.4635761589404" Removed="True">
-            <LayoutItem Id="OrdinanzeSuccessive" RelativeSize="100" />
-          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" RelativeSize="25.52238805970149" Removed="True">
+            <LayoutGroup Id="Allegati" Index="0" RelativeSize="100" Removed="True">
+              <LayoutItem Id="Allegati" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="OrdinanzeSuccessive" Removed="True" />
+          </TabbedGroup>
           <LayoutGroup Id="SizeableEditors" Removed="True" />
         </LayoutGroup>
       </Layout>

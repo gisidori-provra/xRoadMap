@@ -38,4 +38,5 @@ namespace xRoadMap.Module.BusinessObjects
 
         object ISecurityUserLoginInfo.User => User;
     }
+
 }

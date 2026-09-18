@@ -60,10 +60,20 @@ namespace xRoadMap.Module.BusinessObjects
 
         string fDescrizione;
         [Size(SizeAttribute.Unlimited)]
+        [ModelDefault("RowCount", "5")]
         public string Descrizione
         {
             get { return fDescrizione; }
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
+        }
+
+        string fNote;
+        [Size(SizeAttribute.Unlimited)]
+        [ModelDefault("RowCount", "5")]
+        public string Note
+        {
+            get { return fNote; }
+            set { SetPropertyValue<string>(nameof(Note), ref fNote, value); }
         }
 
         private Ponte ponte;
@@ -126,6 +136,8 @@ namespace xRoadMap.Module.BusinessObjects
 
         double fPortata;
         [DevExpress.Xpo.DisplayName(@"Portata (Ton)")]
+        [ModelDefault("DisplayFormat", "{0:0.##}")]
+        [ModelDefault("EditMask", "0.##")]
         [Appearance("LimiteMassa", criteria: "NOT LimiteMassa", Enabled = false)]
         [VisibleInListView(false)]
         [Persistent("MASSA")]
@@ -144,6 +156,8 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         double fSagoma;
+        [ModelDefault("DisplayFormat", "{0:0.##}")]
+        [ModelDefault("EditMask", "0.##")]
         [Appearance("LimiteSagoma", criteria: "LimiteSagoma=##Enum#xRoadMap.Module.BusinessObjects.TipoSagoma,Libero#", Enabled = false)]
         [DevExpress.Xpo.DisplayName("Limite Sagoma (mt)")]
         [VisibleInListView(false)]
@@ -195,6 +209,7 @@ namespace xRoadMap.Module.BusinessObjects
         private Ordinanza fOrdinanzaPrecedente;
 
         [Association]
+        [System.ComponentModel.DisplayName("Ordinanza Modificata")]
         [ToolTip("Ordinanza che viene modificata o revocata dall'ordinanza corrente")]
         [DataSourceCriteria("Stato <> ##Enum#xRoadMap.Module.BusinessObjects.StatoValidità,Revocata# AND Strada='@This.Strada'")]
         public Ordinanza OrdinanzaPrecedente
@@ -211,7 +226,8 @@ namespace xRoadMap.Module.BusinessObjects
                 }
             }
         }
-        
+
+        [DevExpress.ExpressApp.DC.XafDisplayName("Modificata da:")]
         [Association]
         public XPCollection<Ordinanza> OrdinanzeSuccessive
         {
@@ -227,8 +243,36 @@ namespace xRoadMap.Module.BusinessObjects
             get => fStato;
             set => SetPropertyValue(nameof(Stato), ref fStato, value);
         }
+
+        [Association, Aggregated]
+        public XPCollection<AllegatoOrdinanza> Allegati => GetCollection<AllegatoOrdinanza>(nameof(Allegati));
+
     }
 
+    [Persistent("ALLEGATO_ORDINANZA")]
+    [MapInheritance(MapInheritanceType.OwnTable)]
+    public class AllegatoOrdinanza : Allegato
+    {
+        public AllegatoOrdinanza(Session session) : base(session) { }
+        public override void AfterConstruction() { base.AfterConstruction(); }
+        Ordinanza fOrdinanza;
+        [Persistent(@"REL_OBJECTID")]
+        [Association]
+        public Ordinanza Ordinanza
+        {
+            get => fOrdinanza;
+            set => SetPropertyValue(nameof(Ordinanza), ref fOrdinanza, value);
+        }
+
+        string fDescrizione;
+        public string Descrizione
+        {
+            get => fDescrizione;
+            set => SetPropertyValue(nameof(Descrizione), ref fDescrizione, value);
+        }
+
+
+    }
     public enum StatoValidità
     {
         Vigente = 0,

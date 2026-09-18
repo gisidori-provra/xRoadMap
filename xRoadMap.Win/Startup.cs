@@ -9,6 +9,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.XtraEditors;
 using System.Configuration;
+using xRoadMap.Module.BusinessObjects;
 
 namespace xRoadMap.Win
 {
@@ -70,12 +71,44 @@ namespace xRoadMap.Win
                 })
                 .AddPasswordAuthentication(options =>
                 {
+                    options.Events.OnFindUser += (context)=> {
+                        string userName = context.LogonParameters.UserName;
+
+                        context.User =
+                            context.ObjectSpace.FirstOrDefault<ApplicationUser>(
+                                u => u.UserName.ToUpper() == userName.ToUpper()
+                            );
+                    };
+
                     options.IsSupportChangePassword = true;
+                })
+                .AddWindowsAuthentication(options =>
+                {
+                    options.Events.CustomCreateUser += (e) =>
+                    {
+                        var login = e.UserName.Trim();
+
+                        // Ricerca case-insensitive
+                        var existingUser = e.ObjectSpace
+                            .GetObjectsQuery<ApplicationUser>()
+                            .FirstOrDefault(u =>
+                                u.UserName.ToUpper() == login.ToUpper());
+
+                        if (existingUser != null)
+                        {
+                            e.User = existingUser;
+                            e.Handled = true;
+                            return;
+                        }
+
+                        // Creazione nuovo utente
+                        var user = e.ObjectSpace.CreateObject<ApplicationUser>();
+                        user.UserName = login;
+                        e.User = user;
+                        e.Handled = true;
+                    };
+                    options.CreateUserAutomatically();
                 });
-                //.AddWindowsAuthentication(options =>
-                //{
-                //    options.CreateUserAutomatically();
-                //});
             builder.AddBuildStep(application =>
             {
                 application.ConnectionString = connectionString;
