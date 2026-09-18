@@ -103,7 +103,7 @@ namespace xRoadMap.Win
 
                         // Creazione nuovo utente
                         var user = e.ObjectSpace.CreateObject<ApplicationUser>();
-                        user.UserName = login;
+                        user.UserName = login.ToLowerInvariant();
                         e.User = user;
                         e.Handled = true;
                     };
