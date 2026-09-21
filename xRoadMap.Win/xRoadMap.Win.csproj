@@ -12,6 +12,7 @@
     <Configurations>Debug;Release;EasyTest</Configurations>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>xRoadMap.Win</RootNamespace>
+    <AssemblyName>xRoadMap</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Using Include="DevExpress.ExpressApp.ListView" Alias="ListView" />

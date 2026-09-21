@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using xRoadMap.Blazor.Server.Services;
+using xRoadMap.Module.BusinessObjects;
 
 namespace xRoadMap.Blazor.Server
 {
@@ -97,6 +98,14 @@ namespace xRoadMap.Blazor.Server
                     })
                     .AddPasswordAuthentication(options =>
                     {
+                        options.Events.OnFindUser += (context) => {
+                            string userName = context.LogonParameters.UserName;
+
+                            context.User =
+                                context.ObjectSpace.FirstOrDefault<ApplicationUser>(
+                                    u => u.UserName.ToUpper() == userName.ToUpper()
+                                );
+                        };
                         options.IsSupportChangePassword = true;
                     })
                     .AddWindowsAuthentication(options =>
