@@ -1302,7 +1302,7 @@
                                   <LayoutItem Id="AlleOre" ViewItem="AlleOre" Index="1" RelativeSize="50" IsNewNode="True" />
                                 </LayoutGroup>
                                 <LayoutGroup Id="Auto836a0e18-3c12-489a-9965-ef9718896b27" ShowCaption="False" Caption="Auto836a0e18-3c12-489a-9965-ef9718896b27(24)" Index="1" RelativeSize="48.38056680161943" IsNewNode="True">
-                                  <LayoutItem Id="Stato" ViewItem="Stato" Index="0" RelativeSize="50" IsNewNode="True" />
+                                  <LayoutItem Id="Versione" ViewItem="Versione" Index="0" RelativeSize="50" IsNewNode="True" />
                                   <LayoutItem Id="OrdinanzaPrecedente" ViewItem="OrdinanzaPrecedente" Index="1" RelativeSize="50" IsNewNode="True" />
                                 </LayoutGroup>
                               </LayoutGroup>

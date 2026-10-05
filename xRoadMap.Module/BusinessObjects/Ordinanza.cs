@@ -123,7 +123,7 @@ namespace xRoadMap.Module.BusinessObjects
 
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
-        [PersistentAlias("(DataInizio IS NULL OR DataInizio<=Today()) AND (DataFine IS NULL OR DataFine>Today())")]
+        [PersistentAlias($"({nameof(DataInizio)} IS NULL OR {nameof(DataInizio)}<=Today()) AND ({nameof(DataFine)} IS NULL OR {nameof(DataFine)}>Today()) AND ({nameof(Versione)} <> 2)")]
         public bool Vigente => (bool)EvaluateAlias(); //(!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
 
         bool fLimiteMassa;
@@ -211,7 +211,7 @@ namespace xRoadMap.Module.BusinessObjects
         [Association]
         [System.ComponentModel.DisplayName("Ordinanza Modificata")]
         [ToolTip("Ordinanza che viene modificata o revocata dall'ordinanza corrente")]
-        [DataSourceCriteria("Stato <> ##Enum#xRoadMap.Module.BusinessObjects.StatoValidità,Revocata# AND Strada='@This.Strada'")]
+        [DataSourceCriteria($"{nameof(Versione)} <> 2 AND Strada='@This.Strada'")]
         public Ordinanza OrdinanzaPrecedente
         {
             get => fOrdinanzaPrecedente;
@@ -219,9 +219,9 @@ namespace xRoadMap.Module.BusinessObjects
             {
                 if (SetPropertyValue(nameof(OrdinanzaPrecedente), ref fOrdinanzaPrecedente, value))
                 {
-                    if (fOrdinanzaPrecedente != null && fOrdinanzaPrecedente.Stato == StatoValidità.Vigente)
+                    if (fOrdinanzaPrecedente != null && fOrdinanzaPrecedente.Versione == VersioneOrdinanza.Originale)
                     {
-                        fOrdinanzaPrecedente.Stato = StatoValidità.Modificata;
+                        fOrdinanzaPrecedente.Versione = VersioneOrdinanza.Modificata;
                     }
                 }
             }
@@ -237,11 +237,11 @@ namespace xRoadMap.Module.BusinessObjects
             }
         }
 
-        private StatoValidità fStato;
-        public StatoValidità Stato
+        private VersioneOrdinanza fVersione;
+        public VersioneOrdinanza Versione
         {
-            get => fStato;
-            set => SetPropertyValue(nameof(Stato), ref fStato, value);
+            get => fVersione;
+            set => SetPropertyValue(nameof(Versione), ref fVersione, value);
         }
 
         [Association, Aggregated]
@@ -273,9 +273,9 @@ namespace xRoadMap.Module.BusinessObjects
 
 
     }
-    public enum StatoValidità
+    public enum VersioneOrdinanza
     {
-        Vigente = 0,
+        Originale = 0,
         Modificata = 1,
         Revocata = 2,
     }
