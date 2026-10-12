@@ -1,17 +1,18 @@
-﻿using System;
-using System.ComponentModel;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Net.Http.Headers;
-using DevExpress.ExpressApp.Model;
+﻿using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Helpers;
 using DevExpress.Xpo.Metadata;
+using NetTopologySuite;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Implementation;
 using NetTopologySuite.IO;
 using NetTopologySuite.LinearReferencing;
+using System;
+using System.ComponentModel;
+using System.Data.SqlTypes;
+using System.Linq;
+using System.Net.Http.Headers;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -89,20 +90,66 @@ namespace xRoadMap.Module.BusinessObjects
 
         public override CoordinateSequence Create(CoordinateSequence coordSeq)
         {
-            return GeometryFactory.Default.CoordinateSequenceFactory.Create(coordSeq);
+            if (coordSeq == null)
+                return Create(Array.Empty<Coordinate>());
+
+            return new CoordinateArraySequence(
+                coordSeq.ToCoordinateArray(),
+                coordSeq.Dimension,
+                coordSeq.Measures);
         }
 
         public override CoordinateSequence Create(int size, Ordinates ordinates)
         {
-            return GeometryFactory.Default.CoordinateSequenceFactory.Create(size, ordinates);
+            int dimensions = OrdinatesUtility.OrdinatesToDimension(ordinates);
+            int measures = OrdinatesUtility.OrdinatesToMeasures(ordinates);
+
+            return Create(size, dimensions, measures);
         }
-        public override CoordinateSequence Create(int size, int dimension, int measures)
+
+        public override CoordinateSequence Create(
+            int size,
+            int dimension,
+            int measures)
         {
-            return this.Create(size, this.Ordinates);
+            return new CoordinateArraySequence(size, dimension, measures);
         }
 
         public new Ordinates Ordinates => ordinates;
 
+
+    }
+
+    public class SdeMeasureFilter : ICoordinateSequenceFilter
+    {
+        private readonly double _offset;
+        private readonly double _scale;
+
+        public SdeMeasureFilter(double offset, double scale)
+        {
+            _offset = offset;
+            _scale = scale;
+        }
+
+        public bool Done => false;
+
+        public bool GeometryChanged => true;
+
+        public void Filter(CoordinateSequence seq, int index)
+        {
+            if (seq.Measures == 0)
+                return;
+
+            double m = seq.GetM(index);
+
+            if (double.IsNaN(m))
+                return;
+
+            double correctedM = Math.Round(
+                (m - _offset) * _scale, 4);
+
+            seq.SetM(index, correctedM);
+        }
     }
 
     public class GeometryConverter : ValueConverter
@@ -125,27 +172,39 @@ namespace xRoadMap.Module.BusinessObjects
 
             WKTReader reader = null;
 
+            CustomCoordinateSequenceFactory sequenceFactory = null;
             var tokens = new string(wkt.TakeWhile(c => c != '(').ToArray()).Split(' ');
             if (tokens.Length > 0)
             {
                 switch (tokens[1])
                 {
                     case "M":
-                        reader = new WKTReader(new NetTopologySuite.NtsGeometryServices(new CustomCoordinateSequenceFactory(Ordinates.XYM)));
+                        sequenceFactory = new CustomCoordinateSequenceFactory(Ordinates.XYM);
                         break;
                     case "Z":
-                        reader = new WKTReader(new NetTopologySuite.NtsGeometryServices(new CustomCoordinateSequenceFactory(Ordinates.XYZ)));
+                        sequenceFactory = new CustomCoordinateSequenceFactory(Ordinates.XYZ);
                         break;
                     case "ZM":
-                        reader = new WKTReader(new NetTopologySuite.NtsGeometryServices(new CustomCoordinateSequenceFactory(Ordinates.XYZM)));
+                        sequenceFactory = new CustomCoordinateSequenceFactory(Ordinates.XYZM);
                         break;
                     default:
                         break;
                 }
             }
-            if (reader == null)
+            // Servizi NetTopologySuite
+            if (sequenceFactory == null)
                 reader = new WKTReader();
+            else
+            {
+                var services = new NtsGeometryServices(
+                sequenceFactory,
+                new PrecisionModel(),
+                0);
+                reader = new WKTReader(services);
+            }
+
             Geometry g = reader.Read((string)value);
+            g.Apply(new SdeMeasureFilter(offset: -100000, scale: 10000));
             g.SRID = srid;
 
             return g;
