@@ -11,7 +11,7 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class AreaTraffico : EventoSuStrada, IEventoOnRoad
+    public class AreaTraffico : EventoSuStrada, IEventoLineareOnRoad
     {
         public AreaTraffico(Session session) : base(session)
         {

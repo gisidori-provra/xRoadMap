@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace xRoadMap.Module.BusinessObjects
 {
-    public class DenominazioneStrada : EventoSuStrada, IEventoOnRoad
+    public class DenominazioneStrada : EventoSuStrada, IEventoLineareOnRoad
     {
         public DenominazioneStrada(Session session) : base(session)
         { }

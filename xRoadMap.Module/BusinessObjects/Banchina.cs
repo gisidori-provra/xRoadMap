@@ -12,7 +12,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
-    public partial class Banchina : EventoSuStrada
+    public partial class Banchina : EventoSuStrada, IEventoLineareOnRoad
     {
         public Banchina(Session session) : base(session) { }
         

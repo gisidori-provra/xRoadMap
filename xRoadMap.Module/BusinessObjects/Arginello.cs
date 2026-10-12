@@ -13,7 +13,7 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
 
     [NavigationItem("Catasto Strade")]
-    public class Arginello:EventoSuStrada,IEventoOnRoad
+    public class Arginello:EventoSuStrada, IEventoLineareOnRoad
     {
         public Arginello(Session session):base(session)
         {

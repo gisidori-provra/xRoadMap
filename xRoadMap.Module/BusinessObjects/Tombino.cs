@@ -12,7 +12,7 @@ namespace xRoadMap.Module.BusinessObjects
 
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
-    public partial class Tombino : EventoSuStrada
+    public partial class Tombino : EventoSuStrada, IEventoLineareOnRoad
     {
         public Tombino(Session session) : base(session) { }
         public override void AfterConstruction()

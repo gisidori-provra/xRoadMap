@@ -13,7 +13,7 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class CentroAbitato:EventoSuStrada,IEventoOnRoad
+    public class CentroAbitato:EventoSuStrada,IEventoLineareOnRoad
     {
         public CentroAbitato(Session session):base(session)
         {

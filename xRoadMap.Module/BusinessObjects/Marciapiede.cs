@@ -14,7 +14,7 @@ namespace xRoadMap.Module.BusinessObjects
     [MapInheritance(MapInheritanceType.OwnTable)]
     [NavigationItem("Catasto Strade")]
 
-    public class Marciapiede:EventoSuStrada,IEventoOnRoad
+    public class Marciapiede:EventoSuStrada, IEventoLineareOnRoad
     {
         public Marciapiede(Session session):base(session)
         {
