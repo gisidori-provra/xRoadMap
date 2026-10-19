@@ -1,4 +1,6 @@
-﻿namespace xRoadMap.Module.Win.Editors
+﻿using Microsoft.Web.WebView2.WinForms;
+
+namespace xRoadMap.Module.Win.Editors
 {
     partial class MapUserControl
     {
@@ -43,7 +45,7 @@
             btnZoomIn = new DevExpress.XtraEditors.SimpleButton();
             pitchTrackBarControl = new DevExpress.XtraEditors.TrackBarControl();
             headingTrackBarControl = new DevExpress.XtraEditors.TrackBarControl();
-            webBrowser = new WebBrowser();
+            webBrowser = new WebView2();
             dockPanelTOC = new DevExpress.XtraBars.Docking.DockPanel();
             dockPanel3_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             checkedListBoxControl1 = new DevExpress.XtraEditors.CheckedListBoxControl();
@@ -89,7 +91,7 @@
             dockPanelStreetView.Options.ShowCloseButton = false;
             dockPanelStreetView.OriginalSize = new Size(580, 267);
             dockPanelStreetView.Size = new Size(580, 700);
-            dockPanelStreetView.Text = "StreetView";
+            dockPanelStreetView.Text = "Mappa";
             dockPanelStreetView.MouseMove += dockPanelStreetView_MouseMove;
             // 
             // controlContainer2
@@ -178,8 +180,6 @@
             webBrowser.Name = "webBrowser";
             webBrowser.Size = new Size(573, 671);
             webBrowser.TabIndex = 0;
-            webBrowser.Url = new Uri("about:blank", UriKind.Absolute);
-            webBrowser.DocumentCompleted += webBrowser_DocumentCompleted;
             // 
             // dockPanelTOC
             // 
@@ -269,6 +269,7 @@
             // map
             // 
             map.Dock = DockStyle.Fill;
+            vectorItemsLayer1.ZIndex = 0;
             map.Layers.Add(vectorItemsLayer1);
             map.Layers.Add(informationLayer);
             map.Location = new Point(0, 0);
@@ -338,7 +339,7 @@
         private DevExpress.XtraEditors.CheckedListBoxControl checkedListBoxControl1;
         private DevExpress.XtraBars.Docking.DockPanel dockPanelStreetView;
         private DevExpress.XtraBars.Docking.ControlContainer controlContainer2;
-        private System.Windows.Forms.WebBrowser webBrowser;
+        private WebView2 webBrowser;
         private DevExpress.XtraEditors.TrackBarControl headingTrackBarControl;
         private DevExpress.XtraEditors.LabelControl lblStatus;
         private DevExpress.XtraEditors.TrackBarControl pitchTrackBarControl;

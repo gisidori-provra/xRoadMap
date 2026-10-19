@@ -45,6 +45,7 @@
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="26.1.*" />
     <PackageReference Include="DevExpress.RichEdit.Export" Version="26.1.*" />
     <PackageReference Include="DevExpress.Win.Design" Version="26.1.*" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
     <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.7.0" />
   </ItemGroup>
   <ItemGroup>

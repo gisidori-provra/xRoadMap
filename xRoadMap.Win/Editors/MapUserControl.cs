@@ -9,6 +9,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraMap;
 using DevExpress.XtraPrinting;
 using GeoAPI.CoordinateSystems.Transformations;
+using Microsoft.Web.WebView2.WinForms;
 using NetTopologySuite.Geometries;
 using ProjNet.CoordinateSystems;
 using ProjNet.CoordinateSystems.Transformations;
@@ -63,7 +64,12 @@ namespace xRoadMap.Module.Win.Editors
             dockManager.ForceInitialize();
         }
 
+        protected async override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            await webBrowser.EnsureCoreWebView2Async();
 
+        }
 
         private void map_MapItemClick(object sender, MapItemClickEventArgs e)
         {
@@ -97,7 +103,7 @@ namespace xRoadMap.Module.Win.Editors
             set => dockPanelStreetView.Visibility = value;
         }
 
-        public WebBrowser WebBrowser => webBrowser;
+        public WebView2 WebBrowser => webBrowser;
 
         public TrackBarControl HeadingTrackBarControl => headingTrackBarControl;
 
@@ -238,7 +244,7 @@ namespace xRoadMap.Module.Win.Editors
                 modelRoot.LayerName = objectTypeInfo.Name;
 
             layer = AddVectorLayer(modelRoot);
-            layer.ZIndex = 0;
+            layer.ZIndex = 1;
             //layer.Name = modelRoot.LayerName;
             layer.ViewportChanged += layer_ViewportChanged;
 
@@ -269,7 +275,7 @@ namespace xRoadMap.Module.Win.Editors
                         break;
                 }
 
-                int zIndex = 1;
+                int zIndex = 2;
                 foreach (IModelMapLayer model in mapInfo.MapLayers.OrderBy(l => l.Index>=0?0:1).ThenBy(l => l.Index))    //Mette in fondo i layer con index negativo, poi ordina per index crescente
                 {
                     LayerBase layer = null;
@@ -827,7 +833,7 @@ namespace xRoadMap.Module.Win.Editors
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            webBrowser.Document.Body.MouseMove += Body_MouseMove;
+            //webBrowser.Document.Body.MouseMove += Body_MouseMove;
             //webBrowser.Size = webBrowser.Document.Body.ScrollRectangle.Size;
         }
 

@@ -38,7 +38,7 @@ namespace xRoadMap.Module.Win.Controllers
             this.actionGetIFrame = new DevExpress.ExpressApp.Actions.PopupWindowShowAction(this.components);
             this.simpleActionShowLocation = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
 
-            this.simpleActionShowLocation.Caption = "Mostra posizione";
+            this.simpleActionShowLocation.Caption = "Dettagli posizione";
             this.simpleActionShowLocation.Category = "Edit";
             this.simpleActionShowLocation.Id = "ShowLocation";
             this.simpleActionShowLocation.SelectionDependencyType = DevExpress.ExpressApp.Actions.SelectionDependencyType.RequireSingleObject;

@@ -1,8 +1,10 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Actions;
 using DevExpress.Persistent.Base;
+using DevExpress.XtraBars.Docking2010.Views.WindowsUI;
 using DevExpress.XtraMap;
 using NetTopologySuite.Geometries;
+using System.Globalization;
 using xRoadMap.Module.BusinessObjects;
 using xRoadMap.Module.Win.Editors;
 
@@ -220,9 +222,7 @@ namespace xRoadMap.Module.Win.Controllers
             if (fov < 120)
             {
                 fov += 10;
-                controlPressed = true;
                 MapUpdate(currentLocation);
-                controlPressed = false;
             }
         }
 
@@ -231,17 +231,13 @@ namespace xRoadMap.Module.Win.Controllers
             if (fov > 10)
             {
                 fov -= 10;
-                controlPressed = true;
                 MapUpdate(currentLocation);
-                controlPressed = false;
             }
         }
 
         private void trackBarControl_ValueChanged(object sender, EventArgs e)
         {
-            controlPressed= true;
             MapUpdate(currentLocation);
-            controlPressed = false;
         }
 
         protected override void OnViewControlsCreated()
@@ -343,15 +339,35 @@ namespace xRoadMap.Module.Win.Controllers
             if (location != null)
                 message = $"{location} {message}";
 
-            mapUserControl.ShowPushpin(message, coord,controlPressed ? heading : null,controlPressed ? "MoveUp" : imageName);
+            mapUserControl.ShowPushpin(message, coord,heading, "MoveUp" );
             //mapUserControl.ShowPushpin(message, coord, heading , "MoveUp");
 
             var pitch = mapUserControl.PitchTrackBarControl.Value.ToString();
             var height = 640;
             var width = 640;
+
+            if (mapUserControl.WebBrowser.CoreWebView2 == null)
+                return;
+
             if (controlPressed)
-                mapUserControl.WebBrowser.Url = new Uri($"https://maps.googleapis.com/maps/api/streetview?size={width}x{height}&location={coord.Y},{coord.X}&fov={fov}&heading={heading:F0}&pitch={pitch}&key={apikey}");
-    
+            {
+                string viewpoint = string.Format(
+                    CultureInfo.InvariantCulture,
+                    "cam:{0:n4},{1:n4},{2};{3},{4}",
+                    coord.X, coord.Y, 500, heading, 15);
+                var s = $"https://sitportal.provincia.ra.it/arcgis/home/webscene/viewer.html?webscene=0ab6f41f4488428894424ac372905976&viewpoint={viewpoint}&ui=min";
+                mapUserControl.WebBrowser.CoreWebView2.Navigate(s);
+                mapUserControl.ZoomInButton.Visible = mapUserControl.ZoomOutButton.Visible = false;
+                mapUserControl.HeadingTrackBarControl.Visible = mapUserControl.PitchTrackBarControl.Visible = false;
+                mapUserControl.HeadingTrackBarControl.Value = 0;
+                mapUserControl.PitchTrackBarControl.Value = 0;
+            }
+            else
+            {
+                mapUserControl.WebBrowser.CoreWebView2.Navigate($"https://maps.googleapis.com/maps/api/streetview?size={width}x{height}&location={coord.Y},{coord.X}&fov={fov}&heading={heading:F0}&pitch={pitch}&key={apikey}");
+                mapUserControl.ZoomInButton.Visible = mapUserControl.ZoomOutButton.Visible = true;
+                mapUserControl.HeadingTrackBarControl.Visible = mapUserControl.PitchTrackBarControl.Visible = true;
+            }
             if (panTo)
                 mapUserControl.PanTo(coord);
 

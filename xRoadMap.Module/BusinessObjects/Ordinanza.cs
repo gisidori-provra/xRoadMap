@@ -211,7 +211,7 @@ namespace xRoadMap.Module.BusinessObjects
         [Association]
         [System.ComponentModel.DisplayName("Ordinanza Modificata")]
         [ToolTip("Ordinanza che viene modificata o revocata dall'ordinanza corrente")]
-        [DataSourceCriteria($"{nameof(Versione)} <> 2 AND Strada='@This.Strada'")]
+        [DataSourceCriteria($"{nameof(Versione)} <> 2 AND Strada='@This.Strada' AND Oid<>'@This.Oid'")]
         public Ordinanza OrdinanzaPrecedente
         {
             get => fOrdinanzaPrecedente;
