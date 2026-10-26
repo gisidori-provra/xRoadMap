@@ -67,13 +67,15 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<string>(nameof(Descrizione), ref fDescrizione, value); }
         }
 
-        string fNote;
+        string note;
         [Size(SizeAttribute.Unlimited)]
         [ModelDefault("RowCount", "5")]
+        [VisibleInDetailView(false)]
+        [VisibleInListView(false)]
         public string Note
         {
-            get { return fNote; }
-            set { SetPropertyValue<string>(nameof(Note), ref fNote, value); }
+            get => note;
+            set => SetPropertyValue(nameof(Note), ref note, value);
         }
 
         private Ponte ponte;

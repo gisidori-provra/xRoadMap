@@ -5,6 +5,8 @@ using DevExpress.Data.Filtering;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using DevExpress.Persistent.Base;
+using DevExpress.ExpressApp.Model;
 namespace xRoadMap.Module.BusinessObjects
 {
     public partial class Percorso: XPSTGeometry
@@ -47,7 +49,13 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
 
-        public double MinM => System.Convert.ToDouble(Session.ExecuteScalar($"select sde.st_minm(shape) from percorso where objectid = {Oid}"));
+        [VisibleInListView(false)]
+        [ModelDefault("DisplayFormat", "n0")]
+        public double MIniziale => System.Convert.ToDouble(Session.ExecuteScalar($"select sde.st_minm(shape) from percorso where objectid = {Oid}"));
+
+        [VisibleInListView(false)]
+        [ModelDefault("DisplayFormat", "n0")]
+        public double MFinale => System.Convert.ToDouble(Session.ExecuteScalar($"select sde.st_maxm(shape) from percorso where objectid = {Oid}"));
 
     }
 

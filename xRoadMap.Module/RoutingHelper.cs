@@ -154,6 +154,33 @@ namespace xRoadMap.Module
             return $"{km:F0}{offset:+000;-000}";
         }
 
+        private static (double cippo ,double offset) GetMetricaPair(string chilometrica)
+        {
+            if (string.IsNullOrEmpty(chilometrica))
+                return (0, 0);
+            double cippo = 0;
+            double offset = 0;
+            var pos = chilometrica.IndexOfAny("+-".ToCharArray());
+            if (pos == -1)
+            {
+                if (!double.TryParse(chilometrica, out cippo))
+                    return (double.NaN, double.NaN);
+            }
+            else
+            {
+                if (!double.TryParse(chilometrica.Substring(0, pos), out cippo) ||
+                    !double.TryParse(chilometrica.Substring(pos), out offset)) // Offset con segno
+                    return (double.NaN, double.NaN);
+            }
+            return (cippo, offset);
+        }
+
+        public static double GetMetrica(string chilometrica)
+        {
+            (var cippo, var offset) = GetMetricaPair(chilometrica);
+            return cippo * 1000 + offset;
+        }
+
         public static double GetMeasureFromChilometrica(Strada strada, string chilometrica)
         {
             if (strada == null)
@@ -161,20 +188,7 @@ namespace xRoadMap.Module
             if (chilometrica == null)
                 return 0;
 
-            double cippo = 0;
-            double offset = 0;
-            var pos = chilometrica.IndexOfAny("+-".ToCharArray());
-            if (pos == -1)
-            {
-                if (!double.TryParse(chilometrica, out cippo))
-                    return double.NaN;
-            }
-            else
-            {
-                if (!double.TryParse(chilometrica.Substring(0, pos), out cippo) ||
-                    !double.TryParse(chilometrica.Substring(pos), out offset)) // Offset con segno
-                    return double.NaN;
-            }
+            (var cippo, var offset) = GetMetricaPair(chilometrica);
 
             Cippo cp = null;
             if (offset >= 0)

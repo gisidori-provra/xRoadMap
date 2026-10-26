@@ -130,19 +130,11 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<StatoGrafo>(nameof(Stato), ref fStato, value); }
         }
 
-        double kmIniziale;
-        public double KMIniziale
-        {
-            get => kmIniziale;
-            set => SetPropertyValue(nameof(KMIniziale), ref kmIniziale, value);
-        }
+        [ModelDefault("DisplayFormat", "n3")]
+        public double KMIniziale => Percorso?.MIniziale ?? 0;
 
-        double kmFinale;
-        public double KMFinale
-        {
-            get => kmFinale;
-            set => SetPropertyValue(nameof(KMFinale), ref kmFinale, value);
-        }
+        [ModelDefault("DisplayFormat", "n3")]
+        public double KMFinale => Percorso?.MFinale ?? 0;
 
         [DevExpress.Persistent.Base.VisibleInDetailView(false), DevExpress.Persistent.Base.VisibleInListView(false)]
         [Association(), Aggregated]

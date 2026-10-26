@@ -1,13 +1,15 @@
-﻿using System;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Base.General;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Metadata;
-using DevExpress.Data.Filtering;
+using NetTopologySuite.Geometries;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-using NetTopologySuite.Geometries;
-using DevExpress.Persistent.Base;
-using DevExpress.Persistent.Base.General;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -59,7 +61,6 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<DateTime?>(nameof(DataFine), ref fDataFine, value); }
         }
 
-
         protected Strada strada;
 
         public virtual void SetStrada(Strada value)
@@ -67,7 +68,8 @@ namespace xRoadMap.Module.BusinessObjects
             throw new NotImplementedException();
         }
 
-        [System.ComponentModel.DisplayName("Strada")]
+        [VisibleInDetailView(false)]
+        [VisibleInListView(false)]  
         public Strada StradaBase => strada;
         
         public Strada GetStrada() => strada;
@@ -130,7 +132,16 @@ namespace xRoadMap.Module.BusinessObjects
             set => SetPropertyValue(nameof(M), ref m, value);
         }
 
+        [Browsable(false)]
+        [RuleFromBoolProperty(TargetContextIDs = "AggiornaGeometria",UsedProperties =nameof(Km),CustomMessageTemplate ="La progressiva chilometrica iniziale non è valida.")]
+        public bool KmInizialeValido => RoutingHelper.GetMetrica(this.Km) >= this.StradaBase?.Percorso?.MIniziale;
+
+        [Browsable(false)]
+        [RuleFromBoolProperty(TargetContextIDs = "AggiornaGeometria",UsedProperties =nameof(KmFine),CustomMessageTemplate ="La progressiva chilometrica finale non è valida.",TargetCriteria =$"{nameof(TipoGeometria)}=##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Lineare#")]
+        public bool KmFinaleValido => RoutingHelper.GetMetrica(this.KmFine) <= this.StradaBase?.Percorso?.MFinale;
+
         string kmFine;
+
         [DevExpress.Xpo.DisplayName("Progressiva chilometrica finale")]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFine", Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#", Enabled = false)]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]

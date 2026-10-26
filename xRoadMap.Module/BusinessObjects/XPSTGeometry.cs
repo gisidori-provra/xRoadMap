@@ -1,18 +1,13 @@
 ﻿using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
-using DevExpress.Xpo.Helpers;
 using DevExpress.Xpo.Metadata;
+using DevExpress.XtraCharts;
 using NetTopologySuite;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Implementation;
 using NetTopologySuite.IO;
-using NetTopologySuite.LinearReferencing;
-using System;
 using System.ComponentModel;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Net.Http.Headers;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -68,7 +63,69 @@ namespace xRoadMap.Module.BusinessObjects
         [System.ComponentModel.DisplayName("Lunghezza geometrica")]
         public double Lenght => (Shape?.Length).GetValueOrDefault();
 
+    //    [VisibleInListView(false)]
+    //    [ModelDefault("DisplayFormat", "n0")]
+    //    public double MIniziale => GetMeasureRange(Shape, Estremo.Inizio);
 
+    //    [VisibleInListView(false)]
+    //    [ModelDefault("DisplayFormat", "n0")]
+    //    public double MFinale => GetMeasureRange(Shape, Estremo.Fine);
+
+    //    enum Estremo
+    //    {
+    //        Inizio,
+    //        Fine
+    //    }
+
+    //    static double GetMeasureRange(Geometry geometry, Estremo estremo)
+    //    {
+    //        var M = estremo == Estremo.Inizio ? double.PositiveInfinity : double.NegativeInfinity;
+
+    //        if (geometry == null)
+    //            return double.NaN;
+
+    //        var stack = new Stack<Geometry>();
+    //        stack.Push(geometry);
+
+    //        while (stack.Count > 0)
+    //        {
+    //            var g = stack.Pop();
+
+    //            switch (g)
+    //            {
+    //                case LineString ls:
+    //                    ReadSequence(ls.CoordinateSequence, ref M,estremo);
+    //                    break;
+
+    //                case MultiLineString mls:
+    //                    for (int i = 0; i < mls.NumGeometries; i++)
+    //                        stack.Push(mls.GetGeometryN(i));
+    //                    break;
+
+    //                case GeometryCollection gc:
+    //                    for (int i = 0; i < gc.NumGeometries; i++)
+    //                        stack.Push(gc.GetGeometryN(i));
+    //                    break;
+    //            }
+    //        }
+
+    //        return M;
+
+    //        static void ReadSequence(CoordinateSequence seq, ref double M,Estremo estremo)
+    //        {
+    //            if (seq == null || seq.Measures == 0)
+    //                return;
+
+    //            for (int i = 0; i < seq.Count; i++)
+    //            {
+    //                double m = seq.GetM(i);
+    //                if (double.IsNaN(m))
+    //                    continue;
+    //                if (estremo == Estremo.Inizio && m < M) M = m;
+    //                if (estremo == Estremo.Fine && m > M) M = m;
+    //            }
+    //        }
+    //    }
     }
 
 

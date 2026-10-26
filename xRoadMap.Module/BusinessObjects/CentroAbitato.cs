@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using DevExpress.Xpo.Metadata;
-using DevExpress.Data.Filtering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using xRoadMap.Module.BusinessObjects;
-using DevExpress.Persistent.Base;
 
 namespace xRoadMap.Module.BusinessObjects
 {
@@ -52,6 +53,17 @@ namespace xRoadMap.Module.BusinessObjects
         {
             get => classificaFunzionale;
             set => SetPropertyValue(nameof(ClassificaFunzionale), ref classificaFunzionale, value);
+        }
+
+        string note;
+        [Size(SizeAttribute.Unlimited)]
+        [ModelDefault("RowCount", "5")]
+        [VisibleInDetailView(false)]
+        [VisibleInListView(false)]
+        public string Note
+        {
+            get => note;
+            set => SetPropertyValue(nameof(Note), ref note, value);
         }
     }
 }

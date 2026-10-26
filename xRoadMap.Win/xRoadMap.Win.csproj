@@ -32,21 +32,21 @@
     <EmbeddedResource Include="Images\ExpressAppLogo.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Win" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Win" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation.Win" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Win" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Win.Design" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="26.1.*" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="26.1.*" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="26.1.*" />
-    <PackageReference Include="DevExpress.RichEdit.Export" Version="26.1.*" />
-    <PackageReference Include="DevExpress.Win.Design" Version="26.1.*" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Win" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2.Win" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation.Win" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Win.Design" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="26.1.5" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="26.1.5" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="26.1.5" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="26.1.5" />
+    <PackageReference Include="DevExpress.Win.Design" Version="26.1.5" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.7.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.300" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\xRoadMap.Module\xRoadMap.Module.csproj" />

@@ -19,27 +19,30 @@
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.AuditTrail.Xpo" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.CloneObject" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Security" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="26.1.*" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="26.1.*" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="26.1.*" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="26.1.*" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.AuditTrail.Xpo" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CloneObject" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ReportsV2" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Security" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Validation" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="26.1.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="26.1.5" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="26.1.5" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="26.1.5" />
     <PackageReference Include="Azure.Identity" Version="1.17.1" />
     <PackageReference Include="GeoAPI" Version="1.7.5" />
+    <PackageReference Include="MessagePack" Version="3.1.12" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.3.11" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.2" />
     <PackageReference Include="NetTopologySuite" Version="2.6.0" />
     <PackageReference Include="ProjNET4GeoAPI" Version="1.4.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.18.0" />
-    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.7.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.300" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.14" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DevExpress.XtraMap.v26.1">
