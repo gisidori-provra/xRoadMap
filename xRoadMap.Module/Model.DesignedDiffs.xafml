@@ -95,6 +95,44 @@
     <SchemaModule Name="SystemWindowsFormsModule" Version="26.1.4.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <ListView Id="Strada_MapListView" StrokeColor="Green" StrokeWidth="3" TextColor="128, 128, 255" TitleVisible="Visible" LayerName="Strade" TOCVisibility="Visible" Pattern="{Sigla}" ClassName="xRoadMap.Module.BusinessObjects.Strada" Index="23" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Percorso" PropertyName="Percorso" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Shape" PropertyName="Shape" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Sigla" PropertyName="Sigla" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Denominazione" PropertyName="Denominazione" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="ClassificaFunzionale" PropertyName="ClassificaFunzionale" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Numero" PropertyName="Numero" Width="70" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Asse" PropertyName="Asse" Width="70" Index="4" IsNewNode="True" />
+        <ColumnInfo Id="TipoAmministrazione" PropertyName="TipoAmministrazione" Width="70" Index="5" IsNewNode="True" />
+        <ColumnInfo Id="Tronco" PropertyName="Tronco" Width="70" Index="6" IsNewNode="True" />
+      </Columns>
+      <MapLayers IsNewNode="True">
+        <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="0" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" Visible="False" IsNewNode="True" />
+        <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="1" Visible="False" IsNewNode="True" />
+        <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="2" IsNewNode="True" />
+        <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="4" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="3" IsNewNode="True" />
+        <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="4" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="4" IsNewNode="True" />
+        <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="4" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="5" IsNewNode="True" />
+        <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" Index="6" Visible="False" IsNewNode="True" />
+        <MapLayer Id="Arginelli" LayerName="Arginelli" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Arginelli" Pattern="" Visible="False" AttributeName="" Index="7" TextColor="DarkSeaGreen" Titolo="Arginelli" IsNewNode="True" />
+        <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="4" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="8" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
+        <MapLayer Id="Ciclabili" LayerName="Ciclabili" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Ciclabili" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="MediumVioletRed" Titolo="Ciclabili" IsNewNode="True" />
+        <MapLayer Id="CorpiStradali" LayerName="CorpiStradali" StrokeColor="OliveDrab" StrokeWidth="4" DataSourceProperty="CorpiStradali" Pattern="{TipoCorpoStradale.Descrizione}" Visible="False" AttributeName="" Index="10" TextColor="OliveDrab" IsNewNode="True" />
+        <MapLayer Id="Cunette" LayerName="Cunette" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Cunette" Pattern="" Visible="False" AttributeName="" Index="11" TextColor="MediumVioletRed" Titolo="Cunette" IsNewNode="True" />
+        <MapLayer Id="DispRitenuta" LayerName="DispositiviRitenuta" StrokeColor="CornflowerBlue" StrokeWidth="4" DataSourceProperty="DispositiviRitenuta" Pattern="" Visible="False" AttributeName="" Index="12" TextColor="CornflowerBlue" Titolo="Dispositivi di ritenuta" IsNewNode="True" />
+        <MapLayer Id="Gallerie" LayerName="Gallerie" StrokeColor="BlueViolet" StrokeWidth="4" DataSourceProperty="Gallerie" Pattern="" Visible="False" AttributeName="" Index="13" TextColor="BlueViolet" IsNewNode="True" />
+        <MapLayer Id="Marciapiedi" LayerName="Marciapiedi" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Marciapiedi" Pattern="Marciapiede: {Larghezza}" Visible="False" AttributeName="" Index="14" TextColor="DarkSeaGreen" IsNewNode="True" />
+        <MapLayer Id="OpereSostegno" LayerName="OpereSostegno" StrokeColor="SlateBlue" StrokeWidth="4" DataSourceProperty="OpereSostegno" Pattern="{TipoOpera.Descrizione}" Visible="False" AttributeName="" Index="15" TextColor="SlateBlue" Titolo="Opere di sostegno" IsNewNode="True" />
+        <MapLayer Id="PassaggiLivello" LayerName="PassaggiLivello" StrokeColor="DarkOrchid" StrokeWidth="4" DataSourceProperty="PassaggiLivello" Pattern="" Visible="False" AttributeName="" Index="16" TextColor="DarkOrchid" Titolo="Passaggi a Livello" IsNewNode="True" />
+        <MapLayer Id="Sottopassi" LayerName="Sottopassi" StrokeColor="Orchid" StrokeWidth="4" DataSourceProperty="Sottopassi" Pattern="" Visible="False" AttributeName="" Index="17" TextColor="Orchid" Titolo="Sovra e Sottopassagi" IsNewNode="True" />
+        <MapLayer Id="Vegetazione" LayerName="Vegetazione" StrokeColor="GreenYellow" StrokeWidth="4" DataSourceProperty="Vegetazione" Pattern="" Visible="False" AttributeName="" Index="18" TextColor="GreenYellow" Titolo="Vegetazione" IsNewNode="True" />
+        <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="19" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" Visible="False" IsNewNode="True" />
+        <MapLayer Id="Catasto" LayerType="WMSLayer" Uri="https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php" LayerName="Catasto" Transparency="60" Index="20" Visible="False" Titolo="Catasto" IsNewNode="True" />
+        <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="21" Visible="False" IsNewNode="True" />
+        <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="22" IsNewNode="True" />
+      </MapLayers>
+    </ListView>
     <DetailView Id="Accesso_DetailView">
       <Items>
         <PropertyEditor Id="Shape" LayerName="Accessi" StrokeColor="Purple" StrokeWidth="6">
@@ -2268,44 +2306,6 @@
         <ColumnInfo Id="Sigla" Width="95" />
         <ColumnInfo Id="Denominazione" PropertyName="Denominazione" Index="1" Width="531" IsNewNode="True" />
       </Columns>
-    </ListView>
-    <ListView Id="Strada_MapListView" StrokeColor="Green" StrokeWidth="3" TextColor="128, 128, 255" TitleVisible="Visible" LayerName="Strade" TOCVisibility="Visible" Pattern="{Sigla}" ClassName="xRoadMap.Module.BusinessObjects.Strada" IsNewNode="True">
-      <Columns IsNewNode="True">
-        <ColumnInfo Id="Percorso" PropertyName="Percorso" Width="70" Index="-1" IsNewNode="True" />
-        <ColumnInfo Id="Shape" PropertyName="Shape" Width="70" Index="-1" IsNewNode="True" />
-        <ColumnInfo Id="Sigla" PropertyName="Sigla" Width="400" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
-        <ColumnInfo Id="Denominazione" PropertyName="Denominazione" Width="70" Index="1" IsNewNode="True" />
-        <ColumnInfo Id="ClassificaFunzionale" PropertyName="ClassificaFunzionale" Width="70" Index="2" IsNewNode="True" />
-        <ColumnInfo Id="Numero" PropertyName="Numero" Width="70" Index="3" IsNewNode="True" />
-        <ColumnInfo Id="Asse" PropertyName="Asse" Width="70" Index="4" IsNewNode="True" />
-        <ColumnInfo Id="TipoAmministrazione" PropertyName="TipoAmministrazione" Width="70" Index="5" IsNewNode="True" />
-        <ColumnInfo Id="Tronco" PropertyName="Tronco" Width="70" Index="6" IsNewNode="True" />
-      </Columns>
-      <MapLayers IsNewNode="True">
-        <MapLayer Id="Cippi" LayerName="Cippi" DataSourceProperty="Cippi" Index="0" FillColor="192, 0, 192" StrokeWidth="4" AttributeName="" TextColor="192, 0, 192" Pattern="{Kilometro}" TitleVisible="Visible" Titolo="Cippi" IsNewNode="True" />
-        <MapLayer Id="Ponti" DataSourceProperty="Ponti" LayerName="Ponti" FillColor="Purple" StrokeColor="Purple" StrokeWidth="4" FontStyle="Bold" Pattern="Ponte: {Oid}" TextColor="Purple" Titolo="Ponti" TextGlowColor="255, 192, 255" Index="1" Visible="False" IsNewNode="True" />
-        <MapLayer Id="Tombini" DataSourceProperty="Tombini" LayerName="Tombini" StrokeWidth="4" Pattern="Tombino: {Oid}" TextColor="192, 64, 0" FillColor="192, 64, 0" Titolo="Tombini" TextGlowColor="255, 224, 192" Visible="False" Index="2" IsNewNode="True" />
-        <MapLayer Id="Accessi" LayerName="Accessi" StrokeColor="Salmon" StrokeWidth="4" FillColor="Salmon" DataSourceProperty="Accessi" Pattern="Accesso: {Oid}" Visible="False" Index="3" IsNewNode="True" />
-        <MapLayer Id="CentriAbitati" LayerName="CentriAbitati" StrokeColor="Gold" StrokeWidth="4" FillColor="Gold" DataSourceProperty="CentriAbitati" Pattern="{Nome}" Visible="False" Index="4" IsNewNode="True" />
-        <MapLayer Id="AreeTraffico" LayerName="AreeTraffico" StrokeColor="OrangeRed" StrokeWidth="4" FillColor="OrangeRed" DataSourceProperty="AreeTraffico" Pattern="AreaTraffico: {Oid}" Visible="False" Index="5" IsNewNode="True" />
-        <MapLayer Id="Banchine" DataSourceProperty="Banchine" LayerName="Banchine" StrokeColor="128, 64, 0" StrokeWidth="4" Pattern="Banchina: {Oid}" TextColor="192, 64, 0" FillColor="128, 64, 0" Titolo="Banchine" TextGlowColor="255, 224, 192" Index="6" Visible="False" IsNewNode="True" />
-        <MapLayer Id="Arginelli" LayerName="Arginelli" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Arginelli" Pattern="" Visible="False" AttributeName="" Index="7" TextColor="DarkSeaGreen" Titolo="Arginelli" IsNewNode="True" />
-        <MapLayer Id="Carreggiate" LayerName="Carreggiate" StrokeColor="Chocolate" StrokeWidth="4" FillColor="Chocolate" DataSourceProperty="Carreggiate" Pattern="{Larghezza}" Visible="False" AttributeName="TipoCarreggiata" Index="8" TextColor="Chocolate" ColorizerType="KeyColor" IsNewNode="True" />
-        <MapLayer Id="Ciclabili" LayerName="Ciclabili" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Ciclabili" Pattern="" Visible="False" AttributeName="" Index="9" TextColor="MediumVioletRed" Titolo="Ciclabili" IsNewNode="True" />
-        <MapLayer Id="CorpiStradali" LayerName="CorpiStradali" StrokeColor="OliveDrab" StrokeWidth="4" DataSourceProperty="CorpiStradali" Pattern="{TipoCorpoStradale.Descrizione}" Visible="False" AttributeName="" Index="10" TextColor="OliveDrab" IsNewNode="True" />
-        <MapLayer Id="Cunette" LayerName="Cunette" StrokeColor="MediumVioletRed" StrokeWidth="4" DataSourceProperty="Cunette" Pattern="" Visible="False" AttributeName="" Index="11" TextColor="MediumVioletRed" Titolo="Cunette" IsNewNode="True" />
-        <MapLayer Id="DispRitenuta" LayerName="DispositiviRitenuta" StrokeColor="CornflowerBlue" StrokeWidth="4" DataSourceProperty="DispositiviRitenuta" Pattern="" Visible="False" AttributeName="" Index="12" TextColor="CornflowerBlue" Titolo="Dispositivi di ritenuta" IsNewNode="True" />
-        <MapLayer Id="Gallerie" LayerName="Gallerie" StrokeColor="BlueViolet" StrokeWidth="4" DataSourceProperty="Gallerie" Pattern="" Visible="False" AttributeName="" Index="13" TextColor="BlueViolet" IsNewNode="True" />
-        <MapLayer Id="Marciapiedi" LayerName="Marciapiedi" StrokeColor="DarkSeaGreen" StrokeWidth="4" DataSourceProperty="Marciapiedi" Pattern="Marciapiede: {Larghezza}" Visible="False" AttributeName="" Index="14" TextColor="DarkSeaGreen" IsNewNode="True" />
-        <MapLayer Id="OpereSostegno" LayerName="OpereSostegno" StrokeColor="SlateBlue" StrokeWidth="4" DataSourceProperty="OpereSostegno" Pattern="{TipoOpera.Descrizione}" Visible="False" AttributeName="" Index="15" TextColor="SlateBlue" Titolo="Opere di sostegno" IsNewNode="True" />
-        <MapLayer Id="PassaggiLivello" LayerName="PassaggiLivello" StrokeColor="DarkOrchid" StrokeWidth="4" DataSourceProperty="PassaggiLivello" Pattern="" Visible="False" AttributeName="" Index="16" TextColor="DarkOrchid" Titolo="Passaggi a Livello" IsNewNode="True" />
-        <MapLayer Id="Sottopassi" LayerName="Sottopassi" StrokeColor="Orchid" StrokeWidth="4" DataSourceProperty="Sottopassi" Pattern="" Visible="False" AttributeName="" Index="17" TextColor="Orchid" Titolo="Sovra e Sottopassagi" IsNewNode="True" />
-        <MapLayer Id="Vegetazione" LayerName="Vegetazione" StrokeColor="GreenYellow" StrokeWidth="4" DataSourceProperty="Vegetazione" Pattern="" Visible="False" AttributeName="" Index="18" TextColor="GreenYellow" Titolo="Vegetazione" IsNewNode="True" />
-        <MapLayer Id="Ordinanze" LayerName="Ordinanze" DataSourceProperty="Ordinanze" Index="19" FillColor="Red" StrokeWidth="4" Pattern="" StrokeColor="Red" Titolo="Ordinanze" ColorizerType="None" AttributeName="" TextColor="Red" TextGlowColor="White" Visible="False" IsNewNode="True" />
-        <MapLayer Id="Catasto" LayerType="WMSLayer" Uri="https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php" LayerName="Catasto" Transparency="60" Index="20" Visible="False" Titolo="Catasto" IsNewNode="True" />
-        <MapLayer Id="ImmaginiSatellitari" LayerType="ArcGisImagery" Titolo="Immagini satellitari" LayerName="Immagini satellitari" Index="21" IsNewNode="True" />
-        <MapLayer Id="OpenStreetMap" LayerType="OpenStreetMap" Titolo="OpenStreetMap" LayerName="Mappa Open Street" Index="22" IsNewNode="True" />
-      </MapLayers>
     </ListView>
     <ListView Id="Strada_Marciapiedi_ListView" NewItemRowPosition="Top" AllowEdit="True">
       <Columns>

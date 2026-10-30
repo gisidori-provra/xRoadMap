@@ -129,8 +129,7 @@ namespace xRoadMap.Module.Win.Editors
                 {
                     list.Add(geom);
                 }
-                mapControl.RefreshDataSource(list);
-                
+                mapControl.RefreshDataSource(list,true);
             }
         }
 

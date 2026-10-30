@@ -61,7 +61,7 @@ namespace xRoadMap.Module.Win.Editors
 
         public override void Refresh()
         {
-            mapControl.RefreshDataSource(controlDataSource);
+            mapControl.RefreshDataSource(controlDataSource,true);
         }
 
 
@@ -112,6 +112,7 @@ namespace xRoadMap.Module.Win.Editors
             mapControl = new MapUserControl();
 
             mapControl.AddLayers(this.ObjectTypeInfo, this.Model);
+
 
             SubscribeMapEvents();
 

@@ -1,4 +1,5 @@
 ﻿using DevExpress.Data.Filtering;
+using DevExpress.DataAccess.ObjectBinding;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Utils;
@@ -130,8 +131,11 @@ namespace xRoadMap.Module.Win.Editors
             }
         }
 
-        public void RefreshDataSource(object dataSource)
+        bool zoomToFitOnLoad = true;
+
+        public void RefreshDataSource(object dataSource,bool zoomToFit)
         {
+            zoomToFitOnLoad = zoomToFit;
             DataSource = dataSource;
             map.SuspendRender();
             SqlGeometryItemStorage storage = layer.Data as SqlGeometryItemStorage;
@@ -144,13 +148,19 @@ namespace xRoadMap.Module.Win.Editors
                 {
                     if (item.Shape != null)
                     {
-                        var p = AddItem(item, storage, layer.Name); // storage.Items.Add(new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID));
-                        RefreshColorizer(layer.Colorizer,bindingList);
+                        if (layer.Visible)
+                        {
+                            var p = AddItem(item, storage, layer.Name); // storage.Items.Add(new SqlGeometryItem(item.Shape.ToString(), (int)item.Shape.SRID));
+                            RefreshColorizer(layer.Colorizer, bindingList);
+                        }
                     }
                     foreach (var pair in dataSourceProperties)
                     {
                         IBindingList list = null;
                         var vl = map.Layers[pair.Key] as VectorItemsLayer;
+                        if (vl.Visible == false)
+                            continue;
+
                         var stor = vl.Data as SqlGeometryItemStorage;
                         //stor.Items.Clear();
                         var xpo = item as DevExpress.Xpo.XPBaseObject;
@@ -160,14 +170,14 @@ namespace xRoadMap.Module.Win.Editors
                         {
                             foreach (DevExpress.Xpo.Metadata.XPClassInfo ci in xpo.Session.Dictionary.Classes)
                             {
-                                if ("<"+ci.FullName+">" == dataMember)
+                                if ("<" + ci.FullName + ">" == dataMember)
                                 {
                                     var crit = CriteriaOperator.Parse("STContains(?,?)", viewport, item.Shape);
-                                    list = new XPCollection(xpo.Session, ci,crit);
+                                    list = new XPCollection(xpo.Session, ci, crit);
                                     break;
                                 }
                             }
-                            
+
                         }
                         else
                         {
@@ -198,7 +208,7 @@ namespace xRoadMap.Module.Win.Editors
                         }
                         catch (InvalidCastException ice)
                         {
-                            throw new InvalidCastException("Invalid cast",ice);
+                            throw new InvalidCastException("Invalid cast", ice);
                         }
                     }
 
@@ -244,8 +254,10 @@ namespace xRoadMap.Module.Win.Editors
                 modelRoot.LayerName = objectTypeInfo.Name;
 
             layer = AddVectorLayer(modelRoot);
-            layer.ZIndex = 1;
+
+            layer.ZIndex = modelRoot.Index??1;
             //layer.Name = modelRoot.LayerName;
+
             layer.ViewportChanged += layer_ViewportChanged;
 
             legend.Add(new LegendItem(modelRoot));
@@ -335,7 +347,6 @@ namespace xRoadMap.Module.Win.Editors
                 var ring = new LinearRing(coordinates);
                 if (ring.IsClosed)
                     viewport = new Polygon(new LinearRing(coordinates));
-                //RefreshDataSource(this.DataSource);
             }
             catch { }
         }
@@ -770,8 +781,17 @@ namespace xRoadMap.Module.Win.Editors
 
         private void Layer_DataLoaded(object sender, DataLoadedEventArgs e)
         {
+            if (zoomToFitOnLoad && sender == this.Layer)
+            {
+                ZoomToFitLayerItems();
+                zoomToFitOnLoad = false;
+            }
+        }
+
+        public void ZoomToFitLayerItems()
+        {
             map.ZoomToFitLayerItems(new LayerBase[] { this.Layer });
-            if (map.ZoomLevel == 1 || map.ZoomLevel>15)
+            if (map.ZoomLevel == 1 || map.ZoomLevel > 15)
                 map.ZoomLevel = 15;
         }
 
@@ -805,6 +825,8 @@ namespace xRoadMap.Module.Win.Editors
                 }
             }
             layer.Visible = check;
+            if (check)
+                RefreshDataSource(DataSource,false);
         }
 
         private void map_Click(object sender, EventArgs e)
