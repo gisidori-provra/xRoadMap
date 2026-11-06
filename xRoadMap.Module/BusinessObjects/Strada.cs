@@ -130,11 +130,9 @@ namespace xRoadMap.Module.BusinessObjects
             set { SetPropertyValue<StatoGrafo>(nameof(Stato), ref fStato, value); }
         }
 
-        [ModelDefault("DisplayFormat", "n3")]
-        public double KMIniziale => Percorso?.MIniziale ?? 0;
+        public string KMIniziale => RoutingHelper.GetChilometricaFromMeasure(this,Percorso?.MIniziale ?? 0,false,out double pk);
 
-        [ModelDefault("DisplayFormat", "n3")]
-        public double KMFinale => Percorso?.MFinale ?? 0;
+        public string KMFinale => RoutingHelper.GetChilometricaFromMeasure(this,Percorso?.MFinale ?? 0,false,out double pk);
 
         [DevExpress.Persistent.Base.VisibleInDetailView(false), DevExpress.Persistent.Base.VisibleInListView(false)]
         [Association(), Aggregated]

@@ -2285,16 +2285,17 @@
     </ListView>
     <ListView Id="Strada_ListView">
       <Columns>
+        <ColumnInfo Id="Asse" Width="290" Index="-1" />
         <ColumnInfo Id="Numero" Width="102" Index="0" />
         <ColumnInfo Id="Sigla" Width="110" Index="1" />
         <ColumnInfo Id="Denominazione" Width="290" Index="2" />
         <ColumnInfo Id="ClassificaFunzionale" Width="290" Index="3" />
-        <ColumnInfo Id="Asse" Width="290" />
-        <ColumnInfo Id="TipoAmministrazione" Width="290" />
-        <ColumnInfo Id="Tronco" Width="308" />
-        <ColumnInfo Id="Percorso.Lenght" PropertyName="Percorso.Lenght" Index="8" IsNewNode="True" />
-        <ColumnInfo Id="KMIniziale" Index="9" />
-        <ColumnInfo Id="KMFinale" Index="10" />
+        <ColumnInfo Id="TipoAmministrazione" Width="163" Index="4" />
+        <ColumnInfo Id="Tronco" Width="111" Index="5" />
+        <ColumnInfo Id="Stato" Index="6" />
+        <ColumnInfo Id="KMIniziale" Index="7" Width="74" />
+        <ColumnInfo Id="KMFinale" Index="8" Width="69" />
+        <ColumnInfo Id="Length" Index="9" Width="139" />
       </Columns>
       <Variants Current="List">
         <Variant Id="List" Caption="Elenco" ViewID="Strada_ListView" IsNewNode="True" />
