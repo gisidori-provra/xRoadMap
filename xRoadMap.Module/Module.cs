@@ -11,8 +11,11 @@ using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
+using DevExpress.Xpo.DB;
 using DevExpress.Xpo;
 using System.ComponentModel;
+using xRoadMap.Module.BusinessObjects;
+using xRoadMap.Xpo;
 using xRoadMap.Module.Xpo;
 
 namespace xRoadMap.Module
@@ -69,7 +72,30 @@ namespace xRoadMap.Module
         public override void Setup(XafApplication application)
         {
             base.Setup(application);
+            ConfigureSpatialDbType(application);
             // Manage various aspects of the application UI and behavior at the module level.
+        }
+
+        private static void ConfigureSpatialDbType(XafApplication application)
+        {
+            var shapeMember = application.TypesInfo
+                .FindTypeInfo(typeof(XPSTGeometry))?
+                .FindMember(nameof(IXPGeometry.Shape));
+
+            if (shapeMember == null)
+            {
+                return;
+            }
+
+            var connectionString = application.ConnectionString ?? string.Empty;
+            var isMsSql = connectionString.Contains(
+                $"{DataStoreBase.XpoProviderTypeParameterName}={MSSqlSpatialProvider.XpoProviderTypeString}",
+                StringComparison.OrdinalIgnoreCase)
+                || connectionString.Contains(
+                    $"{DataStoreBase.XpoProviderTypeParameterName}={MSSqlConnectionProvider.XpoProviderTypeString}",
+                    StringComparison.OrdinalIgnoreCase);
+
+            shapeMember.AddAttribute(new DbTypeAttribute(isMsSql ? "geometry" : "SDE.ST_GEOMETRY"));
         }
         public override void CustomizeTypesInfo(ITypesInfo typesInfo)
         {

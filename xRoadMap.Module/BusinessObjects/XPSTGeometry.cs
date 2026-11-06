@@ -49,7 +49,7 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         private Geometry shape;
-        [DbType("SDE.ST_GEOMETRY"), Persistent("SHAPE")]
+        [Persistent("SHAPE")]
         [ValueConverter(typeof(GeometryConverter))]
         public Geometry Shape
         {

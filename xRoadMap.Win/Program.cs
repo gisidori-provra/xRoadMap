@@ -56,6 +56,7 @@ namespace xRoadMap.Win
 #endif
 
             xRoadMap.Xpo.OracleSDEConnectionProvider.Register();
+            xRoadMap.Xpo.MSSqlSpatialProvider.Register();
 
             string connectionString = null;
             if (ConfigurationManager.ConnectionStrings["ConnectionString"] != null)

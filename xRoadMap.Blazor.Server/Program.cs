@@ -31,6 +31,7 @@ namespace xRoadMap.Blazor.Server
             else
             {
                 xRoadMap.Xpo.OracleSDEConnectionProvider.Register();
+                xRoadMap.Xpo.MSSqlSpatialProvider.Register();
 
                 DevExpress.ExpressApp.Blazor.Editors.LookupPropertyEditor.DefaultUseViewMode = true;
                 DevExpress.ExpressApp.FrameworkSettings.DefaultSettingsCompatibilityMode = DevExpress.ExpressApp.FrameworkSettingsCompatibilityMode.Latest;

@@ -34,23 +34,6 @@ namespace xRoadMap.Module.BusinessObjects
         public override void AfterConstruction() { base.AfterConstruction(); }
     }
 
-    [Persistent("ciclabile_senso_percorrenza")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class SensoPercorrenza: CodedDomain<double>
-    {
-        public SensoPercorrenza(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
-    }
-
-
-    [Persistent("ciclabile_tipo")]
-    [NavigationItem("Impostazioni Catasto Strade")]
-    public partial class TipoCliclabile : CodedDomain<double>
-    {
-        public TipoCliclabile(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
-    }
-
     [Persistent("cippi_materiale")]
     [NavigationItem("Impostazioni Catasto Strade")]
     public partial class TipoMaterialeCippo : CodedDomain<double>
