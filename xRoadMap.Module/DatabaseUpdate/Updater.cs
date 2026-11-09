@@ -9,6 +9,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Xpo;
+using DevExpress.Xpo.Metadata;
 using Microsoft.Extensions.DependencyInjection;
 using xRoadMap.Module.BusinessObjects;
 
@@ -67,6 +68,61 @@ namespace xRoadMap.Module.DatabaseUpdate
             //if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {
             //    RenameColumn("DomainObject1Table", "OldColumnName", "NewColumnName");
             //}
+            var session = ((XPObjectSpace)ObjectSpace).Session;
+
+            // Legge i nomi delle tabelle fisiche presenti in dbo
+            var data = session.ExecuteQuery(@"
+            SELECT t.name
+            FROM sys.tables t
+            WHERE t.schema_id = SCHEMA_ID('dbo')");
+
+            var existingTables = data.ResultSet[0].Rows
+                .Select(r => Convert.ToString(r.Values[0]))
+                .ToList();
+
+            // Evita di elaborare più volte la stessa tabella
+            var processedTables = new HashSet<string>(
+                StringComparer.OrdinalIgnoreCase);
+
+            foreach (var typeInfo in this.ObjectSpace.TypesInfo.PersistentTypes)
+            {
+                var type = typeInfo.Type;
+
+                if (type == null || type.IsAbstract)
+                    continue;
+
+                XPClassInfo classInfo = session.Dictionary.QueryClassInfo(type);
+
+                if (classInfo == null)
+                    continue;
+
+                string expectedName = classInfo.TableName;
+
+                if (string.IsNullOrEmpty(expectedName))
+                    continue;
+
+                if (!processedTables.Add(expectedName))
+                    continue;
+
+                // Cerca la tabella ignorando maiuscole/minuscole
+                string actualName = existingTables.FirstOrDefault(
+                    name => string.Equals(
+                        name,
+                        expectedName,
+                        StringComparison.OrdinalIgnoreCase));
+
+                if (actualName == null)
+                    continue;
+
+                // Rinomina solo quando cambia la capitalizzazione
+                if (!string.Equals(
+                    actualName,
+                    expectedName,
+                    StringComparison.Ordinal))
+                {
+                    RenameTable(actualName, expectedName);
+                }
+            }
         }
         PermissionPolicyRole CreateAdminRole()
         {
