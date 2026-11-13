@@ -55,8 +55,8 @@ namespace xRoadMap.Win
                     options.Lockout.Enabled = true;
 
                     options.RoleType = typeof(PermissionPolicyRole);
-                    options.UserType = typeof(xRoadMap.Module.BusinessObjects.ApplicationUser);
-                    options.UserLoginInfoType = typeof(xRoadMap.Module.BusinessObjects.ApplicationUserLoginInfo);
+                    options.UserType = typeof(ApplicationUser);
+                    options.UserLoginInfoType = typeof(ApplicationUserLoginInfo);
                     options.UseXpoPermissionsCaching();
                     options.Events.OnSecurityStrategyCreated += securityStrategy =>
                     {
