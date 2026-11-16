@@ -75,7 +75,7 @@ namespace xRoadMap.Module.BusinessObjects
         public Strada GetStrada() => strada;
 
         string km;
-        [DevExpress.Xpo.DisplayName("Progressiva chilometrica")]
+        [DevExpress.Xpo.DisplayName("PK")]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("Km", Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#", Enabled = false)]
         public string Km
         {
@@ -142,7 +142,7 @@ namespace xRoadMap.Module.BusinessObjects
 
         string kmFine;
 
-        [DevExpress.Xpo.DisplayName("Progressiva chilometrica finale")]
+        [DevExpress.Xpo.DisplayName("PK Finale")]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFine", Criteria = "Tipo = ##Enum#xRoadMap.Module.BusinessObjects.TipoPosizione,Coordinate#", Enabled = false)]
         [DevExpress.ExpressApp.ConditionalAppearance.Appearance("KmFineTipoGeometria", Criteria = "TipoGeometria = ##Enum#xRoadMap.Module.BusinessObjects.TipoGeometriaEvento,Puntuale#", Visibility = DevExpress.ExpressApp.Editors.ViewItemVisibility.Hide)]
         public string KmFine

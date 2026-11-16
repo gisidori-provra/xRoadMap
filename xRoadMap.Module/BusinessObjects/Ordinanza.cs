@@ -11,13 +11,13 @@ using DevExpress.Persistent.Base;
 using DevExpress.Utils.Filtering.Internal;
 using DevExpress.Persistent.Validation;
 using DevExpress.Office.NumberConverters;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace xRoadMap.Module.BusinessObjects
 {
 
 
     [MapInheritance(MapInheritanceType.OwnTable)]
-    [DefaultProperty(nameof(Descrizione))]
     public partial class Ordinanza : EventoSuStrada, IEventoLineareOnRoad
     {
         public Ordinanza(Session session) : base(session) { }
@@ -26,6 +26,10 @@ namespace xRoadMap.Module.BusinessObjects
             TipoGeometria = TipoGeometriaEvento.Lineare;
             base.AfterConstruction();
         }
+
+        [VisibleInDetailView(false)]
+        [VisibleInListView(false)]
+        public string Name => $"Ordinanza nr {this.Atto?.Numero} del {this.Atto?.Data} - {this.Descrizione}";
 
         [RuleRequiredField]
         [Association]
@@ -125,8 +129,12 @@ namespace xRoadMap.Module.BusinessObjects
 
         [VisibleInDetailView(false)]
         [VisibleInListView(false)]
-        [PersistentAlias($"({nameof(DataInizio)} IS NULL OR {nameof(DataInizio)}<=Today()) AND ({nameof(DataFine)} IS NULL OR {nameof(DataFine)}>Today()) AND ({nameof(Versione)} <> 2)")]
+        [PersistentAlias($"({nameof(DataInizio)} IS NULL OR {nameof(DataInizio)}<=Today()) AND ({nameof(DataFine)} IS NULL OR {nameof(DataFine)}>Today()) AND ({nameof(Stato)}=0)")]
         public bool Vigente => (bool)EvaluateAlias(); //(!DataInizio.HasValue || DataInizio.Value <= DateTime.Today) && (!DataFine.HasValue || DataFine >= DateTime.Today);
+
+        [VisibleInDetailView(false)]
+        [PersistentAlias($"Iif([{nameof(OrdinanzeSuccessive)}][], 1, 0)")]
+        public VersioneOrdinanza Versione => (VersioneOrdinanza)EvaluateAlias();
 
         bool fLimiteMassa;
         [ImmediatePostData]
@@ -138,8 +146,6 @@ namespace xRoadMap.Module.BusinessObjects
 
         double fPortata;
         [DevExpress.Xpo.DisplayName(@"Portata (Ton)")]
-        [ModelDefault("DisplayFormat", "{0:0.##}")]
-        [ModelDefault("EditMask", "0.##")]
         [Appearance("LimiteMassa", criteria: "NOT LimiteMassa", Enabled = false)]
         [VisibleInListView(false)]
         [Persistent("MASSA")]
@@ -158,8 +164,6 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         double fSagoma;
-        [ModelDefault("DisplayFormat", "{0:0.##}")]
-        [ModelDefault("EditMask", "0.##")]
         [Appearance("LimiteSagoma", criteria: "LimiteSagoma=##Enum#xRoadMap.Module.BusinessObjects.TipoSagoma,Libero#", Enabled = false)]
         [DevExpress.Xpo.DisplayName("Limite Sagoma (mt)")]
         [VisibleInListView(false)]
@@ -206,27 +210,24 @@ namespace xRoadMap.Module.BusinessObjects
             get => LimiteMassa || LimiteSagoma != TipoSagoma.Libero || LimiteVelocità || Percorribilità != TipoPercorrenza.Libero;
         }
 
-
+        StatoOrdinanza fStato;
+        public StatoOrdinanza Stato
+        {
+            get => fStato;
+            set => SetPropertyValue(nameof(Stato), ref fStato, value);
+        }
 
         private Ordinanza fOrdinanzaPrecedente;
 
         [Association]
+        [VisibleInListView(false)]
         [System.ComponentModel.DisplayName("Ordinanza Modificata")]
         [ToolTip("Ordinanza che viene modificata o revocata dall'ordinanza corrente")]
-        [DataSourceCriteria($"{nameof(Versione)} <> 2 AND Strada='@This.Strada' AND Oid<>'@This.Oid'")]
+        [DataSourceCriteria($"Strada='@This.Strada' AND Oid<>'@This.Oid'")]
         public Ordinanza OrdinanzaPrecedente
         {
             get => fOrdinanzaPrecedente;
-            set
-            {
-                if (SetPropertyValue(nameof(OrdinanzaPrecedente), ref fOrdinanzaPrecedente, value))
-                {
-                    if (fOrdinanzaPrecedente != null && fOrdinanzaPrecedente.Versione == VersioneOrdinanza.Originale)
-                    {
-                        fOrdinanzaPrecedente.Versione = VersioneOrdinanza.Modificata;
-                    }
-                }
-            }
+            set => SetPropertyValue(nameof(OrdinanzaPrecedente), ref fOrdinanzaPrecedente, value);
         }
 
         [DevExpress.ExpressApp.DC.XafDisplayName("Modificata da:")]
@@ -237,13 +238,6 @@ namespace xRoadMap.Module.BusinessObjects
             {
                 return GetCollection<Ordinanza>(nameof(OrdinanzeSuccessive));
             }
-        }
-
-        private VersioneOrdinanza fVersione;
-        public VersioneOrdinanza Versione
-        {
-            get => fVersione;
-            set => SetPropertyValue(nameof(Versione), ref fVersione, value);
         }
 
         [Association, Aggregated]
@@ -275,10 +269,15 @@ namespace xRoadMap.Module.BusinessObjects
 
 
     }
+    public enum StatoOrdinanza
+    {
+        Emessa = 0,
+        Revocata =1
+    }
+
     public enum VersioneOrdinanza
     {
         Originale = 0,
-        Modificata = 1,
-        Revocata = 2,
+        Modificata = 1
     }
 }
