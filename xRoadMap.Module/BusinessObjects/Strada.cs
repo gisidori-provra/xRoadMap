@@ -22,7 +22,11 @@ namespace xRoadMap.Module.BusinessObjects
     {
         public Strada() : base() { }
         public Strada(Session session) : base(session) { }
-        public override void AfterConstruction() { base.AfterConstruction(); }
+        
+        public override void AfterConstruction() { 
+            this.Percorso = new Percorso(Session) { Strada = this };
+            base.AfterConstruction(); 
+        }
 
         private Percorso percorso;
 
