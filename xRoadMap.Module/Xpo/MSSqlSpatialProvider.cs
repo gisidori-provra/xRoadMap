@@ -1,12 +1,14 @@
 ﻿using DevExpress.Persistent.BaseImpl.MultiTenancy;
 using DevExpress.Xpo.DB;
+using DevExpress.Xpo.DB.Exceptions;
 using DevExpress.Xpo.DB.Helpers;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Data.SqlClient;
 using Microsoft.SqlServer.Types;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
-using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +33,84 @@ namespace xRoadMap.Xpo
           : base(connection, autoCreateOption)
         {
 
+        }
+
+        public override UpdateSchemaResult UpdateSchema(bool doNotCreateIfFirstTableNotExist, params DBTable[] tables)
+        {
+            var exists = FunctionExists("dbo", "STMaxM");
+            if (exists == false)
+            {
+                ExecuteSqlSchemaUpdate("Function", "STMaxM", string.Empty, """
+                CREATE OR ALTER   FUNCTION [dbo].[STMaxM]
+                (
+                    @geom geometry
+                )
+                RETURNS FLOAT
+                AS
+                BEGIN
+                    DECLARE @i INT = 1;
+                    DECLARE @n INT;
+                    DECLARE @m FLOAT;
+                    DECLARE @maxM FLOAT = NULL;
+
+                    IF @geom IS NULL
+                        RETURN NULL;
+
+                    SET @n = @geom.STNumPoints();
+
+                    WHILE @i <= @n
+                    BEGIN
+                        SET @m = @geom.STPointN(@i).M;
+
+                        IF @m IS NOT NULL
+                           AND (@maxM IS NULL OR @m > @maxM)
+                            SET @maxM = @m;
+
+                        SET @i = @i + 1;
+                    END;
+
+                    RETURN @maxM;
+                END;
+                """);
+            }
+
+            exists = FunctionExists("dbo", "STMinM");
+            if (exists == false)
+            {
+                ExecuteSqlSchemaUpdate("Function", "STMinM", string.Empty, """
+                CREATE OR ALTER   FUNCTION [dbo].[STMinM]
+                (
+                    @geom geometry
+                )
+                RETURNS FLOAT
+                AS
+                BEGIN
+                    DECLARE @i INT = 1;
+                    DECLARE @n INT;
+                    DECLARE @m FLOAT;
+                    DECLARE @minM FLOAT = NULL;
+
+                    IF @geom IS NULL
+                        RETURN NULL;
+
+                    SET @n = @geom.STNumPoints();
+
+                    WHILE @i <= @n
+                    BEGIN
+                        SET @m = @geom.STPointN(@i).M;
+
+                        IF @m IS NOT NULL
+                           AND (@minM IS NULL OR @m < @minM)
+                            SET @minM = @m;
+
+                        SET @i = @i + 1;
+                    END;
+
+                    RETURN @minM;
+                END;
+                """);
+            }
+            return base.UpdateSchema(doNotCreateIfFirstTableNotExist, tables);
         }
 
         public new static string GetConnectionString(string server, string catalog)
@@ -133,6 +213,19 @@ namespace xRoadMap.Xpo
             _serviceProvider = serviceProvider;
         }
 
-    }
 
+        private bool FunctionExists(string schema, string name)
+        {
+            using var command = Connection.CreateCommand();
+
+            command.CommandText = $"""
+        SELECT CASE
+            WHEN OBJECT_ID(N'{schema}.{name}', N'FN') IS NULL THEN 0
+            ELSE 1
+        END
+        """;
+
+            return Convert.ToInt32(command.ExecuteScalar()) == 1;
+        }
+    }
 }

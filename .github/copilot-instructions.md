@@ -30,6 +30,11 @@ When replying to **ANY** question about DevExpress components, use the dxdocs se
 
 
 
+## Database Connection:
+- In an XAF Blazor application, assign the database connection string inside `AddSecuredXpo` options in `Startup.ConfigureServices`. 
+- Be aware that `application.ConnectionString` may be empty during `Module.Setup`; use the configuration value or an explicit provider setting passed before `AddXaf` for provider-dependent metadata.
+
+
 ## Constraints:
 
 - **Use search\_docs only once** per question to avoid redundant queries

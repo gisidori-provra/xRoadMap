@@ -14,9 +14,12 @@ using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo;
 using System.ComponentModel;
+using NetTopologySuite.Geometries;
 using xRoadMap.Module.BusinessObjects;
 using xRoadMap.Xpo;
 using xRoadMap.Module.Xpo;
+using System.Configuration;
+using DevExpress.Data.Utils;
 
 namespace xRoadMap.Module
 {
@@ -44,6 +47,8 @@ namespace xRoadMap.Module
             RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Validation.ValidationModule));
             RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ViewVariantsModule.ViewVariantsModule));
             STContainsFunction.Register();
+            STMaxMFunction.Register();
+            STMinMFunction.Register();
 
             NetTopologySuite.NtsGeometryServices.Instance = new NetTopologySuite.NtsGeometryServices(
                 // default CoordinateSequenceFactory
@@ -64,6 +69,35 @@ namespace xRoadMap.Module
                 NetTopologySuite.Geometries.GeometryFactory.Default;
 
         }
+
+        private static string spatialDbType = "geometry";
+
+        public static void ConfigureSpatialDbType(string connectionString)
+        {
+            ArgumentException.ThrowIfNullOrWhiteSpace(connectionString);
+
+            bool isMssql =
+                connectionString.Contains(
+                    $"{DataStoreBase.XpoProviderTypeParameterName}={MSSqlSpatialProvider.XpoProviderTypeString}",
+                    StringComparison.OrdinalIgnoreCase)
+                || connectionString.Contains(
+                    $"{DataStoreBase.XpoProviderTypeParameterName}={MSSqlConnectionProvider.XpoProviderTypeString}",
+                    StringComparison.OrdinalIgnoreCase);
+
+            bool isOracle =
+                connectionString.Contains(
+                    $"{DataStoreBase.XpoProviderTypeParameterName}={OracleSDEConnectionProvider.XpoProviderTypeString}",
+                    StringComparison.OrdinalIgnoreCase);
+
+            spatialDbType = isMssql
+                ? "geometry"
+                : isOracle
+                    ? "SDE.ST_GEOMETRY"
+                    : throw new NotSupportedException(
+                        "Provider XPO spaziale non supportato.");
+        }
+
+
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB)
         {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
@@ -72,35 +106,35 @@ namespace xRoadMap.Module
         public override void Setup(XafApplication application)
         {
             base.Setup(application);
-            ConfigureSpatialDbType(application);
             // Manage various aspects of the application UI and behavior at the module level.
         }
 
-        private static void ConfigureSpatialDbType(XafApplication application)
-        {
-            var shapeMember = application.TypesInfo
-                .FindTypeInfo(typeof(XPSTGeometry))?
-                .FindMember(nameof(IXPGeometry.Shape));
-
-            if (shapeMember == null)
-            {
-                return;
-            }
-
-            var connectionString = application.ConnectionString ?? string.Empty;
-            var isMsSql = connectionString.Contains(
-                $"{DataStoreBase.XpoProviderTypeParameterName}={MSSqlSpatialProvider.XpoProviderTypeString}",
-                StringComparison.OrdinalIgnoreCase)
-                || connectionString.Contains(
-                    $"{DataStoreBase.XpoProviderTypeParameterName}={MSSqlConnectionProvider.XpoProviderTypeString}",
-                    StringComparison.OrdinalIgnoreCase);
-
-            shapeMember.AddAttribute(new DbTypeAttribute(isMsSql ? "geometry" : "SDE.ST_GEOMETRY"));
-        }
         public override void CustomizeTypesInfo(ITypesInfo typesInfo)
         {
             base.CustomizeTypesInfo(typesInfo);
+            ConfigureSpatialMembers(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
+        }
+
+        private static void ConfigureSpatialMembers(ITypesInfo typesInfo)
+        {
+            var typesToRefresh = new HashSet<Type>();
+
+            foreach (var typeInfo in typesInfo.PersistentTypes)
+            {
+                foreach (var memberInfo in typeInfo.Members)
+                {
+                    if (memberInfo.IsPersistent
+                        && typeof(Geometry).IsAssignableFrom(memberInfo.MemberType))
+                    {
+                        memberInfo.AddAttribute(new DbTypeAttribute(spatialDbType), true);
+                        typesToRefresh.Add(typeInfo.Type);
+                    }
+                }
+            }
+
+            foreach (var type in typesToRefresh)
+                typesInfo.RefreshInfo(type);
         }
 
         public override void ExtendModelInterfaces(ModelInterfaceExtenders extenders)

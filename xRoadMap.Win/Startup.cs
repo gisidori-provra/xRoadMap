@@ -17,6 +17,12 @@ namespace xRoadMap.Win
     {
         public static WinApplication BuildApplication(string connectionString)
         {
+
+
+            xRoadMap.Module.xRoadMapModule
+                .ConfigureSpatialDbType(connectionString);
+
+
             var builder = WinApplication.CreateBuilder();
             // Register custom services for Dependency Injection. For more information, refer to the following topic: https://docs.devexpress.com/eXpressAppFramework/404430/
             // builder.Services.AddScoped<CustomService>();

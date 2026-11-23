@@ -49,6 +49,7 @@ namespace xRoadMap.Module.BusinessObjects
         }
 
         private Geometry shape;
+
         [Persistent("SHAPE")]
         [ValueConverter(typeof(GeometryConverter))]
         public Geometry Shape

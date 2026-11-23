@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using xRoadMap.Blazor.Server.Services;
+using xRoadMap.Module;
 using xRoadMap.Module.BusinessObjects;
 
 namespace xRoadMap.Blazor.Server

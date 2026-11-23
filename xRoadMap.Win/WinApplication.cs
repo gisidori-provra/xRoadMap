@@ -18,7 +18,7 @@ namespace xRoadMap.Win
             SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
             ApplicationName = "xRoadMap";
             CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-            DatabaseUpdateMode = DatabaseUpdateMode.Never;
+            DatabaseUpdateMode = DatabaseUpdateMode.UpdateOldDatabase;
             DatabaseVersionMismatch += xRoadMapWindowsFormsApplication_DatabaseVersionMismatch;
             CustomizeLanguagesList += xRoadMapWindowsFormsApplication_CustomizeLanguagesList;
         }

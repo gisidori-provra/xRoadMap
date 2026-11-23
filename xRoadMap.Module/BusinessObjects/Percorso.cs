@@ -51,11 +51,13 @@ namespace xRoadMap.Module.BusinessObjects
 
         [VisibleInListView(false)]
         [ModelDefault("DisplayFormat", "n0")]
-        public double MIniziale => System.Convert.ToDouble(Session.ExecuteScalar($"select sde.st_minm(shape) from percorso where objectid = {Oid}"));
+        [PersistentAlias("STMinM(shape)")]
+        public double MIniziale => System.Convert.ToDouble(EvaluateAlias());
 
         [VisibleInListView(false)]
         [ModelDefault("DisplayFormat", "n0")]
-        public double MFinale => System.Convert.ToDouble(Session.ExecuteScalar($"select sde.st_maxm(shape) from percorso where objectid = {Oid}"));
+        [PersistentAlias("STMaxM(shape)")]
+        public double MFinale => System.Convert.ToDouble(EvaluateAlias());
 
     }
 
